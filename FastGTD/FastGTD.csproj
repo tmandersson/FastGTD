@@ -6,7 +6,7 @@
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{2367A529-4B9B-4E0D-A666-B4EF14FD0DD9}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FastGTD</RootNamespace>
     <AssemblyName>FastGTD</AssemblyName>
@@ -51,5 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FirstTest.cs" />
+    <Compile Include="Program.cs" />
   </ItemGroup>
 </Project>

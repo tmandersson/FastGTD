@@ -1,7 +1,15 @@
-﻿public class Program
+﻿using System.Windows.Forms;
+
+namespace FastGTD
 {
-    public static int Main(string[] argv)
+    public class Program
     {
-        return 0;
+        public static int Main(string[] argv)
+        {
+            Form in_form = new InForm();
+            Application.Run(in_form);
+
+            return 0;
+        }
     }
 }

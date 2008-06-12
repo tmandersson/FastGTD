@@ -16,15 +16,21 @@ namespace FastGTD
         [Test]
         public void AddingInBoxItemWithButtonClick()
         {
-            string new_inbox_item = "foobar";
             InBoxForm form = new InBoxForm();
-            form.Show();
+            form.Show(); // TODO: Eliminate need to show dialog when testing.
 
+            string new_inbox_item = "foo";
             form.textBoxNewItem.Text = new_inbox_item;
             form.buttonAdd.PerformClick();
-
             Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(1));
             Assert.That(form.listViewInBoxItems.Items[0].Text, Is.EqualTo(new_inbox_item));
+
+            string new_inbox_item2 = "bar";
+            form.textBoxNewItem.Text = new_inbox_item2;
+            form.buttonAdd.PerformClick();
+            Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(2));
+            Assert.That(form.listViewInBoxItems.Items[0].Text, Is.EqualTo(new_inbox_item));
+            Assert.That(form.listViewInBoxItems.Items[1].Text, Is.EqualTo(new_inbox_item2));
         }
     }
 }

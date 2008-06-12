@@ -52,18 +52,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FirstTest.cs" />
-    <Compile Include="InForm.cs">
+    <Compile Include="InBoxForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InForm.Designer.cs">
-      <DependentUpon>InForm.cs</DependentUpon>
+    <Compile Include="InBoxForm.Designer.cs">
+      <DependentUpon>InBoxForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="InBoxFormTests.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="InForm.resx">
-      <DependentUpon>InForm.cs</DependentUpon>
+    <EmbeddedResource Include="InBoxForm.resx">
+      <DependentUpon>InBoxForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

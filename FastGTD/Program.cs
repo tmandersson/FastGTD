@@ -6,7 +6,7 @@ namespace FastGTD
     {
         public static int Main(string[] argv)
         {
-            Form in_form = new InForm();
+            Form in_form = new InBoxForm();
             Application.Run(in_form);
 
             return 0;

@@ -8,7 +8,7 @@ namespace FastGTD
         {
             InitializeComponent();
 
-            textBoxNewItem.KeyDown += KeyDownHandler;
+            textBox.KeyDown += KeyDownHandler;
         }
 
         public void KeyDownHandler(object sender, KeyEventArgs e)
@@ -27,8 +27,13 @@ namespace FastGTD
 
         private void AddInboxItem()
         {
-            string new_item = textBoxNewItem.Text;
+            string new_item = textBox.Text;
             listViewInBoxItems.Items.Add(new_item);
+        }
+
+        private void InBoxForm_Load(object sender, System.EventArgs e)
+        {
+            textBox.Focus();
         }
     }
 }

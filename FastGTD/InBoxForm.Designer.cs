@@ -70,7 +70,6 @@
             this.Controls.Add(this.listViewInBoxItems);
             this.Name = "InBoxForm";
             this.Text = "InBoxForm";
-            this.Load += new System.EventHandler(this.InBoxForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

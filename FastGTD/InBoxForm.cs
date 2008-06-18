@@ -30,10 +30,5 @@ namespace FastGTD
             string new_item = textBox.Text;
             listViewInBoxItems.Items.Add(new_item);
         }
-
-        private void InBoxForm_Load(object sender, System.EventArgs e)
-        {
-            textBox.Focus();
-        }
     }
 }

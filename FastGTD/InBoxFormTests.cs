@@ -19,8 +19,8 @@ namespace FastGTD
         public void TextBoxStartsWithFocus()
         {
             InBoxForm form = new InBoxForm();
-            form.Show(); // TODO: Eliminate need to show dialog when testing.
-            
+            form.Show();
+
             Assert.IsFalse(form.Focused);
             Assert.IsFalse(form.listViewInBoxItems.Focused);
             Assert.IsFalse(form.buttonAdd.Focused);
@@ -31,7 +31,7 @@ namespace FastGTD
         public void AddingInBoxItemWithButtonClick()
         {
             InBoxForm form = new InBoxForm();
-            form.Show(); // TODO: Eliminate need to show dialog when testing.
+            form.Show();
 
             string new_inbox_item = "foo";
             form.textBox.Text = new_inbox_item;
@@ -50,20 +50,18 @@ namespace FastGTD
         [Test]
         public void AddingInBoxItemWithEnterKey()
         {
-            // TODO: Duplication
             InBoxForm form = new InBoxForm();
-            form.Show(); // TODO: Eliminate need to show dialog when testing.
+            form.Show();
 
             Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(0));
 
             string new_inbox_item = "foo";
             form.textBox.Text = new_inbox_item;
 
-            // TODO: This call seems a bit ugly. Fix or ignore?
-            form.KeyDownHandler((object)this, new KeyEventArgs(Keys.Space));
+            form.PerformKeyDown(Keys.Space);
             Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(0));
 
-            form.KeyDownHandler((object) this, new KeyEventArgs(Keys.Enter));
+            form.PerformKeyDown(Keys.Enter);
             Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(1));
             Assert.That(form.listViewInBoxItems.Items[0].Text, Is.EqualTo(new_inbox_item));
         }

@@ -11,7 +11,7 @@ namespace FastGTD
             textBox.KeyDown += KeyDownHandler;
         }
 
-        public void KeyDownHandler(object sender, KeyEventArgs e)
+        private void KeyDownHandler(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)
             {
@@ -29,6 +29,11 @@ namespace FastGTD
         {
             string new_item = textBox.Text;
             listViewInBoxItems.Items.Add(new_item);
+        }
+
+        public void PerformKeyDown(Keys key)
+        {
+            KeyDownHandler((object)this, new KeyEventArgs(key));
         }
     }
 }

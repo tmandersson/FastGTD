@@ -59,7 +59,8 @@
       <DependentUpon>InBoxForm.cs</DependentUpon>
     </Compile>
     <Compile Include="InBoxFormFocusProblemTests.cs" />
-    <Compile Include="InBoxFormTests.cs" />
+    <Compile Include="InBoxFormTests.cs">
+    </Compile>
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -9,10 +9,13 @@ namespace FastGTD
     public class InBoxFormTests
     {
         [Test]
-        public void EmptyInBox()
+        public void InboxCreation()
         {
             InBoxForm form = new InBoxForm();
+            form.Show();
+
             Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(0));
+            Assert.That(form.listViewInBoxItems.FullRowSelect);
         }
 
         [Test]
@@ -27,24 +30,40 @@ namespace FastGTD
             Assert.IsTrue(form.textBox.Focused);
         }
 
+        [Test, Ignore]
+        public void AddingInBoxItem()
+        {
+            InBoxForm form = new InBoxForm();
+            form.Show();
+
+            form.textBox.Text = "foo"; ;
+            form.buttonAdd.PerformClick();
+            Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(1));
+            Assert.That(form.listViewInBoxItems.Items[0].Text, Is.EqualTo("foo"));
+
+            form.textBox.Text = "bar"; ;
+            form.buttonAdd.PerformClick();
+            Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(2));
+            Assert.That(form.listViewInBoxItems.Items[0].Text, Is.EqualTo("foo"));
+            Assert.That(form.listViewInBoxItems.Items[1].Text, Is.EqualTo("bar"));
+        }
+
         [Test]
         public void AddingInBoxItemWithButtonClick()
         {
             InBoxForm form = new InBoxForm();
             form.Show();
 
-            string new_inbox_item = "foo";
-            form.textBox.Text = new_inbox_item;
+            form.textBox.Text = "foo";
             form.buttonAdd.PerformClick();
             Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(1));
-            Assert.That(form.listViewInBoxItems.Items[0].Text, Is.EqualTo(new_inbox_item));
+            Assert.That(form.listViewInBoxItems.Items[0].Text, Is.EqualTo("foo"));
 
-            string new_inbox_item2 = "bar";
-            form.textBox.Text = new_inbox_item2;
+            form.textBox.Text = "bar";
             form.buttonAdd.PerformClick();
             Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(2));
-            Assert.That(form.listViewInBoxItems.Items[0].Text, Is.EqualTo(new_inbox_item));
-            Assert.That(form.listViewInBoxItems.Items[1].Text, Is.EqualTo(new_inbox_item2));
+            Assert.That(form.listViewInBoxItems.Items[0].Text, Is.EqualTo("foo"));
+            Assert.That(form.listViewInBoxItems.Items[1].Text, Is.EqualTo("bar"));
         }
 
         [Test]
@@ -55,12 +74,11 @@ namespace FastGTD
 
             Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(0));
 
-            string new_inbox_item = "foo";
-            form.textBox.Text = new_inbox_item;
+            form.textBox.Text = "foo";
 
             form.PerformKeyDown(Keys.Enter);
             Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(1));
-            Assert.That(form.listViewInBoxItems.Items[0].Text, Is.EqualTo(new_inbox_item));
+            Assert.That(form.listViewInBoxItems.Items[0].Text, Is.EqualTo("foo"));
         }
 
         [Test]
@@ -69,11 +87,53 @@ namespace FastGTD
             InBoxForm form = new InBoxForm();
             form.Show();
 
-            string new_inbox_item = "foo";
-            form.textBox.Text = new_inbox_item;
-            Assert.That(form.textBox.Text, Is.EqualTo(new_inbox_item));
-            form.AddInboxItem();
+            form.textBox.Text = "foo";
+            Assert.That(form.textBox.Text, Is.EqualTo("foo"));
+            form.AddInboxItemInTextBox();
             Assert.That(form.textBox.Text, Is.EqualTo(string.Empty));
+        }
+
+        [Test]
+        public void DeletingItem()
+        {
+            InBoxForm form = new InBoxForm();
+            form.Show();
+
+            Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(0));
+
+            form.AddInboxItem("foo");
+            Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(1));
+            form.AddInboxItem("bar");
+            Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(2));
+
+            form.listViewInBoxItems.Items[1].Selected = true;
+            form.DeleteSelectedItem();
+            Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(1));
+            Assert.That(form.listViewInBoxItems.Items[0].Text, Is.EqualTo("foo"));
+        }
+
+        [Test]
+        public void DeletingItemWithButtonClick()
+        {
+            InBoxForm form = new InBoxForm();
+            form.Show();
+
+            form.AddInboxItem("foo");
+            form.listViewInBoxItems.Items[0].Selected = true;
+            form.buttonDelete.PerformClick();
+            Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void DeletingItemWithDeleteKey()
+        {
+            InBoxForm form = new InBoxForm();
+            form.Show();
+
+            form.AddInboxItem("foo");
+            form.listViewInBoxItems.Items[0].Selected = true;
+            form.PerformKeyDown(Keys.Delete);
+            Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(0));
         }
     }
 }

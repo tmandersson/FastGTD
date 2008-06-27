@@ -25,15 +25,16 @@ namespace FastGTD
             AddInboxItem();
         }
 
-        private void AddInboxItem()
+        public void AddInboxItem()
         {
             string new_item = textBox.Text;
             listViewInBoxItems.Items.Add(new_item);
+            textBox.Text = string.Empty;
         }
 
         public void PerformKeyDown(Keys key)
         {
-            KeyDownHandler((object)this, new KeyEventArgs(key));
+            KeyDownHandler(this, new KeyEventArgs(key));
         }
     }
 }

@@ -58,18 +58,22 @@ namespace FastGTD
             string new_inbox_item = "foo";
             form.textBox.Text = new_inbox_item;
 
-            form.PerformKeyDown(Keys.Space);
-            Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(0));
-
             form.PerformKeyDown(Keys.Enter);
             Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(1));
             Assert.That(form.listViewInBoxItems.Items[0].Text, Is.EqualTo(new_inbox_item));
         }
 
-        [Test, Ignore]
+        [Test]
         public void TextBoxIsClearedOnAdd()
         {
-            
+            InBoxForm form = new InBoxForm();
+            form.Show();
+
+            string new_inbox_item = "foo";
+            form.textBox.Text = new_inbox_item;
+            Assert.That(form.textBox.Text, Is.EqualTo(new_inbox_item));
+            form.AddInboxItem();
+            Assert.That(form.textBox.Text, Is.EqualTo(string.Empty));
         }
     }
 }

@@ -37,9 +37,11 @@
             // 
             // listViewInBoxItems
             // 
+            this.listViewInBoxItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewInBoxItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.newItemsHeader});
-            this.listViewInBoxItems.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.listViewInBoxItems.FullRowSelect = true;
             this.listViewInBoxItems.Location = new System.Drawing.Point(0, 67);
             this.listViewInBoxItems.Name = "listViewInBoxItems";
@@ -54,6 +56,8 @@
             // 
             // textBox
             // 
+            this.textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox.Location = new System.Drawing.Point(12, 12);
             this.textBox.Name = "textBox";
             this.textBox.Size = new System.Drawing.Size(380, 20);
@@ -61,6 +65,7 @@
             // 
             // buttonAdd
             // 
+            this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAdd.Location = new System.Drawing.Point(398, 9);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
@@ -71,6 +76,7 @@
             // 
             // buttonDelete
             // 
+            this.buttonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonDelete.Location = new System.Drawing.Point(398, 38);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 23);

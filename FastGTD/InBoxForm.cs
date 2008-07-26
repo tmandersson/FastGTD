@@ -27,16 +27,33 @@ namespace FastGTD
 
         private void KeyDownHandler(object sender, KeyEventArgs e)
         {
+            bool key_handled = true;
             if (e.KeyData == Keys.Enter)
-            {
                 AddInboxItemInTextBox();
-                e.SuppressKeyPress = true;
-            }
-            if (e.KeyData == Keys.Delete)
-            {
+            else if (e.KeyData == Keys.Delete)
                 DeleteSelectedItem();
+            else if (e.KeyData == Keys.Down)
+                ChangeSelection(1);
+            else if (e.KeyData == Keys.Up)
+                ChangeSelection(-1);
+            else
+                key_handled = false;
+
+            if (key_handled)
                 e.SuppressKeyPress = true;
-            }
+        }
+
+        private void ChangeSelection(int step)
+        {
+            int count_selected = listViewInBoxItems.SelectedItems.Count;
+            int next_index;
+            if (count_selected == 0)
+                next_index = 0;
+            else
+                next_index = listViewInBoxItems.SelectedItems[count_selected - 1].Index + step;
+
+            listViewInBoxItems.SelectedItems.Clear();
+            listViewInBoxItems.Items[next_index].Selected = true;
         }
 
         private void buttonAdd_Click(object sender, System.EventArgs e)

@@ -11,6 +11,7 @@ namespace FastGTD
         [Test]
         public void InboxCreation()
         {
+            // TODO: Refactor redundant code in all tests.
             InBoxForm form = new InBoxForm();
             form.Show();
 
@@ -116,6 +117,25 @@ namespace FastGTD
             form.listViewInBoxItems.Items[0].Selected = true;
             form.PerformKeyDown(Keys.Delete);
             Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void DownAndUpKeysChangeSelection()
+        {
+            InBoxForm form = new InBoxForm();
+            form.Show();
+            form.AddInboxItem("foo1");
+            form.AddInboxItem("foo2");
+            form.AddInboxItem("foo3");
+
+            form.PerformKeyDown(Keys.Down);
+            Assert.That(form.listViewInBoxItems.SelectedItems[0].Text, Is.EqualTo("foo1"));
+            form.PerformKeyDown(Keys.Down);
+            Assert.That(form.listViewInBoxItems.SelectedItems[0].Text, Is.EqualTo("foo2"));
+            form.PerformKeyDown(Keys.Down);
+            Assert.That(form.listViewInBoxItems.SelectedItems[0].Text, Is.EqualTo("foo3"));
+            form.PerformKeyDown(Keys.Up);
+            Assert.That(form.listViewInBoxItems.SelectedItems[0].Text, Is.EqualTo("foo2"));
         }
     }
 }

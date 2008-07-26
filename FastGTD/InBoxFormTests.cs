@@ -139,7 +139,7 @@ namespace FastGTD
         }
 
         [Test]
-        public void SelectionShouldNotBeSetOutsideBoundaries()
+        public void DownAndUpKeysShouldNotCrashOutsideBoundaries()
         {
             InBoxForm form = new InBoxForm();
             form.Show();
@@ -157,5 +157,21 @@ namespace FastGTD
             form.PerformKeyDown(Keys.Down);
             Assert.That(form.listViewInBoxItems.SelectedItems[0].Text, Is.EqualTo("foo3"));
         }
+
+        [Test]
+        public void DownAndUpKeysShouldNotCrashWhenNoItems()
+        {
+            InBoxForm form = new InBoxForm();
+            form.Show();
+
+            form.PerformKeyDown(Keys.Up);
+            form.PerformKeyDown(Keys.Up);
+
+            form.PerformKeyDown(Keys.Down);
+            form.PerformKeyDown(Keys.Down);
+            form.PerformKeyDown(Keys.Down);
+            form.PerformKeyDown(Keys.Down);
+        }
+ 
     }
 }

@@ -45,18 +45,26 @@ namespace FastGTD
 
         private void ChangeSelection(int step)
         {
+            int count_items = listViewInBoxItems.Items.Count;
             int count_selected = listViewInBoxItems.SelectedItems.Count;
+
+            if (count_items == 0)
+                return;
+
             int next_index;
             if (count_selected == 0)
                 next_index = 0;
             else
-                next_index = listViewInBoxItems.SelectedItems[count_selected - 1].Index + step;
+            {
+                ListViewItem last_selected = listViewInBoxItems.SelectedItems[count_selected - 1];
+                next_index = last_selected.Index + step;
+            }
 
             if (next_index == -1)
                 next_index = 0;
 
-            if (next_index == listViewInBoxItems.Items.Count)
-                next_index = listViewInBoxItems.Items.Count - 1;
+            if (next_index == count_items)
+                next_index = count_items - 1;
 
             listViewInBoxItems.Focus();
             listViewInBoxItems.SelectedItems.Clear();

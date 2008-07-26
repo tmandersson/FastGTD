@@ -52,6 +52,13 @@ namespace FastGTD
             else
                 next_index = listViewInBoxItems.SelectedItems[count_selected - 1].Index + step;
 
+            if (next_index == -1)
+                next_index = 0;
+
+            if (next_index == listViewInBoxItems.Items.Count)
+                next_index = listViewInBoxItems.Items.Count - 1;
+
+            listViewInBoxItems.Focus();
             listViewInBoxItems.SelectedItems.Clear();
             listViewInBoxItems.Items[next_index].Selected = true;
         }

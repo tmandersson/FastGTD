@@ -137,5 +137,25 @@ namespace FastGTD
             form.PerformKeyDown(Keys.Up);
             Assert.That(form.listViewInBoxItems.SelectedItems[0].Text, Is.EqualTo("foo2"));
         }
+
+        [Test]
+        public void SelectionShouldNotBeSetOutsideBoundaries()
+        {
+            InBoxForm form = new InBoxForm();
+            form.Show();
+            form.AddInboxItem("foo1");
+            form.AddInboxItem("foo2");
+            form.AddInboxItem("foo3");
+
+            form.PerformKeyDown(Keys.Up);
+            form.PerformKeyDown(Keys.Up);
+            Assert.That(form.listViewInBoxItems.SelectedItems[0].Text, Is.EqualTo("foo1"));
+
+            form.PerformKeyDown(Keys.Down);
+            form.PerformKeyDown(Keys.Down);
+            form.PerformKeyDown(Keys.Down);
+            form.PerformKeyDown(Keys.Down);
+            Assert.That(form.listViewInBoxItems.SelectedItems[0].Text, Is.EqualTo("foo3"));
+        }
     }
 }

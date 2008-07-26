@@ -30,24 +30,6 @@ namespace FastGTD
             Assert.IsTrue(form.textBox.Focused);
         }
 
-        [Test, Ignore]
-        public void AddingInBoxItem()
-        {
-            InBoxForm form = new InBoxForm();
-            form.Show();
-
-            form.textBox.Text = "foo"; ;
-            form.buttonAdd.PerformClick();
-            Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(1));
-            Assert.That(form.listViewInBoxItems.Items[0].Text, Is.EqualTo("foo"));
-
-            form.textBox.Text = "bar"; ;
-            form.buttonAdd.PerformClick();
-            Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(2));
-            Assert.That(form.listViewInBoxItems.Items[0].Text, Is.EqualTo("foo"));
-            Assert.That(form.listViewInBoxItems.Items[1].Text, Is.EqualTo("bar"));
-        }
-
         [Test]
         public void AddingInBoxItemWithButtonClick()
         {

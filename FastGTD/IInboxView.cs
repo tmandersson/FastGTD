@@ -7,5 +7,9 @@ namespace FastGTD
         void Show();
 
         void SetTextBoxFocus();
+
+        event AddItemEvent AddItemAction;
     }
+
+    public delegate void AddItemEvent(string new_in_item);
 }

@@ -15,6 +15,38 @@ namespace FastGTD.Tests
         }
 
         [Test]
+        public void AddingInBoxItemWithButtonClick()
+        {
+            InBoxPresenter form = Program.CreateInBoxForm();
+            form.Show();
+
+            form.View.Form.textBox.Text = "foo";
+            form.View.Form.buttonAdd.PerformClick();
+            Assert.That(form.View.Form.listViewInBoxItems.Items.Count, Is.EqualTo(1));
+            Assert.That(form.View.Form.listViewInBoxItems.Items[0].Text, Is.EqualTo("foo"));
+
+            form.View.Form.textBox.Text = "bar";
+            form.View.Form.buttonAdd.PerformClick();
+            Assert.That(form.View.Form.listViewInBoxItems.Items.Count, Is.EqualTo(2));
+            Assert.That(form.View.Form.listViewInBoxItems.Items[0].Text, Is.EqualTo("foo"));
+            Assert.That(form.View.Form.listViewInBoxItems.Items[1].Text, Is.EqualTo("bar"));
+        }
+
+        [Test]
+        public void AddItemEventAddsItem()
+        {
+            InboxViewFake view_fake = new InboxViewFake();
+            IInboxView view = view_fake;
+            InboxModelFake model_fake = new InboxModelFake();
+            IInboxModel model = model_fake;
+
+            InBoxPresenter inbox = new InBoxPresenter(view, model);
+            view_fake.FireAddItemEvent("foo");
+
+            Assert.That(model_fake.LastAddInBoxItemCall, Is.EqualTo("foo"));
+        }
+
+        [Test]
         public void PresenterCreation()
         {
             InboxViewFake view_fake = new InboxViewFake();
@@ -47,10 +79,22 @@ namespace FastGTD.Tests
         }
     }
 
+    internal class InboxModelFake : IInboxModel
+    {
+        public string LastAddInBoxItemCall;
+
+        public ICollection<InboxItem> InboxItems
+        {
+            get { throw new System.NotImplementedException(); }
+        }
+    }
+
     internal class InboxViewFake : IInboxView
     {
         private bool _fullRowSelect;
         public bool SetTextBoxFocusWasCalled = false;
+
+        public event AddItemEvent AddItemAction;
 
         public InBoxForm Form
         {
@@ -71,6 +115,11 @@ namespace FastGTD.Tests
         public void SetTextBoxFocus()
         {
             SetTextBoxFocusWasCalled = true;
+        }
+
+        public void FireAddItemEvent(string item)
+        {
+            AddItemAction(item);
         }
     }
 }

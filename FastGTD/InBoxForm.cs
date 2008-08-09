@@ -5,6 +5,8 @@ namespace FastGTD
 {
     public partial class InBoxForm : Form, IInboxView
     {
+        public event AddItemEvent AddItemAction;
+
         public InBoxForm()
         {
             InitializeComponent();

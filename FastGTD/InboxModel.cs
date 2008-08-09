@@ -5,6 +5,7 @@ namespace FastGTD
     public interface IInboxModel
     {
         ICollection<InboxItem> InboxItems { get; }
+        //AddInboxItem(string )
     }
 
     public class InboxItem

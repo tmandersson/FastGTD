@@ -15,26 +15,21 @@ namespace FastGTD.Tests
         }
 
         [Test]
-        public void ViewImplCanSetFullRowSelect()
-        {
-            InBoxForm view_impl = new InBoxForm();
-            IInboxView view = view_impl;
-            Assert.That(view_impl.listViewInBoxItems.FullRowSelect, Is.False);
-            view.FullRowSelect = true;
-            Assert.That(view_impl.listViewInBoxItems.FullRowSelect, Is.True);
-        }
-
-        [Test]
         public void PresenterCreation()
         {
-            IInboxView view = new InboxViewFake();
+            InboxViewFake view_fake = new InboxViewFake();
+            IInboxView view = view_fake;
             IInboxModel model = new InboxModel();
 
-            Assert.That(view.FullRowSelect, Is.False);
+            Assert.That(view.InBoxListFullRowSelect, Is.False);
             InBoxPresenter inbox = new InBoxPresenter(view, model);
 
-            Assert.That(view.FullRowSelect, Is.True);
-            Assert.That(inbox.View, Is.EqualTo(view));
+            Assert.That(view.InBoxListFullRowSelect, Is.True, 
+                "Presenter should set InBoxListFullRowSelect.");
+            Assert.That(inbox.View, Is.EqualTo(view), 
+                "Presenter should have view instance.");
+            Assert.That(view_fake.SetTextBoxFocusWasCalled, Is.True,
+                "Presenter should call SetTextBoxFocus on view.");
         }
 
         [Test]
@@ -55,13 +50,14 @@ namespace FastGTD.Tests
     internal class InboxViewFake : IInboxView
     {
         private bool _fullRowSelect;
+        public bool SetTextBoxFocusWasCalled = false;
 
         public InBoxForm Form
         {
             get { throw new System.NotImplementedException(); }
         }
 
-        public bool FullRowSelect
+        public bool InBoxListFullRowSelect
         {
             get { return _fullRowSelect; }
             set { _fullRowSelect = value; }
@@ -70,6 +66,11 @@ namespace FastGTD.Tests
         public void Show()
         {
             throw new System.NotImplementedException();
+        }
+
+        public void SetTextBoxFocus()
+        {
+            SetTextBoxFocusWasCalled = true;
         }
     }
 }

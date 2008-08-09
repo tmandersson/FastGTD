@@ -3,7 +3,9 @@ namespace FastGTD
     public interface IInboxView
     {
         InBoxForm Form { get; }
-        bool FullRowSelect { get; set; }
+        bool InBoxListFullRowSelect { get; set; }
         void Show();
+
+        void SetTextBoxFocus();
     }
 }

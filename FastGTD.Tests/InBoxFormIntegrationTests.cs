@@ -17,17 +17,6 @@ namespace FastGTD.Tests
         }
 
         [Test]
-        public void TextBoxStartsWithFocus()
-        {
-            form.Show();
-
-            Assert.IsFalse(form.View.Form.Focused);
-            Assert.IsFalse(form.View.Form.listViewInBoxItems.Focused);
-            Assert.IsFalse(form.View.Form.buttonAdd.Focused);
-            Assert.IsTrue(form.View.Form.textBox.Focused);
-        }
-
-        [Test]
         public void AddingInBoxItemWithButtonClick()
         {
             form.Show();

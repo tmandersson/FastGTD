@@ -9,7 +9,8 @@ namespace FastGTD
         public InBoxPresenter(IInboxView view, IInboxModel model)
         {
             _view = view;
-            _view.FullRowSelect = true;
+            _view.InBoxListFullRowSelect = true;
+            _view.SetTextBoxFocus();
         }
 
         public IInboxView View

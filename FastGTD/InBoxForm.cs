@@ -20,7 +20,7 @@ namespace FastGTD
             get { return this; }
         }
 
-        public bool FullRowSelect
+        public bool InBoxListFullRowSelect
         {
             get { return listViewInBoxItems.FullRowSelect; }
             set { listViewInBoxItems.FullRowSelect = value; }
@@ -115,6 +115,11 @@ namespace FastGTD
             {
                 item.Remove();
             }
+        }
+
+        public void SetTextBoxFocus()
+        {
+            textBox.Focus();
         }
     }
 }

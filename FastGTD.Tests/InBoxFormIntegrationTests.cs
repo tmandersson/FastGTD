@@ -17,15 +17,6 @@ namespace FastGTD.Tests
         }
 
         [Test]
-        public void InboxCreation()
-        {
-            form.Show();
-
-            Assert.That(form.View.Form.listViewInBoxItems.Items.Count, Is.EqualTo(0));
-            Assert.That(form.View.Form.listViewInBoxItems.FullRowSelect);
-        }
-
-        [Test]
         public void TextBoxStartsWithFocus()
         {
             form.Show();

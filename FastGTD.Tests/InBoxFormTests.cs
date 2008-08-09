@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 
-namespace FastGTD
+namespace FastGTD.Tests
 {
     [TestFixture]
     public class InBoxFormTests

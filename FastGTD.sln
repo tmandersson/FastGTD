@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastGTD", "FastGTD\FastGTD.csproj", "{2367A529-4B9B-4E0D-A666-B4EF14FD0DD9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastGTD.Tests", "FastGTD.Tests\FastGTD.Tests.csproj", "{99F46949-623F-4535-B3D5-D3CB7398A752}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{2367A529-4B9B-4E0D-A666-B4EF14FD0DD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2367A529-4B9B-4E0D-A666-B4EF14FD0DD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2367A529-4B9B-4E0D-A666-B4EF14FD0DD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99F46949-623F-4535-B3D5-D3CB7398A752}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99F46949-623F-4535-B3D5-D3CB7398A752}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99F46949-623F-4535-B3D5-D3CB7398A752}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99F46949-623F-4535-B3D5-D3CB7398A752}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

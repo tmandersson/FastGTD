@@ -1,7 +1,7 @@
 using System;
 using NUnit.Framework;
 
-namespace FastGTD
+namespace FastGTD.Tests
 {
     [TestFixture]
     public class InBoxFormFocusProblemTests

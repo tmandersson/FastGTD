@@ -15,6 +15,11 @@ namespace FastGTD
             Shown += SizeHandler;
         }
 
+        public InBoxForm Form
+        {
+            get { return this; }
+        }
+
         public bool FullRowSelect
         {
             get { return listViewInBoxItems.FullRowSelect; }

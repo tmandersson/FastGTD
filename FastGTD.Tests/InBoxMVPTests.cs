@@ -5,7 +5,7 @@ using NUnit.Framework.SyntaxHelpers;
 namespace FastGTD.Tests
 {
     [TestFixture]
-    public class InBoxFormWModelTests
+    public class InBoxMVPTests
     {
         [Test]
         public void ModelStartsWithEmptyInbox()
@@ -25,14 +25,24 @@ namespace FastGTD.Tests
         }
 
         [Test]
-        public void PresenterSetsFullRowSelect()
+        public void PresenterCreation()
         {
             IInboxView view = new InboxViewFake();
             IInboxModel model = new InboxModel();
+
             Assert.That(view.FullRowSelect, Is.False);
-            
             InBoxPresenter inbox = new InBoxPresenter(view, model);
+
             Assert.That(view.FullRowSelect, Is.True);
+            Assert.That(inbox.View, Is.EqualTo(view));
+        }
+
+        [Test]
+        public void ViewFormReturnsItself()
+        {
+            InBoxForm view_impl = new InBoxForm();
+            IInboxView view = view_impl;
+            Assert.That(view.Form, Is.EqualTo(view_impl));
         }
 
         [Test]
@@ -46,10 +56,20 @@ namespace FastGTD.Tests
     {
         private bool _fullRowSelect;
 
+        public InBoxForm Form
+        {
+            get { throw new System.NotImplementedException(); }
+        }
+
         public bool FullRowSelect
         {
             get { return _fullRowSelect; }
             set { _fullRowSelect = value; }
+        }
+
+        public void Show()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

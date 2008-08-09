@@ -8,7 +8,7 @@ namespace FastGTD.Tests
     [TestFixture]
     public class InBoxFormIntegrationTests
     {
-        private InBoxForm form;
+        private InBoxPresenter form;
 
         [SetUp]
         public void SetupTests()
@@ -21,8 +21,8 @@ namespace FastGTD.Tests
         {
             form.Show();
 
-            Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(0));
-            Assert.That(form.listViewInBoxItems.FullRowSelect);
+            Assert.That(form.View.Form.listViewInBoxItems.Items.Count, Is.EqualTo(0));
+            Assert.That(form.View.Form.listViewInBoxItems.FullRowSelect);
         }
 
         [Test]
@@ -30,10 +30,10 @@ namespace FastGTD.Tests
         {
             form.Show();
 
-            Assert.IsFalse(form.Focused);
-            Assert.IsFalse(form.listViewInBoxItems.Focused);
-            Assert.IsFalse(form.buttonAdd.Focused);
-            Assert.IsTrue(form.textBox.Focused);
+            Assert.IsFalse(form.View.Form.Focused);
+            Assert.IsFalse(form.View.Form.listViewInBoxItems.Focused);
+            Assert.IsFalse(form.View.Form.buttonAdd.Focused);
+            Assert.IsTrue(form.View.Form.textBox.Focused);
         }
 
         [Test]
@@ -41,16 +41,16 @@ namespace FastGTD.Tests
         {
             form.Show();
 
-            form.textBox.Text = "foo";
-            form.buttonAdd.PerformClick();
-            Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(1));
-            Assert.That(form.listViewInBoxItems.Items[0].Text, Is.EqualTo("foo"));
+            form.View.Form.textBox.Text = "foo";
+            form.View.Form.buttonAdd.PerformClick();
+            Assert.That(form.View.Form.listViewInBoxItems.Items.Count, Is.EqualTo(1));
+            Assert.That(form.View.Form.listViewInBoxItems.Items[0].Text, Is.EqualTo("foo"));
 
-            form.textBox.Text = "bar";
-            form.buttonAdd.PerformClick();
-            Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(2));
-            Assert.That(form.listViewInBoxItems.Items[0].Text, Is.EqualTo("foo"));
-            Assert.That(form.listViewInBoxItems.Items[1].Text, Is.EqualTo("bar"));
+            form.View.Form.textBox.Text = "bar";
+            form.View.Form.buttonAdd.PerformClick();
+            Assert.That(form.View.Form.listViewInBoxItems.Items.Count, Is.EqualTo(2));
+            Assert.That(form.View.Form.listViewInBoxItems.Items[0].Text, Is.EqualTo("foo"));
+            Assert.That(form.View.Form.listViewInBoxItems.Items[1].Text, Is.EqualTo("bar"));
         }
 
         [Test]
@@ -58,13 +58,13 @@ namespace FastGTD.Tests
         {
             form.Show();
 
-            Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(0));
+            Assert.That(form.View.Form.listViewInBoxItems.Items.Count, Is.EqualTo(0));
 
-            form.textBox.Text = "foo";
+            form.View.Form.textBox.Text = "foo";
 
-            form.PerformKeyDown(Keys.Enter);
-            Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(1));
-            Assert.That(form.listViewInBoxItems.Items[0].Text, Is.EqualTo("foo"));
+            form.View.Form.PerformKeyDown(Keys.Enter);
+            Assert.That(form.View.Form.listViewInBoxItems.Items.Count, Is.EqualTo(1));
+            Assert.That(form.View.Form.listViewInBoxItems.Items[0].Text, Is.EqualTo("foo"));
         }
 
         [Test]
@@ -72,10 +72,10 @@ namespace FastGTD.Tests
         {
             form.Show();
 
-            form.textBox.Text = "foo";
-            Assert.That(form.textBox.Text, Is.EqualTo("foo"));
-            form.AddInboxItemInTextBox();
-            Assert.That(form.textBox.Text, Is.EqualTo(string.Empty));
+            form.View.Form.textBox.Text = "foo";
+            Assert.That(form.View.Form.textBox.Text, Is.EqualTo("foo"));
+            form.View.Form.AddInboxItemInTextBox();
+            Assert.That(form.View.Form.textBox.Text, Is.EqualTo(string.Empty));
         }
 
         [Test]
@@ -83,17 +83,17 @@ namespace FastGTD.Tests
         {
             form.Show();
 
-            Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(0));
+            Assert.That(form.View.Form.listViewInBoxItems.Items.Count, Is.EqualTo(0));
 
-            form.AddInboxItem("foo");
-            Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(1));
-            form.AddInboxItem("bar");
-            Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(2));
+            form.View.Form.AddInboxItem("foo");
+            Assert.That(form.View.Form.listViewInBoxItems.Items.Count, Is.EqualTo(1));
+            form.View.Form.AddInboxItem("bar");
+            Assert.That(form.View.Form.listViewInBoxItems.Items.Count, Is.EqualTo(2));
 
-            form.listViewInBoxItems.Items[1].Selected = true;
-            form.DeleteSelectedItem();
-            Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(1));
-            Assert.That(form.listViewInBoxItems.Items[0].Text, Is.EqualTo("foo"));
+            form.View.Form.listViewInBoxItems.Items[1].Selected = true;
+            form.View.Form.DeleteSelectedItem();
+            Assert.That(form.View.Form.listViewInBoxItems.Items.Count, Is.EqualTo(1));
+            Assert.That(form.View.Form.listViewInBoxItems.Items[0].Text, Is.EqualTo("foo"));
         }
 
         [Test]
@@ -101,10 +101,10 @@ namespace FastGTD.Tests
         {
             form.Show();
 
-            form.AddInboxItem("foo");
-            form.listViewInBoxItems.Items[0].Selected = true;
-            form.buttonDelete.PerformClick();
-            Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(0));
+            form.View.Form.AddInboxItem("foo");
+            form.View.Form.listViewInBoxItems.Items[0].Selected = true;
+            form.View.Form.buttonDelete.PerformClick();
+            Assert.That(form.View.Form.listViewInBoxItems.Items.Count, Is.EqualTo(0));
         }
 
         [Test]
@@ -112,47 +112,47 @@ namespace FastGTD.Tests
         {
             form.Show();
 
-            form.AddInboxItem("foo");
-            form.listViewInBoxItems.Items[0].Selected = true;
-            form.PerformKeyDown(Keys.Delete);
-            Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(0));
+            form.View.Form.AddInboxItem("foo");
+            form.View.Form.listViewInBoxItems.Items[0].Selected = true;
+            form.View.Form.PerformKeyDown(Keys.Delete);
+            Assert.That(form.View.Form.listViewInBoxItems.Items.Count, Is.EqualTo(0));
         }
 
         [Test]
         public void DownAndUpKeysChangeSelection()
         {
             form.Show();
-            form.AddInboxItem("foo1");
-            form.AddInboxItem("foo2");
-            form.AddInboxItem("foo3");
+            form.View.Form.AddInboxItem("foo1");
+            form.View.Form.AddInboxItem("foo2");
+            form.View.Form.AddInboxItem("foo3");
 
-            form.PerformKeyDown(Keys.Down);
-            Assert.That(form.listViewInBoxItems.SelectedItems[0].Text, Is.EqualTo("foo1"));
-            form.PerformKeyDown(Keys.Down);
-            Assert.That(form.listViewInBoxItems.SelectedItems[0].Text, Is.EqualTo("foo2"));
-            form.PerformKeyDown(Keys.Down);
-            Assert.That(form.listViewInBoxItems.SelectedItems[0].Text, Is.EqualTo("foo3"));
-            form.PerformKeyDown(Keys.Up);
-            Assert.That(form.listViewInBoxItems.SelectedItems[0].Text, Is.EqualTo("foo2"));
+            form.View.Form.PerformKeyDown(Keys.Down);
+            Assert.That(form.View.Form.listViewInBoxItems.SelectedItems[0].Text, Is.EqualTo("foo1"));
+            form.View.Form.PerformKeyDown(Keys.Down);
+            Assert.That(form.View.Form.listViewInBoxItems.SelectedItems[0].Text, Is.EqualTo("foo2"));
+            form.View.Form.PerformKeyDown(Keys.Down);
+            Assert.That(form.View.Form.listViewInBoxItems.SelectedItems[0].Text, Is.EqualTo("foo3"));
+            form.View.Form.PerformKeyDown(Keys.Up);
+            Assert.That(form.View.Form.listViewInBoxItems.SelectedItems[0].Text, Is.EqualTo("foo2"));
         }
 
         [Test]
         public void DownAndUpKeysShouldNotCrashOutsideBoundaries()
         {
             form.Show();
-            form.AddInboxItem("foo1");
-            form.AddInboxItem("foo2");
-            form.AddInboxItem("foo3");
+            form.View.Form.AddInboxItem("foo1");
+            form.View.Form.AddInboxItem("foo2");
+            form.View.Form.AddInboxItem("foo3");
 
-            form.PerformKeyDown(Keys.Up);
-            form.PerformKeyDown(Keys.Up);
-            Assert.That(form.listViewInBoxItems.SelectedItems[0].Text, Is.EqualTo("foo1"));
+            form.View.Form.PerformKeyDown(Keys.Up);
+            form.View.Form.PerformKeyDown(Keys.Up);
+            Assert.That(form.View.Form.listViewInBoxItems.SelectedItems[0].Text, Is.EqualTo("foo1"));
 
-            form.PerformKeyDown(Keys.Down);
-            form.PerformKeyDown(Keys.Down);
-            form.PerformKeyDown(Keys.Down);
-            form.PerformKeyDown(Keys.Down);
-            Assert.That(form.listViewInBoxItems.SelectedItems[0].Text, Is.EqualTo("foo3"));
+            form.View.Form.PerformKeyDown(Keys.Down);
+            form.View.Form.PerformKeyDown(Keys.Down);
+            form.View.Form.PerformKeyDown(Keys.Down);
+            form.View.Form.PerformKeyDown(Keys.Down);
+            Assert.That(form.View.Form.listViewInBoxItems.SelectedItems[0].Text, Is.EqualTo("foo3"));
         }
 
         [Test]
@@ -160,13 +160,13 @@ namespace FastGTD.Tests
         {
             form.Show();
 
-            form.PerformKeyDown(Keys.Up);
-            form.PerformKeyDown(Keys.Up);
+            form.View.Form.PerformKeyDown(Keys.Up);
+            form.View.Form.PerformKeyDown(Keys.Up);
 
-            form.PerformKeyDown(Keys.Down);
-            form.PerformKeyDown(Keys.Down);
-            form.PerformKeyDown(Keys.Down);
-            form.PerformKeyDown(Keys.Down);
+            form.View.Form.PerformKeyDown(Keys.Down);
+            form.View.Form.PerformKeyDown(Keys.Down);
+            form.View.Form.PerformKeyDown(Keys.Down);
+            form.View.Form.PerformKeyDown(Keys.Down);
         }
  
     }

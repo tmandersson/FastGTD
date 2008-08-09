@@ -6,13 +6,19 @@ using NUnit.Framework.SyntaxHelpers;
 namespace FastGTD.Tests
 {
     [TestFixture]
-    public class InBoxFormTests
+    public class InBoxFormIntegrationTests
     {
+        private InBoxForm form;
+
+        [SetUp]
+        public void SetupTests()
+        {
+            form = Program.CreateInBoxForm();
+        }
+
         [Test]
         public void InboxCreation()
         {
-            // TODO: Refactor redundant code in all tests.
-            InBoxForm form = new InBoxForm();
             form.Show();
 
             Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(0));
@@ -22,7 +28,6 @@ namespace FastGTD.Tests
         [Test]
         public void TextBoxStartsWithFocus()
         {
-            InBoxForm form = new InBoxForm();
             form.Show();
 
             Assert.IsFalse(form.Focused);
@@ -34,7 +39,6 @@ namespace FastGTD.Tests
         [Test]
         public void AddingInBoxItemWithButtonClick()
         {
-            InBoxForm form = new InBoxForm();
             form.Show();
 
             form.textBox.Text = "foo";
@@ -52,7 +56,6 @@ namespace FastGTD.Tests
         [Test]
         public void AddingInBoxItemWithEnterKey()
         {
-            InBoxForm form = new InBoxForm();
             form.Show();
 
             Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(0));
@@ -67,7 +70,6 @@ namespace FastGTD.Tests
         [Test]
         public void TextBoxIsClearedOnAdd()
         {
-            InBoxForm form = new InBoxForm();
             form.Show();
 
             form.textBox.Text = "foo";
@@ -79,7 +81,6 @@ namespace FastGTD.Tests
         [Test]
         public void DeletingItem()
         {
-            InBoxForm form = new InBoxForm();
             form.Show();
 
             Assert.That(form.listViewInBoxItems.Items.Count, Is.EqualTo(0));
@@ -98,7 +99,6 @@ namespace FastGTD.Tests
         [Test]
         public void DeletingItemWithButtonClick()
         {
-            InBoxForm form = new InBoxForm();
             form.Show();
 
             form.AddInboxItem("foo");
@@ -110,7 +110,6 @@ namespace FastGTD.Tests
         [Test]
         public void DeletingItemWithDeleteKey()
         {
-            InBoxForm form = new InBoxForm();
             form.Show();
 
             form.AddInboxItem("foo");
@@ -122,7 +121,6 @@ namespace FastGTD.Tests
         [Test]
         public void DownAndUpKeysChangeSelection()
         {
-            InBoxForm form = new InBoxForm();
             form.Show();
             form.AddInboxItem("foo1");
             form.AddInboxItem("foo2");
@@ -141,7 +139,6 @@ namespace FastGTD.Tests
         [Test]
         public void DownAndUpKeysShouldNotCrashOutsideBoundaries()
         {
-            InBoxForm form = new InBoxForm();
             form.Show();
             form.AddInboxItem("foo1");
             form.AddInboxItem("foo2");
@@ -161,7 +158,6 @@ namespace FastGTD.Tests
         [Test]
         public void DownAndUpKeysShouldNotCrashWhenNoItems()
         {
-            InBoxForm form = new InBoxForm();
             form.Show();
 
             form.PerformKeyDown(Keys.Up);

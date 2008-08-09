@@ -42,7 +42,6 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewInBoxItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.newItemsHeader});
-            this.listViewInBoxItems.FullRowSelect = true;
             this.listViewInBoxItems.Location = new System.Drawing.Point(0, 67);
             this.listViewInBoxItems.Name = "listViewInBoxItems";
             this.listViewInBoxItems.Size = new System.Drawing.Size(485, 454);

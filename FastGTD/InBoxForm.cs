@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace FastGTD
 {
-    public partial class InBoxForm : Form
+    public partial class InBoxForm : Form, IInboxView
     {
         public InBoxForm()
         {
@@ -13,6 +13,12 @@ namespace FastGTD
             KeyPreview = true;
             Resize += SizeHandler;
             Shown += SizeHandler;
+        }
+
+        public bool FullRowSelect
+        {
+            get { return listViewInBoxItems.FullRowSelect; }
+            set { listViewInBoxItems.FullRowSelect = value; }
         }
 
         private void SizeHandler(object sender, EventArgs e)

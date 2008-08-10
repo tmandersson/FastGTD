@@ -4,24 +4,19 @@ namespace FastGTD
 {
     public interface IInboxModel
     {
-        ICollection<InboxItem> InboxItems { get; }
+        ICollection<string> InboxItems { get; }
         void AddInboxItem(string new_in_item);
-    }
-
-    public class InboxItem
-    {
     }
 
     public class InboxModel : IInboxModel
     {
-        public ICollection<InboxItem> InboxItems
+        public ICollection<string> InboxItems
         {
-            get { return new List<InboxItem>(); }
+            get { return new List<string>(); }
         }
 
         public void AddInboxItem(string new_in_item)
         {
-            throw new System.NotImplementedException();
         }
     }
 }

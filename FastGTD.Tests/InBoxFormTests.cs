@@ -33,10 +33,11 @@ namespace FastGTD.Tests
             Assert.IsTrue(form.textBox.Focused);
         }
 
-        [Test, Ignore]
+        [Test]
         public void ClickingAddItemButtonFiresAddItemEvent()
         {
             InBoxForm form = new InBoxForm();
+            form.Show();
             form.AddItemAction += HandleAddItemEvent;
 
             form.textBox.Text = "foo";

@@ -83,7 +83,7 @@ namespace FastGTD.Tests
     {
         public string LastAddInBoxItemCall;
 
-        public ICollection<InboxItem> InboxItems
+        public ICollection<string> InboxItems
         {
             get { throw new System.NotImplementedException(); }
         }

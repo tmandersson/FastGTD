@@ -98,6 +98,7 @@ namespace FastGTD
         {
             string new_item = textBox.Text;
             AddInboxItem(new_item);
+            AddItemAction(new_item);
         }
 
         public void AddInboxItem(string new_item)

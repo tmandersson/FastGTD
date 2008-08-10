@@ -5,7 +5,7 @@ using NUnit.Framework.SyntaxHelpers;
 namespace FastGTD.Tests
 {
     [TestFixture]
-    public class InBoxMVPTests
+    public class InBoxPresenterTests
     {
         [Test]
         public void AddItemEventAddsItem()
@@ -38,24 +38,12 @@ namespace FastGTD.Tests
             Assert.That(view_fake.SetTextBoxFocusWasCalled, Is.True,
                 "Presenter should call SetTextBoxFocus on view.");
         }
-
-        [Test]
-        public void ViewFormReturnsItself()
-        {
-            InBoxForm view_impl = new InBoxForm();
-            IInBoxView view = view_impl;
-            Assert.That(view.Form, Is.EqualTo(view_impl));
-        }
-
-        [Test]
-        public void InboxCreationWithFactory()
-        {
-            
-        }
     }
 
     internal class InboxModelFake : IInBoxModel
     {
+        public event ContentUpdatedEvent ContentUpdated;
+
         public string LastAddInBoxItemCall;
 
         public IList<string> InboxItems

@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IInBoxModel.cs" />
     <Compile Include="IInBoxView.cs" />
     <Compile Include="InBoxForm.cs">
       <SubType>Form</SubType>

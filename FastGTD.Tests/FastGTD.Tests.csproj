@@ -62,6 +62,6 @@
     <Compile Include="InBoxFormTests.cs">
     </Compile>
     <Compile Include="InBoxModelTests.cs" />
-    <Compile Include="InBoxMVPTests.cs" />
+    <Compile Include="InBoxPresenterTests.cs" />
   </ItemGroup>
 </Project>

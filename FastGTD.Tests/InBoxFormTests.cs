@@ -15,6 +15,14 @@ namespace FastGTD.Tests
         {
             form = new InBoxForm();
         }
+
+        [Test]
+        public void ViewFormReturnsItself()
+        {
+            IInBoxView view = form;
+            Assert.That(view.Form, Is.EqualTo(form));
+        }
+
         [Test]
         public void CanSetFullRowSelect()
         {

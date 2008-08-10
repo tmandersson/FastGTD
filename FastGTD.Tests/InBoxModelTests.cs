@@ -6,6 +6,8 @@ namespace FastGTD.Tests
     [TestFixture]
     public class InBoxModelTests
     {
+        private bool ContentUpdatedEventWasHandled;
+
         [Test]
         public void EmptyModel()
         {
@@ -25,6 +27,20 @@ namespace FastGTD.Tests
             model.AddInboxItem("bar");
             Assert.That(model.InboxItems.Count, Is.EqualTo(2));
             Assert.That(model.InboxItems[1], Is.EqualTo("bar"));
+        }
+
+        [Test]
+        public void FireContentUpdatedEvent()
+        {
+            IInBoxModel model = new InBoxModel();
+            model.ContentUpdated += HandleContentUpdatedEvent;
+            model.AddInboxItem("foo");
+            Assert.That(ContentUpdatedEventWasHandled, Is.True);
+        }
+
+        private void HandleContentUpdatedEvent()
+        {
+            ContentUpdatedEventWasHandled = true;
         }
     }
 }

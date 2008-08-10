@@ -2,14 +2,12 @@ using System.Collections.Generic;
 
 namespace FastGTD
 {
-    public interface IInBoxModel
-    {
-        IList<string> InboxItems { get; }
-        void AddInboxItem(string new_in_item);
-    }
+    public delegate void ContentUpdatedEvent();
 
     public class InBoxModel : IInBoxModel
     {
+        public event ContentUpdatedEvent ContentUpdated;
+
         private readonly IList<string> _items;
 
         public InBoxModel()
@@ -24,6 +22,7 @@ namespace FastGTD
         public void AddInboxItem(string new_in_item)
         {
             _items.Add(new_in_item);
+            if (ContentUpdated != null) ContentUpdated();
         }
     }
 }

@@ -2,21 +2,28 @@ using System.Collections.Generic;
 
 namespace FastGTD
 {
-    public interface IInboxModel
+    public interface IInBoxModel
     {
-        ICollection<string> InboxItems { get; }
+        IList<string> InboxItems { get; }
         void AddInboxItem(string new_in_item);
     }
 
-    public class InboxModel : IInboxModel
+    public class InBoxModel : IInBoxModel
     {
-        public ICollection<string> InboxItems
+        private readonly IList<string> _items;
+
+        public InBoxModel()
         {
-            get { return new List<string>(); }
+            _items = new List<string>();
+        }
+        public IList<string> InboxItems
+        {
+            get { return _items; }
         }
 
         public void AddInboxItem(string new_in_item)
         {
+            _items.Add(new_in_item);
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace FastGTD
 {
-    public partial class InBoxForm : Form, IInboxView
+    public partial class InBoxForm : Form, IInBoxView
     {
         public event AddItemEvent AddItemAction;
 

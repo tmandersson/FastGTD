@@ -48,14 +48,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IInboxView.cs" />
+    <Compile Include="IInBoxView.cs" />
     <Compile Include="InBoxForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="InBoxForm.Designer.cs">
       <DependentUpon>InBoxForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="InboxModel.cs" />
+    <Compile Include="InBoxModel.cs" />
     <Compile Include="InBoxPresenter.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>

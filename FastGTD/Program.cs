@@ -15,7 +15,7 @@ namespace FastGTD
         public static InBoxPresenter CreateInBoxForm()
         {
             InBoxForm view = new InBoxForm();
-            IInboxModel model = new InboxModel();
+            IInBoxModel model = new InBoxModel();
             return new InBoxPresenter(view, model);
         }
     }

@@ -4,10 +4,10 @@ namespace FastGTD
 {
     public class InBoxPresenter
     {
-        private IInboxView _view;
-        private IInboxModel _model;
+        private IInBoxView _view;
+        private IInBoxModel _model;
 
-        public InBoxPresenter(IInboxView view, IInboxModel model)
+        public InBoxPresenter(IInBoxView view, IInBoxModel model)
         {
             _view = view;
             _model = model;
@@ -18,7 +18,7 @@ namespace FastGTD
             _view.AddItemAction += _model.AddInboxItem;
         }
 
-        public IInboxView View
+        public IInBoxView View
         {
             get { return _view; }
         }

@@ -8,37 +8,12 @@ namespace FastGTD.Tests
     public class InBoxMVPTests
     {
         [Test]
-        public void ModelStartsWithEmptyInbox()
-        {
-            IInboxModel model = new InboxModel();
-            Assert.That(model.InboxItems.Count, Is.EqualTo(0));
-        }
-
-        [Test]
-        public void AddingInBoxItemWithButtonClick()
-        {
-            InBoxPresenter form = Program.CreateInBoxForm();
-            form.Show();
-
-            form.View.Form.textBox.Text = "foo";
-            form.View.Form.buttonAdd.PerformClick();
-            Assert.That(form.View.Form.listViewInBoxItems.Items.Count, Is.EqualTo(1));
-            Assert.That(form.View.Form.listViewInBoxItems.Items[0].Text, Is.EqualTo("foo"));
-
-            form.View.Form.textBox.Text = "bar";
-            form.View.Form.buttonAdd.PerformClick();
-            Assert.That(form.View.Form.listViewInBoxItems.Items.Count, Is.EqualTo(2));
-            Assert.That(form.View.Form.listViewInBoxItems.Items[0].Text, Is.EqualTo("foo"));
-            Assert.That(form.View.Form.listViewInBoxItems.Items[1].Text, Is.EqualTo("bar"));
-        }
-
-        [Test]
         public void AddItemEventAddsItem()
         {
             InboxViewFake view_fake = new InboxViewFake();
-            IInboxView view = view_fake;
+            IInBoxView view = view_fake;
             InboxModelFake model_fake = new InboxModelFake();
-            IInboxModel model = model_fake;
+            IInBoxModel model = model_fake;
 
             InBoxPresenter inbox = new InBoxPresenter(view, model);
             view_fake.FireAddItemEvent("foo");
@@ -50,8 +25,8 @@ namespace FastGTD.Tests
         public void PresenterCreation()
         {
             InboxViewFake view_fake = new InboxViewFake();
-            IInboxView view = view_fake;
-            IInboxModel model = new InboxModel();
+            IInBoxView view = view_fake;
+            IInBoxModel model = new InBoxModel();
 
             Assert.That(view.InBoxListFullRowSelect, Is.False);
             InBoxPresenter inbox = new InBoxPresenter(view, model);
@@ -68,7 +43,7 @@ namespace FastGTD.Tests
         public void ViewFormReturnsItself()
         {
             InBoxForm view_impl = new InBoxForm();
-            IInboxView view = view_impl;
+            IInBoxView view = view_impl;
             Assert.That(view.Form, Is.EqualTo(view_impl));
         }
 
@@ -79,11 +54,11 @@ namespace FastGTD.Tests
         }
     }
 
-    internal class InboxModelFake : IInboxModel
+    internal class InboxModelFake : IInBoxModel
     {
         public string LastAddInBoxItemCall;
 
-        public ICollection<string> InboxItems
+        public IList<string> InboxItems
         {
             get { throw new System.NotImplementedException(); }
         }
@@ -94,7 +69,7 @@ namespace FastGTD.Tests
         }
     }
 
-    internal class InboxViewFake : IInboxView
+    internal class InboxViewFake : IInBoxView
     {
         private bool _fullRowSelect;
         public bool SetTextBoxFocusWasCalled = false;

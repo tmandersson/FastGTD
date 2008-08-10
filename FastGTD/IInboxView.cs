@@ -1,6 +1,6 @@
 namespace FastGTD
 {
-    public interface IInboxView
+    public interface IInBoxView
     {
         InBoxForm Form { get; }
         bool InBoxListFullRowSelect { get; set; }

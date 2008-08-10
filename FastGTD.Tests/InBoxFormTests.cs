@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 
 namespace FastGTD.Tests
@@ -7,11 +8,16 @@ namespace FastGTD.Tests
     public class InBoxFormTests
     {
         private string LastHandledEventArgument;
+        private InBoxForm form;
 
+        [SetUp]
+        public void SetUpTests()
+        {
+            form = new InBoxForm();
+        }
         [Test]
         public void CanSetFullRowSelect()
         {
-            InBoxForm form = new InBoxForm();
             Assert.That(form.listViewInBoxItems.FullRowSelect, Is.False);
             form.InBoxListFullRowSelect = true;
             Assert.That(form.listViewInBoxItems.FullRowSelect, Is.True);
@@ -20,7 +26,6 @@ namespace FastGTD.Tests
         [Test]
         public void CanSetTextBoxFocus()
         {
-            InBoxForm form = new InBoxForm();
             form.Show();
             form.listViewInBoxItems.Focus();
             Assert.IsFalse(form.textBox.Focused);
@@ -36,7 +41,6 @@ namespace FastGTD.Tests
         [Test]
         public void ClickingAddItemButtonFiresAddItemEvent()
         {
-            InBoxForm form = new InBoxForm();
             form.Show();
             form.AddItemAction += HandleAddItemEvent;
 

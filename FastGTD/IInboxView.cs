@@ -1,9 +1,14 @@
+using System.Collections.Generic;
+
 namespace FastGTD
 {
     public interface IInBoxView
     {
         InBoxForm Form { get; }
         bool InBoxListFullRowSelect { get; set; }
+
+        IList<string> InBoxList { get; set; }
+
         void Show();
 
         void SetTextBoxFocus();

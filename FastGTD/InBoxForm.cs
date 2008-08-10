@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace FastGTD
@@ -26,6 +27,12 @@ namespace FastGTD
         {
             get { return listViewInBoxItems.FullRowSelect; }
             set { listViewInBoxItems.FullRowSelect = value; }
+        }
+
+        public IList<string> InBoxList
+        {
+            get { return new List<string>(); }
+            set { ; }
         }
 
         private void SizeHandler(object sender, EventArgs e)

@@ -58,6 +58,12 @@ namespace FastGTD.Tests
             Assert.That(LastHandledEventArgument, Is.EqualTo("foo"));
         }
 
+        [Test]
+        public void UpdatingInBoxListChangesListControlContents()
+        {
+            Assert.Fail();
+        }
+
         private void HandleAddItemEvent(string new_in_item)
         {
             LastHandledEventArgument = new_in_item;

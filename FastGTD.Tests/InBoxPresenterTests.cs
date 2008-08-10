@@ -8,7 +8,25 @@ namespace FastGTD.Tests
     public class InBoxPresenterTests
     {
         [Test]
-        public void AddItemEventAddsItem()
+        public void PresenterCreation()
+        {
+            InboxViewFake view_fake = new InboxViewFake();
+            IInBoxView view = view_fake;
+            IInBoxModel model = new InBoxModel();
+
+            Assert.That(view.InBoxListFullRowSelect, Is.False);
+            InBoxPresenter inbox = new InBoxPresenter(view, model);
+
+            Assert.That(view.InBoxListFullRowSelect, Is.True,
+                "Presenter should set InBoxListFullRowSelect.");
+            Assert.That(inbox.View, Is.EqualTo(view),
+                "Presenter should have view instance.");
+            Assert.That(view_fake.SetTextBoxFocusWasCalled, Is.True,
+                "Presenter should call SetTextBoxFocus on view.");
+        }
+
+        [Test]
+        public void AddItemEventAddsItemInModel()
         {
             InboxViewFake view_fake = new InboxViewFake();
             IInBoxView view = view_fake;
@@ -22,21 +40,22 @@ namespace FastGTD.Tests
         }
 
         [Test]
-        public void PresenterCreation()
+        public void UpdateViewWhenModelIsUpdated()
         {
-            InboxViewFake view_fake = new InboxViewFake();
-            IInBoxView view = view_fake;
-            IInBoxModel model = new InBoxModel();
+            IInBoxView view = new InboxViewFake();
+            InboxModelFake model_fake = new InboxModelFake();
+            IInBoxModel model = model_fake;
+            new InBoxPresenter(view, model);
 
-            Assert.That(view.InBoxListFullRowSelect, Is.False);
-            InBoxPresenter inbox = new InBoxPresenter(view, model);
+            model_fake.FireContentUpdatedEvent();
 
-            Assert.That(view.InBoxListFullRowSelect, Is.True, 
-                "Presenter should set InBoxListFullRowSelect.");
-            Assert.That(inbox.View, Is.EqualTo(view), 
-                "Presenter should have view instance.");
-            Assert.That(view_fake.SetTextBoxFocusWasCalled, Is.True,
-                "Presenter should call SetTextBoxFocus on view.");
+            Assert.That(view.InBoxList, Is.EqualTo(model.InboxItems));
+        }
+
+        [Test, Ignore]
+        public void ViewKeepsSelectedItemWhenContentIsUpdated()
+        {
+            
         }
     }
 
@@ -48,12 +67,23 @@ namespace FastGTD.Tests
 
         public IList<string> InboxItems
         {
-            get { throw new System.NotImplementedException(); }
+            get
+            {
+                List<string> list = new List<string>();
+                list.Add("foo");
+                list.Add("boo");
+                return list;
+            }
         }
 
         public void AddInboxItem(string new_in_item)
         {
             LastAddInBoxItemCall = new_in_item;
+        }
+
+        public void FireContentUpdatedEvent()
+        {
+            ContentUpdated();
         }
     }
 
@@ -61,6 +91,7 @@ namespace FastGTD.Tests
     {
         private bool _fullRowSelect;
         public bool SetTextBoxFocusWasCalled = false;
+        private IList<string> inBoxList;
 
         public event AddItemEvent AddItemAction;
 
@@ -73,6 +104,12 @@ namespace FastGTD.Tests
         {
             get { return _fullRowSelect; }
             set { _fullRowSelect = value; }
+        }
+
+        public IList<string> InBoxList
+        {
+            get { return inBoxList; }
+            set { inBoxList = value; }
         }
 
         public void Show()

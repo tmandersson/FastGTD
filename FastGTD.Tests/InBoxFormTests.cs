@@ -6,6 +6,8 @@ namespace FastGTD.Tests
     [TestFixture]
     public class InBoxFormTests
     {
+        private string LastHandledEventArgument;
+
         [Test]
         public void CanSetFullRowSelect()
         {
@@ -29,6 +31,23 @@ namespace FastGTD.Tests
             Assert.IsFalse(form.listViewInBoxItems.Focused);
             Assert.IsFalse(form.buttonAdd.Focused);
             Assert.IsTrue(form.textBox.Focused);
+        }
+
+        [Test, Ignore]
+        public void ClickingAddItemButtonFiresAddItemEvent()
+        {
+            InBoxForm form = new InBoxForm();
+            form.AddItemAction += HandleAddItemEvent;
+
+            form.textBox.Text = "foo";
+            form.buttonAdd.PerformClick();
+
+            Assert.That(LastHandledEventArgument, Is.EqualTo("foo"));
+        }
+
+        private void HandleAddItemEvent(string new_in_item)
+        {
+            LastHandledEventArgument = new_in_item;
         }
     }
 }

@@ -87,6 +87,11 @@ namespace FastGTD.Tests
         {
             get { throw new System.NotImplementedException(); }
         }
+
+        public void AddInboxItem(string new_in_item)
+        {
+            LastAddInBoxItemCall = new_in_item;
+        }
     }
 
     internal class InboxViewFake : IInboxView

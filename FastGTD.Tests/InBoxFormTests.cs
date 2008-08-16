@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 
@@ -87,7 +88,7 @@ namespace FastGTD.Tests
         public void DeletingItemWithButtonClick()
         {
             model.AddItem("foo");
-            form.SelectedItem = form.InBoxItems[0];
+            form.FirstSelectedItem = form.InBoxItems[0];
             form.ClickControl(InboxFormButton.Delete);
             Assert.That(form.InBoxItems.Count, Is.EqualTo(0));
         }
@@ -96,9 +97,25 @@ namespace FastGTD.Tests
         public void DeletingItemWithDeleteKey()
         {
             model.AddItem("foo");
-            form.SelectedItem = form.InBoxItems[0];
+            form.FirstSelectedItem = form.InBoxItems[0];
             form.PerformKeyDown(Keys.Delete);
             Assert.That(form.InBoxItems.Count, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void SelectingAndDeletingMultipleItems()
+        {
+            model.AddItem("foo");
+            model.AddItem("foobar");
+            model.AddItem("bar");
+            model.AddItem("fubar");
+            
+            IList<string> items = new List<string> { "foobar", "bar", "fubar" };
+            form.SelectItems(items);
+            form.ClickControl(InboxFormButton.Delete);
+
+            IList<string> expectedItems = new List<string> {"foo"};
+            Assert.That(model.Items, Is.EqualTo(expectedItems));
         }
 
         [Test]
@@ -109,13 +126,13 @@ namespace FastGTD.Tests
             model.AddItem("foo3");
 
             form.PerformKeyDown(Keys.Down);
-            Assert.That(form.SelectedItem, Is.EqualTo("foo1"));
+            Assert.That(form.FirstSelectedItem, Is.EqualTo("foo1"));
             form.PerformKeyDown(Keys.Down);
-            Assert.That(form.SelectedItem, Is.EqualTo("foo2"));
+            Assert.That(form.FirstSelectedItem, Is.EqualTo("foo2"));
             form.PerformKeyDown(Keys.Down);
-            Assert.That(form.SelectedItem, Is.EqualTo("foo3"));
+            Assert.That(form.FirstSelectedItem, Is.EqualTo("foo3"));
             form.PerformKeyDown(Keys.Up);
-            Assert.That(form.SelectedItem, Is.EqualTo("foo2"));
+            Assert.That(form.FirstSelectedItem, Is.EqualTo("foo2"));
         }
 
         [Test]
@@ -127,13 +144,13 @@ namespace FastGTD.Tests
 
             form.PerformKeyDown(Keys.Up);
             form.PerformKeyDown(Keys.Up);
-            Assert.That(form.SelectedItem, Is.EqualTo("foo1"));
+            Assert.That(form.FirstSelectedItem, Is.EqualTo("foo1"));
 
             form.PerformKeyDown(Keys.Down);
             form.PerformKeyDown(Keys.Down);
             form.PerformKeyDown(Keys.Down);
             form.PerformKeyDown(Keys.Down);
-            Assert.That(form.SelectedItem, Is.EqualTo("foo3"));
+            Assert.That(form.FirstSelectedItem, Is.EqualTo("foo3"));
         }
 
         [Test]

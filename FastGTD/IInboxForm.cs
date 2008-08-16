@@ -6,7 +6,6 @@ namespace FastGTD
     public interface IInboxForm
     {
         IList<string> InBoxItems { get; }
-        void DeleteSelectedItems();
 
         string TextBoxValue { get; set; }
         Control FocusedControl { get; }
@@ -14,9 +13,10 @@ namespace FastGTD
 
         void ClickControl(InboxFormButton button);
         void PerformKeyDown(Keys key);
-        // TODO: Real UI can select multiple items and delete method deletes all selected items.
-        // TODO: Selecting multiple objects is not tested.
-        string SelectedItem { get; set; }
+        // TODO: Move selection to model?
+        string FirstSelectedItem { get; set; }
+        void SelectItems(IList<string> items);
+
         void Show();
     }
 

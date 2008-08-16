@@ -68,7 +68,8 @@ namespace FastGTD
             get { return _listViewInBoxItems.Columns[0].Text; }
         }
 
-        public string SelectedItem
+        // TODO: Temporary hack.
+        public string FirstSelectedItem
         {
             get
             {
@@ -76,11 +77,18 @@ namespace FastGTD
             }
             set
             {
-                _listViewInBoxItems.SelectedItems.Clear();
-                foreach (ListViewItem item in _listViewInBoxItems.Items)
-                {
-                    if (item.Text == value) item.Selected = true;
-                }
+                IList<string> items = new List<string> {value};
+                SelectItems(items);
+            }
+        }
+
+        public void SelectItems(IList<string> items)
+        {
+            _listViewInBoxItems.SelectedItems.Clear();
+            foreach (ListViewItem item in _listViewInBoxItems.Items)
+            {
+                if (items.Contains(item.Text))
+                    item.Selected = true;
             }
         }
 
@@ -164,7 +172,7 @@ namespace FastGTD
             _textBox.Text = string.Empty;
         }
 
-        public void DeleteSelectedItems()
+        private void DeleteSelectedItems()
         {
             foreach(ListViewItem item in _listViewInBoxItems.SelectedItems)
             {

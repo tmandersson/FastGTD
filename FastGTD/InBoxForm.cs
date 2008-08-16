@@ -6,11 +6,13 @@ namespace FastGTD
 {
     public partial class InBoxForm : Form, IInboxForm
     {
-        private IList<string> _model = new List<string>();
+        private readonly IList<string> _model;
 
-        public InBoxForm()
+        public InBoxForm(IList<string> model)
         {
             InitializeComponent();
+
+            _model = model;
 
             KeyDown += KeyDownHandler;
             KeyPreview = true;

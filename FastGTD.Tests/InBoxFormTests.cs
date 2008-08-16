@@ -12,7 +12,7 @@ namespace FastGTD.Tests
         [SetUp]
         public void SetupTests()
         {
-            form = new InBoxForm();
+            form = Program.CreateInBoxForm();
             form.Show(); // TODO: Eliminate need to show dialog when testing.
         }
 

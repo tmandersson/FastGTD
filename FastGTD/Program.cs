@@ -15,7 +15,7 @@ namespace FastGTD
 
         public static IInboxForm CreateInBoxForm()
         {
-            IList<string> model = new List<string>();
+            var model = new InBoxModel();
             return new InBoxForm(model);
         }
     }

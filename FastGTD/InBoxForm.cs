@@ -6,9 +6,9 @@ namespace FastGTD
 {
     public partial class InBoxForm : Form, IInboxForm
     {
-        private readonly IList<string> _model;
+        private readonly InBoxModel _model;
 
-        public InBoxForm(IList<string> model)
+        public InBoxForm(InBoxModel model)
         {
             InitializeComponent();
 
@@ -26,7 +26,7 @@ namespace FastGTD
         {
             get
             {
-                return _model;
+                return _model.Items;
             }
         }
 
@@ -151,7 +151,7 @@ namespace FastGTD
         public void AddInboxItem(string new_item)
         {
             _listViewInBoxItems.Items.Add(new_item);
-            _model.Add(new_item);
+            _model.AddItem(new_item);
             _textBox.Text = string.Empty;
         }
 
@@ -159,7 +159,7 @@ namespace FastGTD
         {
             foreach(ListViewItem item in _listViewInBoxItems.SelectedItems)
             {
-                _model.RemoveAt(item.Index);
+                _model.RemoveItem(item.Text);
                 item.Remove();
             }
         }

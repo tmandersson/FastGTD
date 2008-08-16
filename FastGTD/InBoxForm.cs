@@ -12,8 +12,10 @@ namespace FastGTD
 
             KeyDown += KeyDownHandler;
             KeyPreview = true;
-            Resize += SizeHandler;
-            Shown += SizeHandler;
+            Resize += delegate { SetFirstColumnFullWidth(); };
+            Shown += delegate { SetFirstColumnFullWidth(); };
+            buttonAdd.Click += delegate { AddInboxItemInTextBox(); };
+            buttonDelete.Click += delegate { DeleteSelectedItems(); };
         }
 
         public IList<string> InBoxItems
@@ -85,9 +87,9 @@ namespace FastGTD
             button.PerformClick();
         }
 
-        private void SizeHandler(object sender, EventArgs e)
+        public void PerformKeyDown(Keys key)
         {
-            SetFirstColumnFullWidth();
+            OnKeyDown(new KeyEventArgs(key));
         }
 
         private void SetFirstColumnFullWidth()
@@ -101,7 +103,7 @@ namespace FastGTD
             if (e.KeyData == Keys.Enter)
                 AddInboxItemInTextBox();
             else if (e.KeyData == Keys.Delete)
-                DeleteSelectedItem();
+                DeleteSelectedItems();
             else if (e.KeyData == Keys.Down)
                 ChangeSelection(1);
             else if (e.KeyData == Keys.Up)
@@ -141,16 +143,6 @@ namespace FastGTD
             listViewInBoxItems.Items[next_index].Selected = true;
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
-        {
-            AddInboxItemInTextBox();
-        }
-
-        private void buttonDelete_Click(object sender, EventArgs e)
-        {
-            DeleteSelectedItem();
-        }
-
         public void AddInboxItemInTextBox()
         {
             string new_item = textBox.Text;
@@ -163,12 +155,7 @@ namespace FastGTD
             textBox.Text = string.Empty;
         }
 
-        public void PerformKeyDown(Keys key)
-        {
-            KeyDownHandler(this, new KeyEventArgs(key));
-        }
-
-        public void DeleteSelectedItem()
+        public void DeleteSelectedItems()
         {
             foreach(ListViewItem item in listViewInBoxItems.SelectedItems)
             {

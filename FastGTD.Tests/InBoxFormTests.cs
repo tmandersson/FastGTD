@@ -78,7 +78,7 @@ namespace FastGTD.Tests
             Assert.That(form.InBoxItems.Count, Is.EqualTo(2));
 
             form.SelectedItem = form.InBoxItems[1];
-            form.DeleteSelectedItem();
+            form.DeleteSelectedItems();
             Assert.That(form.InBoxItems.Count, Is.EqualTo(1));
             Assert.That(form.InBoxItems[0], Is.EqualTo("foo"));
         }

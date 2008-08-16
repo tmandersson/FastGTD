@@ -160,14 +160,8 @@ namespace FastGTD
         private void AddInboxItemInTextBox()
         {
             string new_item = _textBox.Text;
-            AddInboxItem(new_item);
-            _textBox.Text = string.Empty;
-        }
-
-        public void AddInboxItem(string new_item)
-        {
-            _listViewInBoxItems.Items.Add(new_item);
             _model.AddItem(new_item);
+            _textBox.Text = string.Empty;
         }
 
         public void DeleteSelectedItems()
@@ -175,7 +169,6 @@ namespace FastGTD
             foreach(ListViewItem item in _listViewInBoxItems.SelectedItems)
             {
                 _model.RemoveItem(item.Text);
-                item.Remove();
             }
         }
     }

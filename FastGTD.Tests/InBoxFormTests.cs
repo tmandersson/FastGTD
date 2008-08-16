@@ -71,7 +71,6 @@ namespace FastGTD.Tests
         [Test]
         public void DeletingItem()
         {
-            // TODO: Move part of test (selection should stay?) and code to a model class
             Assert.That(form.InBoxItems.Count, Is.EqualTo(0));
 
             model.AddItem("foo");
@@ -79,8 +78,7 @@ namespace FastGTD.Tests
             model.AddItem("bar");
             Assert.That(form.InBoxItems.Count, Is.EqualTo(2));
 
-            form.SelectedItem = form.InBoxItems[1];
-            form.DeleteSelectedItems();
+            model.RemoveItem("bar");
             Assert.That(form.InBoxItems.Count, Is.EqualTo(1));
             Assert.That(form.InBoxItems[0], Is.EqualTo("foo"));
         }

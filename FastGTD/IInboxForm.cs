@@ -6,7 +6,6 @@ namespace FastGTD
     public interface IInboxForm
     {
         IList<string> InBoxItems { get; }
-        // TODO: A type of duplication: Multiple ways to add item and AddInBoxItem() don't correspond with real UI usage. Belongs in model.
         void DeleteSelectedItems();
 
         string TextBoxValue { get; set; }

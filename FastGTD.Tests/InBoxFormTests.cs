@@ -27,7 +27,7 @@ namespace FastGTD.Tests
         {
             Assert.That(form.FocusedControl, Is.Not.Null);
             Assert.That(form.FocusedControl, Is.InstanceOfType(typeof(Control)));
-            Assert.That(form.FocusedControl.Name, Is.EqualTo("textBox"));
+            Assert.That(form.FocusedControl.Name, Is.EqualTo("_textBox"));
         }
 
         [Test]

@@ -28,70 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listViewInBoxItems = new System.Windows.Forms.ListView();
+            this._listViewInBoxItems = new System.Windows.Forms.ListView();
             this.newItemsHeader = new System.Windows.Forms.ColumnHeader();
-            this.textBox = new System.Windows.Forms.TextBox();
-            this.buttonAdd = new System.Windows.Forms.Button();
-            this.buttonDelete = new System.Windows.Forms.Button();
+            this._textBox = new System.Windows.Forms.TextBox();
+            this._buttonAdd = new System.Windows.Forms.Button();
+            this._buttonDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // listViewInBoxItems
+            // _listViewInBoxItems
             // 
-            this.listViewInBoxItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this._listViewInBoxItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewInBoxItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this._listViewInBoxItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.newItemsHeader});
-            this.listViewInBoxItems.FullRowSelect = true;
-            this.listViewInBoxItems.Location = new System.Drawing.Point(0, 67);
-            this.listViewInBoxItems.Name = "listViewInBoxItems";
-            this.listViewInBoxItems.Size = new System.Drawing.Size(485, 454);
-            this.listViewInBoxItems.TabIndex = 2;
-            this.listViewInBoxItems.UseCompatibleStateImageBehavior = false;
-            this.listViewInBoxItems.View = System.Windows.Forms.View.Details;
+            this._listViewInBoxItems.FullRowSelect = true;
+            this._listViewInBoxItems.Location = new System.Drawing.Point(0, 67);
+            this._listViewInBoxItems.Name = "_listViewInBoxItems";
+            this._listViewInBoxItems.Size = new System.Drawing.Size(485, 454);
+            this._listViewInBoxItems.TabIndex = 2;
+            this._listViewInBoxItems.UseCompatibleStateImageBehavior = false;
+            this._listViewInBoxItems.View = System.Windows.Forms.View.Details;
             // 
             // newItemsHeader
             // 
             this.newItemsHeader.Text = "New items";
             // 
-            // textBox
+            // _textBox
             // 
-            this.textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this._textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox.Location = new System.Drawing.Point(12, 12);
-            this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(380, 20);
-            this.textBox.TabIndex = 0;
+            this._textBox.Location = new System.Drawing.Point(12, 12);
+            this._textBox.Name = "_textBox";
+            this._textBox.Size = new System.Drawing.Size(380, 20);
+            this._textBox.TabIndex = 0;
             // 
-            // buttonAdd
+            // _buttonAdd
             // 
-            this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAdd.Location = new System.Drawing.Point(398, 9);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(75, 23);
-            this.buttonAdd.TabIndex = 1;
-            this.buttonAdd.Text = "Add";
-            this.buttonAdd.UseVisualStyleBackColor = true;
+            this._buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._buttonAdd.Location = new System.Drawing.Point(398, 9);
+            this._buttonAdd.Name = "_buttonAdd";
+            this._buttonAdd.Size = new System.Drawing.Size(75, 23);
+            this._buttonAdd.TabIndex = 1;
+            this._buttonAdd.Text = "Add";
+            this._buttonAdd.UseVisualStyleBackColor = true;
             // 
-            // buttonDelete
+            // _buttonDelete
             // 
-            this.buttonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDelete.Location = new System.Drawing.Point(398, 38);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(75, 23);
-            this.buttonDelete.TabIndex = 3;
-            this.buttonDelete.Text = "Delete";
-            this.buttonDelete.UseVisualStyleBackColor = true;
+            this._buttonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._buttonDelete.Location = new System.Drawing.Point(398, 38);
+            this._buttonDelete.Name = "_buttonDelete";
+            this._buttonDelete.Size = new System.Drawing.Size(75, 23);
+            this._buttonDelete.TabIndex = 3;
+            this._buttonDelete.Text = "Delete";
+            this._buttonDelete.UseVisualStyleBackColor = true;
             // 
             // InBoxForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(485, 521);
-            this.Controls.Add(this.buttonDelete);
-            this.Controls.Add(this.buttonAdd);
-            this.Controls.Add(this.textBox);
-            this.Controls.Add(this.listViewInBoxItems);
+            this.Controls.Add(this._buttonDelete);
+            this.Controls.Add(this._buttonAdd);
+            this.Controls.Add(this._textBox);
+            this.Controls.Add(this._listViewInBoxItems);
             this.Name = "InBoxForm";
             this.Text = "InBoxForm";
             this.ResumeLayout(false);
@@ -102,9 +102,9 @@
         #endregion
 
         private System.Windows.Forms.ColumnHeader newItemsHeader;
-        private System.Windows.Forms.TextBox textBox;
-        private System.Windows.Forms.ListView listViewInBoxItems;
-        private System.Windows.Forms.Button buttonAdd;
-        private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.TextBox _textBox;
+        private System.Windows.Forms.ListView _listViewInBoxItems;
+        private System.Windows.Forms.Button _buttonAdd;
+        private System.Windows.Forms.Button _buttonDelete;
     }
 }

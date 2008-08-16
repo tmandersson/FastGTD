@@ -5,14 +5,15 @@ namespace FastGTD
 {
     public interface IInboxForm
     {
-        IList<string> InBoxItems { get; }
-
         string TextBoxValue { get; set; }
         Control FocusedControl { get; }
         string ListHeaderText { get; }
 
         void ClickControl(InboxFormButton button);
         void PerformKeyDown(Keys key);
+
+        IList<string> InBoxItems { get; }
+
         IList<string> SelectedItems { get; }
         void SelectItem(string item);
         void SelectItems(IList<string> items);

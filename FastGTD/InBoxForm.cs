@@ -20,6 +20,16 @@ namespace FastGTD
             Shown += delegate { SetFirstColumnFullWidth(); };
             _buttonAdd.Click += delegate { AddInboxItemInTextBox(); };
             _buttonDelete.Click += delegate { DeleteSelectedItems(); };
+            _model.Changed += UpdateFromModel;
+        }
+
+        private void UpdateFromModel()
+        {
+            _listViewInBoxItems.Items.Clear();
+            foreach (string item in _model.Items)
+            {
+                _listViewInBoxItems.Items.Add(item);
+            }
         }
 
         public IList<string> InBoxItems
@@ -51,6 +61,11 @@ namespace FastGTD
                 }
                 return null;
             }
+        }
+
+        public string ListHeaderText
+        {
+            get { return _listViewInBoxItems.Columns[0].Text; }
         }
 
         public string SelectedItem
@@ -146,13 +161,13 @@ namespace FastGTD
         {
             string new_item = _textBox.Text;
             AddInboxItem(new_item);
+            _textBox.Text = string.Empty;
         }
 
         public void AddInboxItem(string new_item)
         {
             _listViewInBoxItems.Items.Add(new_item);
             _model.AddItem(new_item);
-            _textBox.Text = string.Empty;
         }
 
         public void DeleteSelectedItems()

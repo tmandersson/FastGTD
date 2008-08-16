@@ -13,8 +13,8 @@ namespace FastGTD
 
         void ClickControl(InboxFormButton button);
         void PerformKeyDown(Keys key);
-        // TODO: Move selection to model?
-        string FirstSelectedItem { get; set; }
+        IList<string> SelectedItems { get; }
+        void SelectItem(string item);
         void SelectItems(IList<string> items);
 
         void Show();

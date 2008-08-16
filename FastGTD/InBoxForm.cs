@@ -68,18 +68,23 @@ namespace FastGTD
             get { return _listViewInBoxItems.Columns[0].Text; }
         }
 
-        // TODO: Temporary hack.
-        public string FirstSelectedItem
+        public IList<string> SelectedItems
         {
             get
             {
-                return _listViewInBoxItems.SelectedItems[0].Text;
+                IList<string> list = new List<string>();
+                foreach(ListViewItem item in _listViewInBoxItems.SelectedItems)
+                {
+                    list.Add(item.Text);
+                }
+                return list;
             }
-            set
-            {
-                IList<string> items = new List<string> {value};
-                SelectItems(items);
-            }
+        }
+
+        public void SelectItem(string item)
+        {
+            IList<string> items = new List<string> { item };
+            SelectItems(items);
         }
 
         public void SelectItems(IList<string> items)

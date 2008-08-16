@@ -6,17 +6,10 @@ namespace FastGTD
     {
         public static int Main(string[] argv)
         {
-            InBoxPresenter in_form = CreateInBoxForm();
-            Application.Run(in_form.View.Form);
+            Form in_form = new InBoxForm();
+            Application.Run(in_form);
 
             return 0;
-        }
-
-        public static InBoxPresenter CreateInBoxForm()
-        {
-            InBoxForm view = new InBoxForm();
-            IInBoxModel model = new InBoxModel();
-            return new InBoxPresenter(view, model);
         }
     }
 }

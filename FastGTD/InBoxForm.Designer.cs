@@ -42,6 +42,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewInBoxItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.newItemsHeader});
+            this.listViewInBoxItems.FullRowSelect = true;
             this.listViewInBoxItems.Location = new System.Drawing.Point(0, 67);
             this.listViewInBoxItems.Name = "listViewInBoxItems";
             this.listViewInBoxItems.Size = new System.Drawing.Size(485, 454);
@@ -102,10 +103,10 @@
 
         #endregion
 
-        public System.Windows.Forms.TextBox textBox;
-        public System.Windows.Forms.ListView listViewInBoxItems;
-        public System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.ColumnHeader newItemsHeader;
-        public System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.TextBox textBox;
+        private System.Windows.Forms.ListView listViewInBoxItems;
+        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }

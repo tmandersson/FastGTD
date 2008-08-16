@@ -4,10 +4,8 @@ using System.Windows.Forms;
 
 namespace FastGTD
 {
-    public partial class InBoxForm : Form, IInBoxView
+    public partial class InBoxForm : Form, IInboxForm
     {
-        public event AddItemEvent AddItemAction;
-
         public InBoxForm()
         {
             InitializeComponent();
@@ -18,21 +16,73 @@ namespace FastGTD
             Shown += SizeHandler;
         }
 
-        public InBoxForm Form
+        public IList<string> InBoxItems
         {
-            get { return this; }
+            get
+            {
+                IList<string> list = new List<string>();
+                foreach (ListViewItem item in listViewInBoxItems.Items)
+                {
+                    list.Add(item.Text);
+                }
+                return list;
+            }
         }
 
-        public bool InBoxListFullRowSelect
+        public string TextBoxValue
         {
-            get { return listViewInBoxItems.FullRowSelect; }
-            set { listViewInBoxItems.FullRowSelect = value; }
+            get { return textBox.Text; }
+            set { textBox.Text = value; }
         }
 
-        public IList<string> InBoxList
+        public Control FocusedControl
         {
-            get { return new List<string>(); }
-            set { ; }
+            get
+            {
+                if (Focused) return this;
+                
+                foreach (Control c in Controls)
+                {
+                    if (c.Focused)
+                    {
+                        return c;
+                    }
+                }
+                return null;
+            }
+        }
+
+        public string SelectedItem
+        {
+            get
+            {
+                return listViewInBoxItems.SelectedItems[0].Text;
+            }
+            set
+            {
+                listViewInBoxItems.SelectedItems.Clear();
+                foreach (ListViewItem item in listViewInBoxItems.Items)
+                {
+                    if (item.Text == value) item.Selected = true;
+                }
+            }
+        }
+
+        public void ClickControl(InboxFormButton button_id)
+        {
+            Button button;
+            switch (button_id)
+            {
+                case InboxFormButton.Add:
+                    button = buttonAdd;
+                    break;
+                case InboxFormButton.Delete:
+                    button = buttonDelete;
+                    break;
+                default:
+                    throw new InvalidOperationException("Unknown button.");
+            }
+            button.PerformClick();
         }
 
         private void SizeHandler(object sender, EventArgs e)
@@ -91,7 +141,7 @@ namespace FastGTD
             listViewInBoxItems.Items[next_index].Selected = true;
         }
 
-        private void buttonAdd_Click(object sender, System.EventArgs e)
+        private void buttonAdd_Click(object sender, EventArgs e)
         {
             AddInboxItemInTextBox();
         }
@@ -105,7 +155,6 @@ namespace FastGTD
         {
             string new_item = textBox.Text;
             AddInboxItem(new_item);
-            AddItemAction(new_item);
         }
 
         public void AddInboxItem(string new_item)
@@ -125,11 +174,6 @@ namespace FastGTD
             {
                 item.Remove();
             }
-        }
-
-        public void SetTextBoxFocus()
-        {
-            textBox.Focus();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Windows.Forms;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 
@@ -7,66 +7,145 @@ namespace FastGTD.Tests
     [TestFixture]
     public class InBoxFormTests
     {
-        private string LastHandledEventArgument;
-        private InBoxForm form;
+        private IInboxForm form; 
 
         [SetUp]
-        public void SetUpTests()
+        public void SetupTests()
         {
             form = new InBoxForm();
+            form.Show(); // TODO: Eliminate need to show dialog when testing.
         }
 
         [Test]
-        public void ViewFormReturnsItself()
+        public void InBoxStartsEmpty()
         {
-            IInBoxView view = form;
-            Assert.That(view.Form, Is.EqualTo(form));
+            Assert.That(form.InBoxItems.Count, Is.EqualTo(0));
         }
 
         [Test]
-        public void CanSetFullRowSelect()
+        public void TextBoxStartsWithFocus()
         {
-            Assert.That(form.listViewInBoxItems.FullRowSelect, Is.False);
-            form.InBoxListFullRowSelect = true;
-            Assert.That(form.listViewInBoxItems.FullRowSelect, Is.True);
+            Assert.That(form.FocusedControl, Is.Not.Null);
+            Assert.That(form.FocusedControl, Is.InstanceOfType(typeof(Control)));
+            Assert.That(form.FocusedControl.Name, Is.EqualTo("textBox"));
         }
 
         [Test]
-        public void CanSetTextBoxFocus()
+        public void AddingInBoxItemWithButtonClick()
         {
-            form.Show();
-            form.listViewInBoxItems.Focus();
-            Assert.IsFalse(form.textBox.Focused);
+            form.TextBoxValue = "foo";
+            form.ClickControl(InboxFormButton.Add);
+            Assert.That(form.InBoxItems.Count, Is.EqualTo(1));
+            Assert.That(form.InBoxItems[0], Is.EqualTo("foo"));
 
-            form.SetTextBoxFocus();
-
-            Assert.IsFalse(form.Focused);
-            Assert.IsFalse(form.listViewInBoxItems.Focused);
-            Assert.IsFalse(form.buttonAdd.Focused);
-            Assert.IsTrue(form.textBox.Focused);
+            form.TextBoxValue = "bar";
+            form.ClickControl(InboxFormButton.Add);
+            Assert.That(form.InBoxItems.Count, Is.EqualTo(2));
+            Assert.That(form.InBoxItems[0], Is.EqualTo("foo"));
+            Assert.That(form.InBoxItems[1], Is.EqualTo("bar"));
         }
 
         [Test]
-        public void ClickingAddItemButtonFiresAddItemEvent()
+        public void AddingInBoxItemWithEnterKey()
         {
-            form.Show();
-            form.AddItemAction += HandleAddItemEvent;
+            Assert.That(form.InBoxItems.Count, Is.EqualTo(0));
 
-            form.textBox.Text = "foo";
-            form.buttonAdd.PerformClick();
+            form.TextBoxValue = "foo";
+            form.PerformKeyDown(Keys.Enter);
 
-            Assert.That(LastHandledEventArgument, Is.EqualTo("foo"));
+            Assert.That(form.InBoxItems.Count, Is.EqualTo(1));
+            Assert.That(form.InBoxItems[0], Is.EqualTo("foo"));
         }
 
         [Test]
-        public void UpdatingInBoxListChangesListControlContents()
+        public void TextBoxIsClearedOnAdd()
         {
-            Assert.Fail();
+            form.TextBoxValue = "foo";
+            Assert.That(form.TextBoxValue, Is.EqualTo("foo"));
+            form.ClickControl(InboxFormButton.Add);
+            Assert.That(form.TextBoxValue, Is.EqualTo(string.Empty));
         }
 
-        private void HandleAddItemEvent(string new_in_item)
+        [Test]
+        public void DeletingItem()
         {
-            LastHandledEventArgument = new_in_item;
+            // TODO: Move part of test (selection should stay?) and code to a model class
+            Assert.That(form.InBoxItems.Count, Is.EqualTo(0));
+
+            form.AddInboxItem("foo");
+            Assert.That(form.InBoxItems.Count, Is.EqualTo(1));
+            form.AddInboxItem("bar");
+            Assert.That(form.InBoxItems.Count, Is.EqualTo(2));
+
+            form.SelectedItem = form.InBoxItems[1];
+            form.DeleteSelectedItem();
+            Assert.That(form.InBoxItems.Count, Is.EqualTo(1));
+            Assert.That(form.InBoxItems[0], Is.EqualTo("foo"));
+        }
+        
+        [Test]
+        public void DeletingItemWithButtonClick()
+        {
+            form.AddInboxItem("foo");
+            form.SelectedItem = form.InBoxItems[0];
+            form.ClickControl(InboxFormButton.Delete);
+            Assert.That(form.InBoxItems.Count, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void DeletingItemWithDeleteKey()
+        {
+            form.AddInboxItem("foo");
+            form.SelectedItem = form.InBoxItems[0];
+            form.PerformKeyDown(Keys.Delete);
+            Assert.That(form.InBoxItems.Count, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void DownAndUpKeysChangeSelection()
+        {
+            form.AddInboxItem("foo1");
+            form.AddInboxItem("foo2");
+            form.AddInboxItem("foo3");
+
+            form.PerformKeyDown(Keys.Down);
+            Assert.That(form.SelectedItem, Is.EqualTo("foo1"));
+            form.PerformKeyDown(Keys.Down);
+            Assert.That(form.SelectedItem, Is.EqualTo("foo2"));
+            form.PerformKeyDown(Keys.Down);
+            Assert.That(form.SelectedItem, Is.EqualTo("foo3"));
+            form.PerformKeyDown(Keys.Up);
+            Assert.That(form.SelectedItem, Is.EqualTo("foo2"));
+        }
+
+        [Test]
+        public void DownAndUpKeysShouldNotCrashOutsideBoundaries()
+        {
+            form.AddInboxItem("foo1");
+            form.AddInboxItem("foo2");
+            form.AddInboxItem("foo3");
+
+            form.PerformKeyDown(Keys.Up);
+            form.PerformKeyDown(Keys.Up);
+            Assert.That(form.SelectedItem, Is.EqualTo("foo1"));
+
+            form.PerformKeyDown(Keys.Down);
+            form.PerformKeyDown(Keys.Down);
+            form.PerformKeyDown(Keys.Down);
+            form.PerformKeyDown(Keys.Down);
+            Assert.That(form.SelectedItem, Is.EqualTo("foo3"));
+        }
+
+        [Test]
+        public void DownAndUpKeysShouldNotCrashWhenNoItems()
+        {
+            form.PerformKeyDown(Keys.Up);
+            form.PerformKeyDown(Keys.Up);
+
+            form.PerformKeyDown(Keys.Down);
+            form.PerformKeyDown(Keys.Down);
+            form.PerformKeyDown(Keys.Down);
+            form.PerformKeyDown(Keys.Down);
         }
     }
 }

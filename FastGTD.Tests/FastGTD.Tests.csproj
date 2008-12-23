@@ -41,6 +41,14 @@
   </Target>
   -->
   <ItemGroup>
+    <ProjectReference Include="..\FastGTD.DataAccess\FastGTD.DataAccess.csproj">
+      <Project>{6851BC75-0BA6-4FE4-B6EE-F359E8845C3D}</Project>
+      <Name>FastGTD.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FastGTD.DataTransfer\FastGTD.DataTransfer.csproj">
+      <Project>{2561D241-CD20-437A-9502-955EACF6C9DB}</Project>
+      <Name>FastGTD.DataTransfer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FastGTD\FastGTD.csproj">
       <Project>{2367A529-4B9B-4E0D-A666-B4EF14FD0DD9}</Project>
       <Name>FastGTD</Name>
@@ -52,10 +60,16 @@
       <HintPath>..\Tools\NUnit\bin\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data.SQLite, Version=1.0.60.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Tools\SQLite\bin\System.Data.SQLite.DLL</HintPath>
+      <Aliases>global</Aliases>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomerTests.cs" />
     <Compile Include="InBoxFormTests.cs" />
+    <Compile Include="InBoxItemRepositoryTests.cs" />
   </ItemGroup>
 </Project>

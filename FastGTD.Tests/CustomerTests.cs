@@ -1,4 +1,5 @@
 using System;
+using FastGTD.DataTransfer;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 
@@ -7,7 +8,7 @@ namespace FastGTD.Tests
     [TestFixture]
     public class CustomerTests
     {
-        [Test]
+        [Test, Explicit("In progress")]
         public void InBoxResultIsSaved()
         {
             // TODO: Move tests into main assembly again? No benefit in having it separate?

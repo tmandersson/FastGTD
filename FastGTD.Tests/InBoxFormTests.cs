@@ -83,6 +83,20 @@ namespace FastGTD.Tests
             Assert.That(form.InBoxItems.Count, Is.EqualTo(1));
             Assert.That(form.InBoxItems[0], Is.EqualTo("foo"));
         }
+
+        [Test]
+        public void ClearItems()
+        {
+            Assert.That(form.InBoxItems.Count, Is.EqualTo(0));
+
+            model.AddItem("foo");
+            Assert.That(form.InBoxItems.Count, Is.EqualTo(1));
+            model.AddItem("bar");
+            Assert.That(form.InBoxItems.Count, Is.EqualTo(2));
+
+            model.ClearItems();
+            Assert.That(form.InBoxItems.Count, Is.EqualTo(0));
+        }
         
         [Test]
         public void DeletingItemWithButtonClick()

@@ -32,6 +32,13 @@ namespace FastGTD
 
         public void ClearItems()
         {
+            string[] _items_to_delete = new string[_items.Count];
+            _items.CopyTo(_items_to_delete, 0);
+            foreach (string item in _items_to_delete)
+            {
+                _items.Remove(item);
+            }
+            FireEvent(Changed);
         }
     }
 

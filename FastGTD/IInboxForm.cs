@@ -19,6 +19,7 @@ namespace FastGTD
         void SelectItems(IList<string> items);
 
         void Show();
+        void Close();
     }
 
     public enum InboxFormButton

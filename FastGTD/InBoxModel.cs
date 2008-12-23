@@ -29,6 +29,11 @@ namespace FastGTD
             if (evnt != null)
                 evnt();
         }
+
+        public void ClearItems()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
     public delegate void VoidDelegate();

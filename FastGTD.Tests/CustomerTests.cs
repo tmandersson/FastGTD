@@ -15,20 +15,19 @@ namespace FastGTD.Tests
 
             string ITEM = Guid.NewGuid().ToString();
 
-            var model = new InBoxModel();
-            IInboxForm form = new InBoxForm(model);
-            form.Show(); // TODO: Eliminate need to show dialog when testing.
+            var app = new FastGTDApp();
+            app.Start();
 
-            model.ClearItems();
-            Assert.That(form.InBoxItems.Count, Is.EqualTo(0));
-            model.AddItem(ITEM);
-            form.Close();
+            app.InModel.ClearItems();
+            Assert.That(app.InForm.InBoxItems.Count, Is.EqualTo(0));
+            app.InModel.AddItem(ITEM);
+            app.Close();
 
-            var model2 = new InBoxModel();
-            IInboxForm form2 = new InBoxForm(model2);
-            form2.Show(); // TODO: Eliminate need to show dialog when testing.
-            Assert.That(model2.Items, Has.Count(1));
-            Assert.That(model2.Items, Has.Member(ITEM));
+            var app2 = new FastGTDApp();
+            app2.Start();
+            Assert.That(app2.InModel.Items, Has.Count(1));
+            Assert.That(app2.InModel.Items, Has.Member(ITEM));
+            app2.Close();
         }
     }
 }

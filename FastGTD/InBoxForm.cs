@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace FastGTD
 {
-    public partial class InBoxForm : Form, IInboxForm
+    public partial class InBoxForm : Form, IInBoxForm
     {
         private readonly InBoxModel _model;
 
@@ -97,15 +97,15 @@ namespace FastGTD
             }
         }
 
-        public void ClickControl(InboxFormButton button_id)
+        public void ClickControl(InBoxFormButton button_id)
         {
             Button button;
             switch (button_id)
             {
-                case InboxFormButton.Add:
+                case InBoxFormButton.Add:
                     button = _buttonAdd;
                     break;
-                case InboxFormButton.Delete:
+                case InBoxFormButton.Delete:
                     button = _buttonDelete;
                     break;
                 default:

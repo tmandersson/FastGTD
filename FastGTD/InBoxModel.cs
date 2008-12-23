@@ -32,7 +32,6 @@ namespace FastGTD
 
         public void ClearItems()
         {
-            throw new System.NotImplementedException();
         }
     }
 

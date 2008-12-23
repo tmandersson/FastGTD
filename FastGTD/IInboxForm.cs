@@ -3,13 +3,13 @@ using System.Windows.Forms;
 
 namespace FastGTD
 {
-    public interface IInboxForm
+    public interface IInBoxForm
     {
         string TextBoxValue { get; set; }
         Control FocusedControl { get; }
         string ListHeaderText { get; }
 
-        void ClickControl(InboxFormButton button);
+        void ClickControl(InBoxFormButton button);
         void PerformKeyDown(Keys key);
 
         IList<string> InBoxItems { get; }
@@ -22,7 +22,7 @@ namespace FastGTD
         void Close();
     }
 
-    public enum InboxFormButton
+    public enum InBoxFormButton
     {
         Add,
         Delete

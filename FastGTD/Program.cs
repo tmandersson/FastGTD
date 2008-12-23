@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace FastGTD
 {
@@ -7,16 +6,11 @@ namespace FastGTD
     {
         public static int Main(string[] argv)
         {
-            var in_form = CreateInBoxForm();
-            Application.Run((Form) in_form);
-
+            var app = new FastGTDApp();
+            app.Start();
+            app.StartWinFormsMessageLoop();
+            app.Close();
             return 0;
-        }
-
-        public static IInboxForm CreateInBoxForm()
-        {
-            var model = new InBoxModel();
-            return new InBoxForm(model);
         }
     }
 }

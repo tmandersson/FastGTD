@@ -8,7 +8,7 @@ namespace FastGTD.Tests
     [TestFixture]
     public class InBoxFormTests
     {
-        private IInboxForm form;
+        private IInBoxForm form;
         private InBoxModel model;
 
         [SetUp]
@@ -37,12 +37,12 @@ namespace FastGTD.Tests
         public void AddingInBoxItemWithButtonClick()
         {
             form.TextBoxValue = "foo";
-            form.ClickControl(InboxFormButton.Add);
+            form.ClickControl(InBoxFormButton.Add);
             Assert.That(form.InBoxItems.Count, Is.EqualTo(1));
             Assert.That(form.InBoxItems[0], Is.EqualTo("foo"));
 
             form.TextBoxValue = "bar";
-            form.ClickControl(InboxFormButton.Add);
+            form.ClickControl(InBoxFormButton.Add);
             Assert.That(form.InBoxItems.Count, Is.EqualTo(2));
             Assert.That(form.InBoxItems[0], Is.EqualTo("foo"));
             Assert.That(form.InBoxItems[1], Is.EqualTo("bar"));
@@ -65,7 +65,7 @@ namespace FastGTD.Tests
         {
             form.TextBoxValue = "foo";
             Assert.That(form.TextBoxValue, Is.EqualTo("foo"));
-            form.ClickControl(InboxFormButton.Add);
+            form.ClickControl(InBoxFormButton.Add);
             Assert.That(form.TextBoxValue, Is.EqualTo(string.Empty));
         }
 
@@ -89,7 +89,7 @@ namespace FastGTD.Tests
         {
             model.AddItem("foo");
             form.SelectItem("foo");
-            form.ClickControl(InboxFormButton.Delete);
+            form.ClickControl(InBoxFormButton.Delete);
             Assert.That(form.InBoxItems.Count, Is.EqualTo(0));
         }
 
@@ -112,7 +112,7 @@ namespace FastGTD.Tests
             
             IList<string> items = new List<string> { "foobar", "bar", "fubar" };
             form.SelectItems(items);
-            form.ClickControl(InboxFormButton.Delete);
+            form.ClickControl(InBoxFormButton.Delete);
 
             IList<string> expectedItems = new List<string> {"foo"};
             Assert.That(model.Items, Is.EqualTo(expectedItems));

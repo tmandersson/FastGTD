@@ -4,8 +4,8 @@
     {
         private string _name;
 
-        public InBoxItem() { }
-        public InBoxItem(string name)
+        protected InBoxItem() { }
+        protected InBoxItem(string name)
         {
             _name = name;
         }
@@ -16,5 +16,17 @@
             get { return _name; }
             set { _name = value; }
         }
+
+        public static InBoxItem CreateNew(IInBoxItemPersister persister)
+        {
+            var item = new InBoxItem();
+            persister.Save(item);
+            return item;
+        }
+    }
+
+    public interface IInBoxItemPersister
+    {
+        void Save(InBoxItem item);
     }
 }

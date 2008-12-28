@@ -1,4 +1,5 @@
-﻿using FastGTD.DataTransfer;
+﻿using System.Collections.Generic;
+using FastGTD.DataTransfer;
 using NHibernate;
 using NHibernate.Cfg;
 
@@ -6,7 +7,7 @@ namespace FastGTD.DataAccess
 {
     // TODO: Implement some repository interface which domain/core of FastGTD should consume. 
     // To avoid coupling to this particular data access implementation.
-    public class InBoxItemRepository
+    public class InBoxItemRepository : IInBoxItemPersister
     {
         protected ISessionFactory _session_factory;
 
@@ -45,10 +46,21 @@ namespace FastGTD.DataAccess
             return _session_factory.OpenSession();
         }
 
+        public InBoxItem CreateNew(string name)
+        {
+            return InBoxItem.CreateNew(this);;
+        }
+
         public InBoxItem GetByID(int id)
         {
             ISession session = GetSession();
             return session.Load<InBoxItem>(id);
+        }
+
+        public IList<InBoxItem> GetAll()
+        {
+            ISession session = GetSession();
+            return session.CreateCriteria(typeof (InBoxItem)).List<InBoxItem>();
         }
     }
 }

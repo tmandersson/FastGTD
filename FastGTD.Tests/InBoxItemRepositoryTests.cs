@@ -52,39 +52,22 @@ namespace FastGTD.Tests
             IList<InBoxItem> result = repo2.GetAll();
             Assert.That(result, Has.Count(EXPECTED_COUNT));
         }
-    }
 
-    [TestFixture]
-    public class InBoxModelTests
-    {
         [Test]
-        public void LoadingExistingItems()
+        public void DeleteByName()
         {
             string NAME = Guid.NewGuid().ToString();
+            const int EXPECTED_COUNT = 0;
             var repo = new InBoxItemRepository();
-            IList<InBoxItem> existing = repo.GetAll();
-            int EXPECTED_COUNT = existing.Count + 1;
+            repo.CreateNew(NAME);
+            repo.CreateNew(NAME);
             repo.CreateNew(NAME);
 
-            var model = new InBoxModel(new InBoxItemRepository());
-            model.Load();
+            repo.DeleteByName(NAME);
 
-            Assert.That(model.Items, Has.Count(EXPECTED_COUNT));
-            Assert.That(model.Items, Has.Member(NAME));
+            var repo2 = new InBoxItemRepository();
+            IList<InBoxItem> result = repo2.GetAll();
+            Assert.That(result, Has.Count(EXPECTED_COUNT));
         }
-
-        [Test]
-        public void ClearingItemsDeletesItemsInDatabase()
-        {
-            var model = new InBoxModel(new InBoxItemRepository());
-            model.Load();
-            model.AddItem("hej");
-            model.ClearItems();
-
-            var persisted_model = new InBoxModel(new InBoxItemRepository());
-            persisted_model.Load();
-            Assert.That(persisted_model.Items.Count, Is.EqualTo(0));
-        }
-
     }
 }

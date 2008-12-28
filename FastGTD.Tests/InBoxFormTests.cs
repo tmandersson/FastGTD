@@ -200,5 +200,14 @@ namespace FastGTD.Tests
         public void DeleteAll()
         {
         }
+
+        public InBoxItem CreateNew(string item)
+        {
+            return null;
+        }
+
+        public void DeleteByName(string item)
+        {
+        }
     }
 }

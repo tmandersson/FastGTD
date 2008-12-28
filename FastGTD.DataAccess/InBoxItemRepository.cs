@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using FastGTD.DataTransfer;
 using NHibernate;
 using NHibernate.Cfg;
@@ -69,6 +70,16 @@ namespace FastGTD.DataAccess
             using (ITransaction tx = session.BeginTransaction())
             {
                 session.Delete("from InBoxItem");
+                tx.Commit();
+            }
+        }
+
+        public void DeleteByName(string name)
+        {
+            ISession session = GetSession();
+            using (ITransaction tx = session.BeginTransaction())
+            {
+                session.Delete("from InBoxItem where Name = '" + name + "'");
                 tx.Commit();
             }
         }

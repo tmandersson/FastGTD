@@ -71,5 +71,6 @@
     <Compile Include="CustomerTests.cs" />
     <Compile Include="InBoxFormTests.cs" />
     <Compile Include="InBoxItemRepositoryTests.cs" />
+    <Compile Include="InBoxModelTests.cs" />
   </ItemGroup>
 </Project>

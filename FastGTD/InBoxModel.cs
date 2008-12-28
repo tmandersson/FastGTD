@@ -6,6 +6,8 @@ namespace FastGTD
 {
     public class InBoxModel
     {
+        // TODO: InBoxModel contains strings and repo contains InBoxItems. Fix?
+        // TODO: Also: When removing items with same name one is removed in gui but all in repo.
         private readonly IInBoxItemRepository _repository;
         private readonly IList<string> _items = new List<string>();
         public event VoidDelegate Changed;
@@ -33,12 +35,14 @@ namespace FastGTD
         public void AddItem(string item)
         {
             _items.Add(item);
+            _repository.CreateNew(item);
             FireEvent(Changed);
         }
 
         public void RemoveItem(string item)
         {
             _items.Remove(item);
+            _repository.DeleteByName(item);
             FireEvent(Changed);
         }
 

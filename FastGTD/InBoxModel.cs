@@ -1,11 +1,29 @@
 ﻿using System.Collections.Generic;
+using FastGTD.DataAccess;
+using FastGTD.DataTransfer;
 
 namespace FastGTD
 {
     public class InBoxModel
     {
+        private readonly IInBoxItemRepository _repository;
         private readonly IList<string> _items = new List<string>();
         public event VoidDelegate Changed;
+
+        public InBoxModel(IInBoxItemRepository repository)
+        {
+            _repository = repository;
+        }
+
+        public void Load()
+        {
+            IList<InBoxItem> loaded_items = _repository.GetAll();
+            foreach (InBoxItem item in loaded_items)
+            {
+                _items.Add(item.Name);
+            }
+            FireEvent(Changed);
+        }
 
         public IList<string> Items
         {
@@ -32,12 +50,8 @@ namespace FastGTD
 
         public void ClearItems()
         {
-            string[] _items_to_delete = new string[_items.Count];
-            _items.CopyTo(_items_to_delete, 0);
-            foreach (string item in _items_to_delete)
-            {
-                _items.Remove(item);
-            }
+            _items.Clear();
+            _repository.DeleteAll();
             FireEvent(Changed);
         }
     }

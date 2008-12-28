@@ -65,4 +65,14 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FastGTD.DataAccess\FastGTD.DataAccess.csproj">
+      <Project>{6851BC75-0BA6-4FE4-B6EE-F359E8845C3D}</Project>
+      <Name>FastGTD.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FastGTD.DataTransfer\FastGTD.DataTransfer.csproj">
+      <Project>{2561D241-CD20-437A-9502-955EACF6C9DB}</Project>
+      <Name>FastGTD.DataTransfer</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

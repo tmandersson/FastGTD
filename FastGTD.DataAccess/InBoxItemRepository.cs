@@ -7,7 +7,7 @@ namespace FastGTD.DataAccess
 {
     // TODO: Implement some repository interface which domain/core of FastGTD should consume. 
     // To avoid coupling to this particular data access implementation.
-    public class InBoxItemRepository : IInBoxItemPersister
+    public class InBoxItemRepository : IInBoxItemRepository, IInBoxItemPersister
     {
         protected ISessionFactory _session_factory;
 
@@ -61,6 +61,16 @@ namespace FastGTD.DataAccess
         {
             ISession session = GetSession();
             return session.CreateCriteria(typeof (InBoxItem)).List<InBoxItem>();
+        }
+
+        public void DeleteAll()
+        {
+            ISession session = GetSession();
+            using (ITransaction tx = session.BeginTransaction())
+            {
+                session.Delete("from InBoxItem");
+                tx.Commit();
+            }
         }
     }
 }

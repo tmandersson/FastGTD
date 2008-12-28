@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
+using FastGTD.DataAccess;
+using FastGTD.DataTransfer;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 
@@ -14,7 +16,7 @@ namespace FastGTD.Tests
         [SetUp]
         public void SetupTests()
         {
-            model = new InBoxModel();
+            model = new InBoxModel(new FakeInBoxItemRepository());
             form = new InBoxForm(model);
             form.Show(); // TODO: Eliminate need to show dialog when testing.
         }
@@ -185,6 +187,18 @@ namespace FastGTD.Tests
             Assert.That(form.ListHeaderText, Is.EqualTo("New items"));
             model.AddItem("foo");
             Assert.That(form.ListHeaderText, Is.EqualTo("New items"));
+        }
+    }
+
+    public class FakeInBoxItemRepository : IInBoxItemRepository
+    {
+        public IList<InBoxItem> GetAll()
+        {
+            return new List<InBoxItem>();
+        }
+
+        public void DeleteAll()
+        {
         }
     }
 }

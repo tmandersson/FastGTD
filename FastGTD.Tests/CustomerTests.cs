@@ -16,23 +16,16 @@ namespace FastGTD.Tests
 
             string ITEM = Guid.NewGuid().ToString();
 
-            FastGTDApp app = StartNewApplication();
+            FastGTDApp app = FastGTDApp.StartNewTestApplication();
             app.InModel.ClearItems();
             Assert.That(app.InForm.InBoxItems.Count, Is.EqualTo(0));
             app.InModel.AddItem(ITEM);
             app.Close();
 
-            FastGTDApp app2 = StartNewApplication();
+            FastGTDApp app2 = FastGTDApp.StartNewTestApplication();
             Assert.That(app2.InModel.Items, Has.Count(1));
             Assert.That(app2.InModel.Items, Has.Member(ITEM));
             app2.Close();
-        }
-
-        private static FastGTDApp StartNewApplication()
-        {
-            var app = new FastGTDApp();
-            app.Start();
-            return app;
         }
     }
 }

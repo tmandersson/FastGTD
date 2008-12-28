@@ -1,4 +1,5 @@
 using System.Windows.Forms;
+using FastGTD.DataAccess;
 
 namespace FastGTD
 {
@@ -19,9 +20,10 @@ namespace FastGTD
 
         public void Start()
         {
-            _inModel = new InBoxModel();
+            _inModel = new InBoxModel(new InBoxItemRepository());
             _inForm = new InBoxForm(InModel);
             _inForm.Show();
+            _inModel.Load();
         }
 
         public void Close()
@@ -32,6 +34,13 @@ namespace FastGTD
         public void StartWinFormsMessageLoop()
         {
             Application.Run((Form)_inForm);
+        }
+
+        public static FastGTDApp StartNewTestApplication()
+        {
+            var app = new FastGTDApp();
+            app.Start();
+            return app;
         }
     }
 }

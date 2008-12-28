@@ -48,7 +48,7 @@ namespace FastGTD.DataAccess
 
         public InBoxItem CreateNew(string name)
         {
-            return InBoxItem.CreateNew(this);;
+            return InBoxItem.CreateNew(this, name);
         }
 
         public InBoxItem GetByID(int id)

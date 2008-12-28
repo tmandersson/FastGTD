@@ -8,8 +8,9 @@ namespace FastGTD
     {
         // TODO: InBoxModel contains strings and repo contains InBoxItems. Fix?
         // TODO: Also: When removing items with same name one is removed in gui but all in repo.
+        // TODO: Maybe some other object (repon?) should do the persistance job? By listening to the Changed event or some more notification events.
         private readonly IInBoxItemRepository _repository;
-        private readonly IList<string> _items = new List<string>();
+        private readonly IList<InBoxItem> _items = new List<InBoxItem>();
         public event VoidDelegate Changed;
 
         public InBoxModel(IInBoxItemRepository repository)
@@ -22,27 +23,29 @@ namespace FastGTD
             IList<InBoxItem> loaded_items = _repository.GetAll();
             foreach (InBoxItem item in loaded_items)
             {
-                _items.Add(item.Name);
+                _items.Add(item);
             }
             FireEvent(Changed);
         }
 
-        public IList<string> Items
+        public IList<InBoxItem> Items
         {
             get { return _items; }
         }
 
-        public void AddItem(string item)
+        public InBoxItem CreateItem(string name)
         {
+            var item = _repository.CreateNew(name);
             _items.Add(item);
-            _repository.CreateNew(item);
             FireEvent(Changed);
+
+            return item;
         }
 
-        public void RemoveItem(string item)
+        public void RemoveItem(InBoxItem item)
         {
             _items.Remove(item);
-            _repository.DeleteByName(item);
+            _repository.DeleteByName(item.Name);
             FireEvent(Changed);
         }
 

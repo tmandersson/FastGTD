@@ -19,12 +19,12 @@ namespace FastGTD.Tests
             FastGTDApp app = FastGTDApp.StartNewTestApplication();
             app.InModel.ClearItems();
             Assert.That(app.InForm.InBoxItems.Count, Is.EqualTo(0));
-            app.InModel.AddItem(ITEM);
+            var expected_item = app.InModel.CreateItem(ITEM);
             app.Close();
 
             FastGTDApp app2 = FastGTDApp.StartNewTestApplication();
             Assert.That(app2.InModel.Items, Has.Count(1));
-            Assert.That(app2.InModel.Items, Has.Member(ITEM));
+            Assert.That(app2.InModel.Items, Has.Member(expected_item));
             app2.Close();
         }
 
@@ -37,15 +37,38 @@ namespace FastGTD.Tests
             FastGTDApp app = FastGTDApp.StartNewTestApplication();
             app.InModel.ClearItems();
             Assert.That(app.InForm.InBoxItems.Count, Is.EqualTo(0));
-            app.InModel.AddItem(ITEM);
-            app.InModel.AddItem(ITEM2);
-            app.InModel.RemoveItem(ITEM);
+            var item = app.InModel.CreateItem(ITEM);
+            var item2 = app.InModel.CreateItem(ITEM2);
+            app.InModel.RemoveItem(item);
             app.Close();
 
             FastGTDApp app2 = FastGTDApp.StartNewTestApplication();
             Assert.That(app2.InModel.Items, Has.Count(1));
-            Assert.That(app2.InModel.Items, Has.Member(ITEM2));
-            Assert.That(app2.InModel.Items, Has.No.Member(ITEM));
+            Assert.That(app2.InModel.Items, Has.Member(item2));
+            Assert.That(app2.InModel.Items, Has.No.Member(item));
+            app2.Close();
+        }
+
+        [Test, Ignore("Not done")]
+        public void RemovingItemShouldNotDeleteOtherItemsWithSameName()
+        {
+            string ITEM = Guid.NewGuid().ToString();
+            string ITEM2 = Guid.NewGuid().ToString();
+
+            FastGTDApp app = FastGTDApp.StartNewTestApplication();
+            app.InModel.ClearItems();
+            Assert.That(app.InForm.InBoxItems.Count, Is.EqualTo(0));
+            var item = app.InModel.CreateItem(ITEM);
+            var existing_item = app.InModel.CreateItem(ITEM);
+            app.InModel.CreateItem(ITEM);
+            var item2 = app.InModel.CreateItem(ITEM2);
+            app.InModel.RemoveItem(item);
+            app.Close();
+
+            FastGTDApp app2 = FastGTDApp.StartNewTestApplication();
+            Assert.That(app2.InModel.Items, Has.Count(3));
+            Assert.That(app2.InModel.Items, Has.Member(item2));
+            Assert.That(app2.InModel.Items, Has.Member(existing_item));
             app2.Close();
         }
     }

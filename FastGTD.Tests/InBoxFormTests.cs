@@ -41,13 +41,13 @@ namespace FastGTD.Tests
             form.TextBoxValue = "foo";
             form.ClickControl(InBoxFormButton.Add);
             Assert.That(form.InBoxItems.Count, Is.EqualTo(1));
-            Assert.That(form.InBoxItems[0], Is.EqualTo("foo"));
+            Assert.That(form.InBoxItems[0].Name, Is.EqualTo("foo"));
 
             form.TextBoxValue = "bar";
             form.ClickControl(InBoxFormButton.Add);
             Assert.That(form.InBoxItems.Count, Is.EqualTo(2));
-            Assert.That(form.InBoxItems[0], Is.EqualTo("foo"));
-            Assert.That(form.InBoxItems[1], Is.EqualTo("bar"));
+            Assert.That(form.InBoxItems[0].Name, Is.EqualTo("foo"));
+            Assert.That(form.InBoxItems[1].Name, Is.EqualTo("bar"));
         }
 
         [Test]
@@ -59,7 +59,7 @@ namespace FastGTD.Tests
             form.PerformKeyDown(Keys.Enter);
 
             Assert.That(form.InBoxItems.Count, Is.EqualTo(1));
-            Assert.That(form.InBoxItems[0], Is.EqualTo("foo"));
+            Assert.That(form.InBoxItems[0].Name, Is.EqualTo("foo"));
         }
 
         [Test]
@@ -76,14 +76,14 @@ namespace FastGTD.Tests
         {
             Assert.That(form.InBoxItems.Count, Is.EqualTo(0));
 
-            model.AddItem("foo");
+            model.CreateItem("foo");
             Assert.That(form.InBoxItems.Count, Is.EqualTo(1));
-            model.AddItem("bar");
+            var item = model.CreateItem("bar");
             Assert.That(form.InBoxItems.Count, Is.EqualTo(2));
 
-            model.RemoveItem("bar");
+            model.RemoveItem(item);
             Assert.That(form.InBoxItems.Count, Is.EqualTo(1));
-            Assert.That(form.InBoxItems[0], Is.EqualTo("foo"));
+            Assert.That(form.InBoxItems[0].Name, Is.EqualTo("foo"));
         }
 
         [Test]
@@ -91,9 +91,9 @@ namespace FastGTD.Tests
         {
             Assert.That(form.InBoxItems.Count, Is.EqualTo(0));
 
-            model.AddItem("foo");
+            model.CreateItem("foo");
             Assert.That(form.InBoxItems.Count, Is.EqualTo(1));
-            model.AddItem("bar");
+            model.CreateItem("bar");
             Assert.That(form.InBoxItems.Count, Is.EqualTo(2));
 
             model.ClearItems();
@@ -103,7 +103,7 @@ namespace FastGTD.Tests
         [Test]
         public void DeletingItemWithButtonClick()
         {
-            model.AddItem("foo");
+            model.CreateItem("foo");
             form.SelectItem("foo");
             form.ClickControl(InBoxFormButton.Delete);
             Assert.That(form.InBoxItems.Count, Is.EqualTo(0));
@@ -112,7 +112,7 @@ namespace FastGTD.Tests
         [Test]
         public void DeletingItemWithDeleteKey()
         {
-            model.AddItem("foo");
+            model.CreateItem("foo");
             form.SelectItem("foo");
             form.PerformKeyDown(Keys.Delete);
             Assert.That(form.InBoxItems.Count, Is.EqualTo(0));
@@ -121,25 +121,24 @@ namespace FastGTD.Tests
         [Test]
         public void SelectingAndDeletingMultipleItems()
         {
-            model.AddItem("foo");
-            model.AddItem("foobar");
-            model.AddItem("bar");
-            model.AddItem("fubar");
+            model.CreateItem("foo");
+            model.CreateItem("foobar");
+            model.CreateItem("bar");
+            model.CreateItem("fubar");
             
             IList<string> items = new List<string> { "foobar", "bar", "fubar" };
             form.SelectItems(items);
             form.ClickControl(InBoxFormButton.Delete);
 
-            IList<string> expectedItems = new List<string> {"foo"};
-            Assert.That(model.Items, Is.EqualTo(expectedItems));
+            Assert.That(model.Items[0].Name, Is.EqualTo("foo"));
         }
 
         [Test]
         public void DownAndUpKeysChangeSelection()
         {
-            model.AddItem("foo1");
-            model.AddItem("foo2");
-            model.AddItem("foo3");
+            model.CreateItem("foo1");
+            model.CreateItem("foo2");
+            model.CreateItem("foo3");
 
             form.PerformKeyDown(Keys.Down);
             Assert.That(form.SelectedItems[0], Is.EqualTo("foo1"));
@@ -154,9 +153,9 @@ namespace FastGTD.Tests
         [Test]
         public void DownAndUpKeysShouldNotCrashOutsideBoundaries()
         {
-            model.AddItem("foo1");
-            model.AddItem("foo2");
-            model.AddItem("foo3");
+            model.CreateItem("foo1");
+            model.CreateItem("foo2");
+            model.CreateItem("foo3");
 
             form.PerformKeyDown(Keys.Up);
             form.PerformKeyDown(Keys.Up);
@@ -185,7 +184,7 @@ namespace FastGTD.Tests
         public void UpdatingModelShouldntClearListHeader()
         {
             Assert.That(form.ListHeaderText, Is.EqualTo("New items"));
-            model.AddItem("foo");
+            model.CreateItem("foo");
             Assert.That(form.ListHeaderText, Is.EqualTo("New items"));
         }
     }
@@ -203,7 +202,7 @@ namespace FastGTD.Tests
 
         public InBoxItem CreateNew(string item)
         {
-            return null;
+            return new InBoxItem(item);
         }
 
         public void DeleteByName(string item)

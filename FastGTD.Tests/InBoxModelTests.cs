@@ -17,13 +17,13 @@ namespace FastGTD.Tests
             var repo = new InBoxItemRepository();
             IList<InBoxItem> existing = repo.GetAll();
             int EXPECTED_COUNT = existing.Count + 1;
-            repo.CreateNew(NAME);
+            var item = repo.CreateNew(NAME);
 
             var model = new InBoxModel(new InBoxItemRepository());
             model.Load();
 
             Assert.That(model.Items, Has.Count(EXPECTED_COUNT));
-            Assert.That(model.Items, Has.Member(NAME));
+            Assert.That(model.Items, Has.Member(item));
         }
 
         [Test]
@@ -31,7 +31,7 @@ namespace FastGTD.Tests
         {
             var model = new InBoxModel(new InBoxItemRepository());
             model.Load();
-            model.AddItem("hej");
+            model.CreateItem("hej");
             model.ClearItems();
 
             var persisted_model = new InBoxModel(new InBoxItemRepository());
@@ -47,12 +47,12 @@ namespace FastGTD.Tests
             model.Load();
             model.ClearItems();
 
-            model.AddItem(ITEM_NAME);
+            var expected_item = model.CreateItem(ITEM_NAME);
 
             var persisted_model = new InBoxModel(new InBoxItemRepository());
             persisted_model.Load();
             Assert.That(persisted_model.Items.Count, Is.EqualTo(1));
-            Assert.That(persisted_model.Items, Has.Member(ITEM_NAME));
+            Assert.That(persisted_model.Items, Has.Member(expected_item));
         }
 
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using FastGTD.DataTransfer;
 
 namespace FastGTD
 {
@@ -26,13 +27,13 @@ namespace FastGTD
         private void UpdateFromModel()
         {
             _listViewInBoxItems.Items.Clear();
-            foreach (string item in _model.Items)
+            foreach (InBoxItem item in _model.Items)
             {
-                _listViewInBoxItems.Items.Add(item);
+                _listViewInBoxItems.Items.Add(item.Name);
             }
         }
 
-        public IList<string> InBoxItems
+        public IList<InBoxItem> InBoxItems
         {
             get
             {
@@ -173,16 +174,27 @@ namespace FastGTD
         private void AddInboxItemInTextBox()
         {
             string new_item = _textBox.Text;
-            _model.AddItem(new_item);
+            _model.CreateItem(new_item);
             _textBox.Text = string.Empty;
         }
 
         private void DeleteSelectedItems()
         {
-            foreach(ListViewItem item in _listViewInBoxItems.SelectedItems)
+            IList<InBoxItem> items_to_remove = new List<InBoxItem>();
+            foreach (ListViewItem item in _listViewInBoxItems.SelectedItems)
             {
-                _model.RemoveItem(item.Text);
+                foreach (InBoxItem itm in _model.Items)
+                {
+                    if (itm.Name == item.Text)
+                    {
+                        items_to_remove.Add(itm);
+                        continue;
+                    }
+                }
             }
+
+            foreach (InBoxItem item in items_to_remove)
+                _model.RemoveItem(item);
         }
     }
 }

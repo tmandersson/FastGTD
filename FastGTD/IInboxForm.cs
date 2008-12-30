@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
-using FastGTD.DataTransfer;
 
 namespace FastGTD
 {
@@ -13,9 +12,8 @@ namespace FastGTD
         void ClickControl(InBoxFormButton button);
         void PerformKeyDown(Keys key);
 
-        IList<InBoxItem> InBoxItems { get; }
-
         IList<string> SelectedItems { get; }
+        ListView.ListViewItemCollection ListViewItems { get; }
         void SelectItem(string item);
         void SelectItems(IList<string> items);
 

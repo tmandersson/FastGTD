@@ -18,7 +18,7 @@ namespace FastGTD.Tests
 
             FastGTDApp app = FastGTDApp.StartNewTestApplication();
             app.InModel.ClearItems();
-            Assert.That(app.InForm.InBoxItems.Count, Is.EqualTo(0));
+            Assert.That(app.InForm.ListViewItems.Count, Is.EqualTo(0));
             var expected_item = app.InModel.CreateItem(ITEM);
             app.Close();
 
@@ -36,7 +36,7 @@ namespace FastGTD.Tests
 
             FastGTDApp app = FastGTDApp.StartNewTestApplication();
             app.InModel.ClearItems();
-            Assert.That(app.InForm.InBoxItems.Count, Is.EqualTo(0));
+            Assert.That(app.InForm.ListViewItems.Count, Is.EqualTo(0));
             var item = app.InModel.CreateItem(ITEM);
             var item2 = app.InModel.CreateItem(ITEM2);
             app.InModel.RemoveItem(item);
@@ -57,7 +57,7 @@ namespace FastGTD.Tests
 
             FastGTDApp app = FastGTDApp.StartNewTestApplication();
             app.InModel.ClearItems();
-            Assert.That(app.InForm.InBoxItems.Count, Is.EqualTo(0));
+            Assert.That(app.InForm.ListViewItems.Count, Is.EqualTo(0));
             var item = app.InModel.CreateItem(ITEM);
             var existing_item = app.InModel.CreateItem(ITEM);
             app.InModel.CreateItem(ITEM);

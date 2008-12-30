@@ -33,14 +33,6 @@ namespace FastGTD
             }
         }
 
-        public IList<InBoxItem> InBoxItems
-        {
-            get
-            {
-                return _model.Items;
-            }
-        }
-
         public string TextBoxValue
         {
             get { return _textBox.Text; }
@@ -80,6 +72,11 @@ namespace FastGTD
                 }
                 return list;
             }
+        }
+
+        public ListView.ListViewItemCollection ListViewItems
+        {
+            get { return _listViewInBoxItems.Items; }
         }
 
         public void SelectItem(string item)

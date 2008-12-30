@@ -69,8 +69,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomerTests.cs" />
-    <Compile Include="InBoxFormTests.cs" />
+    <Compile Include="FakeInBoxItemRepository.cs" />
+    <Compile Include="InBoxFormTests.cs">
+    </Compile>
     <Compile Include="InBoxItemRepositoryTests.cs" />
     <Compile Include="InBoxModelTests.cs" />
+    <Compile Include="ShownInBoxFormTests.cs" />
   </ItemGroup>
 </Project>

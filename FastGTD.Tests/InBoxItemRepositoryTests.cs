@@ -7,7 +7,7 @@ using NUnit.Framework.SyntaxHelpers;
 
 namespace FastGTD.Tests
 {
-    [TestFixture]
+    [TestFixture, Explicit, Category("slow")]
     public class InBoxItemRepositoryTests
     {
         [Test]

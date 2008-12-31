@@ -1,11 +1,10 @@
 using System;
-using FastGTD.DataTransfer;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 
 namespace FastGTD.Tests
 {
-    [TestFixture]
+    [TestFixture, Explicit, Category("slow")]
     public class CustomerTests
     {
         [Test]

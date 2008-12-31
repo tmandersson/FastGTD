@@ -42,7 +42,7 @@ namespace FastGTD.Tests
             Assert.That(model.Items, Has.Count(0));
         }
 
-        [Test]
+        [Test, Explicit, Category("slow")]
         public void LoadingExistingItems()
         {
             string NAME = Guid.NewGuid().ToString();
@@ -58,7 +58,7 @@ namespace FastGTD.Tests
             Assert.That(model.Items, Has.Member(item));
         }
 
-        [Test]
+        [Test, Explicit, Category("slow")]
         public void ClearingItemsDeletesItemsInDatabase()
         {
             var model = new InBoxModel(new InBoxItemRepository());
@@ -71,7 +71,7 @@ namespace FastGTD.Tests
             Assert.That(persisted_model.Items.Count, Is.EqualTo(0));
         }
 
-        [Test]
+        [Test, Explicit, Category("slow")]
         public void SaveNewItems()
         {
             const string ITEM_NAME = "hej";

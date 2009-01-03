@@ -61,6 +61,7 @@
       <DependentUpon>InBoxForm.cs</DependentUpon>
     </Compile>
     <Compile Include="InBoxModel.cs" />
+    <Compile Include="ListViewController.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>

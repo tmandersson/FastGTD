@@ -5,7 +5,7 @@ using FastGTD.DataTransfer;
 
 namespace FastGTD
 {
-    public partial class InBoxForm : Form, IInBoxForm
+    public partial class InBoxForm : Form, IInBoxForm, IInBoxView
     {
         private readonly InBoxModel _model;
         private readonly ListViewController _list_controller;
@@ -167,6 +167,11 @@ namespace FastGTD
 
             foreach (InBoxItem item in items_to_remove)
                 _model.RemoveItem(item);
+        }
+
+        public void SetFocusOnTextBox()
+        {
+            _textBox.Focus();
         }
     }
 }

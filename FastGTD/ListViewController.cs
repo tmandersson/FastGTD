@@ -29,9 +29,15 @@ namespace FastGTD
 
             return GetNextIndex(step);
         }
+
         private bool TryingToStepBeforeFirstItem(int step)
         {
             return GetNextIndex(step) == -1;
+        }
+
+        private bool TryingToStepAfterLastItem(int step)
+        {
+            return GetNextIndex(step) == ItemsCount();
         }
 
         private bool NoItemSelected()
@@ -47,11 +53,6 @@ namespace FastGTD
         private int LastIndex()
         {
             return ItemsCount() - 1;
-        }
-
-        private bool TryingToStepAfterLastItem(int step)
-        {
-            return GetNextIndex(step) == ItemsCount();
         }
 
         private int GetNextIndex(int step)

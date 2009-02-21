@@ -21,8 +21,10 @@ namespace FastGTD
         public void Start()
         {
             _inModel = new InBoxModel(new InBoxItemRepository());
-            _inForm = new InBoxForm(InModel);
-            _inForm.Show();
+            var view  = new InBoxForm(InModel);
+            _inForm = view;
+            var controller = new InBoxController(view);
+            controller.Show();
             _inModel.Load();
         }
 

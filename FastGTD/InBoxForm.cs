@@ -16,23 +16,22 @@ namespace FastGTD
 
             _model = model;
 
-            KeyDown += KeyDownHandler;
-            KeyPreview = true;
-            Resize += delegate { SetFirstColumnFullWidth(); };
-            Shown += delegate { SetFirstColumnFullWidth(); };
-            _buttonAdd.Click += delegate { AddInboxItemInTextBox(); };
-            _buttonDelete.Click += delegate { DeleteSelectedItems(); };
             _model.Changed += UpdateFromModel;
 
-            _list_controller = new ListViewController(_listViewInBoxItems);
+            _list_controller = new ListViewController(ListViewInBoxItems);
+        }
+
+        public ListView ListViewInBoxItems
+        {
+            get { return _listViewInBoxItems; }
         }
 
         private void UpdateFromModel()
         {
-            _listViewInBoxItems.Items.Clear();
+            ListViewInBoxItems.Items.Clear();
             foreach (InBoxItem item in _model.Items)
             {
-                _listViewInBoxItems.Items.Add(item.Name);
+                ListViewInBoxItems.Items.Add(item.Name);
             }
         }
 
@@ -61,7 +60,7 @@ namespace FastGTD
 
         public string ListHeaderText
         {
-            get { return _listViewInBoxItems.Columns[0].Text; }
+            get { return ListViewInBoxItems.Columns[0].Text; }
         }
 
         public IList<string> SelectedItems
@@ -69,7 +68,7 @@ namespace FastGTD
             get
             {
                 IList<string> list = new List<string>();
-                foreach(ListViewItem item in _listViewInBoxItems.SelectedItems)
+                foreach(ListViewItem item in ListViewInBoxItems.SelectedItems)
                 {
                     list.Add(item.Text);
                 }
@@ -79,7 +78,12 @@ namespace FastGTD
 
         public ListView.ListViewItemCollection ListViewItems
         {
-            get { return _listViewInBoxItems.Items; }
+            get { return ListViewInBoxItems.Items; }
+        }
+
+        public ListViewController ListController
+        {
+            get { return _list_controller; }
         }
 
         public void SelectItem(string item)
@@ -90,8 +94,8 @@ namespace FastGTD
 
         public void SelectItems(IList<string> items)
         {
-            _listViewInBoxItems.SelectedItems.Clear();
-            foreach (ListViewItem item in _listViewInBoxItems.Items)
+            ListViewInBoxItems.SelectedItems.Clear();
+            foreach (ListViewItem item in ListViewInBoxItems.Items)
             {
                 if (items.Contains(item.Text))
                     item.Selected = true;
@@ -120,53 +124,18 @@ namespace FastGTD
             OnKeyDown(new KeyEventArgs(key));
         }
 
-        private void SetFirstColumnFullWidth()
+        public void SetFirstColumnFullWidth()
         {
-            _listViewInBoxItems.Columns[0].Width = _listViewInBoxItems.Width - 5;
+            ListViewInBoxItems.Columns[0].Width = ListViewInBoxItems.Width - 5;
         }
 
-        private void KeyDownHandler(object sender, KeyEventArgs e)
+        public event EventHandler AddButtonClick;
+        public event EventHandler DeleteButtonClick;
+
+        public string TextBoxText
         {
-            bool key_handled = true;
-            if (e.KeyData == Keys.Enter)
-                AddInboxItemInTextBox();
-            else if (e.KeyData == Keys.Delete)
-                DeleteSelectedItems();
-            else if (e.KeyData == Keys.Down)
-                _list_controller.ChangeSelection(1);
-            else if (e.KeyData == Keys.Up)
-                _list_controller.ChangeSelection(-1);
-            else
-                key_handled = false;
-
-            if (key_handled)
-                e.SuppressKeyPress = true;
-        }
-
-        private void AddInboxItemInTextBox()
-        {
-            string new_item = _textBox.Text;
-            _model.CreateItem(new_item);
-            _textBox.Text = string.Empty;
-        }
-
-        private void DeleteSelectedItems()
-        {
-            IList<InBoxItem> items_to_remove = new List<InBoxItem>();
-            foreach (ListViewItem item in _listViewInBoxItems.SelectedItems)
-            {
-                foreach (InBoxItem itm in _model.Items)
-                {
-                    if (itm.Name == item.Text)
-                    {
-                        items_to_remove.Add(itm);
-                        continue;
-                    }
-                }
-            }
-
-            foreach (InBoxItem item in items_to_remove)
-                _model.RemoveItem(item);
+            get { return _textBox.Text; }
+            set { _textBox.Text = value; }
         }
 
         public void SetFocusOnTextBox()
@@ -177,6 +146,18 @@ namespace FastGTD
         public void StartMessageLoop()
         {
             Application.Run(this);
+        }
+
+        private void _buttonAdd_Click(object sender, EventArgs e)
+        {
+            if (AddButtonClick != null)
+                AddButtonClick.Invoke(sender, e);
+        }
+
+        private void _buttonDelete_Click(object sender, EventArgs e)
+        {
+            if (DeleteButtonClick != null)
+                DeleteButtonClick.Invoke(sender, e);
         }
     }
 }

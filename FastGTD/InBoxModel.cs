@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using FastGTD.DataAccess;
 using FastGTD.DataTransfer;
 
@@ -7,6 +8,9 @@ namespace FastGTD
     public interface IInBoxModel
     {
         void Load();
+        InBoxItem CreateItem(string item);
+        IList<InBoxItem> Items { get; }
+        void RemoveItem(InBoxItem item);
     }
 
     public class InBoxModel : IInBoxModel

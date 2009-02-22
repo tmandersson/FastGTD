@@ -16,6 +16,7 @@ namespace FastGTD.Tests
         {
             model = new InBoxModel(new FakeInBoxItemRepository());
             form = new InBoxForm(model);
+            new InBoxController(form, model);
         }
 
         [Test]

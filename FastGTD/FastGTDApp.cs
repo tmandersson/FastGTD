@@ -5,37 +5,37 @@ namespace FastGTD
 {
     public class FastGTDApp
     {
-        private InBoxModel _inModel;
-        private IInBoxForm _inForm;
+        private InBoxModel _inbox_model;
+        private IInBoxView _inbox_view;
+        private InBoxController _controller;
 
-        public InBoxModel InModel
+        public InBoxModel InboxModel
         {
-            get { return _inModel; }
+            get { return _inbox_model; }
         }
 
-        public IInBoxForm InForm
+        public IInBoxForm InboxForm
         {
-            get { return _inForm; }
+            get { return (IInBoxForm) _inbox_view; }
         }
 
         public void Start()
         {
-            _inModel = new InBoxModel(new InBoxItemRepository());
-            var view  = new InBoxForm(InModel);
-            _inForm = view;
-            var controller = new InBoxController(view);
-            controller.Show();
-            _inModel.Load();
+            _inbox_model = new InBoxModel(new InBoxItemRepository());
+            _inbox_view = new InBoxForm(InboxModel);
+            _controller = new InBoxController(_inbox_view, _inbox_model);
+
+            _controller.Show();
+        }
+
+        public void StartMessageLoop()
+        {
+            _inbox_view.StartMessageLoop();
         }
 
         public void Close()
         {
-            InForm.Close();
-        }
-
-        public void StartWinFormsMessageLoop()
-        {
-            Application.Run((Form)_inForm);
+            InboxForm.Close();
         }
 
         public static FastGTDApp StartNewTestApplication()

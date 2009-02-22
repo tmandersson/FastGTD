@@ -173,5 +173,10 @@ namespace FastGTD
         {
             _textBox.Focus();
         }
+
+        public void StartMessageLoop()
+        {
+            Application.Run(this);
+        }
     }
 }

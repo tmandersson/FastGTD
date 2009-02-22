@@ -8,7 +8,7 @@ namespace FastGTD
         {
             var app = new FastGTDApp();
             app.Start();
-            app.StartWinFormsMessageLoop();
+            app.StartMessageLoop();
             app.Close();
             return 0;
         }

@@ -4,7 +4,12 @@ using FastGTD.DataTransfer;
 
 namespace FastGTD
 {
-    public class InBoxModel
+    public interface IInBoxModel
+    {
+        void Load();
+    }
+
+    public class InBoxModel : IInBoxModel
     {
         // TODO: InBoxModel contains strings and repo contains InBoxItems. Fix?
         // TODO: Also: When removing items with same name one is removed in gui but all in repo.

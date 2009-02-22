@@ -35,7 +35,7 @@ namespace FastGTD
 
         public void Close()
         {
-            InboxForm.Close();
+            _inbox_view.Close();
         }
 
         public static FastGTDApp StartNewTestApplication()

@@ -6,5 +6,6 @@ namespace FastGTD
 
         void Show();
         void StartMessageLoop();
+        void Close();
     }
 }

@@ -1,0 +1,3 @@
+Få bort alla TODOs utspridda i koden.
+Städa upp koden och designen så jag blir någorlunda nöjd med den innan vi går vidare i funktionalitet?
+Vad är nästa steg/user story jag ska göra?

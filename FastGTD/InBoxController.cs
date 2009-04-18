@@ -16,6 +16,8 @@ namespace FastGTD
             _model = model;
             _list_controller = _view.ListController;
 
+            _model.Changed += UpdateFromModel;
+
             _view.KeyDown += KeyDownHandler;
             _view.KeyPreview = true;
             _view.Resize += delegate { _view.SetFirstColumnFullWidth(); };
@@ -29,6 +31,15 @@ namespace FastGTD
             _view.SetFocusOnTextBox();
             _view.SetFirstColumnFullWidth();
             _model.Load();
+        }
+
+        private void UpdateFromModel()
+        {
+            _view.ClearInBoxItems();
+            foreach (InBoxItem item in _model.Items)
+            {
+                _view.AddInBoxItem(item);
+            }
         }
 
         private void KeyDownHandler(object sender, KeyEventArgs e)

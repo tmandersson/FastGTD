@@ -15,7 +15,7 @@ namespace FastGTD.Tests
         public void SetupTests()
         {
             model = new InBoxModel(new FakeInBoxItemRepository());
-            form = new InBoxForm(model);
+            form = new InBoxForm();
             new InBoxController(form, model);
         }
 

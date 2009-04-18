@@ -1,6 +1,29 @@
 * Få bort alla TODOs utspridda i koden.
-* Städa upp koden och designen så jag blir någorlunda nöjd med den innan vi går vidare i funktionalitet?
+!* Städa upp koden och designen så jag blir någorlunda nöjd med den innan vi går vidare i funktionalitet?
 * Vad är nästa steg/user story jag ska göra?
-* Vad gjorde jag tidigare? ... Påbörjad refaktorering? Fortsätta?
-* Refaktorerar InBoxView tunn och view-interfacet generellt så att det blir lätt att göra en WPF-version.
-* WPF-version av gränssnittet.
+?* Refaktorerar InBoxView tunn och view-interfacet generellt så att det blir lätt att göra en WPF-version.
+?* WPF-version av gränssnittet.
+!* Refaktorera istället klart view-interfacet tunnt och enligt MVP-pattern 
+men mer för att göra koden lätt att förstå och elegant än pga WPF-version.
+
+* Flytta kod som inte ska vara i view-klassen till presentern/controllern.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* Resharper 4.5
+* NDepend
+* NCover senare?

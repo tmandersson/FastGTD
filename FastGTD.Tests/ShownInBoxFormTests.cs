@@ -14,7 +14,7 @@ namespace FastGTD.Tests
         public void SetupTests()
         {
             model = new InBoxModel(new FakeInBoxItemRepository());
-            form = new InBoxForm(model);
+            form = new InBoxForm();
             var controller = new InBoxController(form, model);
             controller.Show(); // TODO: Eliminate need to show dialog when testing.
         }

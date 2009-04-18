@@ -11,6 +11,7 @@ namespace FastGTD
         InBoxItem CreateItem(string item);
         IList<InBoxItem> Items { get; }
         void RemoveItem(InBoxItem item);
+        event VoidDelegate Changed;
     }
 
     public class InBoxModel : IInBoxModel

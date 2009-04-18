@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using FastGTD.DataTransfer;
 
 namespace FastGTD
 {
@@ -20,5 +21,8 @@ namespace FastGTD
         void SetFirstColumnFullWidth();
         event EventHandler AddButtonClick;
         event EventHandler DeleteButtonClick;
+        
+        void ClearInBoxItems();
+        void AddInBoxItem(InBoxItem item);
     }
 }

@@ -7,16 +7,11 @@ namespace FastGTD
 {
     public partial class InBoxForm : Form, IInBoxForm, IInBoxView
     {
-        private readonly InBoxModel _model;
         private readonly ListViewController _list_controller;
 
-        public InBoxForm(InBoxModel model)
+        public InBoxForm()
         {
             InitializeComponent();
-
-            _model = model;
-
-            _model.Changed += UpdateFromModel;
 
             _list_controller = new ListViewController(ListViewInBoxItems);
         }
@@ -26,13 +21,14 @@ namespace FastGTD
             get { return _listViewInBoxItems; }
         }
 
-        private void UpdateFromModel()
+        public void AddInBoxItem(InBoxItem item)
+        {
+            ListViewInBoxItems.Items.Add(item.Name);
+        }
+
+        public void ClearInBoxItems()
         {
             ListViewInBoxItems.Items.Clear();
-            foreach (InBoxItem item in _model.Items)
-            {
-                ListViewInBoxItems.Items.Add(item.Name);
-            }
         }
 
         public string TextBoxValue

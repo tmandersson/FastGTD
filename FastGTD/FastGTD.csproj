@@ -53,7 +53,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FastGTDApp.cs" />
-    <Compile Include="IInboxForm.cs" />
     <Compile Include="IInBoxView.cs" />
     <Compile Include="InBoxController.cs" />
     <Compile Include="InBoxForm.cs">

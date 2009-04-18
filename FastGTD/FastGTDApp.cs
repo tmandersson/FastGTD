@@ -14,9 +14,9 @@ namespace FastGTD
             get { return _inbox_model; }
         }
 
-        public IInBoxForm InboxForm
+        public IInBoxView InboxView
         {
-            get { return (IInBoxForm) _inbox_view; }
+            get { return _inbox_view; }
         }
 
         public void Start()

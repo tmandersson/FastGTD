@@ -5,7 +5,7 @@ using FastGTD.DataTransfer;
 
 namespace FastGTD
 {
-    public partial class InBoxForm : Form, IInBoxForm, IInBoxView
+    public partial class InBoxForm : Form, IInBoxView
     {
         private readonly ListViewController _list_controller;
 
@@ -155,5 +155,11 @@ namespace FastGTD
             if (DeleteButtonClick != null)
                 DeleteButtonClick.Invoke(sender, e);
         }
+    }
+
+    public enum InBoxFormButton
+    {
+        Add,
+        Delete
     }
 }

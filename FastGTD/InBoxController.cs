@@ -8,13 +8,11 @@ namespace FastGTD
     {
         private readonly IInBoxView _view;
         private readonly IInBoxModel _model;
-        private readonly ListViewController _list_controller;
 
         public InBoxController(IInBoxView view, IInBoxModel model)
         {
             _view = view;
             _model = model;
-            _list_controller = _view.ListController;
 
             _model.Changed += UpdateFromModel;
 
@@ -50,9 +48,9 @@ namespace FastGTD
             else if (e.KeyData == Keys.Delete)
                 DeleteSelectedItems();
             else if (e.KeyData == Keys.Down)
-                _list_controller.ChangeSelection(1);
+                _view.MoveListSelectionDown();
             else if (e.KeyData == Keys.Up)
-                _list_controller.ChangeSelection(-1);
+                _view.MoveListSelectionUp();
             else
                 key_handled = false;
 

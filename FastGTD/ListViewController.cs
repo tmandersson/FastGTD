@@ -4,11 +4,11 @@ namespace FastGTD
 {
     public class ListViewController
     {
-        private readonly ListView _listViewInBoxItems;
+        private readonly ListView _list_view;
 
-        public ListViewController(ListView listView)
+        public ListViewController(ListView list_view)
         {
-            _listViewInBoxItems = listView;
+            _list_view = list_view;
         }
 
         public void ChangeSelection(int step)
@@ -62,25 +62,25 @@ namespace FastGTD
 
         private int GetCurrentlySelectedIndex()
         {
-            ListViewItem last_selected = _listViewInBoxItems.SelectedItems[SelectedItemsCount() - 1];
+            ListViewItem last_selected = _list_view.SelectedItems[SelectedItemsCount() - 1];
             return last_selected.Index;
         }
 
         private void SetSelectedItem(int index)
         {
-            _listViewInBoxItems.Focus();
-            _listViewInBoxItems.SelectedItems.Clear();
-            _listViewInBoxItems.Items[index].Selected = true;
+            _list_view.Focus();
+            _list_view.SelectedItems.Clear();
+            _list_view.Items[index].Selected = true;
         }
 
         private int SelectedItemsCount()
         {
-            return _listViewInBoxItems.SelectedItems.Count;
+            return _list_view.SelectedItems.Count;
         }
 
         private int ItemsCount()
         {
-            return _listViewInBoxItems.Items.Count;
+            return _list_view.Items.Count;
         }
     }
 }

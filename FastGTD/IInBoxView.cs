@@ -12,7 +12,6 @@ namespace FastGTD
         void StartMessageLoop();
         void Close();
 
-        ListViewController ListController { get; }
         bool KeyPreview { get; set; }
         string TextBoxText { get; set; }
         ListView ListViewInBoxItems { get; }
@@ -24,5 +23,7 @@ namespace FastGTD
         
         void ClearInBoxItems();
         void AddInBoxItem(InBoxItem item);
+        void MoveListSelectionDown();
+        void MoveListSelectionUp();
     }
 }

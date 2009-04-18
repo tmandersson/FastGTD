@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace FastGTD
+﻿namespace FastGTD
 {
     partial class InBoxForm
     {

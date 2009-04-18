@@ -6,7 +6,7 @@
 !* Refaktorera istället klart view-interfacet tunnt och enligt MVP-pattern 
 men mer för att göra koden lätt att förstå och elegant än pga WPF-version.
 
-* Flytta kod som inte ska vara i view-klassen till presentern/controllern.
+* Flytta kod som bara är till för att testa InBoxForm till en TestableInBoxForm sub-klass.
 
 
 

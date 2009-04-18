@@ -2,11 +2,11 @@ using System.Windows.Forms;
 
 namespace FastGTD
 {
-    public class ListViewController
+    public class ListViewSelectionChanger
     {
         private readonly ListView _list_view;
 
-        public ListViewController(ListView list_view)
+        public ListViewSelectionChanger(ListView list_view)
         {
             _list_view = list_view;
         }

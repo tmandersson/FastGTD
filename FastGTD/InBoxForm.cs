@@ -7,13 +7,13 @@ namespace FastGTD
 {
     public partial class InBoxForm : Form, IInBoxView
     {
-        private readonly ListViewController _list_controller;
+        private readonly ListViewSelectionChanger _selection_changer;
 
         public InBoxForm()
         {
             InitializeComponent();
 
-            _list_controller = new ListViewController(ListViewInBoxItems);
+            _selection_changer = new ListViewSelectionChanger(ListViewInBoxItems);
         }
 
         public ListView ListViewInBoxItems
@@ -28,12 +28,12 @@ namespace FastGTD
 
         public void MoveListSelectionDown()
         {
-            _list_controller.ChangeSelection(1);
+            _selection_changer.ChangeSelection(1);
         }
 
         public void MoveListSelectionUp()
         {
-            _list_controller.ChangeSelection(-1);
+            _selection_changer.ChangeSelection(-1);
         }
 
         public void ClearInBoxItems()

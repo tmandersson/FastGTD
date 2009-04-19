@@ -6,7 +6,6 @@
 !* Refaktorera istället klart view-interfacet tunnt och enligt MVP-pattern 
 men mer för att göra koden lätt att förstå och elegant än pga WPF-version.
 
-* Eliminera button enum.
 
 
 

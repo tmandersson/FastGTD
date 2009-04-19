@@ -39,7 +39,7 @@ namespace FastGTD.Tests
             
             IList<string> items = new List<string> { "foobar", "bar", "fubar" };
             form.SelectItems(items);
-            form.ClickControl(InBoxFormButton.Delete);
+            form.ClickDeleteButton();
 
             Assert.That(model.Items[0].Name, Is.EqualTo("foo"));
         }

@@ -31,12 +31,12 @@ namespace FastGTD.Tests
         public void AddingInBoxItemWithButtonClick()
         {
             form.TextBoxText = "foo";
-            form.ClickControl(InBoxFormButton.Add);
+            form.ClickAddButton();
             Assert.That(model.Items, Has.Count(1));
             Assert.That(model.Items[0].Name, Is.EqualTo("foo"));
 
             form.TextBoxText = "bar";
-            form.ClickControl(InBoxFormButton.Add);
+            form.ClickAddButton();
             Assert.That(model.Items, Has.Count(2));
             Assert.That(model.Items[0].Name, Is.EqualTo("foo"));
             Assert.That(model.Items[1].Name, Is.EqualTo("bar"));
@@ -47,7 +47,7 @@ namespace FastGTD.Tests
         {
             form.TextBoxText = "foo";
             Assert.That(form.TextBoxText, Is.EqualTo("foo"));
-            form.ClickControl(InBoxFormButton.Add);
+            form.ClickAddButton();
             Assert.That(form.TextBoxText, Is.EqualTo(string.Empty));
         }
 
@@ -56,7 +56,7 @@ namespace FastGTD.Tests
         {
             model.CreateItem("foo");
             form.SelectItem("foo");
-            form.ClickControl(InBoxFormButton.Delete);
+            form.ClickDeleteButton();
             Assert.That(model.Items, Has.Count(0));
         }
 

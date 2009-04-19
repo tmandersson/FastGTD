@@ -57,32 +57,19 @@ namespace FastGTD.Tests
             }
         }
 
-        public void ClickControl(InBoxFormButton button_id)
+        public void ClickAddButton()
         {
-            Button button;
-            switch (button_id)
-            {
-                case InBoxFormButton.Add:
-                    button = _buttonAdd;
-                    break;
-                case InBoxFormButton.Delete:
-                    button = _buttonDelete;
-                    break;
-                default:
-                    throw new InvalidOperationException("Unknown button.");
-            }
-            button.PerformClick();
+            _buttonAdd.PerformClick();
+        }
+
+        public void ClickDeleteButton()
+        {
+            _buttonDelete.PerformClick();
         }
 
         public void PerformKeyDown(Keys key)
         {
             OnKeyDown(new KeyEventArgs(key));
         }
-    }
-
-    public enum InBoxFormButton
-    {
-        Add,
-        Delete
     }
 }

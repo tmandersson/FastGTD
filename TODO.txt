@@ -6,8 +6,8 @@
 !* Refaktorera istället klart view-interfacet tunnt och enligt MVP-pattern 
 men mer för att göra koden lätt att förstå och elegant än pga WPF-version.
 
-
-
+* Granska view och model-interfacen. Enkla och självklara?
+* Fortsätt granska och refaktorera view, controller och model.
 
 
 

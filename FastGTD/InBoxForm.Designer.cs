@@ -106,7 +106,7 @@
         private System.Windows.Forms.ColumnHeader newItemsHeader;
         private System.Windows.Forms.TextBox _textBox;
         private System.Windows.Forms.ListView _listViewInBoxItems;
-        private System.Windows.Forms.Button _buttonAdd;
-        private System.Windows.Forms.Button _buttonDelete;
+        protected System.Windows.Forms.Button _buttonAdd;
+        protected System.Windows.Forms.Button _buttonDelete;
     }
 }

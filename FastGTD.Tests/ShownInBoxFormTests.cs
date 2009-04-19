@@ -7,14 +7,14 @@ namespace FastGTD.Tests
     [TestFixture]
     public class ShownInBoxFormTests
     {
-        private InBoxForm form;
+        private TestableInBoxForm form;
         private InBoxModel model;
 
         [SetUp]
         public void SetupTests()
         {
             model = new InBoxModel(new FakeInBoxItemRepository());
-            form = new InBoxForm();
+            form = new TestableInBoxForm();
             var controller = new InBoxController(form, model);
             controller.Show(); // TODO: Eliminate need to show dialog when testing.
         }
@@ -30,12 +30,12 @@ namespace FastGTD.Tests
         [Test]
         public void AddingInBoxItemWithButtonClick()
         {
-            form.TextBoxValue = "foo";
+            form.TextBoxText = "foo";
             form.ClickControl(InBoxFormButton.Add);
             Assert.That(model.Items, Has.Count(1));
             Assert.That(model.Items[0].Name, Is.EqualTo("foo"));
 
-            form.TextBoxValue = "bar";
+            form.TextBoxText = "bar";
             form.ClickControl(InBoxFormButton.Add);
             Assert.That(model.Items, Has.Count(2));
             Assert.That(model.Items[0].Name, Is.EqualTo("foo"));
@@ -45,10 +45,10 @@ namespace FastGTD.Tests
         [Test]
         public void TextBoxIsClearedOnAdd()
         {
-            form.TextBoxValue = "foo";
-            Assert.That(form.TextBoxValue, Is.EqualTo("foo"));
+            form.TextBoxText = "foo";
+            Assert.That(form.TextBoxText, Is.EqualTo("foo"));
             form.ClickControl(InBoxFormButton.Add);
-            Assert.That(form.TextBoxValue, Is.EqualTo(string.Empty));
+            Assert.That(form.TextBoxText, Is.EqualTo(string.Empty));
         }
 
         [Test]

@@ -8,21 +8,21 @@ namespace FastGTD.Tests
     [TestFixture]
     public class InBoxFormTests
     {
-        private InBoxForm form;
+        private TestableInBoxForm form;
         private InBoxModel model;
 
         [SetUp]
         public void SetupTests()
         {
             model = new InBoxModel(new FakeInBoxItemRepository());
-            form = new InBoxForm();
+            form = new TestableInBoxForm();
             new InBoxController(form, model);
         }
 
         [Test]
         public void AddingInBoxItemWithEnterKey()
         {
-            form.TextBoxValue = "foo";
+            form.TextBoxText = "foo";
             form.PerformKeyDown(Keys.Enter);
 
             Assert.That(model.Items, Has.Count(1));

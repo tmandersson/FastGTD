@@ -41,90 +41,6 @@ namespace FastGTD
             ListViewInBoxItems.Items.Clear();
         }
 
-        public string TextBoxValue
-        {
-            get { return _textBox.Text; }
-            set { _textBox.Text = value; }
-        }
-
-        public Control FocusedControl
-        {
-            get
-            {
-                if (Focused) return this;
-                
-                foreach (Control c in Controls)
-                {
-                    if (c.Focused)
-                    {
-                        return c;
-                    }
-                }
-                return null;
-            }
-        }
-
-        public string ListHeaderText
-        {
-            get { return ListViewInBoxItems.Columns[0].Text; }
-        }
-
-        public IList<string> SelectedItems
-        {
-            get
-            {
-                IList<string> list = new List<string>();
-                foreach(ListViewItem item in ListViewInBoxItems.SelectedItems)
-                {
-                    list.Add(item.Text);
-                }
-                return list;
-            }
-        }
-
-        public ListView.ListViewItemCollection ListViewItems
-        {
-            get { return ListViewInBoxItems.Items; }
-        }
-
-        public void SelectItem(string item)
-        {
-            IList<string> items = new List<string> { item };
-            SelectItems(items);
-        }
-
-        public void SelectItems(IList<string> items)
-        {
-            ListViewInBoxItems.SelectedItems.Clear();
-            foreach (ListViewItem item in ListViewInBoxItems.Items)
-            {
-                if (items.Contains(item.Text))
-                    item.Selected = true;
-            }
-        }
-
-        public void ClickControl(InBoxFormButton button_id)
-        {
-            Button button;
-            switch (button_id)
-            {
-                case InBoxFormButton.Add:
-                    button = _buttonAdd;
-                    break;
-                case InBoxFormButton.Delete:
-                    button = _buttonDelete;
-                    break;
-                default:
-                    throw new InvalidOperationException("Unknown button.");
-            }
-            button.PerformClick();
-        }
-
-        public void PerformKeyDown(Keys key)
-        {
-            OnKeyDown(new KeyEventArgs(key));
-        }
-
         public void SetFirstColumnFullWidth()
         {
             ListViewInBoxItems.Columns[0].Width = ListViewInBoxItems.Width - 5;
@@ -160,11 +76,5 @@ namespace FastGTD
             if (DeleteButtonClick != null)
                 DeleteButtonClick.Invoke(sender, e);
         }
-    }
-
-    public enum InBoxFormButton
-    {
-        Add,
-        Delete
     }
 }

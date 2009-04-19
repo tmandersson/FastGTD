@@ -23,7 +23,7 @@ namespace FastGTD.Tests
             }
         }
 
-        public IList<string> SelectedItems
+        public new IList<string> SelectedItems
         {
             get
             {

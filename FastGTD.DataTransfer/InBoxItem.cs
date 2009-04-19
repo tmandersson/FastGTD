@@ -10,7 +10,7 @@
             _name = name;
         }
 
-        public virtual int ID { get; set; }
+        public virtual int Id { get; set; }
         public virtual string Name
         {
             get { return _name; }
@@ -32,18 +32,18 @@
             return Equals((InBoxItem) obj);
         }
 
-        public virtual bool Equals(InBoxItem obj)
+        protected virtual bool Equals(InBoxItem obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return Equals(obj._name, _name) && obj.ID == ID;
+            return Equals(obj._name, _name) && obj.Id == Id;
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                return ((_name != null ? _name.GetHashCode() : 0)*397) ^ ID;
+                return ((_name != null ? _name.GetHashCode() : 0)*397) ^ Id;
             }
         }
     }

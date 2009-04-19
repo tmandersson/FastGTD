@@ -9,7 +9,10 @@ men mer för att göra koden lätt att förstå och elegant än pga WPF-version.
 * Granska view och model-interfacen. Enkla och självklara?
 * Fortsätt granska och refaktorera view, controller och model.
 
-
+* Isolera controllern ifrån WinForms KeyDown-eventhandlingen. Fånga keydown i viewn istället och raise egna events 
+för tex enter, knapp ner etc. Blir då av med case:n i controllern. (Behöver förvisso ändå en case i viewn. Men detta innebär 
+att jag får bort lite Windows-Forms specifika saker ifrån Controllern. 
+* SelectedItems på TestableFOrm
 
 
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using FastGTD.DataTransfer;
 
@@ -12,9 +13,10 @@ namespace FastGTD
         void StartMessageLoop();
         void Close();
 
-        bool KeyPreview { get; set; }
+        bool KeyPreview { set; }
         string TextBoxText { get; set; }
         ListView ListViewInBoxItems { get; }
+        IEnumerable<InBoxItem> SelectedItems { get; }
         event KeyEventHandler KeyDown;
         event EventHandler Resize;
         void SetFirstColumnFullWidth();

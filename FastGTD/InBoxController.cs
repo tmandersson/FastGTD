@@ -67,21 +67,10 @@ namespace FastGTD
 
         private void DeleteSelectedItems()
         {
-            IList<InBoxItem> items_to_remove = new List<InBoxItem>();
-            foreach (ListViewItem item in _view.ListViewInBoxItems.SelectedItems)
+            foreach (InBoxItem item in _view.SelectedItems)
             {
-                foreach (InBoxItem itm in _model.Items)
-                {
-                    if (itm.Name == item.Text)
-                    {
-                        items_to_remove.Add(itm);
-                        continue;
-                    }
-                }
-            }
-
-            foreach (InBoxItem item in items_to_remove)
                 _model.RemoveItem(item);
+            }
         }
     }
 }

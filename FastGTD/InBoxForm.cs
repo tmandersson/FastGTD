@@ -23,7 +23,8 @@ namespace FastGTD
 
         public void AddInBoxItem(InBoxItem item)
         {
-            ListViewInBoxItems.Items.Add(item.Name);
+            var list_item = new ListViewItem(item.Name) {Tag = item};
+            ListViewInBoxItems.Items.Add(list_item);
         }
 
         public void MoveListSelectionDown()
@@ -39,6 +40,19 @@ namespace FastGTD
         public void ClearInBoxItems()
         {
             ListViewInBoxItems.Items.Clear();
+        }
+
+        public IEnumerable<InBoxItem> SelectedItems
+        {
+            get
+            {
+                IList<InBoxItem> result = new List<InBoxItem>();
+                foreach (ListViewItem item in ListViewInBoxItems.SelectedItems)
+                {
+                    result.Add((InBoxItem) item.Tag);
+                }
+                return result;
+            }
         }
 
         public void SetFirstColumnFullWidth()

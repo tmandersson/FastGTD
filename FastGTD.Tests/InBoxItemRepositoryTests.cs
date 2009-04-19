@@ -13,38 +13,38 @@ namespace FastGTD.Tests
         [Test]
         public void SaveInBoxItem()
         {
-            string NAME = Guid.NewGuid().ToString();
+            string name = Guid.NewGuid().ToString();
             var repo = new InBoxItemRepository();
-            InBoxItem item = repo.CreateNew(NAME);
+            InBoxItem item = repo.CreateNew(name);
 
             var repo2 = new InBoxItemRepository();
-            var actual_item = repo2.GetByID(item.ID);
-            Assert.That(actual_item.Name, Is.EqualTo(NAME));
+            var actual_item = repo2.GetById(item.Id);
+            Assert.That(actual_item.Name, Is.EqualTo(name));
         }
 
         [Test]
         public void GetAllItems()
         {
-            string NAME = Guid.NewGuid().ToString();
+            string name = Guid.NewGuid().ToString();
             var repo = new InBoxItemRepository();
             IList<InBoxItem> existing = repo.GetAll();
-            int EXPECTED_COUNT = existing.Count + 1;
-            repo.CreateNew(NAME);
+            int expected_count = existing.Count + 1;
+            repo.CreateNew(name);
 
             var repo2 = new InBoxItemRepository();
             IList<InBoxItem> result = repo2.GetAll();
 
-            Assert.That(result, Has.Count(EXPECTED_COUNT));
-            Assert.That(result, Has.Some.Property("Name").EqualTo(NAME));
+            Assert.That(result, Has.Count(expected_count));
+            Assert.That(result, Has.Some.Property("Name").EqualTo(name));
         }
 
         [Test]
         public void DeleteAllItems()
         {
-            string NAME = Guid.NewGuid().ToString();
+            string name = Guid.NewGuid().ToString();
             const int EXPECTED_COUNT = 0;
             var repo = new InBoxItemRepository();
-            repo.CreateNew(NAME);
+            repo.CreateNew(name);
 
             repo.DeleteAll();
 
@@ -54,16 +54,17 @@ namespace FastGTD.Tests
         }
 
         [Test]
-        public void DeleteByName()
+        public void Delete()
         {
-            string NAME = Guid.NewGuid().ToString();
-            const int EXPECTED_COUNT = 0;
+            string name = Guid.NewGuid().ToString();
+            const int EXPECTED_COUNT = 2;
             var repo = new InBoxItemRepository();
-            repo.CreateNew(NAME);
-            repo.CreateNew(NAME);
-            repo.CreateNew(NAME);
+            repo.DeleteAll();
+            var item = repo.CreateNew(name);
+            repo.CreateNew(name);
+            repo.CreateNew(name);
 
-            repo.DeleteByName(NAME);
+            repo.Delete(item);
 
             var repo2 = new InBoxItemRepository();
             IList<InBoxItem> result = repo2.GetAll();

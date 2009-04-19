@@ -8,6 +8,6 @@ namespace FastGTD.DataAccess
         IList<InBoxItem> GetAll();
         void DeleteAll();
         InBoxItem CreateNew(string item);
-        void DeleteByName(string item);
+        void Delete(InBoxItem item);
     }
 }

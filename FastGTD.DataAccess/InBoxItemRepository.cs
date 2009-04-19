@@ -1,23 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using FastGTD.DataTransfer;
 using NHibernate;
 using NHibernate.Cfg;
 
 namespace FastGTD.DataAccess
 {
-    // TODO: Implement some repository interface which domain/core of FastGTD should consume. 
-    // To avoid coupling to this particular data access implementation.
     public class InBoxItemRepository : IInBoxItemRepository, IInBoxItemPersister
     {
-        protected ISessionFactory _session_factory;
+        private readonly ISessionFactory _session_factory;
 
         public InBoxItemRepository()
         {
             _session_factory = CreateSessionFactory();
         }
 
-        protected static ISessionFactory CreateSessionFactory()
+        private static ISessionFactory CreateSessionFactory()
         {
             var cfg = new Configuration();
 
@@ -52,7 +49,17 @@ namespace FastGTD.DataAccess
             return InBoxItem.CreateNew(this, name);
         }
 
-        public InBoxItem GetByID(int id)
+        public void Delete(InBoxItem item)
+        {
+            ISession session = GetSession();
+            using (ITransaction tx = session.BeginTransaction())
+            {
+                session.Delete(item);
+                tx.Commit();
+            }
+        }
+
+        public InBoxItem GetById(int id)
         {
             ISession session = GetSession();
             return session.Load<InBoxItem>(id);
@@ -70,16 +77,6 @@ namespace FastGTD.DataAccess
             using (ITransaction tx = session.BeginTransaction())
             {
                 session.Delete("from InBoxItem");
-                tx.Commit();
-            }
-        }
-
-        public void DeleteByName(string name)
-        {
-            ISession session = GetSession();
-            using (ITransaction tx = session.BeginTransaction())
-            {
-                session.Delete("from InBoxItem where Name = '" + name + "'");
                 tx.Commit();
             }
         }

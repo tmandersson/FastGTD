@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using FastGTD.DataAccess;
 using FastGTD.DataTransfer;
@@ -20,7 +21,7 @@ namespace FastGTD.Tests
             return new InBoxItem(item);
         }
 
-        public void DeleteByName(string item)
+        public void Delete(InBoxItem item)
         {
         }
     }

@@ -3,7 +3,7 @@
     namespace="FastGTD.DataTransfer" assembly="FastGTD.DataTransfer">
 
   <class name="InBoxItem" table="InBoxItem">
-    <id name="ID">
+    <id name="Id">
       <generator class="native"/>
     </id>
     <property name="Name" />

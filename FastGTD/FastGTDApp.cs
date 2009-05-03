@@ -1,13 +1,19 @@
-using System.Windows.Forms;
 using FastGTD.DataAccess;
 
 namespace FastGTD
 {
     public class FastGTDApp
     {
-        private InBoxModel _inbox_model;
-        private IInBoxView _inbox_view;
-        private InBoxController _controller;
+        private readonly InBoxModel _inbox_model;
+        private readonly IInBoxView _inbox_view;
+        private readonly InBoxController _controller;
+
+        public FastGTDApp()
+        {
+            _inbox_model = new InBoxModel(new InBoxItemRepository());
+            _inbox_view = new InBoxForm();
+            _controller = new InBoxController(_inbox_view, _inbox_model);
+        }
 
         public InBoxModel InboxModel
         {
@@ -19,12 +25,8 @@ namespace FastGTD
             get { return _inbox_view; }
         }
 
-        public void Start()
+        public void ShowStartForm()
         {
-            _inbox_model = new InBoxModel(new InBoxItemRepository());
-            _inbox_view = new InBoxForm();
-            _controller = new InBoxController(_inbox_view, _inbox_model);
-
             _controller.Show();
         }
 
@@ -41,7 +43,7 @@ namespace FastGTD
         public static FastGTDApp StartNewTestApplication()
         {
             var app = new FastGTDApp();
-            app.Start();
+            app.ShowStartForm();
             return app;
         }
     }

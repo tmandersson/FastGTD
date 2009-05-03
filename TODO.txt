@@ -12,7 +12,7 @@ men mer för att göra koden lätt att förstå och elegant än pga WPF-version.
 * Isolera controllern ifrån WinForms KeyDown-eventhandlingen. Fånga keydown i viewn istället och raise egna events 
 för tex enter, knapp ner etc. Blir då av med case:n i controllern. (Behöver förvisso ändå en case i viewn. Men detta innebär 
 att jag får bort lite Windows-Forms specifika saker ifrån Controllern. 
-* SelectedItems på TestableFOrm
+* SelectedItems på TestableForm
 
 
 
@@ -24,7 +24,6 @@ att jag får bort lite Windows-Forms specifika saker ifrån Controllern.
 
 
 
-
-* Resharper 4.5
+* NUnit 2.5 Final är släppt.
 * NDepend
 * NCover senare?

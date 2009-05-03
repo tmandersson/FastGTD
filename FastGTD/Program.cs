@@ -1,13 +1,11 @@
-﻿using System.Windows.Forms;
-
-namespace FastGTD
+﻿namespace FastGTD
 {
-    public class Program
+    public static class Program
     {
-        public static int Main(string[] argv)
+        public static int Main()
         {
             var app = new FastGTDApp();
-            app.Start();
+            app.ShowStartForm();
             app.StartMessageLoop();
             app.Close();
             return 0;

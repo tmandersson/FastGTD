@@ -49,9 +49,9 @@ namespace FastGTD
             else if (e.KeyData == Keys.Delete)
                 DeleteSelectedItems();
             else if (e.KeyData == Keys.Down)
-                _view.MoveListSelectionDown();
+                _view.List.MoveDown();
             else if (e.KeyData == Keys.Up)
-                _view.MoveListSelectionUp();
+                _view.List.MoveUp();
             else
                 key_handled = false;
 

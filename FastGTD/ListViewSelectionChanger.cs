@@ -1,8 +1,9 @@
+using System;
 using System.Windows.Forms;
 
 namespace FastGTD
 {
-    public class ListViewSelectionChanger
+    public class ListViewSelectionChanger : IListSelectionChanger
     {
         private readonly ListView _list_view;
 
@@ -11,7 +12,17 @@ namespace FastGTD
             _list_view = list_view;
         }
 
-        public void ChangeSelection(int step)
+        public void MoveDown()
+        {
+            ChangeSelection(1);
+        }
+
+        public void MoveUp()
+        {
+            ChangeSelection(-1);
+        }
+
+        private void ChangeSelection(int step)
         {
             if (ItemsCount() == 0)
                 return;

@@ -25,7 +25,12 @@ namespace FastGTD
 
         void ClearInBoxItems();
         void AddInBoxItem(InBoxItem item);
-        void MoveListSelectionDown();
-        void MoveListSelectionUp();
+        IListSelectionChanger List { get; }
+    }
+
+    public interface IListSelectionChanger
+    {
+        void MoveDown();
+        void MoveUp();
     }
 }

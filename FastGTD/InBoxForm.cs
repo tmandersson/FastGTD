@@ -27,14 +27,9 @@ namespace FastGTD
             ListViewInBoxItems.Items.Add(list_item);
         }
 
-        public void MoveListSelectionDown()
+        public IListSelectionChanger List
         {
-            _selection_changer.ChangeSelection(1);
-        }
-
-        public void MoveListSelectionUp()
-        {
-            _selection_changer.ChangeSelection(-1);
+            get { return _selection_changer; }
         }
 
         public void ClearInBoxItems()

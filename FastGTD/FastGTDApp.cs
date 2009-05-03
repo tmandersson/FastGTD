@@ -6,13 +6,22 @@ namespace FastGTD
     {
         private readonly InBoxModel _inbox_model;
         private readonly IInBoxView _inbox_view;
-        private readonly InBoxController _controller;
+        private readonly InBoxController _inbox_controller;
+
+        public static int Main()
+        {
+            var app = new FastGTDApp();
+            app.ShowStartForm();
+            app.StartMessageLoop();
+            app.Close();
+            return 0;
+        }
 
         public FastGTDApp()
         {
             _inbox_model = new InBoxModel(new InBoxItemRepository());
             _inbox_view = new InBoxForm();
-            _controller = new InBoxController(_inbox_view, _inbox_model);
+            _inbox_controller = new InBoxController(_inbox_view, _inbox_model);
         }
 
         public InBoxModel InboxModel
@@ -27,24 +36,17 @@ namespace FastGTD
 
         public void ShowStartForm()
         {
-            _controller.Show();
+            _inbox_controller.Show();
         }
 
-        public void StartMessageLoop()
+        private void StartMessageLoop()
         {
-            _inbox_view.StartMessageLoop();
+            _inbox_controller.StartMessageLoop();
         }
 
         public void Close()
         {
-            _inbox_view.Close();
-        }
-
-        public static FastGTDApp StartNewTestApplication()
-        {
-            var app = new FastGTDApp();
-            app.ShowStartForm();
-            return app;
+            _inbox_controller.Close();
         }
     }
 }

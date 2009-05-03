@@ -9,10 +9,6 @@ namespace FastGTD
     {
         void SetFocusOnTextBox();
 
-        void Show();
-        void StartMessageLoop();
-        void Close();
-
         bool KeyPreview { set; }
         string TextBoxText { get; set; }
         ListView ListViewInBoxItems { get; }
@@ -22,7 +18,11 @@ namespace FastGTD
         void SetFirstColumnFullWidth();
         event EventHandler AddButtonClick;
         event EventHandler DeleteButtonClick;
-        
+
+        void Show();
+        void StartMessageLoop();
+        void Close();
+
         void ClearInBoxItems();
         void AddInBoxItem(InBoxItem item);
         void MoveListSelectionDown();

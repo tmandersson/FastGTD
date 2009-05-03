@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using FastGTD.DataTransfer;
 
@@ -71,6 +72,16 @@ namespace FastGTD
             {
                 _model.RemoveItem(item);
             }
+        }
+
+        public void StartMessageLoop()
+        {
+            _view.StartMessageLoop();
+        }
+
+        public void Close()
+        {
+            _view.Close();
         }
     }
 }

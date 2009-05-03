@@ -64,7 +64,6 @@
     </Compile>
     <Compile Include="InBoxModel.cs" />
     <Compile Include="ListViewSelectionChanger.cs" />
-    <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="InBoxForm.resx">

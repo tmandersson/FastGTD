@@ -57,6 +57,10 @@ namespace FastGTD
 
         public event EventHandler AddButtonClick;
         public event EventHandler DeleteButtonClick;
+        public event VoidDelegate EnterKeyWasPressed;
+        public event VoidDelegate DeleteKeyWasPressed;
+        public event VoidDelegate DownKeyWasPressed;
+        public event VoidDelegate UpKeyWasPressed;
 
         public string TextBoxText
         {
@@ -76,14 +80,50 @@ namespace FastGTD
 
         private void _buttonAdd_Click(object sender, EventArgs e)
         {
-            if (AddButtonClick != null)
-                AddButtonClick.Invoke(sender, e);
+            RaiseEvent(sender, e, AddButtonClick);
         }
 
         private void _buttonDelete_Click(object sender, EventArgs e)
         {
-            if (DeleteButtonClick != null)
-                DeleteButtonClick.Invoke(sender, e);
+            RaiseEvent(sender, e, DeleteButtonClick);
+        }
+
+        private void InBoxForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            bool key_handled = true;
+            switch (e.KeyData)
+            {
+                case Keys.Enter:
+                    RaiseEvent(EnterKeyWasPressed);
+                    break;
+                case Keys.Delete:
+                    RaiseEvent(DeleteKeyWasPressed);
+                    break;
+                case Keys.Down:
+                    RaiseEvent(DownKeyWasPressed);
+                    break;
+                case Keys.Up:
+                    RaiseEvent(UpKeyWasPressed);
+                    break;
+                default:
+                    key_handled = false;
+                    break;
+            }
+
+            if (key_handled)
+                e.SuppressKeyPress = true;
+        }
+
+        private static void RaiseEvent(VoidDelegate @delegate)
+        {
+            if (@delegate != null)
+                @delegate.Invoke();
+        }
+
+        private static void RaiseEvent(object sender, EventArgs e, EventHandler @event)
+        {
+            if (@event != null)
+                @event.Invoke(sender, e);
         }
     }
 }

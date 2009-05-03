@@ -17,7 +17,11 @@ namespace FastGTD
 
             _model.Changed += UpdateFromModel;
 
-            _view.KeyDown += KeyDownHandler;
+            _view.EnterKeyWasPressed += AddInboxItemInTextBox;
+            _view.DeleteKeyWasPressed += DeleteSelectedItems;
+            _view.DownKeyWasPressed += _view.List.MoveDown;
+            _view.UpKeyWasPressed += _view.List.MoveUp;
+
             _view.KeyPreview = true;
             _view.Resize += delegate { _view.SetFirstColumnFullWidth(); };
             _view.AddButtonClick += delegate { AddInboxItemInTextBox(); };
@@ -39,24 +43,6 @@ namespace FastGTD
             {
                 _view.AddInBoxItem(item);
             }
-        }
-
-        private void KeyDownHandler(object sender, KeyEventArgs e)
-        {
-            bool key_handled = true;
-            if (e.KeyData == Keys.Enter)
-                AddInboxItemInTextBox();
-            else if (e.KeyData == Keys.Delete)
-                DeleteSelectedItems();
-            else if (e.KeyData == Keys.Down)
-                _view.List.MoveDown();
-            else if (e.KeyData == Keys.Up)
-                _view.List.MoveUp();
-            else
-                key_handled = false;
-
-            if (key_handled)
-                e.SuppressKeyPress = true;
         }
 
         private void AddInboxItemInTextBox()

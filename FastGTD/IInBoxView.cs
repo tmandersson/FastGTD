@@ -13,11 +13,15 @@ namespace FastGTD
         string TextBoxText { get; set; }
         ListView ListViewInBoxItems { get; }
         IEnumerable<InBoxItem> SelectedItems { get; }
-        event KeyEventHandler KeyDown;
         event EventHandler Resize;
         void SetFirstColumnFullWidth();
+
         event EventHandler AddButtonClick;
         event EventHandler DeleteButtonClick;
+        event VoidDelegate EnterKeyWasPressed;
+        event VoidDelegate DeleteKeyWasPressed;
+        event VoidDelegate DownKeyWasPressed;
+        event VoidDelegate UpKeyWasPressed;
 
         void Show();
         void StartMessageLoop();

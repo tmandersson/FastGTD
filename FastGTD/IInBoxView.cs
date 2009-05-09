@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using FastGTD.DataTransfer;
 
@@ -6,13 +5,10 @@ namespace FastGTD
 {
     public interface IInBoxView
     {
+        void Show();
         void SetFocusOnTextBox();
-
-        bool KeyPreview { set; }
-        string TextBoxText { get; set; }
-        IEnumerable<InBoxItem> SelectedItems { get; }
-        event EventHandler Resize;
-        void SetFirstColumnFullWidth();
+        void StartMessageLoop();
+        void Close();
 
         event VoidDelegate AddButtonWasClicked;
         event VoidDelegate DeleteButtonWasClicked;
@@ -21,9 +17,8 @@ namespace FastGTD
         event VoidDelegate DownKeyWasPressed;
         event VoidDelegate UpKeyWasPressed;
 
-        void Show();
-        void StartMessageLoop();
-        void Close();
+        string TextBoxText { get; set; }
+        IEnumerable<InBoxItem> SelectedItems { get; }
 
         void ClearInBoxItems();
         void AddInBoxItem(InBoxItem item);

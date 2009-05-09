@@ -18,9 +18,6 @@ namespace FastGTD
             _view.DeleteKeyWasPressed += DeleteSelectedItems;
             _view.DownKeyWasPressed += _view.List.MoveDown;
             _view.UpKeyWasPressed += _view.List.MoveUp;
-
-            _view.KeyPreview = true;
-            _view.Resize += delegate { _view.SetFirstColumnFullWidth(); };
             _view.AddButtonWasClicked += AddInboxItemInTextBox;
             _view.DeleteButtonWasClicked += DeleteSelectedItems;
         }
@@ -29,7 +26,6 @@ namespace FastGTD
         {
             _view.Show();
             _view.SetFocusOnTextBox();
-            _view.SetFirstColumnFullWidth();
             _model.Load();
         }
 

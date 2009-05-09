@@ -8,6 +8,13 @@ namespace FastGTD
     {
         private readonly ListViewSelectionChanger _selection_changer;
 
+        public event VoidDelegate AddButtonWasClicked;
+        public event VoidDelegate DeleteButtonWasClicked;
+        public event VoidDelegate EnterKeyWasPressed;
+        public event VoidDelegate DeleteKeyWasPressed;
+        public event VoidDelegate DownKeyWasPressed;
+        public event VoidDelegate UpKeyWasPressed;
+
         public InBoxForm()
         {
             InitializeComponent();
@@ -15,7 +22,10 @@ namespace FastGTD
             _selection_changer = new ListViewSelectionChanger(_list_view);
             _buttonAdd.Click += delegate { RaiseEvent(AddButtonWasClicked); };
             _buttonDelete.Click += delegate { RaiseEvent(DeleteButtonWasClicked); };
+            KeyPreview = true;
             KeyDown += RouteKeyDownEvents;
+            Shown += delegate { SetFirstColumnFullWidth(); };
+            Resize += delegate { SetFirstColumnFullWidth(); };
         }
 
         public void AddInBoxItem(InBoxItem item)
@@ -47,18 +57,6 @@ namespace FastGTD
             }
         }
 
-        public void SetFirstColumnFullWidth()
-        {
-            _list_view.Columns[0].Width = _list_view.Width - 5;
-        }
-
-        public event VoidDelegate AddButtonWasClicked;
-        public event VoidDelegate DeleteButtonWasClicked;
-        public event VoidDelegate EnterKeyWasPressed;
-        public event VoidDelegate DeleteKeyWasPressed;
-        public event VoidDelegate DownKeyWasPressed;
-        public event VoidDelegate UpKeyWasPressed;
-
         public string TextBoxText
         {
             get { return _textBox.Text; }
@@ -73,6 +71,11 @@ namespace FastGTD
         public void StartMessageLoop()
         {
             Application.Run(this);
+        }
+
+        private void SetFirstColumnFullWidth()
+        {
+            _list_view.Columns[0].Width = _list_view.Width - 5;
         }
 
         private void RouteKeyDownEvents(object sender, KeyEventArgs e)

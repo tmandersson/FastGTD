@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -28,7 +27,7 @@ namespace FastGTD.Tests
             get
             {
                 IList<string> list = new List<string>();
-                foreach(ListViewItem item in ListViewInBoxItems.SelectedItems)
+                foreach(ListViewItem item in _list_view.SelectedItems)
                 {
                     list.Add(item.Text);
                 }
@@ -38,7 +37,7 @@ namespace FastGTD.Tests
 
         public string ListHeaderText
         {
-            get { return ListViewInBoxItems.Columns[0].Text; }
+            get { return _list_view.Columns[0].Text; }
         }
 
         public void SelectItem(string item)
@@ -49,8 +48,8 @@ namespace FastGTD.Tests
 
         public void SelectItems(IList<string> items)
         {
-            ListViewInBoxItems.SelectedItems.Clear();
-            foreach (ListViewItem item in ListViewInBoxItems.Items)
+            _list_view.SelectedItems.Clear();
+            foreach (ListViewItem item in _list_view.Items)
             {
                 if (items.Contains(item.Text))
                     item.Selected = true;

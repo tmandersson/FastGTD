@@ -12,21 +12,16 @@ namespace FastGTD
         {
             InitializeComponent();
 
-            _selection_changer = new ListViewSelectionChanger(ListViewInBoxItems);
+            _selection_changer = new ListViewSelectionChanger(_list_view);
             _buttonAdd.Click += delegate { RaiseEvent(AddButtonWasClicked); };
             _buttonDelete.Click += delegate { RaiseEvent(DeleteButtonWasClicked); };
             KeyDown += RouteKeyDownEvents;
         }
 
-        protected ListView ListViewInBoxItems
-        {
-            get { return _listViewInBoxItems; }
-        }
-
         public void AddInBoxItem(InBoxItem item)
         {
             var list_item = new ListViewItem(item.Name) {Tag = item};
-            ListViewInBoxItems.Items.Add(list_item);
+            _list_view.Items.Add(list_item);
         }
 
         public IListSelectionChanger List
@@ -36,7 +31,7 @@ namespace FastGTD
 
         public void ClearInBoxItems()
         {
-            ListViewInBoxItems.Items.Clear();
+            _list_view.Items.Clear();
         }
 
         public IEnumerable<InBoxItem> SelectedItems
@@ -44,7 +39,7 @@ namespace FastGTD
             get
             {
                 IList<InBoxItem> result = new List<InBoxItem>();
-                foreach (ListViewItem item in ListViewInBoxItems.SelectedItems)
+                foreach (ListViewItem item in _list_view.SelectedItems)
                 {
                     result.Add((InBoxItem) item.Tag);
                 }
@@ -54,7 +49,7 @@ namespace FastGTD
 
         public void SetFirstColumnFullWidth()
         {
-            ListViewInBoxItems.Columns[0].Width = ListViewInBoxItems.Width - 5;
+            _list_view.Columns[0].Width = _list_view.Width - 5;
         }
 
         public event VoidDelegate AddButtonWasClicked;

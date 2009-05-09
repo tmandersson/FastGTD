@@ -14,8 +14,8 @@ namespace FastGTD
         event EventHandler Resize;
         void SetFirstColumnFullWidth();
 
-        event EventHandler AddButtonClick;
-        event EventHandler DeleteButtonClick;
+        event VoidDelegate AddButtonWasClicked;
+        event VoidDelegate DeleteButtonWasClicked;
         event VoidDelegate EnterKeyWasPressed;
         event VoidDelegate DeleteKeyWasPressed;
         event VoidDelegate DownKeyWasPressed;

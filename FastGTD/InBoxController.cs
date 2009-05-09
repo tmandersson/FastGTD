@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using FastGTD.DataTransfer;
+﻿using FastGTD.DataTransfer;
 
 namespace FastGTD
 {
@@ -24,8 +21,8 @@ namespace FastGTD
 
             _view.KeyPreview = true;
             _view.Resize += delegate { _view.SetFirstColumnFullWidth(); };
-            _view.AddButtonClick += delegate { AddInboxItemInTextBox(); };
-            _view.DeleteButtonClick += delegate { DeleteSelectedItems(); };
+            _view.AddButtonWasClicked += AddInboxItemInTextBox;
+            _view.DeleteButtonWasClicked += DeleteSelectedItems;
         }
 
         public void Show()

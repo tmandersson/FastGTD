@@ -72,7 +72,6 @@
             this._buttonAdd.TabIndex = 1;
             this._buttonAdd.Text = "Add";
             this._buttonAdd.UseVisualStyleBackColor = true;
-            this._buttonAdd.Click += new System.EventHandler(this._buttonAdd_Click);
             // 
             // _buttonDelete
             // 
@@ -83,7 +82,6 @@
             this._buttonDelete.TabIndex = 3;
             this._buttonDelete.Text = "Delete";
             this._buttonDelete.UseVisualStyleBackColor = true;
-            this._buttonDelete.Click += new System.EventHandler(this._buttonDelete_Click);
             // 
             // InBoxForm
             // 

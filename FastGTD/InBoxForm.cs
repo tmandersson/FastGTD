@@ -14,6 +14,8 @@ namespace FastGTD
             InitializeComponent();
 
             _selection_changer = new ListViewSelectionChanger(ListViewInBoxItems);
+            _buttonAdd.Click += delegate { RaiseEvent(AddButtonWasClicked); };
+            _buttonDelete.Click += delegate { RaiseEvent(DeleteButtonWasClicked); };
         }
 
         public ListView ListViewInBoxItems
@@ -55,8 +57,8 @@ namespace FastGTD
             ListViewInBoxItems.Columns[0].Width = ListViewInBoxItems.Width - 5;
         }
 
-        public event EventHandler AddButtonClick;
-        public event EventHandler DeleteButtonClick;
+        public event VoidDelegate AddButtonWasClicked;
+        public event VoidDelegate DeleteButtonWasClicked;
         public event VoidDelegate EnterKeyWasPressed;
         public event VoidDelegate DeleteKeyWasPressed;
         public event VoidDelegate DownKeyWasPressed;
@@ -76,16 +78,6 @@ namespace FastGTD
         public void StartMessageLoop()
         {
             Application.Run(this);
-        }
-
-        private void _buttonAdd_Click(object sender, EventArgs e)
-        {
-            RaiseEvent(sender, e, AddButtonClick);
-        }
-
-        private void _buttonDelete_Click(object sender, EventArgs e)
-        {
-            RaiseEvent(sender, e, DeleteButtonClick);
         }
 
         private void InBoxForm_KeyDown(object sender, KeyEventArgs e)

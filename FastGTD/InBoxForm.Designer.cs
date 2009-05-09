@@ -94,7 +94,6 @@
             this.Controls.Add(this._listViewInBoxItems);
             this.Name = "InBoxForm";
             this.Text = "InBoxForm";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InBoxForm_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

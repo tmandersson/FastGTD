@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using FastGTD.DataTransfer;
 
@@ -16,9 +15,10 @@ namespace FastGTD
             _selection_changer = new ListViewSelectionChanger(ListViewInBoxItems);
             _buttonAdd.Click += delegate { RaiseEvent(AddButtonWasClicked); };
             _buttonDelete.Click += delegate { RaiseEvent(DeleteButtonWasClicked); };
+            KeyDown += RouteKeyDownEvents;
         }
 
-        public ListView ListViewInBoxItems
+        protected ListView ListViewInBoxItems
         {
             get { return _listViewInBoxItems; }
         }
@@ -80,7 +80,7 @@ namespace FastGTD
             Application.Run(this);
         }
 
-        private void InBoxForm_KeyDown(object sender, KeyEventArgs e)
+        private void RouteKeyDownEvents(object sender, KeyEventArgs e)
         {
             bool key_handled = true;
             switch (e.KeyData)
@@ -110,12 +110,6 @@ namespace FastGTD
         {
             if (@delegate != null)
                 @delegate.Invoke();
-        }
-
-        private static void RaiseEvent(object sender, EventArgs e, EventHandler @event)
-        {
-            if (@event != null)
-                @event.Invoke(sender, e);
         }
     }
 }

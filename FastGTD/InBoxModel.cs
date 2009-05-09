@@ -30,7 +30,7 @@ namespace FastGTD
             get { return _items; }
         }
 
-        public InBoxItem CreateItem(string name)
+        public InBoxItem Add(string name)
         {
             var item = _repository.CreateNew(name);
             _items.Add(item);
@@ -39,7 +39,7 @@ namespace FastGTD
             return item;
         }
 
-        public void RemoveItem(InBoxItem item)
+        public void Remove(InBoxItem item)
         {
             _items.Remove(item);
             _repository.Delete(item);

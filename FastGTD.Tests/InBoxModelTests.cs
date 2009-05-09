@@ -16,12 +16,12 @@ namespace FastGTD.Tests
             var model = new InBoxModel(new FakeInBoxItemRepository());
             Assert.That(model.Items, Has.Count(0));
 
-            model.CreateItem("foo");
+            model.Add("foo");
             Assert.That(model.Items, Has.Count(1));
-            var item = model.CreateItem("bar");
+            var item = model.Add("bar");
             Assert.That(model.Items, Has.Count(2));
 
-            model.RemoveItem(item);
+            model.Remove(item);
             Assert.That(model.Items, Has.Count(1));
             Assert.That(model.Items[0].Name, Is.EqualTo("foo"));
         }
@@ -33,9 +33,9 @@ namespace FastGTD.Tests
 
             Assert.That(model.Items, Has.Count(0));
 
-            model.CreateItem("foo");
+            model.Add("foo");
             Assert.That(model.Items, Has.Count(1));
-            model.CreateItem("bar");
+            model.Add("bar");
             Assert.That(model.Items, Has.Count(2));
 
             model.ClearItems();
@@ -63,7 +63,7 @@ namespace FastGTD.Tests
         {
             var model = new InBoxModel(new InBoxItemRepository());
             model.Load();
-            model.CreateItem("hej");
+            model.Add("hej");
             model.ClearItems();
 
             var persisted_model = new InBoxModel(new InBoxItemRepository());
@@ -79,7 +79,7 @@ namespace FastGTD.Tests
             model.Load();
             model.ClearItems();
 
-            var expected_item = model.CreateItem(ITEM_NAME);
+            var expected_item = model.Add(ITEM_NAME);
 
             var persisted_model = new InBoxModel(new InBoxItemRepository());
             persisted_model.Load();

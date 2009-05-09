@@ -32,10 +32,10 @@ namespace FastGTD.Tests
         [Test]
         public void SelectingAndDeletingMultipleItems()
         {
-            model.CreateItem("foo");
-            model.CreateItem("foobar");
-            model.CreateItem("bar");
-            model.CreateItem("fubar");
+            model.Add("foo");
+            model.Add("foobar");
+            model.Add("bar");
+            model.Add("fubar");
             
             IList<string> items = new List<string> { "foobar", "bar", "fubar" };
             form.SelectItems(items);
@@ -60,7 +60,7 @@ namespace FastGTD.Tests
         public void UpdatingModelShouldntClearListHeader()
         {
             Assert.That(form.ListHeaderText, Is.EqualTo("New items"));
-            model.CreateItem("foo");
+            model.Add("foo");
             Assert.That(form.ListHeaderText, Is.EqualTo("New items"));
         }
     }

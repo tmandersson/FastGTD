@@ -6,9 +6,9 @@ namespace FastGTD
     public interface IInBoxModel
     {
         void Load();
-        InBoxItem CreateItem(string item);
+        InBoxItem Add(string item);
+        void Remove(InBoxItem item);
         IList<InBoxItem> Items { get; }
-        void RemoveItem(InBoxItem item);
         event VoidDelegate Changed;
     }
 }

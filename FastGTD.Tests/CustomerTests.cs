@@ -14,7 +14,7 @@ namespace FastGTD.Tests
 
             FastGTDApp app = CreateAndStartTestApp();
             app.InboxModel.ClearItems();
-            var expected_item = app.InboxModel.CreateItem(item_name);
+            var expected_item = app.InboxModel.Add(item_name);
             app.Close();
 
             FastGTDApp app2 = CreateAndStartTestApp();
@@ -31,9 +31,9 @@ namespace FastGTD.Tests
 
             FastGTDApp app = CreateAndStartTestApp();
             app.InboxModel.ClearItems();
-            var item = app.InboxModel.CreateItem(item_name);
-            var item2 = app.InboxModel.CreateItem(item_name2);
-            app.InboxModel.RemoveItem(item);
+            var item = app.InboxModel.Add(item_name);
+            var item2 = app.InboxModel.Add(item_name2);
+            app.InboxModel.Remove(item);
             app.Close();
 
             FastGTDApp app2 = CreateAndStartTestApp();

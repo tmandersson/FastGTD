@@ -41,7 +41,7 @@ namespace FastGTD
         private void AddInboxItemInTextBox()
         {
             string new_item = _view.TextBoxText;
-            _model.CreateItem(new_item);
+            _model.Add(new_item);
             _view.TextBoxText = string.Empty;
         }
 
@@ -49,7 +49,7 @@ namespace FastGTD
         {
             foreach (InBoxItem item in _view.SelectedItems)
             {
-                _model.RemoveItem(item);
+                _model.Remove(item);
             }
         }
 

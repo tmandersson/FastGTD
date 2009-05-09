@@ -54,7 +54,7 @@ namespace FastGTD.Tests
         [Test]
         public void DeletingItemWithButtonClick()
         {
-            _model.CreateItem("foo");
+            _model.Add("foo");
             _form.SelectItem("foo");
             _form.ClickDeleteButton();
             Assert.That(_model.Items, Has.Count(0));
@@ -63,7 +63,7 @@ namespace FastGTD.Tests
         [Test]
         public void DeletingItemWithDeleteKey()
         {
-            _model.CreateItem("foo");
+            _model.Add("foo");
             Assert.That(_model.Items, Has.Count(1));
             _form.SelectItem("foo");
             _form.PerformKeyDown(Keys.Delete);
@@ -73,9 +73,9 @@ namespace FastGTD.Tests
         [Test]
         public void DownAndUpKeysChangeSelection()
         {
-            _model.CreateItem("foo1");
-            _model.CreateItem("foo2");
-            _model.CreateItem("foo3");
+            _model.Add("foo1");
+            _model.Add("foo2");
+            _model.Add("foo3");
 
             _form.PerformKeyDown(Keys.Down);
             Assert.That(_form.SelectedItems, Has.Count(1));
@@ -94,9 +94,9 @@ namespace FastGTD.Tests
         [Test]
         public void DownAndUpKeysShouldNotCrashOutsideBoundaries()
         {
-            _model.CreateItem("foo1");
-            _model.CreateItem("foo2");
-            _model.CreateItem("foo3");
+            _model.Add("foo1");
+            _model.Add("foo2");
+            _model.Add("foo3");
 
             _form.PerformKeyDown(Keys.Up);
             _form.PerformKeyDown(Keys.Up);

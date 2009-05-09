@@ -22,19 +22,6 @@ namespace FastGTD.Tests
             }
         }
 
-        public new IList<string> SelectedItems
-        {
-            get
-            {
-                IList<string> list = new List<string>();
-                foreach(ListViewItem item in _list_view.SelectedItems)
-                {
-                    list.Add(item.Text);
-                }
-                return list;
-            }
-        }
-
         public string ListHeaderText
         {
             get { return _list_view.Columns[0].Text; }

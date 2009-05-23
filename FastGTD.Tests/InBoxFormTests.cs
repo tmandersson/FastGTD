@@ -8,60 +8,60 @@ namespace FastGTD.Tests
     [TestFixture]
     public class InBoxFormTests
     {
-        private TestableInBoxForm form;
-        private InBoxModel model;
+        private TestableInBoxForm _form;
+        private InBoxModel _model;
 
         [SetUp]
         public void SetupTests()
         {
-            model = new InBoxModel(new FakeInBoxItemRepository());
-            form = new TestableInBoxForm();
-            new InBoxController(form, model);
+            _model = new InBoxModel(new FakeInBoxItemRepository());
+            _form = new TestableInBoxForm();
+            new InBoxController(_form, _model);
         }
 
         [Test]
         public void AddingInBoxItemWithEnterKey()
         {
-            form.TextBoxText = "foo";
-            form.PerformKeyDown(Keys.Enter);
+            _form.TextBoxText = "foo";
+            _form.PerformKeyDown(Keys.Enter);
 
-            Assert.That(model.Items, Has.Count(1));
-            Assert.That(model.Items[0].Name, Is.EqualTo("foo"));
+            Assert.That(_model.Items, Has.Count(1));
+            Assert.That(_model.Items[0].Name, Is.EqualTo("foo"));
         }
         
         [Test]
         public void SelectingAndDeletingMultipleItems()
         {
-            model.Add("foo");
-            model.Add("foobar");
-            model.Add("bar");
-            model.Add("fubar");
+            _model.Add("foo");
+            _model.Add("foobar");
+            _model.Add("bar");
+            _model.Add("fubar");
             
             IList<string> items = new List<string> { "foobar", "bar", "fubar" };
-            form.SelectItems(items);
-            form.ClickDeleteButton();
+            _form.SelectItems(items);
+            _form.ClickDeleteButton();
 
-            Assert.That(model.Items[0].Name, Is.EqualTo("foo"));
+            Assert.That(_model.Items[0].Name, Is.EqualTo("foo"));
         }
 
         [Test]
         public void DownAndUpKeysShouldNotCrashWhenNoItems()
         {
-            form.PerformKeyDown(Keys.Up);
-            form.PerformKeyDown(Keys.Up);
+            _form.PerformKeyDown(Keys.Up);
+            _form.PerformKeyDown(Keys.Up);
 
-            form.PerformKeyDown(Keys.Down);
-            form.PerformKeyDown(Keys.Down);
-            form.PerformKeyDown(Keys.Down);
-            form.PerformKeyDown(Keys.Down);
+            _form.PerformKeyDown(Keys.Down);
+            _form.PerformKeyDown(Keys.Down);
+            _form.PerformKeyDown(Keys.Down);
+            _form.PerformKeyDown(Keys.Down);
         }
 
         [Test]
         public void UpdatingModelShouldntClearListHeader()
         {
-            Assert.That(form.ListHeaderText, Is.EqualTo("New items"));
-            model.Add("foo");
-            Assert.That(form.ListHeaderText, Is.EqualTo("New items"));
+            Assert.That(_form.ListHeaderText, Is.EqualTo("New items"));
+            _model.Add("foo");
+            Assert.That(_form.ListHeaderText, Is.EqualTo("New items"));
         }
     }
 }

@@ -1,21 +1,13 @@
-* Få bort alla TODOs utspridda i koden.
-!* Städa upp koden och designen så jag blir någorlunda nöjd med den innan vi går vidare i funktionalitet?
-* Vad är nästa steg/user story jag ska göra?
-?* Refaktorerar InBoxView tunn och view-interfacet generellt så att det blir lätt att göra en WPF-version.
-?* WPF-version av gränssnittet.
-!* Refaktorera istället klart view-interfacet tunnt och enligt MVP-pattern 
-men mer för att göra koden lätt att förstå och elegant än pga WPF-version.
+* Göra om Inbox-item till Action.
 
-* Granska view och model-interfacen. Enkla och självklara?
-* Fortsätt granska och refaktorera view, controller och model.
+* Knapp "To Action".
+* Alt-A.
+* En repo kan spara en ny Action.
+* Controllern skapar och sparar en Action utifrån markerade InboxItem-namnet.
+* Controllern tar bort InboxItem som precis blivit Action.
+* Hantera flera markerade InBoxItems.
 
-* SelectedItems på TestableForm
-
-
-
-
-
-
+* Redundans i de 2 repositorys. Använd generics. IRepository<T> eller liknande.
 
 
 
@@ -24,3 +16,4 @@ men mer för att göra koden lätt att förstå och elegant än pga WPF-version.
 * NUnit 2.5 Final är släppt.
 * NDepend
 * NCover senare?
+?* WPF-version av gränssnittet.

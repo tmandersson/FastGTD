@@ -33,6 +33,7 @@
             this._textBox = new System.Windows.Forms.TextBox();
             this._buttonAdd = new System.Windows.Forms.Button();
             this._buttonDelete = new System.Windows.Forms.Button();
+            this._button_to_action = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // _list_view
@@ -45,7 +46,7 @@
             this._list_view.FullRowSelect = true;
             this._list_view.Location = new System.Drawing.Point(0, 67);
             this._list_view.Name = "_list_view";
-            this._list_view.Size = new System.Drawing.Size(485, 454);
+            this._list_view.Size = new System.Drawing.Size(485, 413);
             this._list_view.TabIndex = 2;
             this._list_view.UseCompatibleStateImageBehavior = false;
             this._list_view.View = System.Windows.Forms.View.Details;
@@ -83,11 +84,22 @@
             this._buttonDelete.Text = "Delete";
             this._buttonDelete.UseVisualStyleBackColor = true;
             // 
+            // _button_to_action
+            // 
+            this._button_to_action.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._button_to_action.Location = new System.Drawing.Point(12, 486);
+            this._button_to_action.Name = "_button_to_action";
+            this._button_to_action.Size = new System.Drawing.Size(75, 23);
+            this._button_to_action.TabIndex = 4;
+            this._button_to_action.Text = "To &Action";
+            this._button_to_action.UseVisualStyleBackColor = true;
+            // 
             // InBoxForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(485, 521);
+            this.Controls.Add(this._button_to_action);
             this.Controls.Add(this._buttonDelete);
             this.Controls.Add(this._buttonAdd);
             this.Controls.Add(this._textBox);
@@ -106,5 +118,6 @@
         protected System.Windows.Forms.ListView _list_view;
         protected System.Windows.Forms.Button _buttonAdd;
         protected System.Windows.Forms.Button _buttonDelete;
+        protected System.Windows.Forms.Button _button_to_action;
     }
 }

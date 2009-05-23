@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using FastGTD.DataAccess;
 using FastGTD.DataTransfer;
 
@@ -23,6 +24,11 @@ namespace FastGTD
                 _items.Add(item);
             }
             FireEvent(Changed);
+        }
+
+        public void ConvertToAction(InBoxItem item)
+        {
+            throw new NotImplementedException();
         }
 
         public IList<InBoxItem> Items

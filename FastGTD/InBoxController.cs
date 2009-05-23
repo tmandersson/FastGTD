@@ -1,4 +1,5 @@
-﻿using FastGTD.DataTransfer;
+﻿using System;
+using FastGTD.DataTransfer;
 
 namespace FastGTD
 {
@@ -11,15 +12,7 @@ namespace FastGTD
         {
             _view = view;
             _model = model;
-
-            _model.Changed += UpdateFromModel;
-
-            _view.EnterKeyWasPressed += AddInboxItemInTextBox;
-            _view.DeleteKeyWasPressed += DeleteSelectedItems;
-            _view.DownKeyWasPressed += _view.List.MoveDown;
-            _view.UpKeyWasPressed += _view.List.MoveUp;
-            _view.AddButtonWasClicked += AddInboxItemInTextBox;
-            _view.DeleteButtonWasClicked += DeleteSelectedItems;
+            HandleEvents();
         }
 
         public void Show()
@@ -29,13 +22,31 @@ namespace FastGTD
             _model.Load();
         }
 
-        private void UpdateFromModel()
+        public void Close()
         {
-            _view.ClearInBoxItems();
-            foreach (InBoxItem item in _model.Items)
-            {
-                _view.AddInBoxItem(item);
-            }
+            _view.Close();
+        }
+
+        public void StartMessageLoop()
+        {
+            _view.StartMessageLoop();
+        }
+
+        private void HandleEvents()
+        {
+            _model.Changed += UpdateFromModel;
+            HandleViewEvents();
+        }
+
+        private void HandleViewEvents()
+        {
+            _view.EnterKeyWasPressed += AddInboxItemInTextBox;
+            _view.AddButtonWasClicked += AddInboxItemInTextBox;
+            _view.DeleteKeyWasPressed += DeleteSelectedItems;
+            _view.DeleteButtonWasClicked += DeleteSelectedItems;
+            _view.ToActionButtonWasClicked += ConvertSelectedItemToAction;
+            _view.DownKeyWasPressed += _view.List.MoveDown;
+            _view.UpKeyWasPressed += _view.List.MoveUp;
         }
 
         private void AddInboxItemInTextBox()
@@ -47,20 +58,29 @@ namespace FastGTD
 
         private void DeleteSelectedItems()
         {
+            ForEachSelectedItem(item => _model.Remove(item));
+        }
+
+        private void ConvertSelectedItemToAction()
+        {
+            ForEachSelectedItem(item => _model.ConvertToAction(item));
+        }
+
+        private void ForEachSelectedItem(Action<InBoxItem> action)
+        {
             foreach (InBoxItem item in _view.SelectedItems)
             {
-                _model.Remove(item);
+                action(item);
             }
         }
 
-        public void StartMessageLoop()
+        private void UpdateFromModel()
         {
-            _view.StartMessageLoop();
-        }
-
-        public void Close()
-        {
-            _view.Close();
+            _view.ClearInBoxItems();
+            foreach (InBoxItem item in _model.Items)
+            {
+                _view.AddInBoxItem(item);
+            }
         }
     }
 }

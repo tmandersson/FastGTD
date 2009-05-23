@@ -290,6 +290,31 @@
             </summary>
             <value></value>
         </member>
+        <member name="T:Rhino.Mocks.Constraints.LambdaConstraint">
+            <summary>
+            A constraint based on lambda expression, we are using Expression{T} 
+            because we want to be able to get good error reporting on that.
+            </summary>
+        </member>
+        <member name="M:Rhino.Mocks.Constraints.LambdaConstraint.#ctor(System.Linq.Expressions.Expression)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rhino.Mocks.Constraints.LambdaConstraint"/> class.
+            </summary>
+            <param name="expr">The expr.</param>
+        </member>
+        <member name="M:Rhino.Mocks.Constraints.LambdaConstraint.Eval(System.Object)">
+            <summary>
+            determains if the object pass the constraints
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Rhino.Mocks.Constraints.LambdaConstraint.Message">
+            <summary>
+            Gets the message for this constraint
+            </summary>
+            <value></value>
+        </member>
         <member name="T:Rhino.Mocks.Constraints.CollectionEqual">
             <summary>
             Constrain that the list contains the same items as the parameter list
@@ -3908,7 +3933,7 @@
             </summary>
             <typeparam name="T"></typeparam>
         </member>
-        <member name="M:Rhino.Mocks.Arg`1.Matches``1(System.Predicate{``0})">
+        <member name="M:Rhino.Mocks.Arg`1.Matches(System.Linq.Expressions.Expression{System.Predicate{`0}})">
             <summary>
             Register the predicate as a constraint for the current call.
             </summary>
@@ -4040,11 +4065,6 @@
             <summary>
             This delegate is compatible with the System.Func{T,R} signature
             We have to define our own to get compatability with 2.0
-            </summary>
-        </member>
-        <member name="T:Rhino.Mocks.ExtensionAttribute">
-            <summary>
-             This is here to allow compiling on the 2.0 platform with extension methods
             </summary>
         </member>
         <member name="T:Rhino.Mocks.Delegates">

@@ -12,6 +12,7 @@ namespace FastGTD
 
         event VoidDelegate AddButtonWasClicked;
         event VoidDelegate DeleteButtonWasClicked;
+        event VoidDelegate ToActionButtonWasClicked;
         event VoidDelegate EnterKeyWasPressed;
         event VoidDelegate DeleteKeyWasPressed;
         event VoidDelegate DownKeyWasPressed;

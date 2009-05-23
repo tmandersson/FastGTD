@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using FastGTD.DataTransfer;
+using NUnit.Framework;
 using Rhino.Mocks;
 
 namespace FastGTD.Tests
@@ -6,40 +8,48 @@ namespace FastGTD.Tests
     [TestFixture]
     public class InBoxControllerTests
     {
+        private InBoxController _form;
+
+        private IInBoxView _view;
+        private IInBoxModel _model;
+
+        [SetUp]
+        public void SetupTests()
+        {
+            _view = MockRepository.GenerateMock<IInBoxView>();
+            _view.Stub(x => x.List).Return(MockRepository.GenerateMock<IListSelectionChanger>());
+            _model = MockRepository.GenerateMock<IInBoxModel>();
+            _form = new InBoxController(_view, _model);
+        }
+
         [Test]
         public void TextBoxStartsWithFocus()
         {
-            var view = MockRepository.GenerateMock<IInBoxView>();
-            view.Stub(x => x.List).Return(MockRepository.GenerateMock<IListSelectionChanger>());
-            var model = MockRepository.GenerateStub<IInBoxModel>();
-            var form = new InBoxController(view, model);
-
-            form.Show();
-
-            view.AssertWasCalled(x => x.SetFocusOnTextBox());
+            _form.Show();
+            _view.AssertWasCalled(x => x.SetFocusOnTextBox());
         }
 
         [Test]
-        public void xxx()
+        public void ActionButtonClickConvertsSelectedItemToAction()
         {
-            const string ITEM_NAME = "foo";
-            var repo = MockRepository.GenerateMock<IActionPersister>();
+            var expected_item = new InBoxItem("foo");
+            _view.Stub(x => x.SelectedItems).Return(new List<InBoxItem> { expected_item });
 
-            repo.AssertWasCalled(x => x.Save(Arg<Action>.Matches(a => a.Name == ITEM_NAME)));
+            _view.Raise(x => x.ToActionButtonWasClicked += null);
+
+            _model.AssertWasCalled(x => x.ConvertToAction(Arg<InBoxItem>.Is.Equal(expected_item)));
         }
-    }
 
-    public interface IActionPersister
-    {
-        void Save(Action action);
-    }
+        //[Test]
+        //public void ActionButtonClickWithNoSelectedItemDoesNothing()
+        //{
+        //    Assert.Fail();
+        //}
 
-    public class Action
-    {
-        public string Name { get; set; }
+        //[Test]
+        //public void ActionButtonClickWithManySelectedItemsConvertsThemAllToAction()
+        //{
+        //    Assert.Fail();
+        //}
     }
 }
-
-
-
-

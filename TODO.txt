@@ -1,7 +1,5 @@
 * Göra om Inbox-item till Action.
 
-* Knapp "To Action".
-* Alt-A.
 * Model convert sparar inbox-item som action.
 * Model convert tar bort inbox-item som blev action.
 * En repo kan spara en ny Action.

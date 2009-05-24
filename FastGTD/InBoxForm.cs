@@ -19,15 +19,9 @@ namespace FastGTD
 
         public InBoxForm()
         {
-            InitializeComponent();
-
             _selection_changer = new ListViewSelectionChanger(_list_view);
-            _buttonAdd.Click += delegate { RaiseEvent(AddButtonWasClicked); };
-            _buttonDelete.Click += delegate { RaiseEvent(DeleteButtonWasClicked); };
-            KeyPreview = true;
-            KeyDown += RouteKeyDownEvents;
-            Shown += delegate { SetFirstColumnFullWidth(); };
-            Resize += delegate { SetFirstColumnFullWidth(); };
+            InitializeComponent();
+            WireEvents();
         }
 
         public void AddInBoxItem(InBoxItem item)
@@ -73,6 +67,17 @@ namespace FastGTD
         public void StartMessageLoop()
         {
             Application.Run(this);
+        }
+
+        private void WireEvents()
+        {
+            _add_button.Click += delegate { RaiseEvent(AddButtonWasClicked); };
+            _delete_button.Click += delegate { RaiseEvent(DeleteButtonWasClicked); };
+            _to_action_button.Click += delegate { RaiseEvent(ToActionButtonWasClicked); };
+            KeyPreview = true;
+            KeyDown += RouteKeyDownEvents;
+            Shown += delegate { SetFirstColumnFullWidth(); };
+            Resize += delegate { SetFirstColumnFullWidth(); };
         }
 
         private void SetFirstColumnFullWidth()

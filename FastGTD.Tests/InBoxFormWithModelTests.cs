@@ -6,7 +6,7 @@ using NUnit.Framework.SyntaxHelpers;
 namespace FastGTD.Tests
 {
     [TestFixture]
-    public class InBoxFormTests
+    public class InBoxFormWithModelTests
     {
         private TestableInBoxForm _form;
         private InBoxModel _model;
@@ -63,11 +63,5 @@ namespace FastGTD.Tests
             _model.Add("foo");
             Assert.That(_form.ListHeaderText, Is.EqualTo("New items"));
         }
-
-        //[Test]
-        //public void xxx()
-        //{
-        //    Assert.Fail();
-        //}
     }
 }

@@ -80,7 +80,8 @@
     <Compile Include="CustomerTests.cs" />
     <Compile Include="FakeInBoxItemRepository.cs" />
     <Compile Include="InBoxControllerTests.cs" />
-    <Compile Include="InBoxFormTests.cs">
+    <Compile Include="InboxFormEventTests.cs" />
+    <Compile Include="InBoxFormWithModelTests.cs">
     </Compile>
     <Compile Include="InBoxItemRepositoryTests.cs" />
     <Compile Include="InBoxModelTests.cs" />

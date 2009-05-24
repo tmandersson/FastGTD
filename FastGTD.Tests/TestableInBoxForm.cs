@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -45,12 +46,17 @@ namespace FastGTD.Tests
 
         public void ClickAddButton()
         {
-            _buttonAdd.PerformClick();
+            _add_button.PerformClick();
         }
 
         public void ClickDeleteButton()
         {
-            _buttonDelete.PerformClick();
+            _delete_button.PerformClick();
+        }
+
+        public void ClickToActionButton()
+        {
+            _to_action_button.PerformClick();
         }
 
         public void PerformKeyDown(Keys key)

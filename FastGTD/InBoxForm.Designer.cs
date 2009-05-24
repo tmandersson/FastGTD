@@ -31,9 +31,9 @@
             this._list_view = new System.Windows.Forms.ListView();
             this.newItemsHeader = new System.Windows.Forms.ColumnHeader();
             this._textBox = new System.Windows.Forms.TextBox();
-            this._buttonAdd = new System.Windows.Forms.Button();
-            this._buttonDelete = new System.Windows.Forms.Button();
-            this._button_to_action = new System.Windows.Forms.Button();
+            this._add_button = new System.Windows.Forms.Button();
+            this._delete_button = new System.Windows.Forms.Button();
+            this._to_action_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // _list_view
@@ -64,44 +64,44 @@
             this._textBox.Size = new System.Drawing.Size(380, 20);
             this._textBox.TabIndex = 0;
             // 
-            // _buttonAdd
+            // _add_button
             // 
-            this._buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._buttonAdd.Location = new System.Drawing.Point(398, 9);
-            this._buttonAdd.Name = "_buttonAdd";
-            this._buttonAdd.Size = new System.Drawing.Size(75, 23);
-            this._buttonAdd.TabIndex = 1;
-            this._buttonAdd.Text = "Add";
-            this._buttonAdd.UseVisualStyleBackColor = true;
+            this._add_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._add_button.Location = new System.Drawing.Point(398, 9);
+            this._add_button.Name = "_add_button";
+            this._add_button.Size = new System.Drawing.Size(75, 23);
+            this._add_button.TabIndex = 1;
+            this._add_button.Text = "Add";
+            this._add_button.UseVisualStyleBackColor = true;
             // 
-            // _buttonDelete
+            // _delete_button
             // 
-            this._buttonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._buttonDelete.Location = new System.Drawing.Point(398, 38);
-            this._buttonDelete.Name = "_buttonDelete";
-            this._buttonDelete.Size = new System.Drawing.Size(75, 23);
-            this._buttonDelete.TabIndex = 3;
-            this._buttonDelete.Text = "Delete";
-            this._buttonDelete.UseVisualStyleBackColor = true;
+            this._delete_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._delete_button.Location = new System.Drawing.Point(398, 38);
+            this._delete_button.Name = "_delete_button";
+            this._delete_button.Size = new System.Drawing.Size(75, 23);
+            this._delete_button.TabIndex = 3;
+            this._delete_button.Text = "Delete";
+            this._delete_button.UseVisualStyleBackColor = true;
             // 
-            // _button_to_action
+            // _to_action_button
             // 
-            this._button_to_action.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this._button_to_action.Location = new System.Drawing.Point(12, 486);
-            this._button_to_action.Name = "_button_to_action";
-            this._button_to_action.Size = new System.Drawing.Size(75, 23);
-            this._button_to_action.TabIndex = 4;
-            this._button_to_action.Text = "To &Action";
-            this._button_to_action.UseVisualStyleBackColor = true;
+            this._to_action_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._to_action_button.Location = new System.Drawing.Point(12, 486);
+            this._to_action_button.Name = "_to_action_button";
+            this._to_action_button.Size = new System.Drawing.Size(75, 23);
+            this._to_action_button.TabIndex = 4;
+            this._to_action_button.Text = "To &Action";
+            this._to_action_button.UseVisualStyleBackColor = true;
             // 
             // InBoxForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(485, 521);
-            this.Controls.Add(this._button_to_action);
-            this.Controls.Add(this._buttonDelete);
-            this.Controls.Add(this._buttonAdd);
+            this.Controls.Add(this._to_action_button);
+            this.Controls.Add(this._delete_button);
+            this.Controls.Add(this._add_button);
             this.Controls.Add(this._textBox);
             this.Controls.Add(this._list_view);
             this.Name = "InBoxForm";
@@ -116,8 +116,8 @@
         private System.Windows.Forms.ColumnHeader newItemsHeader;
         private System.Windows.Forms.TextBox _textBox;
         protected System.Windows.Forms.ListView _list_view;
-        protected System.Windows.Forms.Button _buttonAdd;
-        protected System.Windows.Forms.Button _buttonDelete;
-        protected System.Windows.Forms.Button _button_to_action;
+        protected System.Windows.Forms.Button _add_button;
+        protected System.Windows.Forms.Button _delete_button;
+        protected System.Windows.Forms.Button _to_action_button;
     }
 }

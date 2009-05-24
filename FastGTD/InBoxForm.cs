@@ -19,8 +19,8 @@ namespace FastGTD
 
         public InBoxForm()
         {
-            _selection_changer = new ListViewSelectionChanger(_list_view);
             InitializeComponent();
+            _selection_changer = new ListViewSelectionChanger(_list_view);
             WireEvents();
         }
 

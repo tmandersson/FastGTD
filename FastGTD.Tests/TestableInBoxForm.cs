@@ -59,9 +59,9 @@ namespace FastGTD.Tests
             _to_action_button.PerformClick();
         }
 
-        public void PerformKeyDown(Keys key)
+        public void PerformKeyDown(Keys keys)
         {
-            OnKeyDown(new KeyEventArgs(key));
+            OnKeyDown(new KeyEventArgs(keys));
         }
     }
 }

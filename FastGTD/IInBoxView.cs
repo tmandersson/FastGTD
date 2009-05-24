@@ -13,6 +13,7 @@ namespace FastGTD
         event VoidDelegate AddButtonWasClicked;
         event VoidDelegate DeleteButtonWasClicked;
         event VoidDelegate ToActionButtonWasClicked;
+        event VoidDelegate AltAKeysWasPressed;
         event VoidDelegate EnterKeyWasPressed;
         event VoidDelegate DeleteKeyWasPressed;
         event VoidDelegate DownKeyWasPressed;
@@ -24,6 +25,7 @@ namespace FastGTD
         void ClearInBoxItems();
         void AddInBoxItem(InBoxItem item);
         IListSelectionChanger List { get; }
+        
     }
 
     public interface IListSelectionChanger

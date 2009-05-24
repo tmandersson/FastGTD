@@ -45,6 +45,7 @@ namespace FastGTD
             _view.DeleteKeyWasPressed += DeleteSelectedItems;
             _view.DeleteButtonWasClicked += DeleteSelectedItems;
             _view.ToActionButtonWasClicked += ConvertSelectedItemToAction;
+            _view.AltAKeysWasPressed += ConvertSelectedItemToAction;
             _view.DownKeyWasPressed += _view.List.MoveDown;
             _view.UpKeyWasPressed += _view.List.MoveUp;
         }

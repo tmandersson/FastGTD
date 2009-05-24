@@ -30,26 +30,29 @@ namespace FastGTD.Tests
         }
 
         [Test]
-        public void ActionButtonClickConvertsSelectedItemToAction()
+        public void ActionButtonClickConvertsSelectedItemsToAction()
         {
             var expected_item = new InBoxItem("foo");
-            _view.Stub(x => x.SelectedItems).Return(new List<InBoxItem> { expected_item });
+            var expected_item2 = new InBoxItem("foo2");
+            _view.Stub(x => x.SelectedItems).Return(new List<InBoxItem> { expected_item, expected_item2 });
 
             _view.Raise(x => x.ToActionButtonWasClicked += null);
 
             _model.AssertWasCalled(x => x.ConvertToAction(Arg<InBoxItem>.Is.Equal(expected_item)));
+            _model.AssertWasCalled(x => x.ConvertToAction(Arg<InBoxItem>.Is.Equal(expected_item2)));
         }
 
-        //[Test]
-        //public void ActionButtonClickWithNoSelectedItemDoesNothing()
-        //{
-        //    Assert.Fail();
-        //}
+        [Test]
+        public void PressingAltAConvertsSelectedItemsToActions()
+        {
+            var expected_item = new InBoxItem("foo");
+            var expected_item2 = new InBoxItem("foo2");
+            _view.Stub(x => x.SelectedItems).Return(new List<InBoxItem> { expected_item, expected_item2 });
 
-        //[Test]
-        //public void ActionButtonClickWithManySelectedItemsConvertsThemAllToAction()
-        //{
-        //    Assert.Fail();
-        //}
+            _view.Raise(x => x.AltAKeysWasPressed += null);
+
+            _model.AssertWasCalled(x => x.ConvertToAction(Arg<InBoxItem>.Is.Equal(expected_item)));
+            _model.AssertWasCalled(x => x.ConvertToAction(Arg<InBoxItem>.Is.Equal(expected_item2)));
+        }
     }
 }

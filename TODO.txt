@@ -2,21 +2,19 @@
 
 * Knapp "To Action".
 * Alt-A.
+* Model convert sparar inbox-item som action.
+* Model convert tar bort inbox-item som blev action.
 * En repo kan spara en ny Action.
-* Controllern skapar och sparar en Action utifrån markerade InboxItem-namnet.
-* Controllern tar bort InboxItem som precis blivit Action.
-* Hantera flera markerade InBoxItems.
+* Testa att det fungerar på riktigt.
 
 * Redundans i de 2 repositorys. Använd generics. IRepository<T> eller liknande.
 * Refaktorera till System.Action och Action<T> delegates.
 * TDD:a om Inboxview använd inte designern, utan TDD:a allt.
-* Dumt namn på mina Action? Krockar med System.Action.
 * Lite smelly att jag måste stubba List på IViewn i Controller testerna.
-* Refaktorera redundans i controller-testerna.
 
 * Se till att kompilera alla tools som jag förlitar mig på istället. 
 Så att jag har källkoden ifall nåt projekt läggs ner.
-	* Använd gärna trunk och merge regelbundet.
+	* Använd gärna trunk och mergea regelbundet.
 	* NUnit
 	* NHibernate
 	* Rhino mocks

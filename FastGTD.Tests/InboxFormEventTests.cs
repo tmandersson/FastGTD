@@ -7,16 +7,21 @@ namespace FastGTD.Tests
     public class InboxFormEventTests
     {
         private bool _event_was_raised;
+        private TestableInBoxForm _view;
+
+        [SetUp]
+        public void SetupTests()
+        {
+            _event_was_raised = false;
+            _view = new TestableInBoxForm();
+            _view.Show();
+        }
 
         [Test]
         public void ToActionButtonEvent()
         {
-            _event_was_raised = false;
-            var view = new TestableInBoxForm();
-            view.ToActionButtonWasClicked += CatchEvent;
-            view.Show();
-
-            view.ClickToActionButton();
+            _view.ToActionButtonWasClicked += CatchEvent;
+            _view.ClickToActionButton();
 
             Assert.That(_event_was_raised);
         }
@@ -24,14 +29,10 @@ namespace FastGTD.Tests
         [Test]
         public void AltAEvent()
         {
-            //_event_was_raised = false;
-            //var view = new TestableInBoxForm();
-            //view.ToActionButtonWasClicked += CatchEvent;
-            //view.Show();
+            _view.AltAKeysWasPressed += CatchEvent;
+            _view.PerformKeyDown(Keys.Alt | Keys.A);
 
-            //view.PerformKeyDown(Keys.Alt | Keys.A);
-
-            //Assert.That(_event_was_raised);
+            Assert.That(_event_was_raised);
         }
 
         private void CatchEvent()

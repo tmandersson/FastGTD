@@ -102,6 +102,9 @@ namespace FastGTD
                 case Keys.Up:
                     RaiseEvent(UpKeyWasPressed);
                     break;
+                case Keys.Alt | Keys.A:
+                    RaiseEvent(AltAKeysWasPressed);
+                    break;
                 default:
                     key_handled = false;
                     break;

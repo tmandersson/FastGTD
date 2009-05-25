@@ -10,6 +10,7 @@
 * TDD:a om Inboxview använd inte designern, utan TDD:a allt.
 * Lite smelly att jag måste stubba List på IViewn i Controller testerna.
 * Eliminera FakeInBoxRepo, använd RhinoMocks istället.
+* ShownInBoxFormTests.cs är inte konsekvent namngiven.
 
 * Se till att kompilera alla tools som jag förlitar mig på istället. 
 Så att jag har källkoden ifall nåt projekt läggs ner.

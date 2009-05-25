@@ -6,36 +6,41 @@ namespace FastGTD.Tests
     [TestFixture]
     public class InBoxModelTests
     {
+        private InBoxModel _model;
+
+        [SetUp]
+        public void SetupTests()
+        {
+            var repo = new FakeInBoxItemRepository();
+            _model = new InBoxModel(repo);
+            Assert.That(_model.Items, Has.Count(0));
+        }
+
         [Test]
         public void DeletingItem()
         {
-            var model = new InBoxModel(new FakeInBoxItemRepository());
-            Assert.That(model.Items, Has.Count(0));
+            _model.Add("foo");
+            Assert.That(_model.Items, Has.Count(1));
+            var item = _model.Add("bar");
+            Assert.That(_model.Items, Has.Count(2));
 
-            model.Add("foo");
-            Assert.That(model.Items, Has.Count(1));
-            var item = model.Add("bar");
-            Assert.That(model.Items, Has.Count(2));
+            _model.Remove(item);
 
-            model.Remove(item);
-            Assert.That(model.Items, Has.Count(1));
-            Assert.That(model.Items[0].Name, Is.EqualTo("foo"));
+            Assert.That(_model.Items, Has.Count(1));
+            Assert.That(_model.Items[0].Name, Is.EqualTo("foo"));
         }
 
         [Test]
         public void ClearItems()
         {
-            var model = new InBoxModel(new FakeInBoxItemRepository());
+            _model.Add("foo");
+            Assert.That(_model.Items, Has.Count(1));
+            _model.Add("bar");
+            Assert.That(_model.Items, Has.Count(2));
 
-            Assert.That(model.Items, Has.Count(0));
+            _model.ClearItems();
 
-            model.Add("foo");
-            Assert.That(model.Items, Has.Count(1));
-            model.Add("bar");
-            Assert.That(model.Items, Has.Count(2));
-
-            model.ClearItems();
-            Assert.That(model.Items, Has.Count(0));
+            Assert.That(_model.Items, Has.Count(0));
         }
     }
 }

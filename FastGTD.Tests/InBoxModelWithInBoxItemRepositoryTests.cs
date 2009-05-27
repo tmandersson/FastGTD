@@ -17,7 +17,8 @@ namespace FastGTD.Tests
             var repo = new InBoxItemRepository();
             IList<InBoxItem> existing = repo.GetAll();
             int expected_count = existing.Count + 1;
-            var item = repo.CreateNew(name);
+            var item = new InBoxItem(name);
+            repo.Save(item);
 
             var model = new InBoxModel(new InBoxItemRepository());
             model.Load();

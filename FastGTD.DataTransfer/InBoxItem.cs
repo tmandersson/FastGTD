@@ -17,13 +17,6 @@
             set { _name = value; }
         }
 
-        public static InBoxItem CreateNew(IInBoxItemPersister persister, string name)
-        {
-            var item = new InBoxItem(name);
-            persister.Save(item);
-            return item;
-        }
-
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;

@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
+using FastGTD.DataAccess;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
+using Rhino.Mocks;
 
 namespace FastGTD.Tests
 {
@@ -14,7 +16,8 @@ namespace FastGTD.Tests
         [SetUp]
         public void SetupTests()
         {
-            _model = new InBoxModel(new FakeInBoxItemRepository());
+            var repository = MockRepository.GenerateStub<IInBoxItemRepository>();
+            _model = new InBoxModel(repository);
             _form = new TestableInBoxForm();
             new InBoxController(_form, _model);
         }

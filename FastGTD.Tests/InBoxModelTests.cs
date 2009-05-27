@@ -1,5 +1,7 @@
+using FastGTD.DataAccess;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
+using Rhino.Mocks;
 
 namespace FastGTD.Tests
 {
@@ -11,7 +13,7 @@ namespace FastGTD.Tests
         [SetUp]
         public void SetupTests()
         {
-            var repo = new FakeInBoxItemRepository();
+            var repo = MockRepository.GenerateStub<IInBoxItemRepository>();
             _model = new InBoxModel(repo);
             Assert.That(_model.Items, Has.Count(0));
         }
@@ -19,6 +21,7 @@ namespace FastGTD.Tests
         [Test]
         public void DeletingItem()
         {
+
             _model.Add("foo");
             Assert.That(_model.Items, Has.Count(1));
             var item = _model.Add("bar");

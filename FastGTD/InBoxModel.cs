@@ -38,7 +38,9 @@ namespace FastGTD
 
         public InBoxItem Add(string name)
         {
-            var item = _repository.CreateNew(name);
+            var item1 = new InBoxItem(name);
+            var item = item1;
+            _repository.Save(item);
             _items.Add(item);
             FireEvent(Changed);
 

@@ -44,11 +44,6 @@ namespace FastGTD.DataAccess
             return _session_factory.OpenSession();
         }
 
-        public InBoxItem CreateNew(string name)
-        {
-            return InBoxItem.CreateNew(this, name);
-        }
-
         public void Delete(InBoxItem item)
         {
             ISession session = GetSession();

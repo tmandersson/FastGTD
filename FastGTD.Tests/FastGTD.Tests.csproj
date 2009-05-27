@@ -78,7 +78,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomerTests.cs" />
-    <Compile Include="FakeInBoxItemRepository.cs" />
     <Compile Include="InBoxControllerTests.cs" />
     <Compile Include="InboxFormEventTests.cs" />
     <Compile Include="InBoxFormWithModelTests.cs">

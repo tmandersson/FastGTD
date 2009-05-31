@@ -1,37 +1,41 @@
 using FastGTD.DataAccess;
+using StructureMap;
 
 namespace FastGTD
 {
     public class FastGTDApp
     {
         private readonly InBoxModel _inbox_model;
-        private readonly IInBoxView _inbox_view;
         private readonly InBoxController _inbox_controller;
 
         public static int Main()
         {
-            var app = new FastGTDApp();
+            FastGTDApp app = Create();
             app.ShowStartForm();
             app.StartMessageLoop();
             app.Close();
             return 0;
         }
 
-        public FastGTDApp()
+        public static FastGTDApp Create()
         {
-            _inbox_model = new InBoxModel(new InBoxItemRepository());
-            _inbox_view = new InBoxForm();
-            _inbox_controller = new InBoxController(_inbox_view, _inbox_model);
+            ObjectFactory.Initialize(x => {
+                x.ForRequestedType<IInBoxItemRepository>().TheDefaultIsConcreteType<InBoxItemRepository>();
+                x.ForRequestedType<IInBoxView>().TheDefaultIsConcreteType<InBoxForm>();
+                x.ForRequestedType<IInBoxModel>().TheDefaultIsConcreteType<InBoxModel>();
+            });
+            return ObjectFactory.GetInstance<FastGTDApp>();
+        }
+
+        public FastGTDApp(InBoxModel inbox_model, InBoxController inbox_controller)
+        {
+            _inbox_model = inbox_model;
+            _inbox_controller = inbox_controller;
         }
 
         public InBoxModel InboxModel
         {
             get { return _inbox_model; }
-        }
-
-        public IInBoxView InboxView
-        {
-            get { return _inbox_view; }
         }
 
         public void ShowStartForm()

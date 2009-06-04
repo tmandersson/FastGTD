@@ -27,9 +27,9 @@ namespace FastGTD
             return ObjectFactory.GetInstance<FastGTDApp>();
         }
 
-        public FastGTDApp(InBoxModel inbox_model, InBoxController inbox_controller)
+        public FastGTDApp(IInBoxModel inbox_model, InBoxController inbox_controller)
         {
-            _inbox_model = inbox_model;
+            _inbox_model = (InBoxModel) inbox_model;
             _inbox_controller = inbox_controller;
         }
 

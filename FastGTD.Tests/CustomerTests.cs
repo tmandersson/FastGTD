@@ -46,10 +46,11 @@ namespace FastGTD.Tests
 
         private static FastGTDApp CreateAndStartTestApp()
         {
-            var inbox_model = new InBoxModel(new InBoxItemRepository());
-            var inbox_view = new InBoxForm();
-            var inbox_controller = new InBoxController(inbox_view, inbox_model);
-            var app = new FastGTDApp(inbox_model, inbox_controller);
+            //var inbox_model = new InBoxModel(new InBoxItemRepository());
+            //var inbox_view = new InBoxForm();
+            //var inbox_controller = new InBoxController(inbox_view, inbox_model);
+            //var app = new FastGTDApp(inbox_model, inbox_controller);
+            var app = FastGTDApp.Create();
             app.ShowStartForm();
             return app;
         }

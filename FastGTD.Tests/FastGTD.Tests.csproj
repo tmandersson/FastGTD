@@ -77,7 +77,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InBoxTests.cs" />
+    <Compile Include="CustomerTests\InBoxTests.cs" />
     <Compile Include="InBoxControllerTests.cs" />
     <Compile Include="InboxFormEventTests.cs" />
     <Compile Include="InBoxFormWithModelTests.cs">

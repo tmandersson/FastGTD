@@ -29,6 +29,7 @@ namespace FastGTD
 
         public FastGTDApp(IInBoxModel inbox_model, InBoxController inbox_controller)
         {
+            // TODO: Fix problem with structuremap signature and cast below.
             _inbox_model = (InBoxModel) inbox_model;
             _inbox_controller = inbox_controller;
         }

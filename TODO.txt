@@ -1,4 +1,6 @@
 * Göra om Inbox-item till Action.
+* End-to-end Customer-test.
+* Gå igenom klasserna. Fundera på designen enligt SRP.
 
 * Model convert sparar inbox-item som action.
 * Model convert tar bort inbox-item som blev action.

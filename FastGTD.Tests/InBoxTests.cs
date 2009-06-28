@@ -1,12 +1,11 @@
 using System;
-using FastGTD.DataAccess;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 
 namespace FastGTD.Tests
 {
     [TestFixture, Explicit, Category("slow")]
-    public class CustomerTests
+    public class InBoxTests
     {
         [Test]
         public void NewInBoxItemIsSaved()

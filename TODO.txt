@@ -5,7 +5,6 @@
 * Gå igenom klasserna. Fundera på designen enlig LSP.
 * Gå igenom klasserna. Fundera på designen enlig ISP.
 * Gå igenom klasserna. Fundera på designen enlig DIP.
-* Separera integrerings-tester från enhets-testerna.
 * Implementera code coverage verktyg.
 * Två Customer test-fixturer med samma namn.
 * Jobba vidare på funktionalitet ansvarsfullt. (Customer-test för aktuellt kort.)

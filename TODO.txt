@@ -1,6 +1,14 @@
 * Göra om Inbox-item till Action.
 * End-to-end Customer-test.
 * Gå igenom klasserna. Fundera på designen enligt SRP.
+* Gå igenom klasserna. Fundera på designen enlig OCP.
+* Gå igenom klasserna. Fundera på designen enlig LSP.
+* Gå igenom klasserna. Fundera på designen enlig ISP.
+* Gå igenom klasserna. Fundera på designen enlig DIP.
+* Separera integrerings-tester från enhets-testerna.
+* Implementera code coverage verktyg.
+* Två Customer test-fixturer med samma namn.
+* Jobba vidare på funktionalitet ansvarsfullt. (Customer-test för aktuellt kort.)
 
 * Model convert sparar inbox-item som action.
 * Model convert tar bort inbox-item som blev action.

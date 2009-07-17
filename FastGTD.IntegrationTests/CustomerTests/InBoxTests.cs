@@ -2,9 +2,9 @@ using System;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 
-namespace FastGTD.Tests.CustomerTests
+namespace FastGTD.IntegrationTests.CustomerTests
 {
-    [TestFixture, Explicit, Category("slow")]
+    [TestFixture]
     public class InBoxTests
     {
         [Test]

@@ -5,9 +5,9 @@ using FastGTD.DataTransfer;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 
-namespace FastGTD.Tests
+namespace FastGTD.IntegrationTests
 {
-    [TestFixture, Explicit, Category("slow")]
+    [TestFixture]
     public class InBoxModelWithInBoxItemRepositoryTests
     {
         [Test]

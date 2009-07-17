@@ -81,9 +81,7 @@
     <Compile Include="InboxFormEventTests.cs" />
     <Compile Include="InBoxFormWithModelTests.cs">
     </Compile>
-    <Compile Include="InBoxItemRepositoryTests.cs" />
     <Compile Include="InBoxModelTests.cs" />
-    <Compile Include="InBoxModelWithInBoxItemRepositoryTests.cs" />
     <Compile Include="ShownInBoxFormTests.cs">
     </Compile>
     <Compile Include="TestableInBoxForm.cs">

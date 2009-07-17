@@ -55,6 +55,8 @@
   <ItemGroup>
     <Compile Include="CustomerTests\InBoxTests.cs" />
     <Compile Include="CustomerTests\InBoxTests2.cs" />
+    <Compile Include="InBoxItemRepositoryTests.cs" />
+    <Compile Include="InBoxModelWithInBoxItemRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

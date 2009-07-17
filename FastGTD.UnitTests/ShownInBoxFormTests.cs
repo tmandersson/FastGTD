@@ -6,7 +6,7 @@ using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 using Rhino.Mocks;
 
-namespace FastGTD.Tests
+namespace FastGTD.UnitTests
 {
     [TestFixture]
     public class ShownInBoxFormTests

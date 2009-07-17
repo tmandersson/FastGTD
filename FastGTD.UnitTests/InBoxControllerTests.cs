@@ -3,7 +3,7 @@ using FastGTD.DataTransfer;
 using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace FastGTD.Tests
+namespace FastGTD.UnitTests
 {
     [TestFixture]
     public class InBoxControllerTests

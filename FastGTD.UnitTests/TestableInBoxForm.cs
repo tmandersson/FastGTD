@@ -1,8 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace FastGTD.Tests
+namespace FastGTD.UnitTests
 {
     public class TestableInBoxForm : InBoxForm
     {

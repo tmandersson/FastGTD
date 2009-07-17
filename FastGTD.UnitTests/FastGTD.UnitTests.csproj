@@ -8,8 +8,8 @@
     <ProjectGuid>{99F46949-623F-4535-B3D5-D3CB7398A752}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FastGTD.Tests</RootNamespace>
-    <AssemblyName>FastGTD.Tests</AssemblyName>
+    <RootNamespace>FastGTD.UnitTests</RootNamespace>
+    <AssemblyName>FastGTD.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <StartupObject>

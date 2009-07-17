@@ -1,7 +1,7 @@
 using System.Windows.Forms;
 using NUnit.Framework;
 
-namespace FastGTD.Tests
+namespace FastGTD.UnitTests
 {
     [TestFixture]
     public class InboxFormEventTests

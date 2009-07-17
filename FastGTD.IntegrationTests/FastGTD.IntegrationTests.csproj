@@ -53,8 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomerTests\InBoxTests.cs" />
-    <Compile Include="CustomerTests\InBoxTests2.cs" />
+    <Compile Include="CustomerTests\InBoxPersistenceTests.cs" />
+    <Compile Include="CustomerTests\InBoxStartsEmptyTests.cs" />
     <Compile Include="InBoxItemRepositoryTests.cs" />
     <Compile Include="InBoxModelWithInBoxItemRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

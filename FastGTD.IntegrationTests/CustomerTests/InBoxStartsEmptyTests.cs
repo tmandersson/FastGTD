@@ -6,7 +6,7 @@ using NUnit.Framework.SyntaxHelpers;
 namespace FastGTD.IntegrationTests.CustomerTests
 {
     [TestFixture]
-    public class InBoxTests2
+    public class InBoxStartsEmptyTests
     {
         private FastGTDApp _app;
         private readonly string _item_name1 = Guid.NewGuid().ToString();
@@ -16,19 +16,19 @@ namespace FastGTD.IntegrationTests.CustomerTests
         public void AddingInBoxItems()
         {
             GetAppWithEmptyInBox();
-            InBoxItem item1 = AddInBoxItem(_item_name1);
-            InBoxItem item2 = AddInBoxItem(_item_name2);
-            Assert.That(InBoxCount(), Is.EqualTo(2));
+            InBoxItem item1 = AddItemToInBox(_item_name1);
+            InBoxItem item2 = AddItemToInBox(_item_name2);
+            Assert.That(InBoxItemCount(), Is.EqualTo(2));
             Assert.That(InBoxContains(item1), Is.True);
             Assert.That(InBoxContains(item2), Is.True);
         }
 
-        private InBoxItem AddInBoxItem(string item_name)
+        private InBoxItem AddItemToInBox(string item_name)
         {
             return _app.InboxModel.Add(item_name);
         }
 
-        private int InBoxCount()
+        private int InBoxItemCount()
         {
             return _app.InboxModel.Items.Count;
         }

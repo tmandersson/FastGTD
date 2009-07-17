@@ -5,7 +5,7 @@ using NUnit.Framework.SyntaxHelpers;
 namespace FastGTD.IntegrationTests.CustomerTests
 {
     [TestFixture]
-    public class InBoxTests
+    public class InBoxPersistenceTests
     {
         [Test]
         public void NewInBoxItemIsSaved()

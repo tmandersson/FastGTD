@@ -54,7 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomerTests\InBoxPersistenceTests.cs" />
-    <Compile Include="CustomerTests\InBoxStartsEmptyTests.cs" />
+    <Compile Include="CustomerTests\StartingWithEmptyModelsTests.cs" />
     <Compile Include="InBoxItemRepositoryTests.cs" />
     <Compile Include="InBoxModelWithInBoxItemRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

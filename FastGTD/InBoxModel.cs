@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using FastGTD.DataAccess;
 using FastGTD.DataTransfer;
 
@@ -8,12 +7,14 @@ namespace FastGTD
     public class InBoxModel : IInBoxModel
     {
         private readonly IInBoxItemRepository _repository;
+        private readonly ActionsListModel _actions_list_model;
         private readonly IList<InBoxItem> _items = new List<InBoxItem>();
         public event VoidDelegate Changed;
 
-        public InBoxModel(IInBoxItemRepository repository)
+        public InBoxModel(IInBoxItemRepository repository, ActionsListModel model)
         {
             _repository = repository;
+            _actions_list_model = model;
         }
 
         public void Load()
@@ -26,9 +27,12 @@ namespace FastGTD
             FireEvent(Changed);
         }
 
-        public void ConvertToAction(InBoxItem item)
+        public ActionItem ConvertToAction(InBoxItem item)
         {
-            throw new NotImplementedException();
+            _items.Remove(item);
+            var action = new ActionItem(item.Name);
+            _actions_list_model.Items.Add(action);
+            return action;
         }
 
         public IList<InBoxItem> Items

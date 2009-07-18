@@ -34,12 +34,12 @@ namespace FastGTD.IntegrationTests.CustomerTests
             Assert.That(InBoxContains(item1), Is.True);
             Assert.That(InBoxContains(item2), Is.False);
             Assert.That(ActionItemCount(), Is.EqualTo(1));
-            Assert.That(ActionListContains(action));
+            Assert.That(ActionsListContains(action));
         }
 
         private ActionItem ConvertToActionItem(InBoxItem item)
         {
-            return new ActionItem();
+            return _app.InboxModel.ConvertToAction(item);
         }
 
         private InBoxItem AddItemToInBox(string item_name)
@@ -54,7 +54,7 @@ namespace FastGTD.IntegrationTests.CustomerTests
 
         private int ActionItemCount()
         {
-            throw new NotImplementedException();
+            return _app.ActionsListModel.Items.Count;
         }
 
         private bool InBoxContains(InBoxItem item_name)
@@ -62,9 +62,9 @@ namespace FastGTD.IntegrationTests.CustomerTests
             return _app.InboxModel.Items.Contains(item_name);
         }
 
-        private bool ActionListContains(ActionItem action)
+        private bool ActionsListContains(ActionItem action)
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         private void GetApplicationWithEmptyModels()

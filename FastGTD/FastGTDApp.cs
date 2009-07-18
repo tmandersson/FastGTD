@@ -7,6 +7,7 @@ namespace FastGTD
     {
         private readonly InBoxModel _inbox_model;
         private readonly InBoxController _inbox_controller;
+        private readonly ActionsListModel _actions_list_model;
 
         public static int Main()
         {
@@ -27,16 +28,22 @@ namespace FastGTD
             return ObjectFactory.GetInstance<FastGTDApp>();
         }
 
-        public FastGTDApp(IInBoxModel inbox_model, InBoxController inbox_controller)
+        public FastGTDApp(IInBoxModel inbox_model, InBoxController inbox_controller, ActionsListModel actions_list_model)
         {
             // TODO: Fix problem with structuremap signature and cast below.
             _inbox_model = (InBoxModel) inbox_model;
             _inbox_controller = inbox_controller;
+            _actions_list_model = actions_list_model;
         }
 
         public InBoxModel InboxModel
         {
             get { return _inbox_model; }
+        }
+
+        public ActionsListModel ActionsListModel
+        {
+            get { return _actions_list_model; }
         }
 
         public void ShowStartForm()

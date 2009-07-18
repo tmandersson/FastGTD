@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionItem.cs" />
+    <Compile Include="GTDItem.cs" />
     <Compile Include="IInBoxItemPersister.cs" />
     <Compile Include="InBoxItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

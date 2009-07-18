@@ -20,7 +20,7 @@ namespace FastGTD.IntegrationTests
             var item = new InBoxItem(name);
             repo.Save(item);
 
-            var model = new InBoxModel(new InBoxItemRepository());
+            InBoxModel model = CreateModel();
             model.Load();
 
             Assert.That(model.Items, Has.Count(expected_count));
@@ -30,13 +30,13 @@ namespace FastGTD.IntegrationTests
         [Test]
         public void ClearingItemsDeletesItemsInDatabase()
         {
-            var model = new InBoxModel(new InBoxItemRepository());
+            InBoxModel model = CreateModel();
             model.Load();
             model.Add("hej");
 
             model.ClearItems();
 
-            var persisted_model = new InBoxModel(new InBoxItemRepository());
+            var persisted_model = CreateModel();
             persisted_model.Load();
             Assert.That(persisted_model.Items.Count, Is.EqualTo(0));
         }
@@ -45,16 +45,21 @@ namespace FastGTD.IntegrationTests
         public void SaveNewItems()
         {
             const string ITEM_NAME = "hej";
-            var model = new InBoxModel(new InBoxItemRepository());
+            var model = CreateModel();
             model.Load();
             model.ClearItems();
 
             var expected_item = model.Add(ITEM_NAME);
 
-            var persisted_model = new InBoxModel(new InBoxItemRepository());
+            var persisted_model = CreateModel();
             persisted_model.Load();
             Assert.That(persisted_model.Items.Count, Is.EqualTo(1));
             Assert.That(persisted_model.Items, Has.Member(expected_item));
+        }
+
+        private static InBoxModel CreateModel()
+        {
+            return new InBoxModel(new InBoxItemRepository(), null);
         }
     }
 }

@@ -1,20 +1,11 @@
 ﻿namespace FastGTD.DataTransfer
 {
-    public class InBoxItem
+    public class InBoxItem : GTDItem
     {
-        private string _name;
-
         protected InBoxItem() { }
         public InBoxItem(string name)
         {
             _name = name;
-        }
-
-        public virtual int Id { get; set; }
-        public virtual string Name
-        {
-            get { return _name; }
-            set { _name = value; }
         }
 
         public override bool Equals(object obj)

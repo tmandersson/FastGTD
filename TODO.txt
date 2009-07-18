@@ -1,16 +1,15 @@
 * Göra om Inbox-item till Action.
-* End-to-end Customer-test.
 * Gå igenom klasserna. Fundera på designen enligt SRP.
 * Gå igenom klasserna. Fundera på designen enlig OCP.
 * Gå igenom klasserna. Fundera på designen enlig LSP.
 * Gå igenom klasserna. Fundera på designen enlig ISP.
 * Gå igenom klasserna. Fundera på designen enlig DIP.
 * Implementera code coverage verktyg.
-* Jobba vidare på funktionalitet ansvarsfullt. (Customer-test för aktuellt kort.)
+* Jobba vidare på funktionalitet ansvarsfullt. (Customer-tester för aktuellt kort.)
 
 * Model convert sparar inbox-item som action.
 * Model convert tar bort inbox-item som blev action.
-* En repo kan spara en ny Action.
+* Action-items är persistenta.
 * Testa att det fungerar på riktigt.
 
 * Redundans i de 2 repositorys. Använd generics. IRepository<T> eller liknande.

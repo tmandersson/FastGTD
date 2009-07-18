@@ -57,14 +57,14 @@ namespace FastGTD.IntegrationTests.CustomerTests
             return _app.ActionsListModel.Items.Count;
         }
 
-        private bool InBoxContains(InBoxItem item_name)
+        private bool InBoxContains(InBoxItem item)
         {
-            return _app.InboxModel.Items.Contains(item_name);
+            return _app.InboxModel.Items.Contains(item);
         }
 
-        private bool ActionsListContains(ActionItem action)
+        private bool ActionsListContains(ActionItem item)
         {
-            return false;
+            return _app.ActionsListModel.Items.Contains(item);
         }
 
         private void GetApplicationWithEmptyModels()

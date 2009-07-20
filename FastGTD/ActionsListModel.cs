@@ -11,5 +11,12 @@ namespace FastGTD
         {
             get { return _items; }
         }
+
+        public ActionItem Add(string name)
+        {
+            var action = new ActionItem(name);
+            _items.Add(action);
+            return action;
+        }
     }
 }

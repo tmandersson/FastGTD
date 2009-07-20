@@ -30,8 +30,7 @@ namespace FastGTD
         public ActionItem ConvertToAction(InBoxItem item)
         {
             _items.Remove(item);
-            var action = new ActionItem(item.Name);
-            _actions_list_model.Items.Add(action);
+            ActionItem action = _actions_list_model.Add(item.Name);
             return action;
         }
 

@@ -35,3 +35,10 @@ Så att jag har källkoden ifall nåt projekt läggs ner.
 * NDepend
 * NCover senare?
 ?* WPF-version av gränssnittet.
+* In memory DB för db-testen.
+* OO DB istället för Nhib?
+* Testa öppen (open source) IDE. Ska kunna utveckla utan att vara bunden till MS (bygga på linux, VMWare?)
+* Prova fluent nhibernate.
+
+Om senare, web-del av systemet:
+* Prova selenium för customer-tests.

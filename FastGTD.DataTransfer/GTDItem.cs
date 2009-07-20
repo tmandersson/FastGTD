@@ -1,5 +1,3 @@
-using System;
-
 namespace FastGTD.DataTransfer
 {
     public class GTDItem

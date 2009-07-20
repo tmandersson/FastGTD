@@ -45,7 +45,7 @@ namespace FastGTD.IntegrationTests.CustomerTests
 
         private static FastGTDApp CreateAndStartTestApp()
         {
-            var app = FastGTDApp.Create();
+            var app = new FastGTDApp();
             app.ShowStartForm();
             return app;
         }

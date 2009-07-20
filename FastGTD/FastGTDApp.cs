@@ -1,5 +1,6 @@
 using FastGTD.DataAccess;
 using StructureMap;
+using StructureMap.Attributes;
 
 namespace FastGTD
 {
@@ -11,29 +12,30 @@ namespace FastGTD
 
         public static int Main()
         {
-            FastGTDApp app = Create();
+            var app = new FastGTDApp();
             app.ShowStartForm();
             app.StartMessageLoop();
             app.Close();
             return 0;
         }
 
-        public static FastGTDApp Create()
+        public FastGTDApp()
         {
-            ObjectFactory.Initialize(x => {
-                x.ForRequestedType<IInBoxItemRepository>().TheDefaultIsConcreteType<InBoxItemRepository>();
-                x.ForRequestedType<IInBoxView>().TheDefaultIsConcreteType<InBoxForm>();
-                x.ForRequestedType<IInBoxModel>().TheDefaultIsConcreteType<InBoxModel>();
+            ObjectFactory.Initialize(x =>
+            {
+                x.ForRequestedType<IInBoxItemRepository>().TheDefaultIsConcreteType<InBoxItemRepository>()
+                    .CacheBy(InstanceScope.Singleton);
+                x.ForRequestedType<IInBoxView>().TheDefaultIsConcreteType<InBoxForm>()
+                    .CacheBy(InstanceScope.Singleton);
+                x.ForRequestedType<IInBoxModel>().TheDefaultIsConcreteType<InBoxModel>()
+                    .CacheBy(InstanceScope.Singleton);
+                x.ForRequestedType<ActionsListModel>().TheDefaultIsConcreteType<ActionsListModel>()
+                    .CacheBy(InstanceScope.Singleton);
             });
-            return ObjectFactory.GetInstance<FastGTDApp>();
-        }
 
-        public FastGTDApp(IInBoxModel inbox_model, InBoxController inbox_controller, ActionsListModel actions_list_model)
-        {
-            // TODO: Fix problem with structuremap signature and cast below.
-            _inbox_model = (InBoxModel) inbox_model;
-            _inbox_controller = inbox_controller;
-            _actions_list_model = actions_list_model;
+            _inbox_model = (InBoxModel) ObjectFactory.GetInstance<IInBoxModel>();
+            _inbox_controller = ObjectFactory.GetInstance<InBoxController>();
+            _actions_list_model = ObjectFactory.GetInstance<ActionsListModel>();
         }
 
         public InBoxModel InboxModel

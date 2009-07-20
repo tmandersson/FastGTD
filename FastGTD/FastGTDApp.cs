@@ -9,6 +9,7 @@ namespace FastGTD
         private readonly InBoxModel _inbox_model;
         private readonly InBoxController _inbox_controller;
         private readonly ActionsListModel _actions_list_model;
+        private readonly IItemConverter _converter;
 
         public static int Main()
         {
@@ -31,11 +32,14 @@ namespace FastGTD
                     .CacheBy(InstanceScope.Singleton);
                 x.ForRequestedType<ActionsListModel>().TheDefaultIsConcreteType<ActionsListModel>()
                     .CacheBy(InstanceScope.Singleton);
+                x.ForRequestedType<IItemConverter>().TheDefaultIsConcreteType<ItemConverter>()
+                    .CacheBy(InstanceScope.Singleton);
             });
 
             _inbox_model = (InBoxModel) ObjectFactory.GetInstance<IInBoxModel>();
             _inbox_controller = ObjectFactory.GetInstance<InBoxController>();
             _actions_list_model = ObjectFactory.GetInstance<ActionsListModel>();
+            _converter = ObjectFactory.GetInstance<IItemConverter>();
         }
 
         public InBoxModel InboxModel
@@ -46,6 +50,11 @@ namespace FastGTD
         public ActionsListModel ActionsListModel
         {
             get { return _actions_list_model; }
+        }
+
+        public IItemConverter Converter
+        {
+            get { return _converter; }
         }
 
         public void ShowStartForm()

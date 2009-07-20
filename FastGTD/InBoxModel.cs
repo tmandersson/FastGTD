@@ -10,13 +10,11 @@ namespace FastGTD
         private readonly IList<InBoxItem> _items = new List<InBoxItem>();
 
         private readonly IInBoxPersistenceProvider _persistence;
-        private readonly ActionsListModel _actions_list_model;
         public event VoidDelegate Changed;
 
-        public InBoxModel(IInBoxPersistenceProvider persistence, ActionsListModel model)
+        public InBoxModel(IInBoxPersistenceProvider persistence)
         {
             _persistence = persistence;
-            _actions_list_model = model;
         }
 
         public void Load()
@@ -27,13 +25,6 @@ namespace FastGTD
                 _items.Add(item);
             }
             FireEvent(Changed);
-        }
-
-        public ActionItem ConvertToAction(InBoxItem item)
-        {
-            Remove(item);
-            ActionItem action = _actions_list_model.Add(item.Name);
-            return action;
         }
 
         public IList<InBoxItem> Items

@@ -45,7 +45,7 @@ namespace FastGTD.IntegrationTests.CustomerTests
             GetApplicationWithEmptyModels();
             InBoxItem item1 = AddItemToInBox(_item_name1);
             InBoxItem item2 = AddItemToInBox(_item_name2);
-            ActionItem action = ConvertToActionItem(item2);
+            ConvertToActionItem(item2);
 
             GetApplicationWithPreviousData();
             Assert.That(InBoxItemCount(), Is.EqualTo(1));
@@ -71,7 +71,7 @@ namespace FastGTD.IntegrationTests.CustomerTests
 
         private ActionItem ConvertToActionItem(InBoxItem item)
         {
-            return _app.InboxModel.ConvertToAction(item);
+            return _app.Converter.ConvertToAction(item);
         }
 
         private InBoxItem AddItemToInBox(string item_name)

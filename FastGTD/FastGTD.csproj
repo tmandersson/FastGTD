@@ -68,6 +68,7 @@
       <DependentUpon>InBoxForm.cs</DependentUpon>
     </Compile>
     <Compile Include="InBoxModel.cs" />
+    <Compile Include="ItemConverter.cs" />
     <Compile Include="ListViewSelectionChanger.cs" />
   </ItemGroup>
   <ItemGroup>

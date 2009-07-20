@@ -59,7 +59,7 @@ namespace FastGTD.IntegrationTests
 
         private static InBoxModel CreateModel()
         {
-            return new InBoxModel(new InBoxItemRepository(), null);
+            return new InBoxModel(new InBoxItemRepository());
         }
     }
 }

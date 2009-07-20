@@ -11,15 +11,16 @@ namespace FastGTD.UnitTests
         private InBoxController _form;
 
         private IInBoxView _view;
-        private IInBoxModel _model;
+        private IItemConverter _converter;
 
         [SetUp]
         public void SetupTests()
         {
             _view = MockRepository.GenerateMock<IInBoxView>();
             _view.Stub(x => x.List).Return(MockRepository.GenerateMock<IListSelectionChanger>());
-            _model = MockRepository.GenerateMock<IInBoxModel>();
-            _form = new InBoxController(_view, _model);
+            var model = MockRepository.GenerateStub<IInBoxModel>();
+            _converter = MockRepository.GenerateMock<IItemConverter>();
+            _form = new InBoxController(_view, model, _converter);
         }
 
         [Test]
@@ -38,8 +39,8 @@ namespace FastGTD.UnitTests
 
             _view.Raise(x => x.ToActionButtonWasClicked += null);
 
-            _model.AssertWasCalled(x => x.ConvertToAction(Arg<InBoxItem>.Is.Equal(expected_item)));
-            _model.AssertWasCalled(x => x.ConvertToAction(Arg<InBoxItem>.Is.Equal(expected_item2)));
+            _converter.AssertWasCalled(x => x.ConvertToAction(Arg<InBoxItem>.Is.Equal(expected_item)));
+            _converter.AssertWasCalled(x => x.ConvertToAction(Arg<InBoxItem>.Is.Equal(expected_item2)));
         }
 
         [Test]
@@ -51,8 +52,8 @@ namespace FastGTD.UnitTests
 
             _view.Raise(x => x.AltAKeysWasPressed += null);
 
-            _model.AssertWasCalled(x => x.ConvertToAction(Arg<InBoxItem>.Is.Equal(expected_item)));
-            _model.AssertWasCalled(x => x.ConvertToAction(Arg<InBoxItem>.Is.Equal(expected_item2)));
+            _converter.AssertWasCalled(x => x.ConvertToAction(Arg<InBoxItem>.Is.Equal(expected_item)));
+            _converter.AssertWasCalled(x => x.ConvertToAction(Arg<InBoxItem>.Is.Equal(expected_item2)));
         }
     }
 }

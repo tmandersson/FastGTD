@@ -3,15 +3,22 @@ using FastGTD.DataTransfer;
 
 namespace FastGTD
 {
+    public interface IItemConverter
+    {
+        ActionItem ConvertToAction(InBoxItem item);
+    }
+
     public class InBoxController
     {
         private readonly IInBoxView _view;
         private readonly IInBoxModel _model;
+        private readonly IItemConverter _converter;
 
-        public InBoxController(IInBoxView view, IInBoxModel model)
+        public InBoxController(IInBoxView view, IInBoxModel model, IItemConverter converter)
         {
             _view = view;
             _model = model;
+            _converter = converter;
             HandleEvents();
         }
 
@@ -64,7 +71,7 @@ namespace FastGTD
 
         private void ConvertSelectedItemToAction()
         {
-            ForEachSelectedItem(item => _model.ConvertToAction(item));
+            ForEachSelectedItem(item => _converter.ConvertToAction(item));
         }
 
         private void ForEachSelectedItem(Action<InBoxItem> action)

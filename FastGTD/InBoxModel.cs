@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using FastGTD.DataAccess;
 using FastGTD.DataTransfer;
 
@@ -6,9 +7,10 @@ namespace FastGTD
 {
     public class InBoxModel : IInBoxModel
     {
+        private readonly IList<InBoxItem> _items = new List<InBoxItem>();
+
         private readonly IInBoxPersistenceProvider _persistence;
         private readonly ActionsListModel _actions_list_model;
-        private readonly IList<InBoxItem> _items = new List<InBoxItem>();
         public event VoidDelegate Changed;
 
         public InBoxModel(IInBoxPersistenceProvider persistence, ActionsListModel model)
@@ -36,7 +38,7 @@ namespace FastGTD
 
         public IList<InBoxItem> Items
         {
-            get { return _items; }
+            get { return new ReadOnlyCollection<InBoxItem>(_items); }
         }
 
         public InBoxItem Add(string name)

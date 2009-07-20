@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using FastGTD.DataTransfer;
 
 namespace FastGTD
@@ -9,7 +10,7 @@ namespace FastGTD
 
         public IList<ActionItem> Items
         {
-            get { return _items; }
+            get { return new ReadOnlyCollection<ActionItem>(_items); }
         }
 
         public ActionItem Add(string name)

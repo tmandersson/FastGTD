@@ -23,6 +23,8 @@ namespace FastGTD.IntegrationTests.CustomerTests
             Assert.That(InBoxContains(item2), Is.True);
         }
 
+
+        // TODO: Kanske slå ihop dessa tre tester när de fungerar?
         [Test]
         public void ConvertInBoxItemToActionItem()
         {
@@ -30,6 +32,36 @@ namespace FastGTD.IntegrationTests.CustomerTests
             InBoxItem item1 = AddItemToInBox(_item_name1);
             InBoxItem item2 = AddItemToInBox(_item_name2);
             ActionItem action = ConvertToActionItem(item2);
+            Assert.That(InBoxItemCount(), Is.EqualTo(1));
+            Assert.That(InBoxContains(item1), Is.True);
+            Assert.That(InBoxContains(item2), Is.False);
+            Assert.That(ActionItemCount(), Is.EqualTo(1));
+            Assert.That(ActionsListContains(action));
+        }
+
+        [Test]
+        public void ConvertInBoxItemToActionItem_RemovalOfInBoxItemIsPersisted()
+        {
+            GetApplicationWithEmptyModels();
+            InBoxItem item1 = AddItemToInBox(_item_name1);
+            InBoxItem item2 = AddItemToInBox(_item_name2);
+            ActionItem action = ConvertToActionItem(item2);
+
+            GetApplicationWithPreviousData();
+            Assert.That(InBoxItemCount(), Is.EqualTo(1));
+            Assert.That(InBoxContains(item1), Is.True);
+            Assert.That(InBoxContains(item2), Is.False);
+        }
+
+        [Test]
+        public void ConvertInBoxItemToActionItem_ChangesIsPersisted()
+        {
+            GetApplicationWithEmptyModels();
+            InBoxItem item1 = AddItemToInBox(_item_name1);
+            InBoxItem item2 = AddItemToInBox(_item_name2);
+            ActionItem action = ConvertToActionItem(item2);
+
+            GetApplicationWithPreviousData();
             Assert.That(InBoxItemCount(), Is.EqualTo(1));
             Assert.That(InBoxContains(item1), Is.True);
             Assert.That(InBoxContains(item2), Is.False);
@@ -71,6 +103,11 @@ namespace FastGTD.IntegrationTests.CustomerTests
         {
             _app = CreateAndStartTestApp();
             _app.InboxModel.ClearItems();
+        }
+
+        private void GetApplicationWithPreviousData()
+        {
+            _app = CreateAndStartTestApp();
         }
 
         private static FastGTDApp CreateAndStartTestApp()

@@ -6,20 +6,20 @@ namespace FastGTD
 {
     public class InBoxModel : IInBoxModel
     {
-        private readonly IInBoxItemRepository _repository;
+        private readonly IInBoxPersistenceProvider _persistence;
         private readonly ActionsListModel _actions_list_model;
         private readonly IList<InBoxItem> _items = new List<InBoxItem>();
         public event VoidDelegate Changed;
 
-        public InBoxModel(IInBoxItemRepository repository, ActionsListModel model)
+        public InBoxModel(IInBoxPersistenceProvider persistence, ActionsListModel model)
         {
-            _repository = repository;
+            _persistence = persistence;
             _actions_list_model = model;
         }
 
         public void Load()
         {
-            IList<InBoxItem> loaded_items = _repository.GetAll();
+            IList<InBoxItem> loaded_items = _persistence.GetAll();
             foreach (InBoxItem item in loaded_items)
             {
                 _items.Add(item);
@@ -43,7 +43,7 @@ namespace FastGTD
         public InBoxItem Add(string name)
         {
             var item = new InBoxItem(name);
-            _repository.Save(item);
+            _persistence.Save(item);
             _items.Add(item);
             FireEvent(Changed);
 
@@ -53,7 +53,7 @@ namespace FastGTD
         public void Remove(InBoxItem item)
         {
             _items.Remove(item);
-            _repository.Delete(item);
+            _persistence.Delete(item);
             FireEvent(Changed);
         }
 
@@ -66,7 +66,7 @@ namespace FastGTD
         public void ClearItems()
         {
             _items.Clear();
-            _repository.DeleteAll();
+            _persistence.DeleteAll();
             FireEvent(Changed);
         }
     }

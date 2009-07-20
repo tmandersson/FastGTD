@@ -16,7 +16,7 @@ namespace FastGTD.UnitTests
         [SetUp]
         public void SetupTests()
         {
-            var repository = MockRepository.GenerateStub<IInBoxItemRepository>();
+            var repository = MockRepository.GenerateStub<IInBoxPersistenceProvider>();
             _model = new InBoxModel(repository, null);
             _form = new TestableInBoxForm();
             new InBoxController(_form, _model);

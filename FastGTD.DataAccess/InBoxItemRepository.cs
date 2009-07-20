@@ -5,7 +5,7 @@ using NHibernate.Cfg;
 
 namespace FastGTD.DataAccess
 {
-    public class InBoxItemRepository : IInBoxItemRepository, IInBoxItemPersister
+    public class InBoxItemRepository : IInBoxPersistenceProvider
     {
         private readonly ISessionFactory _session_factory;
 

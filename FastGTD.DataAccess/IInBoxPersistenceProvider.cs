@@ -3,10 +3,11 @@ using FastGTD.DataTransfer;
 
 namespace FastGTD.DataAccess
 {
-    public interface IInBoxItemRepository : IInBoxItemPersister
+    public interface IInBoxPersistenceProvider
     {
         IList<InBoxItem> GetAll();
         void DeleteAll();
         void Delete(InBoxItem item);
+        void Save(InBoxItem item);
     }
 }

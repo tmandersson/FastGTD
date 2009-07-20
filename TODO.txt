@@ -13,7 +13,6 @@
 * Testa att det fungerar på riktigt.
 
 * Redundans i de 2 repositorys. Använd generics. IRepository<T> eller liknande.
-* Refaktorera till System.Action och Action<T> delegates.
 * TDD:a om Inboxview använd inte designern, utan TDD:a allt.
 * Lite smelly att jag måste stubba List på IViewn i Controller testerna.
 * Eliminera FakeInBoxRepo, använd RhinoMocks istället.

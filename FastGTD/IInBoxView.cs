@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using FastGTD.DataTransfer;
 
@@ -10,14 +11,14 @@ namespace FastGTD
         void StartMessageLoop();
         void Close();
 
-        event VoidDelegate AddButtonWasClicked;
-        event VoidDelegate DeleteButtonWasClicked;
-        event VoidDelegate ToActionButtonWasClicked;
-        event VoidDelegate AltAKeysWasPressed;
-        event VoidDelegate EnterKeyWasPressed;
-        event VoidDelegate DeleteKeyWasPressed;
-        event VoidDelegate DownKeyWasPressed;
-        event VoidDelegate UpKeyWasPressed;
+        event Action AddButtonWasClicked;
+        event Action DeleteButtonWasClicked;
+        event Action ToActionButtonWasClicked;
+        event Action AltAKeysWasPressed;
+        event Action EnterKeyWasPressed;
+        event Action DeleteKeyWasPressed;
+        event Action DownKeyWasPressed;
+        event Action UpKeyWasPressed;
 
         string TextBoxText { get; set; }
         IEnumerable<InBoxItem> SelectedItems { get; }

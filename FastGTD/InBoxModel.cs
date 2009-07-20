@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using FastGTD.DataAccess;
 using FastGTD.DataTransfer;
@@ -10,7 +11,7 @@ namespace FastGTD
         private readonly IList<InBoxItem> _items = new List<InBoxItem>();
 
         private readonly IInBoxPersistenceProvider _persistence;
-        public event VoidDelegate Changed;
+        public event Action Changed;
 
         public InBoxModel(IInBoxPersistenceProvider persistence)
         {
@@ -49,7 +50,7 @@ namespace FastGTD
             FireEvent(Changed);
         }
 
-        private static void FireEvent(VoidDelegate evnt)
+        private static void FireEvent(Action evnt)
         {
             if (evnt != null)
                 evnt();
@@ -62,6 +63,4 @@ namespace FastGTD
             FireEvent(Changed);
         }
     }
-
-    public delegate void VoidDelegate();
 }

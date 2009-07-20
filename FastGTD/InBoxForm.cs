@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using FastGTD.DataTransfer;
 
@@ -8,14 +9,14 @@ namespace FastGTD
     {
         private readonly ListViewSelectionChanger _selection_changer;
 
-        public event VoidDelegate AddButtonWasClicked;
-        public event VoidDelegate DeleteButtonWasClicked;
-        public event VoidDelegate ToActionButtonWasClicked;
-        public event VoidDelegate AltAKeysWasPressed;
-        public event VoidDelegate EnterKeyWasPressed;
-        public event VoidDelegate DeleteKeyWasPressed;
-        public event VoidDelegate DownKeyWasPressed;
-        public event VoidDelegate UpKeyWasPressed;
+        public event Action AddButtonWasClicked;
+        public event Action DeleteButtonWasClicked;
+        public event Action ToActionButtonWasClicked;
+        public event Action AltAKeysWasPressed;
+        public event Action EnterKeyWasPressed;
+        public event Action DeleteKeyWasPressed;
+        public event Action DownKeyWasPressed;
+        public event Action UpKeyWasPressed;
 
         public InBoxForm()
         {
@@ -114,7 +115,7 @@ namespace FastGTD
                 e.SuppressKeyPress = true;
         }
 
-        private static void RaiseEvent(VoidDelegate @delegate)
+        private static void RaiseEvent(Action @delegate)
         {
             if (@delegate != null)
                 @delegate.Invoke();

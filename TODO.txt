@@ -31,8 +31,6 @@ Så att jag har källkoden ifall nåt projekt läggs ner.
 * Kolla upp om jag ska använda nån IoC-container.
 	* Castle?
 * NUnit 2.5 Final är släppt.
-* NDepend
-* NCover senare?
 ?* WPF-version av gränssnittet.
 * In memory DB för db-testen.
 * OO DB istället för Nhib?

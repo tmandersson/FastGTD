@@ -13,6 +13,7 @@ namespace FastGTD
 
         public static int Main()
         {
+            WireClasses();
             var app = new FastGTDApp();
             app.ShowStartForm();
             app.StartMessageLoop();
@@ -20,7 +21,7 @@ namespace FastGTD
             return 0;
         }
 
-        public FastGTDApp()
+        public static void WireClasses()
         {
             ObjectFactory.Initialize(x =>
             {
@@ -35,7 +36,10 @@ namespace FastGTD
                 x.ForRequestedType<IItemConverter>().TheDefaultIsConcreteType<ItemConverter>()
                     .CacheBy(InstanceScope.Singleton);
             });
+        }
 
+        public FastGTDApp()
+        {
             _inbox_model = (InBoxModel) ObjectFactory.GetInstance<IInBoxModel>();
             _inbox_controller = ObjectFactory.GetInstance<InBoxController>();
             _actions_list_model = ObjectFactory.GetInstance<ActionsListModel>();
@@ -57,19 +61,24 @@ namespace FastGTD
             get { return _converter; }
         }
 
+        public InBoxController InboxController
+        {
+            get { return _inbox_controller; }
+        }
+
         public void ShowStartForm()
         {
-            _inbox_controller.Show();
+            InboxController.Show();
         }
 
         private void StartMessageLoop()
         {
-            _inbox_controller.StartMessageLoop();
+            InboxController.StartMessageLoop();
         }
 
         public void Close()
         {
-            _inbox_controller.Close();
+            InboxController.Close();
         }
     }
 }

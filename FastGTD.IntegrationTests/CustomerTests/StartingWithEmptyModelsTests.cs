@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
 using FastGTD.DataTransfer;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
+using Rhino.Mocks;
+using StructureMap;
 
 namespace FastGTD.IntegrationTests.CustomerTests
 {
@@ -9,6 +12,7 @@ namespace FastGTD.IntegrationTests.CustomerTests
     public class StartingWithEmptyModelsTests
     {
         private FastGTDApp _app;
+        private IInBoxView _view_stub;
         private readonly string _item_name1 = Guid.NewGuid().ToString();
         private readonly string _item_name2 = Guid.NewGuid().ToString();
 
@@ -16,11 +20,11 @@ namespace FastGTD.IntegrationTests.CustomerTests
         public void AddingInBoxItems()
         {
             GetApplicationWithEmptyModels();
-            InBoxItem item1 = AddItemToInBox(_item_name1);
-            InBoxItem item2 = AddItemToInBox(_item_name2);
+            AddItemToInBox(_item_name1);
+            AddItemToInBox(_item_name2);
             Assert.That(InBoxItemCount(), Is.EqualTo(2));
-            Assert.That(InBoxContains(item1), Is.True);
-            Assert.That(InBoxContains(item2), Is.True);
+            Assert.That(InBoxContainsItemWithName(_item_name1), Is.True);
+            Assert.That(InBoxContainsItemWithName(_item_name2), Is.True);
         }
 
 
@@ -29,54 +33,61 @@ namespace FastGTD.IntegrationTests.CustomerTests
         public void ConvertInBoxItemToActionItem()
         {
             GetApplicationWithEmptyModels();
-            InBoxItem item1 = AddItemToInBox(_item_name1);
-            InBoxItem item2 = AddItemToInBox(_item_name2);
-            ActionItem action = ConvertToActionItem(item2);
+            AddItemToInBox(_item_name1);
+            AddItemToInBox(_item_name2);
+            ConvertToActionItem(GetLastAddedInBoxItem());
             Assert.That(InBoxItemCount(), Is.EqualTo(1));
-            Assert.That(InBoxContains(item1), Is.True);
-            Assert.That(InBoxContains(item2), Is.False);
+            Assert.That(InBoxContainsItemWithName(_item_name1), Is.True);
+            Assert.That(InBoxContainsItemWithName(_item_name2), Is.False);
             Assert.That(ActionItemCount(), Is.EqualTo(1));
-            Assert.That(ActionsListContains(action));
+            Assert.That(ActionsListContainsItemWithName(_item_name2));
         }
 
         [Test]
         public void ConvertInBoxItemToActionItem_RemovalOfInBoxItemIsPersisted()
         {
             GetApplicationWithEmptyModels();
-            InBoxItem item1 = AddItemToInBox(_item_name1);
-            InBoxItem item2 = AddItemToInBox(_item_name2);
-            ConvertToActionItem(item2);
+            AddItemToInBox(_item_name1);
+            AddItemToInBox(_item_name2);
+            ConvertToActionItem(GetLastAddedInBoxItem());
 
             GetApplicationWithPreviousData();
             Assert.That(InBoxItemCount(), Is.EqualTo(1));
-            Assert.That(InBoxContains(item1), Is.True);
-            Assert.That(InBoxContains(item2), Is.False);
+            Assert.That(InBoxContainsItemWithName(_item_name1), Is.True);
+            Assert.That(InBoxContainsItemWithName(_item_name2), Is.False);
         }
 
         [Test]
         public void ConvertInBoxItemToActionItem_ChangesIsPersisted()
         {
             GetApplicationWithEmptyModels();
-            InBoxItem item1 = AddItemToInBox(_item_name1);
-            InBoxItem item2 = AddItemToInBox(_item_name2);
-            ActionItem action = ConvertToActionItem(item2);
+            AddItemToInBox(_item_name1);
+            AddItemToInBox(_item_name2);
+            ConvertToActionItem(GetLastAddedInBoxItem());
 
             GetApplicationWithPreviousData();
             Assert.That(InBoxItemCount(), Is.EqualTo(1));
-            Assert.That(InBoxContains(item1), Is.True);
-            Assert.That(InBoxContains(item2), Is.False);
+            Assert.That(InBoxContainsItemWithName(_item_name1), Is.True);
+            Assert.That(InBoxContainsItemWithName(_item_name2), Is.False);
             Assert.That(ActionItemCount(), Is.EqualTo(1));
-            Assert.That(ActionsListContains(action));
+            Assert.That(ActionsListContainsItemWithName(_item_name2));
         }
 
-        private ActionItem ConvertToActionItem(InBoxItem item)
+        private void ConvertToActionItem(InBoxItem item)
         {
-            return _app.Converter.ConvertToAction(item);
+            _view_stub.Stub(x => x.SelectedItems).Return(new List<InBoxItem> {item});
+            _view_stub.Raise(x => x.ToActionButtonWasClicked += null);
         }
 
-        private InBoxItem AddItemToInBox(string item_name)
+        private void AddItemToInBox(string item_name)
         {
-            return _app.InboxModel.Add(item_name);
+            _view_stub.TextBoxText = item_name;
+            _view_stub.Raise(x => x.AddButtonWasClicked += null);
+        }
+
+        private InBoxItem GetLastAddedInBoxItem()
+        {
+            return _app.InboxModel.Items[_app.InboxModel.Items.Count - 1];
         }
 
         private int InBoxItemCount()
@@ -89,14 +100,16 @@ namespace FastGTD.IntegrationTests.CustomerTests
             return _app.ActionsListModel.Items.Count;
         }
 
-        private bool InBoxContains(InBoxItem item)
+        private bool InBoxContainsItemWithName(string name)
         {
-            return _app.InboxModel.Items.Contains(item);
+            var items = new List<InBoxItem>(_app.InboxModel.Items);
+            return items.Exists(x => x.Name == name);
         }
 
-        private bool ActionsListContains(ActionItem item)
+        private bool ActionsListContainsItemWithName(string name)
         {
-            return _app.ActionsListModel.Items.Contains(item);
+            var items = new List<ActionItem>(_app.ActionsListModel.Items);
+            return items.Exists(x => x.Name == name);
         }
 
         private void GetApplicationWithEmptyModels()
@@ -110,11 +123,20 @@ namespace FastGTD.IntegrationTests.CustomerTests
             _app = CreateAndStartTestApp();
         }
 
-        private static FastGTDApp CreateAndStartTestApp()
+        private FastGTDApp CreateAndStartTestApp()
         {
+            FastGTDApp.WireClasses();
+            InjectViewStub();
             var app = new FastGTDApp();
             app.ShowStartForm();
             return app;
+        }
+
+        private void InjectViewStub()
+        {
+            _view_stub = MockRepository.GenerateStub<IInBoxView>();
+            _view_stub.Stub(x => x.List).Return(MockRepository.GenerateStub<IListSelectionChanger>());
+            ObjectFactory.Inject(_view_stub);
         }
     }
 }

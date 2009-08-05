@@ -9,8 +9,7 @@ namespace FastGTD
     {
         private readonly InBoxModel _inbox_model;
         private readonly InBoxController _inbox_controller;
-        private readonly ActionsListModel _actions_list_model;
-        private readonly IItemConverter _converter;
+        private readonly IActionsListModel _actions_list_model;
 
         public static int Main()
         {
@@ -32,7 +31,7 @@ namespace FastGTD
                     .CacheBy(InstanceScope.Singleton);
                 x.ForRequestedType<IInBoxModel>().TheDefaultIsConcreteType<InBoxModel>()
                     .CacheBy(InstanceScope.Singleton);
-                x.ForRequestedType<ActionsListModel>().TheDefaultIsConcreteType<ActionsListModel>()
+                x.ForRequestedType<IActionsListModel>().TheDefaultIsConcreteType<ActionsListModel>()
                     .CacheBy(InstanceScope.Singleton);
                 x.ForRequestedType<IItemConverter>().TheDefaultIsConcreteType<ItemConverter>()
                     .CacheBy(InstanceScope.Singleton);
@@ -45,8 +44,9 @@ namespace FastGTD
         {
             _inbox_model = (InBoxModel) ObjectFactory.GetInstance<IInBoxModel>();
             _inbox_controller = ObjectFactory.GetInstance<InBoxController>();
-            _actions_list_model = ObjectFactory.GetInstance<ActionsListModel>();
-            _converter = ObjectFactory.GetInstance<IItemConverter>();
+            _actions_list_model = ObjectFactory.GetInstance<IActionsListModel>();
+            ObjectFactory.GetInstance<ActionsListController>();
+            ObjectFactory.GetInstance<IItemConverter>();
         }
 
         public InBoxModel InboxModel
@@ -54,17 +54,12 @@ namespace FastGTD
             get { return _inbox_model; }
         }
 
-        public ActionsListModel ActionsListModel
+        public IActionsListModel ActionsListModel
         {
             get { return _actions_list_model; }
         }
 
-        public IItemConverter Converter
-        {
-            get { return _converter; }
-        }
-
-        public InBoxController InboxController
+        private InBoxController InboxController
         {
             get { return _inbox_controller; }
         }

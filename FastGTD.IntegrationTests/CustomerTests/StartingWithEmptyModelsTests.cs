@@ -117,6 +117,7 @@ namespace FastGTD.IntegrationTests.CustomerTests
         {
             _app = CreateAndStartTestApp();
             _app.InboxModel.ClearItems();
+            _app.ActionsListModel.ClearItems();
         }
 
         private void GetApplicationWithPreviousData()

@@ -16,13 +16,13 @@ namespace FastGTD
             _model = model;
             _converter = converter;
             HandleEvents();
+            _model.Load();
         }
 
         public void Show()
         {
             _view.Show();
             _view.SetFocusOnTextBox();
-            _model.Load();
         }
 
         public void Close()

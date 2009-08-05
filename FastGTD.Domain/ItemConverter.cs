@@ -5,9 +5,9 @@ namespace FastGTD.Domain
     public class ItemConverter : IItemConverter
     {
         private readonly IInBoxModel _inbox_model;
-        private readonly ActionsListModel _actions_list_model;
+        private readonly IActionsListModel _actions_list_model;
 
-        public ItemConverter(IInBoxModel inbox_model, ActionsListModel actions_list_model)
+        public ItemConverter(IInBoxModel inbox_model, IActionsListModel actions_list_model)
         {
             _inbox_model = inbox_model;
             _actions_list_model = actions_list_model;

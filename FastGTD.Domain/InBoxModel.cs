@@ -7,7 +7,7 @@ namespace FastGTD.Domain
 {
     public class InBoxModel : IInBoxModel
     {
-        private readonly IList<InBoxItem> _items = new List<InBoxItem>();
+        private IList<InBoxItem> _items = new List<InBoxItem>();
 
         private readonly IInBoxPersistence _persistence;
         public event Action Changed;
@@ -19,11 +19,7 @@ namespace FastGTD.Domain
 
         public void Load()
         {
-            IList<InBoxItem> loaded_items = _persistence.GetAll();
-            foreach (InBoxItem item in loaded_items)
-            {
-                _items.Add(item);
-            }
+            _items = _persistence.GetAll();
             FireEvent(Changed);
         }
 

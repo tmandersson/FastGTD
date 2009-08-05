@@ -13,6 +13,8 @@ namespace FastGTD.Domain
 
     public interface IActionsListPersistence
     {
+        IList<ActionItem> GetAll();
+        void DeleteAll();
         void Save(ActionItem item);
     }
 }

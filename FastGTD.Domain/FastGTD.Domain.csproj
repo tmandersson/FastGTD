@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionsListModel.cs" />
+    <Compile Include="IActionsListModel.cs" />
     <Compile Include="IInBoxModel.cs" />
     <Compile Include="IInBoxPersistence.cs" />
     <Compile Include="IItemConverter.cs" />

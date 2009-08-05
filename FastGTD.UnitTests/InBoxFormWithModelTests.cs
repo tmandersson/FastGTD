@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
+using FastGTD.DataTransfer;
 using FastGTD.Domain;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
@@ -17,6 +18,7 @@ namespace FastGTD.UnitTests
         public void SetupTests()
         {
             var repository = MockRepository.GenerateStub<IInBoxPersistence>();
+            repository.Stub(x => x.GetAll()).Return(new List<InBoxItem>());
             _model = new InBoxModel(repository);
             _form = new TestableInBoxForm();
             new InBoxController(_form, _model, null);

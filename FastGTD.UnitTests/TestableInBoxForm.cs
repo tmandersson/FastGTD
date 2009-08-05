@@ -43,11 +43,6 @@ namespace FastGTD.UnitTests
             }
         }
 
-        public void ClickAddButton()
-        {
-            _add_button.PerformClick();
-        }
-
         public void ClickDeleteButton()
         {
             _delete_button.PerformClick();

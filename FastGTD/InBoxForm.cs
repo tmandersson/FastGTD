@@ -5,7 +5,7 @@ using FastGTD.DataTransfer;
 
 namespace FastGTD
 {
-    public partial class InBoxForm : Form, IInBoxView
+    public partial class InBoxForm : Form, IInBoxView, ITestableInBoxView
     {
         private readonly ListViewSelectionChanger _selection_changer;
 
@@ -56,18 +56,41 @@ namespace FastGTD
 
         public string TextBoxText
         {
-            get { return _textBox.Text; }
-            set { _textBox.Text = value; }
+            get { return _text_box.Text; }
+            set { _text_box.Text = value; }
         }
 
         public void SetFocusOnTextBox()
         {
-            _textBox.Focus();
+            _text_box.Focus();
         }
 
         public void StartMessageLoop()
         {
             Application.Run(this);
+        }
+
+        public void SelectItems(IEnumerable<InBoxItem> items)
+        {
+            _list_view.SelectedItems.Clear();
+            foreach (var item in items)
+            {
+                foreach (ListViewItem list_item in _list_view.Items)
+                {
+                    if (list_item.Tag.Equals(item))
+                        list_item.Selected = true;
+                }
+            }
+        }
+
+        public void ClickAddButton()
+        {
+            _add_button.PerformClick();
+        }
+
+        public void ClickToActionButton()
+        {
+            _to_action_button.PerformClick();
         }
 
         private void WireEvents()

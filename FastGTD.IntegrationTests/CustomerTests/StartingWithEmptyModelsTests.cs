@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using FastGTD.DataTransfer;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
-using Rhino.Mocks;
 using StructureMap;
 
 namespace FastGTD.IntegrationTests.CustomerTests
@@ -12,14 +11,19 @@ namespace FastGTD.IntegrationTests.CustomerTests
     public class StartingWithEmptyModelsTests
     {
         private FastGTDApp _app;
-        private IInBoxView _view_stub;
         private readonly string _item_name1 = Guid.NewGuid().ToString();
         private readonly string _item_name2 = Guid.NewGuid().ToString();
+        private ITestableInBoxView _view;
+
+        [SetUp]
+        public void SetupTests()
+        {
+            GetApplicationWithEmptyModels();
+        }
 
         [Test]
         public void AddingInBoxItems()
         {
-            GetApplicationWithEmptyModels();
             AddItemToInBox(_item_name1);
             AddItemToInBox(_item_name2);
             Assert.That(InBoxItemCount(), Is.EqualTo(2));
@@ -32,7 +36,6 @@ namespace FastGTD.IntegrationTests.CustomerTests
         [Test]
         public void ConvertInBoxItemToActionItem()
         {
-            GetApplicationWithEmptyModels();
             AddItemToInBox(_item_name1);
             AddItemToInBox(_item_name2);
             ConvertToActionItem(GetLastAddedInBoxItem());
@@ -46,7 +49,6 @@ namespace FastGTD.IntegrationTests.CustomerTests
         [Test]
         public void ConvertInBoxItemToActionItem_RemovalOfInBoxItemIsPersisted()
         {
-            GetApplicationWithEmptyModels();
             AddItemToInBox(_item_name1);
             AddItemToInBox(_item_name2);
             ConvertToActionItem(GetLastAddedInBoxItem());
@@ -60,7 +62,6 @@ namespace FastGTD.IntegrationTests.CustomerTests
         [Test]
         public void ConvertInBoxItemToActionItem_ChangesIsPersisted()
         {
-            GetApplicationWithEmptyModels();
             AddItemToInBox(_item_name1);
             AddItemToInBox(_item_name2);
             ConvertToActionItem(GetLastAddedInBoxItem());
@@ -75,14 +76,14 @@ namespace FastGTD.IntegrationTests.CustomerTests
 
         private void ConvertToActionItem(InBoxItem item)
         {
-            _view_stub.Stub(x => x.SelectedItems).Return(new List<InBoxItem> {item});
-            _view_stub.Raise(x => x.ToActionButtonWasClicked += null);
+            _view.SelectItems(new List<InBoxItem> {item});
+            _view.ClickToActionButton();
         }
 
         private void AddItemToInBox(string item_name)
         {
-            _view_stub.TextBoxText = item_name;
-            _view_stub.Raise(x => x.AddButtonWasClicked += null);
+            _view.TextBoxText = item_name;
+            _view.ClickAddButton();
         }
 
         private InBoxItem GetLastAddedInBoxItem()
@@ -126,17 +127,17 @@ namespace FastGTD.IntegrationTests.CustomerTests
         private FastGTDApp CreateAndStartTestApp()
         {
             FastGTDApp.WireClasses();
-            InjectViewStub();
+            InjectView();
             var app = new FastGTDApp();
             app.ShowStartForm();
             return app;
         }
 
-        private void InjectViewStub()
+        private void InjectView()
         {
-            _view_stub = MockRepository.GenerateStub<IInBoxView>();
-            _view_stub.Stub(x => x.List).Return(MockRepository.GenerateStub<IListSelectionChanger>());
-            ObjectFactory.Inject(_view_stub);
+            var form = new InBoxForm();
+            _view = form;
+            ObjectFactory.Inject((IInBoxView) form);
         }
     }
 }

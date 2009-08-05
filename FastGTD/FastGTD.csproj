@@ -72,6 +72,7 @@
     </Compile>
     <Compile Include="InBoxModel.cs" />
     <Compile Include="ItemConverter.cs" />
+    <Compile Include="ITestableInBoxView.cs" />
     <Compile Include="ListViewSelectionChanger.cs" />
   </ItemGroup>
   <ItemGroup>

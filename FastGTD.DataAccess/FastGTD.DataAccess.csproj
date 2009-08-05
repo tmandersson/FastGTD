@@ -54,7 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IInBoxPersistenceProvider.cs" />
+    <Compile Include="ActionsRepository.cs" />
     <Compile Include="InBoxItemRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -62,6 +62,10 @@
     <ProjectReference Include="..\FastGTD.DataTransfer\FastGTD.DataTransfer.csproj">
       <Project>{2561D241-CD20-437A-9502-955EACF6C9DB}</Project>
       <Name>FastGTD.DataTransfer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FastGTD.Domain\FastGTD.Domain.csproj">
+      <Project>{832AE3E7-F27C-48C1-9756-060B3B99AF1A}</Project>
+      <Name>FastGTD.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

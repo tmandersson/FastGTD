@@ -1,13 +1,9 @@
 ﻿using System;
 using FastGTD.DataTransfer;
+using FastGTD.Domain;
 
 namespace FastGTD
 {
-    public interface IItemConverter
-    {
-        ActionItem ConvertToAction(InBoxItem item);
-    }
-
     public class InBoxController
     {
         private readonly IInBoxView _view;

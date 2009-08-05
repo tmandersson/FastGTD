@@ -1,6 +1,6 @@
 using FastGTD.DataTransfer;
 
-namespace FastGTD
+namespace FastGTD.Domain
 {
     public class ItemConverter : IItemConverter
     {

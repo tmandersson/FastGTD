@@ -59,9 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActionsListModel.cs" />
     <Compile Include="FastGTDApp.cs" />
-    <Compile Include="IInBoxModel.cs" />
     <Compile Include="IInBoxView.cs" />
     <Compile Include="InBoxController.cs" />
     <Compile Include="InBoxForm.cs">
@@ -70,8 +68,6 @@
     <Compile Include="InBoxForm.Designer.cs">
       <DependentUpon>InBoxForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="InBoxModel.cs" />
-    <Compile Include="ItemConverter.cs" />
     <Compile Include="ITestableInBoxView.cs" />
     <Compile Include="ListViewSelectionChanger.cs" />
   </ItemGroup>
@@ -89,6 +85,10 @@
     <ProjectReference Include="..\FastGTD.DataTransfer\FastGTD.DataTransfer.csproj">
       <Project>{2561D241-CD20-437A-9502-955EACF6C9DB}</Project>
       <Name>FastGTD.DataTransfer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FastGTD.Domain\FastGTD.Domain.csproj">
+      <Project>{832AE3E7-F27C-48C1-9756-060B3B99AF1A}</Project>
+      <Name>FastGTD.Domain</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

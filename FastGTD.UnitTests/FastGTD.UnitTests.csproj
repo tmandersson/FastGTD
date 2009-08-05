@@ -49,6 +49,10 @@
       <Project>{2561D241-CD20-437A-9502-955EACF6C9DB}</Project>
       <Name>FastGTD.DataTransfer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FastGTD.Domain\FastGTD.Domain.csproj">
+      <Project>{832AE3E7-F27C-48C1-9756-060B3B99AF1A}</Project>
+      <Name>FastGTD.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FastGTD\FastGTD.csproj">
       <Project>{2367A529-4B9B-4E0D-A666-B4EF14FD0DD9}</Project>
       <Name>FastGTD</Name>
@@ -77,6 +81,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionsListModelTests.cs" />
     <Compile Include="InBoxControllerTests.cs" />
     <Compile Include="InboxFormEventTests.cs" />
     <Compile Include="InBoxFormWithModelTests.cs">

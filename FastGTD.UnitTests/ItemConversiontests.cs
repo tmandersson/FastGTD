@@ -1,5 +1,5 @@
-using FastGTD.DataAccess;
 using FastGTD.DataTransfer;
+using FastGTD.Domain;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 using Rhino.Mocks;
@@ -16,9 +16,10 @@ namespace FastGTD.UnitTests
         [SetUp]
         public void SetupTests()
         {
-            var repo = MockRepository.GenerateStub<IInBoxPersistenceProvider>();
-            _actions_list_model = new ActionsListModel();
-            _model = new InBoxModel(repo);
+            var inbox_persistence = MockRepository.GenerateStub<IInBoxPersistence>();
+            var actions_persistence = MockRepository.GenerateStub<IActionsListPersistence>();
+            _actions_list_model = new ActionsListModel(actions_persistence);
+            _model = new InBoxModel(inbox_persistence);
             _converter = new ItemConverter(_model, _actions_list_model);
             Assert.That(_model.Items, Has.Count(0));
         }

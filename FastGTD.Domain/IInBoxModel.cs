@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using FastGTD.DataTransfer;
 
-namespace FastGTD
+namespace FastGTD.Domain
 {
     public interface IInBoxModel
     {

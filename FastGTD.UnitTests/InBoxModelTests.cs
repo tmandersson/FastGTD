@@ -1,4 +1,4 @@
-using FastGTD.DataAccess;
+using FastGTD.Domain;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 using Rhino.Mocks;
@@ -13,7 +13,7 @@ namespace FastGTD.UnitTests
         [SetUp]
         public void SetupTests()
         {
-            var repo = MockRepository.GenerateStub<IInBoxPersistenceProvider>();
+            var repo = MockRepository.GenerateStub<IInBoxPersistence>();
             _model = new InBoxModel(repo);
             Assert.That(_model.Items, Has.Count(0));
         }

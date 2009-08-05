@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using FastGTD.DataAccess;
 using FastGTD.DataTransfer;
 
-namespace FastGTD
+namespace FastGTD.Domain
 {
     public class InBoxModel : IInBoxModel
     {
         private readonly IList<InBoxItem> _items = new List<InBoxItem>();
 
-        private readonly IInBoxPersistenceProvider _persistence;
+        private readonly IInBoxPersistence _persistence;
         public event Action Changed;
 
-        public InBoxModel(IInBoxPersistenceProvider persistence)
+        public InBoxModel(IInBoxPersistence persistence)
         {
             _persistence = persistence;
         }

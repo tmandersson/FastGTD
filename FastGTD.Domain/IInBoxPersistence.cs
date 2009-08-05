@@ -1,13 +1,18 @@
 using System.Collections.Generic;
 using FastGTD.DataTransfer;
 
-namespace FastGTD.DataAccess
+namespace FastGTD.Domain
 {
-    public interface IInBoxPersistenceProvider
+    public interface IInBoxPersistence
     {
         IList<InBoxItem> GetAll();
         void DeleteAll();
         void Delete(InBoxItem item);
         void Save(InBoxItem item);
+    }
+
+    public interface IActionsListPersistence
+    {
+        void Save(ActionItem item);
     }
 }

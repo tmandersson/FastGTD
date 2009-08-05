@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System;
 using FastGTD.DataTransfer;
 using FastGTD.Domain;
 using NHibernate;
@@ -6,16 +6,16 @@ using NHibernate.Cfg;
 
 namespace FastGTD.DataAccess
 {
-    public class InBoxItemRepository : IInBoxPersistence
+    public class ActionsRepository : IActionsListPersistence
     {
         private readonly ISessionFactory _session_factory;
 
-        public InBoxItemRepository()
+        public ActionsRepository()
         {
             _session_factory = CreateSessionFactory();
         }
 
-        public void Save(InBoxItem item)
+        public void Save(ActionItem item)
         {
             ISession session = GetSession();
 
@@ -26,36 +26,10 @@ namespace FastGTD.DataAccess
             }
         }
 
-        public void Delete(InBoxItem item)
+        public ActionItem GetById(int id)
         {
             ISession session = GetSession();
-            using (ITransaction tx = session.BeginTransaction())
-            {
-                session.Delete(item);
-                tx.Commit();
-            }
-        }
-
-        public InBoxItem GetById(int id)
-        {
-            ISession session = GetSession();
-            return session.Load<InBoxItem>(id);
-        }
-
-        public IList<InBoxItem> GetAll()
-        {
-            ISession session = GetSession();
-            return session.CreateCriteria(typeof (InBoxItem)).List<InBoxItem>();
-        }
-
-        public void DeleteAll()
-        {
-            ISession session = GetSession();
-            using (ITransaction tx = session.BeginTransaction())
-            {
-                session.Delete("from InBoxItem");
-                tx.Commit();
-            }
+            return session.Load<ActionItem>(id);
         }
 
         private static ISessionFactory CreateSessionFactory()
@@ -67,7 +41,7 @@ namespace FastGTD.DataAccess
             cfg.Properties.Add("connection.connection_string", "Data Source=FastGTD.db");
             cfg.Properties.Add("dialect", "NHibernate.Dialect.SQLiteDialect");
             cfg.Properties.Add("query.substitutions", "true=1;false=0");
-            
+
             cfg.AddAssembly("FastGTD.DataTransfer");
             return cfg.BuildSessionFactory();
         }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using FastGTD.DataAccess;
 using FastGTD.DataTransfer;
+using FastGTD.Domain;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 

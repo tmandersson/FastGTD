@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
-using FastGTD.DataAccess;
 using FastGTD.DataTransfer;
+using FastGTD.Domain;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 using Rhino.Mocks;
@@ -17,7 +17,7 @@ namespace FastGTD.UnitTests
         [SetUp]
         public void SetupTests()
         {
-            var repository = MockRepository.GenerateStub<IInBoxPersistenceProvider>();
+            var repository = MockRepository.GenerateStub<IInBoxPersistence>();
             repository.Stub(x => x.GetAll()).Return(new List<InBoxItem>());
             _model = new InBoxModel(repository);
             _form = new TestableInBoxForm();

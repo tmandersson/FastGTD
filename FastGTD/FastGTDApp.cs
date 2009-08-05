@@ -1,4 +1,5 @@
 using FastGTD.DataAccess;
+using FastGTD.Domain;
 using StructureMap;
 using StructureMap.Attributes;
 
@@ -25,7 +26,7 @@ namespace FastGTD
         {
             ObjectFactory.Initialize(x =>
             {
-                x.ForRequestedType<IInBoxPersistenceProvider>().TheDefaultIsConcreteType<InBoxItemRepository>()
+                x.ForRequestedType<IInBoxPersistence>().TheDefaultIsConcreteType<InBoxItemRepository>()
                     .CacheBy(InstanceScope.Singleton);
                 x.ForRequestedType<IInBoxView>().TheDefaultIsConcreteType<InBoxForm>()
                     .CacheBy(InstanceScope.Singleton);
@@ -34,6 +35,8 @@ namespace FastGTD
                 x.ForRequestedType<ActionsListModel>().TheDefaultIsConcreteType<ActionsListModel>()
                     .CacheBy(InstanceScope.Singleton);
                 x.ForRequestedType<IItemConverter>().TheDefaultIsConcreteType<ItemConverter>()
+                    .CacheBy(InstanceScope.Singleton);
+                x.ForRequestedType<IActionsListPersistence>().TheDefaultIsConcreteType<ActionsRepository>()
                     .CacheBy(InstanceScope.Singleton);
             });
         }

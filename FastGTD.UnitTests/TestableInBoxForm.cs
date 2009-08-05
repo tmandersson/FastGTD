@@ -48,11 +48,6 @@ namespace FastGTD.UnitTests
             _delete_button.PerformClick();
         }
 
-        public void ClickToActionButton()
-        {
-            _to_action_button.PerformClick();
-        }
-
         public void PerformKeyDown(Keys keys)
         {
             OnKeyDown(new KeyEventArgs(keys));

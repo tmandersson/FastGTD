@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using FastGTD.DataTransfer;
+using FastGTD.Domain;
 using NUnit.Framework;
 using Rhino.Mocks;
 

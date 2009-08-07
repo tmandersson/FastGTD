@@ -1,4 +1,5 @@
 using FastGTD.DataAccess;
+using FastGTD.DataTransfer;
 using FastGTD.Domain;
 using StructureMap;
 using StructureMap.Attributes;
@@ -9,7 +10,7 @@ namespace FastGTD
     {
         private readonly InBoxModel _inbox_model;
         private readonly InBoxController _inbox_controller;
-        private readonly IActionsListModel _actions_list_model;
+        private readonly IGTDItemModel<ActionItem> _actions_list_model;
 
         public static int Main()
         {
@@ -29,9 +30,9 @@ namespace FastGTD
                     .CacheBy(InstanceScope.Singleton);
                 x.ForRequestedType<IInBoxView>().TheDefaultIsConcreteType<InBoxForm>()
                     .CacheBy(InstanceScope.Singleton);
-                x.ForRequestedType<IInBoxModel>().TheDefaultIsConcreteType<InBoxModel>()
+                x.ForRequestedType<IGTDItemModel<InBoxItem>>().TheDefaultIsConcreteType<InBoxModel>()
                     .CacheBy(InstanceScope.Singleton);
-                x.ForRequestedType<IActionsListModel>().TheDefaultIsConcreteType<ActionsListModel>()
+                x.ForRequestedType<IGTDItemModel<ActionItem>>().TheDefaultIsConcreteType<ActionsListModel>()
                     .CacheBy(InstanceScope.Singleton);
                 x.ForRequestedType<IItemConverter>().TheDefaultIsConcreteType<ItemConverter>()
                     .CacheBy(InstanceScope.Singleton);
@@ -42,9 +43,9 @@ namespace FastGTD
 
         public FastGTDApp()
         {
-            _inbox_model = (InBoxModel) ObjectFactory.GetInstance<IInBoxModel>();
+            _inbox_model = (InBoxModel)ObjectFactory.GetInstance<IGTDItemModel<InBoxItem>>();
             _inbox_controller = ObjectFactory.GetInstance<InBoxController>();
-            _actions_list_model = ObjectFactory.GetInstance<IActionsListModel>();
+            _actions_list_model = ObjectFactory.GetInstance<IGTDItemModel<ActionItem>>();
             ObjectFactory.GetInstance<ActionsListController>();
             ObjectFactory.GetInstance<IItemConverter>();
         }
@@ -54,7 +55,7 @@ namespace FastGTD
             get { return _inbox_model; }
         }
 
-        public IActionsListModel ActionsListModel
+        public IGTDItemModel<ActionItem> ActionsListModel
         {
             get { return _actions_list_model; }
         }

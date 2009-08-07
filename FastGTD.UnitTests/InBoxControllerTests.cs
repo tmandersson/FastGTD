@@ -19,7 +19,7 @@ namespace FastGTD.UnitTests
         {
             _view = MockRepository.GenerateMock<IInBoxView>();
             _view.Stub(x => x.List).Return(MockRepository.GenerateMock<IListSelectionChanger>());
-            var model = MockRepository.GenerateStub<IInBoxModel>();
+            var model = MockRepository.GenerateStub<IGTDItemModel<InBoxItem>>();
             _converter = MockRepository.GenerateMock<IItemConverter>();
             _form = new InBoxController(_view, model, _converter);
         }

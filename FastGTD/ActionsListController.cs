@@ -1,10 +1,11 @@
-﻿using FastGTD.Domain;
+﻿using FastGTD.DataTransfer;
+using FastGTD.Domain;
 
 namespace FastGTD
 {
     public class ActionsListController
     {
-        public ActionsListController(IActionsListModel model)
+        public ActionsListController(IGTDItemModel<ActionItem> model)
         {
             model.Load();
         }

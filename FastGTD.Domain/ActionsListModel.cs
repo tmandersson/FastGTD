@@ -5,10 +5,12 @@ using FastGTD.DataTransfer;
 
 namespace FastGTD.Domain
 {
-    public class ActionsListModel : IActionsListModel
+    public class ActionsListModel : IGTDItemModel<ActionItem>
     {
         private readonly IActionsListPersistence _persistence;
         private IList<ActionItem> _items = new List<ActionItem>();
+
+        public event Action Changed;
 
         public ActionsListModel(IActionsListPersistence persistence)
         {
@@ -27,6 +29,11 @@ namespace FastGTD.Domain
             _persistence.Save(action);
             return action;
         }
+
+        public void Remove(ActionItem item)
+        {
+        }
+
 
         public void Load()
         {

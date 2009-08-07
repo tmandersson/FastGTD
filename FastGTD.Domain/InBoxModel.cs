@@ -5,7 +5,7 @@ using FastGTD.DataTransfer;
 
 namespace FastGTD.Domain
 {
-    public class InBoxModel : IInBoxModel
+    public class InBoxModel : IGTDItemModel<InBoxItem>
     {
         private IList<InBoxItem> _items = new List<InBoxItem>();
 

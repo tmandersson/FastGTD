@@ -5,14 +5,14 @@ using FastGTD.DataTransfer;
 
 namespace FastGTD.Domain
 {
-    public class ActionsListModel : IGTDItemModel<ActionItem>
+    public class ActionsListModel : IItemModel<ActionItem>
     {
         private IList<ActionItem> _items = new List<ActionItem>();
-        private readonly IGTDItemPersistence<ActionItem> _persistence;
+        private readonly IItemPersistence<ActionItem> _persistence;
 
         public event Action Changed;
 
-        public ActionsListModel(IGTDItemPersistence<ActionItem> persistence)
+        public ActionsListModel(IItemPersistence<ActionItem> persistence)
         {
             _persistence = persistence;
         }

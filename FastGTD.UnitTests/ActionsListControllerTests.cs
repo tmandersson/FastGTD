@@ -11,7 +11,7 @@ namespace FastGTD.UnitTests
         [Test]
         public void OnCreation_ModelGetsLoaded()
         {
-            var model = MockRepository.GenerateMock<IGTDItemModel<ActionItem>>();
+            var model = MockRepository.GenerateMock<IItemModel<ActionItem>>();
             new ActionsListController(model);
             model.AssertWasCalled(x => x.Load());
         }

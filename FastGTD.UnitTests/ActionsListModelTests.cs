@@ -14,7 +14,7 @@ namespace FastGTD.UnitTests
         public void Add_WithText_SavesNewActionWithTextAsName()
         {
             const string NAME = "foo";
-            var persistence = MockRepository.GenerateMock<IGTDItemPersistence<ActionItem>>();
+            var persistence = MockRepository.GenerateMock<IItemPersistence<ActionItem>>();
             var model = new ActionsListModel(persistence);
             
             model.Add(NAME);
@@ -27,7 +27,7 @@ namespace FastGTD.UnitTests
         {
             var item1 = new ActionItem("foo");
             var item2 = new ActionItem("foo2");
-            var persistence = MockRepository.GenerateStub<IGTDItemPersistence<ActionItem>>();
+            var persistence = MockRepository.GenerateStub<IItemPersistence<ActionItem>>();
             persistence.Stub(x => x.GetAll()).Return(new List<ActionItem> {item1, item2});
 
             var model = new ActionsListModel(persistence);
@@ -40,7 +40,7 @@ namespace FastGTD.UnitTests
         [Test]
         public void ClearItems_WithTwoItems_RemovesThem()
         {
-            var persistence = MockRepository.GenerateStub<IGTDItemPersistence<ActionItem>>();
+            var persistence = MockRepository.GenerateStub<IItemPersistence<ActionItem>>();
             var model = new ActionsListModel(persistence);
             model.Add("foo");
             Assert.That(model.Items, Has.Count(1));
@@ -55,7 +55,7 @@ namespace FastGTD.UnitTests
         [Test]
         public void ClearItems_DeletesAllWithPersistence()
         {
-            var persistence = MockRepository.GenerateMock<IGTDItemPersistence<ActionItem>>();
+            var persistence = MockRepository.GenerateMock<IItemPersistence<ActionItem>>();
             var model = new ActionsListModel(persistence);
             model.ClearItems();
             persistence.AssertWasCalled(x => x.DeleteAll());

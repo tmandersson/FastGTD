@@ -21,7 +21,7 @@ namespace FastGTD.IntegrationTests
             var item = new InBoxItem(name);
             repo.Save(item);
 
-            IGTDItemModel<InBoxItem> model = CreateModel();
+            IItemModel<InBoxItem> model = CreateModel();
             model.Load();
 
             Assert.That(model.Items, Has.Count(expected_count));
@@ -31,7 +31,7 @@ namespace FastGTD.IntegrationTests
         [Test]
         public void ClearingItemsDeletesItemsInDatabase()
         {
-            IGTDItemModel<InBoxItem> model = CreateModel();
+            IItemModel<InBoxItem> model = CreateModel();
             model.Load();
             model.Add("hej");
 
@@ -46,7 +46,7 @@ namespace FastGTD.IntegrationTests
         public void SaveNewItems()
         {
             const string ITEM_NAME = "hej";
-            IGTDItemModel<InBoxItem> model = CreateModel();
+            IItemModel<InBoxItem> model = CreateModel();
             model.Load();
             model.ClearItems();
 
@@ -58,7 +58,7 @@ namespace FastGTD.IntegrationTests
             Assert.That(persisted_model.Items, Has.Member(expected_item));
         }
 
-        private static IGTDItemModel<InBoxItem> CreateModel()
+        private static IItemModel<InBoxItem> CreateModel()
         {
             return new InBoxModel(new InBoxItemRepository());
         }

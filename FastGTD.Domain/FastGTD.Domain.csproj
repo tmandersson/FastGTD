@@ -46,8 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionsListModel.cs" />
-    <Compile Include="IGTDItemModel.cs" />
-    <Compile Include="IGTDItemPersistence.cs" />
+    <Compile Include="IItemModel.cs" />
+    <Compile Include="IItemPersistence.cs" />
     <Compile Include="IItemConverter.cs" />
     <Compile Include="InBoxModel.cs" />
     <Compile Include="ItemConverter.cs" />

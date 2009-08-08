@@ -7,10 +7,10 @@ namespace FastGTD
     public class InBoxController
     {
         private readonly IInBoxView _view;
-        private readonly IGTDItemModel<InBoxItem> _model;
+        private readonly IItemModel<InBoxItem> _model;
         private readonly IItemConverter _converter;
 
-        public InBoxController(IInBoxView view, IGTDItemModel<InBoxItem> model, IItemConverter converter)
+        public InBoxController(IInBoxView view, IItemModel<InBoxItem> model, IItemConverter converter)
         {
             _view = view;
             _model = model;

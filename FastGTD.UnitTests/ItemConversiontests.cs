@@ -16,8 +16,8 @@ namespace FastGTD.UnitTests
         [SetUp]
         public void SetupTests()
         {
-            var inbox_persistence = MockRepository.GenerateStub<IGTDItemPersistence<InBoxItem>>();
-            var actions_persistence = MockRepository.GenerateStub<IGTDItemPersistence<ActionItem>>();
+            var inbox_persistence = MockRepository.GenerateStub<IItemPersistence<InBoxItem>>();
+            var actions_persistence = MockRepository.GenerateStub<IItemPersistence<ActionItem>>();
             _actions_list_model = new ActionsListModel(actions_persistence);
             _model = new InBoxModel(inbox_persistence);
             _converter = new ItemConverter(_model, _actions_list_model);

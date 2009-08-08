@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace FastGTD.Domain
 {
-    public interface IGTDItemModel<T>
+    public interface IItemModel<T>
     {
         void Load();
         void ClearItems();

@@ -5,7 +5,7 @@ namespace FastGTD
 {
     public class ActionsListController
     {
-        public ActionsListController(IGTDItemModel<ActionItem> model)
+        public ActionsListController(IItemModel<ActionItem> model)
         {
             model.Load();
         }

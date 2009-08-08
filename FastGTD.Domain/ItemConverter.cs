@@ -4,10 +4,10 @@ namespace FastGTD.Domain
 {
     public class ItemConverter : IItemConverter
     {
-        private readonly IGTDItemModel<InBoxItem> _inbox_model;
-        private readonly IGTDItemModel<ActionItem> _actions_list_model;
+        private readonly IItemModel<InBoxItem> _inbox_model;
+        private readonly IItemModel<ActionItem> _actions_list_model;
 
-        public ItemConverter(IGTDItemModel<InBoxItem> inbox_model, IGTDItemModel<ActionItem> actions_list_model)
+        public ItemConverter(IItemModel<InBoxItem> inbox_model, IItemModel<ActionItem> actions_list_model)
         {
             _inbox_model = inbox_model;
             _actions_list_model = actions_list_model;

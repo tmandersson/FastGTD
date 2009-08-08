@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace FastGTD.Domain
 {
-    public interface IGTDItemPersistence<T>
+    public interface IItemPersistence<T>
     {
         IList<T> GetAll();
         void DeleteAll();

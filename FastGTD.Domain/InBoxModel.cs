@@ -8,11 +8,11 @@ namespace FastGTD.Domain
     public class InBoxModel : IGTDItemModel<InBoxItem>
     {
         private IList<InBoxItem> _items = new List<InBoxItem>();
+        private readonly IGTDItemPersistence<InBoxItem> _persistence;
 
-        private readonly IInBoxPersistence _persistence;
         public event Action Changed;
 
-        public InBoxModel(IInBoxPersistence persistence)
+        public InBoxModel(IGTDItemPersistence<InBoxItem> persistence)
         {
             _persistence = persistence;
         }
@@ -34,7 +34,6 @@ namespace FastGTD.Domain
             _persistence.Save(item);
             _items.Add(item);
             FireEvent(Changed);
-
             return item;
         }
 
@@ -45,17 +44,17 @@ namespace FastGTD.Domain
             FireEvent(Changed);
         }
 
-        private static void FireEvent(Action evnt)
-        {
-            if (evnt != null)
-                evnt();
-        }
-
         public void ClearItems()
         {
             _items.Clear();
             _persistence.DeleteAll();
             FireEvent(Changed);
+        }
+
+        private static void FireEvent(Action evnt)
+        {
+            if (evnt != null)
+                evnt();
         }
     }
 }

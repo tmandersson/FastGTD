@@ -1,3 +1,4 @@
+using FastGTD.DataTransfer;
 using FastGTD.Domain;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
@@ -13,7 +14,7 @@ namespace FastGTD.UnitTests
         [SetUp]
         public void SetupTests()
         {
-            var repo = MockRepository.GenerateStub<IInBoxPersistence>();
+            var repo = MockRepository.GenerateStub<IGTDItemPersistence<InBoxItem>>();
             _model = new InBoxModel(repo);
             Assert.That(_model.Items, Has.Count(0));
         }

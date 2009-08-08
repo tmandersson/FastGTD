@@ -7,14 +7,19 @@ namespace FastGTD.Domain
 {
     public class ActionsListModel : IGTDItemModel<ActionItem>
     {
-        private readonly IActionsListPersistence _persistence;
         private IList<ActionItem> _items = new List<ActionItem>();
+        private readonly IGTDItemPersistence<ActionItem> _persistence;
 
         public event Action Changed;
 
-        public ActionsListModel(IActionsListPersistence persistence)
+        public ActionsListModel(IGTDItemPersistence<ActionItem> persistence)
         {
             _persistence = persistence;
+        }
+
+        public void Load()
+        {
+            _items = _persistence.GetAll();
         }
 
         public IList<ActionItem> Items
@@ -25,25 +30,29 @@ namespace FastGTD.Domain
         public ActionItem Add(string name)
         {
             var action = new ActionItem(name);
-            _items.Add(action);
             _persistence.Save(action);
+            _items.Add(action);
+            FireEvent(Changed);
             return action;
         }
 
         public void Remove(ActionItem item)
         {
-        }
-
-
-        public void Load()
-        {
-            _items = _persistence.GetAll();
+            _items.Remove(item);
+            _persistence.Delete(item);
+            FireEvent(Changed);
         }
 
         public void ClearItems()
         {
             _items.Clear();
             _persistence.DeleteAll();
+        }
+
+        private static void FireEvent(Action evnt)
+        {
+            if (evnt != null)
+                evnt();
         }
     }
 }

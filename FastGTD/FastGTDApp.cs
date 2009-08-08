@@ -26,7 +26,7 @@ namespace FastGTD
         {
             ObjectFactory.Initialize(x =>
             {
-                x.ForRequestedType<IInBoxPersistence>().TheDefaultIsConcreteType<InBoxItemRepository>()
+                x.ForRequestedType<IGTDItemPersistence<InBoxItem>>().TheDefaultIsConcreteType<InBoxItemRepository>()
                     .CacheBy(InstanceScope.Singleton);
                 x.ForRequestedType<IInBoxView>().TheDefaultIsConcreteType<InBoxForm>()
                     .CacheBy(InstanceScope.Singleton);
@@ -36,7 +36,7 @@ namespace FastGTD
                     .CacheBy(InstanceScope.Singleton);
                 x.ForRequestedType<IItemConverter>().TheDefaultIsConcreteType<ItemConverter>()
                     .CacheBy(InstanceScope.Singleton);
-                x.ForRequestedType<IActionsListPersistence>().TheDefaultIsConcreteType<ActionsRepository>()
+                x.ForRequestedType<IGTDItemPersistence<ActionItem>>().TheDefaultIsConcreteType<ActionsRepository>()
                     .CacheBy(InstanceScope.Singleton);
             });
         }

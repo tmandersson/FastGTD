@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using FastGTD.DataTransfer;
 using FastGTD.Domain;
@@ -7,13 +6,17 @@ using NHibernate.Cfg;
 
 namespace FastGTD.DataAccess
 {
-    public class ActionsRepository : IActionsListPersistence
+    public class ActionsRepository : IGTDItemPersistence<ActionItem>
     {
         private readonly ISessionFactory _session_factory;
 
         public ActionsRepository()
         {
             _session_factory = CreateSessionFactory();
+        }
+
+        public void Delete(ActionItem item)
+        {
         }
 
         public void Save(ActionItem item)

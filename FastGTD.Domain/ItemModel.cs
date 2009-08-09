@@ -1,18 +1,17 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using FastGTD.DataTransfer;
 
 namespace FastGTD.Domain
 {
-    public class InBoxModel : IItemModel<InBoxItem>
+    public class ItemModel<T> where T : IItem, new()
     {
-        private IList<InBoxItem> _items = new List<InBoxItem>();
-        private readonly IItemPersistence<InBoxItem> _persistence;
+        private IList<T> _items = new List<T>();
+        private readonly IItemPersistence<T> _persistence;
 
         public event Action Changed;
 
-        public InBoxModel(IItemPersistence<InBoxItem> persistence)
+        protected ItemModel(IItemPersistence<T> persistence)
         {
             _persistence = persistence;
         }
@@ -23,21 +22,21 @@ namespace FastGTD.Domain
             FireEvent(Changed);
         }
 
-        public IList<InBoxItem> Items
+        public IList<T> Items
         {
-            get { return new ReadOnlyCollection<InBoxItem>(_items); }
+            get { return new ReadOnlyCollection<T>(_items); }
         }
 
-        public InBoxItem Add(string name)
+        public T Add(string name)
         {
-            var item = new InBoxItem(name);
+            var item = new T {Name = name};
             _persistence.Save(item);
             _items.Add(item);
             FireEvent(Changed);
             return item;
         }
 
-        public void Remove(InBoxItem item)
+        public void Remove(T item)
         {
             _items.Remove(item);
             _persistence.Delete(item);
@@ -50,6 +49,7 @@ namespace FastGTD.Domain
             _persistence.DeleteAll();
             FireEvent(Changed);
         }
+
 
         private static void FireEvent(Action evnt)
         {

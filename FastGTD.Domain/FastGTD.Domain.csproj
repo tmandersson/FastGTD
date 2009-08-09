@@ -45,19 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActionsListModel.cs" />
+    <Compile Include="IItem.cs" />
     <Compile Include="IItemModel.cs" />
     <Compile Include="IItemPersistence.cs" />
-    <Compile Include="IItemConverter.cs" />
-    <Compile Include="InBoxModel.cs" />
-    <Compile Include="ItemConverter.cs" />
+    <Compile Include="ItemModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\FastGTD.DataTransfer\FastGTD.DataTransfer.csproj">
-      <Project>{2561D241-CD20-437A-9502-955EACF6C9DB}</Project>
-      <Name>FastGTD.DataTransfer</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

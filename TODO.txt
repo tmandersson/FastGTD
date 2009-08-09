@@ -1,16 +1,10 @@
-* Göra om Inbox-item till Action.
+* Nästa Kort: Kunna se actions-listan.
 * Gå igenom klasserna. Fundera på designen enligt SRP.
 * Gå igenom klasserna. Fundera på designen enlig OCP.
 * Gå igenom klasserna. Fundera på designen enlig LSP.
 * Gå igenom klasserna. Fundera på designen enlig ISP.
 * Gå igenom klasserna. Fundera på designen enlig DIP.
-* Implementera code coverage verktyg.
 * Jobba vidare på funktionalitet ansvarsfullt. (Customer-tester för aktuellt kort.)
-
-* Model convert sparar inbox-item som action.
-* Model convert tar bort inbox-item som blev action.
-* Action-items är persistenta.
-* Testa att det fungerar på riktigt.
 
 * Redundans i de 2 repositorys. Använd generics. IRepository<T> eller liknande.
 * TDD:a om Inboxview använd inte designern, utan TDD:a allt.
@@ -28,14 +22,18 @@ Så att jag har källkoden ifall nåt projekt läggs ner.
 	* Bygg allt med NAnt.
 	* Bygga nant själv? Eller ha källkoden iallafall. Eller bootstrap.bat el. liknande?
 
-* Kolla upp om jag ska använda nån IoC-container.
-	* Castle?
+* Prova Uncle Bobs CRAP-metric.
+* kör ndepend på min FastGTD-kodbas
 * NUnit 2.5 Final är släppt.
 ?* WPF-version av gränssnittet.
 * In memory DB för db-testen.
 * OO DB istället för Nhib?
+* Prova Linq to Nhibernate grejerna.
 * Testa öppen (open source) IDE. Ska kunna utveckla utan att vara bunden till MS (bygga på linux, VMWare?)
 * Prova fluent nhibernate.
+* Kolla på liknande open source projekt. Har sparat tre st i Mail/!Aktuellt.
 
 Om senare, web-del av systemet:
 * Prova selenium för customer-tests.
+* Bör lära mig jquery.
+* Microsoft ASP.NET MVC.

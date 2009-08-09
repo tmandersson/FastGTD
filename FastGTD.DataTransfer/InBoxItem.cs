@@ -2,11 +2,8 @@
 {
     public class InBoxItem : GTDItem
     {
-        protected InBoxItem() { }
-        public InBoxItem(string name)
-        {
-            _name = name;
-        }
+        public InBoxItem() { }
+        public InBoxItem(string name) : base(name) {}
 
         public override bool Equals(object obj)
         {

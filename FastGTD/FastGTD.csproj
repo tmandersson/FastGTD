@@ -60,8 +60,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionsListController.cs" />
+    <Compile Include="ActionsListModel.cs" />
     <Compile Include="FastGTDApp.cs" />
     <Compile Include="IInBoxView.cs" />
+    <Compile Include="IItemConverter.cs" />
     <Compile Include="InBoxController.cs" />
     <Compile Include="InBoxForm.cs">
       <SubType>Form</SubType>
@@ -69,6 +71,8 @@
     <Compile Include="InBoxForm.Designer.cs">
       <DependentUpon>InBoxForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="InBoxModel.cs" />
+    <Compile Include="ItemConverter.cs" />
     <Compile Include="ITestableInBoxView.cs" />
     <Compile Include="ListViewSelectionChanger.cs" />
   </ItemGroup>

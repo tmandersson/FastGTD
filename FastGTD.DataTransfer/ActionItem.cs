@@ -2,7 +2,7 @@
 {
     public class ActionItem : GTDItem
     {
-        protected ActionItem() { }
+        public ActionItem() { }
         public ActionItem(string name) : base(name) {}
 
         public override bool Equals(object obj)

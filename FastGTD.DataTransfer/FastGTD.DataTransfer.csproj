@@ -58,6 +58,12 @@
   <ItemGroup>
     <EmbeddedResource Include="ActionItem.hbm.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FastGTD.Domain\FastGTD.Domain.csproj">
+      <Project>{832AE3E7-F27C-48C1-9756-060B3B99AF1A}</Project>
+      <Name>FastGTD.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

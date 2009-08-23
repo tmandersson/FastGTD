@@ -4,14 +4,14 @@ using System.Collections.ObjectModel;
 
 namespace FastGTD.Domain
 {
-    public class ItemModel<T> where T : IItem, new()
+    public class ItemModel<T> : IItemModel<T> where T : IItem, new()
     {
         private IList<T> _items = new List<T>();
         private readonly IItemPersistence<T> _persistence;
 
         public event Action Changed;
 
-        protected ItemModel(IItemPersistence<T> persistence)
+        public ItemModel(IItemPersistence<T> persistence)
         {
             _persistence = persistence;
         }

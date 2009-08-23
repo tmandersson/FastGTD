@@ -8,7 +8,7 @@ namespace FastGTD
 {
     public class FastGTDApp
     {
-        private readonly InBoxModel _inbox_model;
+        private readonly ItemModel<InBoxItem> _inbox_model;
         private readonly InBoxController _inbox_controller;
         private readonly IItemModel<ActionItem> _actions_list_model;
 
@@ -30,9 +30,9 @@ namespace FastGTD
                     .CacheBy(InstanceScope.Singleton);
                 x.ForRequestedType<IInBoxView>().TheDefaultIsConcreteType<InBoxForm>()
                     .CacheBy(InstanceScope.Singleton);
-                x.ForRequestedType<IItemModel<InBoxItem>>().TheDefaultIsConcreteType<InBoxModel>()
+                x.ForRequestedType<IItemModel<InBoxItem>>().TheDefaultIsConcreteType<ItemModel<InBoxItem>>()
                     .CacheBy(InstanceScope.Singleton);
-                x.ForRequestedType<IItemModel<ActionItem>>().TheDefaultIsConcreteType<ActionsListModel>()
+                x.ForRequestedType<IItemModel<ActionItem>>().TheDefaultIsConcreteType<ItemModel<ActionItem>>()
                     .CacheBy(InstanceScope.Singleton);
                 x.ForRequestedType<IItemConverter>().TheDefaultIsConcreteType<ItemConverter>()
                     .CacheBy(InstanceScope.Singleton);
@@ -43,14 +43,14 @@ namespace FastGTD
 
         public FastGTDApp()
         {
-            _inbox_model = (InBoxModel)ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
+            _inbox_model = (ItemModel<InBoxItem>)ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
             _inbox_controller = ObjectFactory.GetInstance<InBoxController>();
             _actions_list_model = ObjectFactory.GetInstance<IItemModel<ActionItem>>();
             ObjectFactory.GetInstance<ActionsListController>();
             ObjectFactory.GetInstance<IItemConverter>();
         }
 
-        public InBoxModel InboxModel
+        public ItemModel<InBoxItem> InboxModel
         {
             get { return _inbox_model; }
         }

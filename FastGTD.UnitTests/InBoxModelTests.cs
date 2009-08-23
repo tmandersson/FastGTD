@@ -9,13 +9,13 @@ namespace FastGTD.UnitTests
     [TestFixture]
     public class InBoxModelTests
     {
-        private InBoxModel _model;
+        private ItemModel<InBoxItem> _model;
 
         [SetUp]
         public void SetupTests()
         {
             var repo = MockRepository.GenerateStub<IItemPersistence<InBoxItem>>();
-            _model = new InBoxModel(repo);
+            _model = new ItemModel<InBoxItem>(repo);
             Assert.That(_model.Items, Has.Count(0));
         }
 

@@ -12,14 +12,14 @@ namespace FastGTD.UnitTests
     public class InBoxFormWithModelTests
     {
         private TestableInBoxForm _form;
-        private InBoxModel _model;
+        private ItemModel<InBoxItem> _model;
 
         [SetUp]
         public void SetupTests()
         {
             var repository = MockRepository.GenerateStub<IItemPersistence<InBoxItem>>();
             repository.Stub(x => x.GetAll()).Return(new List<InBoxItem>());
-            _model = new InBoxModel(repository);
+            _model = new ItemModel<InBoxItem>(repository);
             _form = new TestableInBoxForm();
             new InBoxController(_form, _model, null);
         }

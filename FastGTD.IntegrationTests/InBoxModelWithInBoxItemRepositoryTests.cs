@@ -60,7 +60,7 @@ namespace FastGTD.IntegrationTests
 
         private static IItemModel<InBoxItem> CreateModel()
         {
-            return new InBoxModel(new InBoxItemRepository());
+            return new ItemModel<InBoxItem>(new InBoxItemRepository());
         }
     }
 }

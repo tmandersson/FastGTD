@@ -9,8 +9,8 @@ namespace FastGTD.UnitTests
     [TestFixture]
     public class ItemConversiontests
     {
-        private InBoxModel _model;
-        private ActionsListModel _actions_list_model;
+        private ItemModel<InBoxItem> _model;
+        private ItemModel<ActionItem> _actions_list_model;
         private ItemConverter _converter;
 
         [SetUp]
@@ -18,8 +18,8 @@ namespace FastGTD.UnitTests
         {
             var inbox_persistence = MockRepository.GenerateStub<IItemPersistence<InBoxItem>>();
             var actions_persistence = MockRepository.GenerateStub<IItemPersistence<ActionItem>>();
-            _actions_list_model = new ActionsListModel(actions_persistence);
-            _model = new InBoxModel(inbox_persistence);
+            _actions_list_model = new ItemModel<ActionItem>(actions_persistence);
+            _model = new ItemModel<InBoxItem>(inbox_persistence);
             _converter = new ItemConverter(_model, _actions_list_model);
             Assert.That(_model.Items, Has.Count(0));
         }

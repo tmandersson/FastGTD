@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace FastGTD.Domain
 {
-    public class ItemModel<T> : IItemModel<T> where T : IItem, new()
+    public class ItemModel<T> : IItemModel<T> where T : GTDItem, new()
     {
         private IList<T> _items = new List<T>();
         private readonly IItemPersistence<T> _persistence;

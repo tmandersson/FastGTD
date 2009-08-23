@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IItem.cs" />
+    <Compile Include="GTDItem.cs" />
     <Compile Include="IItemModel.cs" />
     <Compile Include="IItemPersistence.cs" />
     <Compile Include="ItemModel.cs" />

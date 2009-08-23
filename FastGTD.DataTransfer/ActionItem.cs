@@ -1,4 +1,6 @@
-﻿namespace FastGTD.DataTransfer
+﻿using FastGTD.Domain;
+
+namespace FastGTD.DataTransfer
 {
     public class ActionItem : GTDItem
     {

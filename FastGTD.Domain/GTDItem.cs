@@ -1,8 +1,6 @@
-using FastGTD.Domain;
-
-namespace FastGTD.DataTransfer
+namespace FastGTD.Domain
 {
-    public class GTDItem : IItem
+    public class GTDItem
     {
         protected string _name;
 

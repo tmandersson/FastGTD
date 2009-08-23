@@ -82,12 +82,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionsListControllerTests.cs" />
-    <Compile Include="ActionsListModelTests.cs" />
+    <Compile Include="ItemModelTests.cs" />
     <Compile Include="InBoxControllerTests.cs" />
     <Compile Include="InboxFormEventTests.cs" />
     <Compile Include="InBoxFormWithModelTests.cs">
     </Compile>
-    <Compile Include="InBoxModelTests.cs" />
     <Compile Include="ItemConversiontests.cs" />
     <Compile Include="ShownInBoxFormTests.cs">
     </Compile>

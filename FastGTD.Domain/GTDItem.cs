@@ -4,8 +4,8 @@ namespace FastGTD.Domain
     {
         protected string _name;
 
-        protected GTDItem() { }
-        protected GTDItem(string name) { _name = name; }
+        public GTDItem() { }
+        public GTDItem(string name) { _name = name; }
 
         public virtual int Id { get; set; }
 

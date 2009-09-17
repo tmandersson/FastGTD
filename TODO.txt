@@ -6,9 +6,6 @@
 * Gå igenom klasserna. Fundera på designen enlig DIP.
 * Jobba vidare på funktionalitet ansvarsfullt.
 (Customer-test för aktuellt kort. Sen fulltäckande TDD.)
-* Varför finns det en fixtur med integreringstest. Ska inte behövas.
-* Ersätt FastGTD.IntegrationTests med assemblies för customer test och 
-dataccess respektive.
 * Slå ihop repository-testerna.
 
 * Redundans i de 2 repositorys. Använd generics. IRepository<T> eller liknande.

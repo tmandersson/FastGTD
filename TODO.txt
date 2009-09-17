@@ -9,6 +9,7 @@
 * Varför finns det en fixtur med integreringstest. Ska inte behövas.
 * Ersätt FastGTD.IntegrationTests med assemblies för customer test och 
 dataccess respektive.
+* Slå ihop repository-testerna.
 
 * Redundans i de 2 repositorys. Använd generics. IRepository<T> eller liknande.
 * TDD:a om Inboxview använd inte designern, utan TDD:a allt.

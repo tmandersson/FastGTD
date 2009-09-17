@@ -12,23 +12,6 @@ namespace FastGTD.IntegrationTests
     public class InBoxModelWithInBoxItemRepositoryTests
     {
         [Test]
-        public void LoadingExistingItems()
-        {
-            string name = Guid.NewGuid().ToString();
-            var repo = new InBoxItemRepository();
-            IList<InBoxItem> existing = repo.GetAll();
-            int expected_count = existing.Count + 1;
-            var item = new InBoxItem(name);
-            repo.Save(item);
-
-            IItemModel<InBoxItem> model = CreateModel();
-            model.Load();
-
-            Assert.That(model.Items, Has.Count(expected_count));
-            Assert.That(model.Items, Has.Member(item));
-        }
-
-        [Test]
         public void ClearingItemsDeletesItemsInDatabase()
         {
             IItemModel<InBoxItem> model = CreateModel();

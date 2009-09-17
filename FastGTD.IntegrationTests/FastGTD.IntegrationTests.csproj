@@ -58,10 +58,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActionsRepositoryTests.cs" />
+    <Compile Include="DataAccess\ActionsRepositoryTests.cs" />
     <Compile Include="CustomerTests\InBoxPersistenceTests.cs" />
     <Compile Include="CustomerTests\StartingWithEmptyModelsTests.cs" />
-    <Compile Include="InBoxItemRepositoryTests.cs" />
+    <Compile Include="DataAccess\InBoxItemRepositoryTests.cs" />
     <Compile Include="InBoxModelWithInBoxItemRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

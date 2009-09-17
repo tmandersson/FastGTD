@@ -4,7 +4,11 @@
 * Gå igenom klasserna. Fundera på designen enlig LSP.
 * Gå igenom klasserna. Fundera på designen enlig ISP.
 * Gå igenom klasserna. Fundera på designen enlig DIP.
-* Jobba vidare på funktionalitet ansvarsfullt. (Customer-tester för aktuellt kort.)
+* Jobba vidare på funktionalitet ansvarsfullt.
+(Customer-test för aktuellt kort. Sen fulltäckande TDD.)
+* Varför finns det en fixtur med integreringstest. Ska inte behövas.
+* Ersätt FastGTD.IntegrationTests med assemblies för customer test och 
+dataccess respektive.
 
 * Redundans i de 2 repositorys. Använd generics. IRepository<T> eller liknande.
 * TDD:a om Inboxview använd inte designern, utan TDD:a allt.

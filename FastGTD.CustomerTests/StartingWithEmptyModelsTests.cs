@@ -5,7 +5,7 @@ using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 using StructureMap;
 
-namespace FastGTD.IntegrationTests.CustomerTests
+namespace FastGTD.CustomerTests
 {
     [TestFixture]
     public class StartingWithEmptyModelsTests

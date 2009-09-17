@@ -5,7 +5,7 @@ using FastGTD.DataTransfer;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 
-namespace FastGTD.IntegrationTests.DataAccess
+namespace FastGTD.DataAccessTests
 {
     [TestFixture]
     public class InBoxItemRepositoryTests

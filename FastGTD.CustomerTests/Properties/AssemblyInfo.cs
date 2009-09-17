@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FastGTD.IntegrationTests")]
+[assembly: AssemblyTitle("FastGTD.CustomerTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FastGTD.IntegrationTests")]
+[assembly: AssemblyProduct("FastGTD.CustomerTests")]
 [assembly: AssemblyCopyright("Copyright ©  2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f15ff0d2-f99d-45b4-838b-6bf5153e32fc")]
+[assembly: Guid("9cbf6928-8146-4c2d-8701-1db1fe375f43")]
 
 // Version information for an assembly consists of the following four values:
 //

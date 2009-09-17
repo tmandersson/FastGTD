@@ -2,7 +2,7 @@ using System;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 
-namespace FastGTD.IntegrationTests.CustomerTests
+namespace FastGTD.CustomerTests
 {
     [TestFixture]
     public class InBoxPersistenceTests

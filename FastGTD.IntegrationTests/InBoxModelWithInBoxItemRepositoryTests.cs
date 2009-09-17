@@ -12,20 +12,6 @@ namespace FastGTD.IntegrationTests
     public class InBoxModelWithInBoxItemRepositoryTests
     {
         [Test]
-        public void ClearingItemsDeletesItemsInDatabase()
-        {
-            IItemModel<InBoxItem> model = CreateModel();
-            model.Load();
-            model.Add("hej");
-
-            model.ClearItems();
-
-            var persisted_model = CreateModel();
-            persisted_model.Load();
-            Assert.That(persisted_model.Items.Count, Is.EqualTo(0));
-        }
-
-        [Test]
         public void SaveNewItems()
         {
             const string ITEM_NAME = "hej";

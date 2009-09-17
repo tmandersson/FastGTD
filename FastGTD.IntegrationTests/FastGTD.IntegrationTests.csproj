@@ -62,7 +62,6 @@
     <Compile Include="CustomerTests\InBoxPersistenceTests.cs" />
     <Compile Include="CustomerTests\StartingWithEmptyModelsTests.cs" />
     <Compile Include="DataAccess\InBoxItemRepositoryTests.cs" />
-    <Compile Include="InBoxModelWithInBoxItemRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -6,7 +6,6 @@
 * Gå igenom klasserna. Fundera på designen enlig DIP.
 * Jobba vidare på funktionalitet ansvarsfullt.
 (Customer-test för aktuellt kort. Sen fulltäckande TDD.)
-* Redundans i de 2 repositorys. Använd generics. IRepository<T> eller liknande.
 * Slå ihop repository-testerna.
 
 * TDD:a om Inboxview använd inte designern, utan TDD:a allt.

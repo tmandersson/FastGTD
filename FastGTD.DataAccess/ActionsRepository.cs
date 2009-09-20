@@ -7,11 +7,6 @@ namespace FastGTD.DataAccess
 {
     public class ActionsRepository : ItemRepository, IItemPersistence<ActionItem>
     {
-        public ActionsRepository()
-        {
-            _session_factory = CreateSessionFactory();
-        }
-
         public IList<ActionItem> GetAll()
         {
             ISession session = GetSession();

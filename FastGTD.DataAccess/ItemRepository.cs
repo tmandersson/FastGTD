@@ -5,9 +5,14 @@ namespace FastGTD.DataAccess
 {
     public class ItemRepository
     {
-        protected ISessionFactory _session_factory;
+        private readonly ISessionFactory _session_factory;
 
-        protected static ISessionFactory CreateSessionFactory()
+        protected ItemRepository()
+        {
+            _session_factory = CreateSessionFactory();
+        }
+
+        private static ISessionFactory CreateSessionFactory()
         {
             var cfg = new Configuration();
 

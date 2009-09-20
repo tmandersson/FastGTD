@@ -7,15 +7,10 @@ namespace FastGTD.DataAccess
 {
     public class InBoxItemRepository : ItemRepository, IItemPersistence<InBoxItem>
     {
-        public InBoxItemRepository()
-        {
-            _session_factory = CreateSessionFactory();
-        }
-
         public IList<InBoxItem> GetAll()
         {
             ISession session = GetSession();
-            return session.CreateCriteria(typeof (InBoxItem)).List<InBoxItem>();
+            return session.CreateCriteria(typeof(InBoxItem)).List<InBoxItem>();
         }
 
         public void DeleteAll()

@@ -2,44 +2,14 @@
 using FastGTD.DataTransfer;
 using FastGTD.Domain;
 using NHibernate;
-using NHibernate.Cfg;
 
 namespace FastGTD.DataAccess
 {
-    public class InBoxItemRepository : IItemPersistence<InBoxItem>
+    public class InBoxItemRepository : ItemRepository, IItemPersistence<InBoxItem>
     {
-        private readonly ISessionFactory _session_factory;
-
         public InBoxItemRepository()
         {
             _session_factory = CreateSessionFactory();
-        }
-
-        public void Save(InBoxItem item)
-        {
-            ISession session = GetSession();
-
-            using (ITransaction tx = session.BeginTransaction())
-            {
-                session.SaveOrUpdate(item);
-                tx.Commit();
-            }
-        }
-
-        public void Delete(InBoxItem item)
-        {
-            ISession session = GetSession();
-            using (ITransaction tx = session.BeginTransaction())
-            {
-                session.Delete(item);
-                tx.Commit();
-            }
-        }
-
-        public InBoxItem GetById(int id)
-        {
-            ISession session = GetSession();
-            return session.Load<InBoxItem>(id);
         }
 
         public IList<InBoxItem> GetAll()
@@ -58,23 +28,31 @@ namespace FastGTD.DataAccess
             }
         }
 
-        private static ISessionFactory CreateSessionFactory()
+        public void Delete(InBoxItem item)
         {
-            var cfg = new Configuration();
-
-            cfg.Properties.Add("connection.provider", "NHibernate.Connection.DriverConnectionProvider");
-            cfg.Properties.Add("connection.driver_class", "NHibernate.Driver.SQLite20Driver");
-            cfg.Properties.Add("connection.connection_string", "Data Source=FastGTD.db");
-            cfg.Properties.Add("dialect", "NHibernate.Dialect.SQLiteDialect");
-            cfg.Properties.Add("query.substitutions", "true=1;false=0");
-            
-            cfg.AddAssembly("FastGTD.DataTransfer");
-            return cfg.BuildSessionFactory();
+            ISession session = GetSession();
+            using (ITransaction tx = session.BeginTransaction())
+            {
+                session.Delete(item);
+                tx.Commit();
+            }
         }
 
-        private ISession GetSession()
+        public void Save(InBoxItem item)
         {
-            return _session_factory.OpenSession();
+            ISession session = GetSession();
+
+            using (ITransaction tx = session.BeginTransaction())
+            {
+                session.SaveOrUpdate(item);
+                tx.Commit();
+            }
+        }
+
+        public InBoxItem GetById(int id)
+        {
+            ISession session = GetSession();
+            return session.Load<InBoxItem>(id);
         }
     }
 }

@@ -1,15 +1,61 @@
+using System.Collections.Generic;
 using NHibernate;
 using NHibernate.Cfg;
 
 namespace FastGTD.DataAccess
 {
-    public class ItemRepository
+    public abstract class ItemRepository<T>
     {
         private readonly ISessionFactory _session_factory;
 
         protected ItemRepository()
         {
             _session_factory = CreateSessionFactory();
+        }
+
+        protected abstract string GetTableName();
+
+        public IList<T> GetAll()
+        {
+            ISession session = GetSession();
+            return session.CreateCriteria(typeof(T)).List<T>();
+        }
+
+        public void DeleteAll()
+        {
+            ISession session = GetSession();
+            using (ITransaction tx = session.BeginTransaction())
+            {
+                session.Delete("from " + GetTableName());
+                tx.Commit();
+            }
+        }
+
+        public void Delete(T item)
+        {
+            ISession session = GetSession();
+            using (ITransaction tx = session.BeginTransaction())
+            {
+                session.Delete(item);
+                tx.Commit();
+            }
+        }
+
+        public void Save(T item)
+        {
+            ISession session = GetSession();
+
+            using (ITransaction tx = session.BeginTransaction())
+            {
+                session.SaveOrUpdate(item);
+                tx.Commit();
+            }
+        }
+
+        public T GetById(int id)
+        {
+            ISession session = GetSession();
+            return session.Load<T>(id);
         }
 
         private static ISessionFactory CreateSessionFactory()

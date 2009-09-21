@@ -7,41 +7,8 @@ using NUnit.Framework;
 namespace FastGTD.DataAccessTests
 {
     [TestFixture]
-    public abstract class ItemRepositoryTests<TItem> where TItem:GTDItem
-    {
-        protected abstract TItem CreateItem(string name);
-        protected abstract IItemPersistence<TItem> CreateRepo();
-
-        [Test]
-        public void Save()
-        {
-            string name = Guid.NewGuid().ToString();
-            var repo = CreateRepo();
-            var item = CreateItem(name);
-            repo.Save(item);
-
-            var repo2 = CreateRepo();
-            var actual_item = repo2.GetById(item.Id);
-            Assert.That(actual_item.Name, Is.EqualTo(name));
-        }
-    }
-
-    [TestFixture]
     public class ActionsRepositoryTests : ItemRepositoryTests<ActionItem>
     {
-        [Test]
-        public void Save_WithAnAction_SavesIt()
-        {
-            string name = Guid.NewGuid().ToString();
-            var repo = new ActionsRepository();
-            var action = new ActionItem(name);
-            repo.Save(action);
-
-            var repo2 = new ActionsRepository();
-            var actual_action = repo2.GetById(action.Id);
-            Assert.That(actual_action.Name, Is.EqualTo(name));
-        }
-
         [Test]
         public void GetAll_LoadsExistingActions()
         {

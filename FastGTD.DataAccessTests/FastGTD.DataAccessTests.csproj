@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="ActionsRepositoryTests.cs" />
     <Compile Include="InBoxItemRepositoryTests.cs" />
+    <Compile Include="ItemRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

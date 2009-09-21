@@ -2,26 +2,14 @@ using System;
 using System.Collections.Generic;
 using FastGTD.DataAccess;
 using FastGTD.DataTransfer;
+using FastGTD.Domain;
 using NUnit.Framework;
 
 namespace FastGTD.DataAccessTests
 {
     [TestFixture]
-    public class InBoxItemRepositoryTests
+    public class InBoxItemRepositoryTests : ItemRepositoryTests<InBoxItem>
     {
-        [Test]
-        public void SaveInBoxItem()
-        {
-            string name = Guid.NewGuid().ToString();
-            var repo = new InBoxItemRepository();
-            var item = new InBoxItem(name);
-            repo.Save(item);
-
-            var repo2 = new InBoxItemRepository();
-            var actual_item = repo2.GetById(item.Id);
-            Assert.That(actual_item.Name, Is.EqualTo(name));
-        }
-
         [Test]
         public void GetAllItems()
         {
@@ -74,6 +62,16 @@ namespace FastGTD.DataAccessTests
             var repo2 = new InBoxItemRepository();
             IList<InBoxItem> result = repo2.GetAll();
             Assert.That(result, Has.Count.EqualTo(EXPECTED_COUNT));
+        }
+
+        protected override InBoxItem CreateItem(string name)
+        {
+            return new InBoxItem(name);
+        }
+
+        protected override IItemPersistence<InBoxItem> CreateRepo()
+        {
+            return new InBoxItemRepository();
         }
     }
 }

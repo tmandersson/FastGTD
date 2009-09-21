@@ -1,6 +1,5 @@
 using System;
 using NUnit.Framework;
-using NUnit.Framework.SyntaxHelpers;
 
 namespace FastGTD.CustomerTests
 {
@@ -18,7 +17,7 @@ namespace FastGTD.CustomerTests
             app.Close();
             
             FastGTDApp app2 = CreateAndStartTestApp();
-            Assert.That(app2.InboxModel.Items, Has.Count(1));
+            Assert.That(app2.InboxModel.Items, Has.Count.EqualTo(1));
             Assert.That(app2.InboxModel.Items, Has.Member(expected_item));
             app2.Close();
         }
@@ -37,7 +36,7 @@ namespace FastGTD.CustomerTests
             app.Close();
 
             FastGTDApp app2 = CreateAndStartTestApp();
-            Assert.That(app2.InboxModel.Items, Has.Count(1));
+            Assert.That(app2.InboxModel.Items, Has.Count.EqualTo(1));
             Assert.That(app2.InboxModel.Items, Has.Member(item2));
             Assert.That(app2.InboxModel.Items, Has.No.Member(item));
             app2.Close();

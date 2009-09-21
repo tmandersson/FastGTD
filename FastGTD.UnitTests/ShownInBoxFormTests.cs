@@ -3,7 +3,6 @@ using System.Windows.Forms;
 using FastGTD.DataTransfer;
 using FastGTD.Domain;
 using NUnit.Framework;
-using NUnit.Framework.SyntaxHelpers;
 using Rhino.Mocks;
 
 namespace FastGTD.UnitTests
@@ -38,12 +37,12 @@ namespace FastGTD.UnitTests
         {
             _form.TextBoxText = "foo";
             _form.ClickAddButton();
-            Assert.That(_model.Items, Has.Count(1));
+            Assert.That(_model.Items, Has.Count.EqualTo(1));
             Assert.That(_model.Items[0].Name, Is.EqualTo("foo"));
 
             _form.TextBoxText = "bar";
             _form.ClickAddButton();
-            Assert.That(_model.Items, Has.Count(2));
+            Assert.That(_model.Items, Has.Count.EqualTo(2));
             Assert.That(_model.Items[0].Name, Is.EqualTo("foo"));
             Assert.That(_model.Items[1].Name, Is.EqualTo("bar"));
         }
@@ -63,17 +62,17 @@ namespace FastGTD.UnitTests
             _model.Add("foo");
             _form.SelectItem("foo");
             _form.ClickDeleteButton();
-            Assert.That(_model.Items, Has.Count(0));
+            Assert.That(_model.Items, Has.Count.EqualTo(0));
         }
 
         [Test]
         public void DeletingItemWithDeleteKey()
         {
             _model.Add("foo");
-            Assert.That(_model.Items, Has.Count(1));
+            Assert.That(_model.Items, Has.Count.EqualTo(1));
             _form.SelectItem("foo");
             _form.PerformKeyDown(Keys.Delete);
-            Assert.That(_model.Items, Has.Count(0));
+            Assert.That(_model.Items, Has.Count.EqualTo(0));
         }
 
         [Test]
@@ -84,16 +83,16 @@ namespace FastGTD.UnitTests
             _model.Add("foo3");
 
             _form.PerformKeyDown(Keys.Down);
-            Assert.That(_form.SelectedItems, Has.Count(1));
+            Assert.That(_form.SelectedItems, Has.Count.EqualTo(1));
             Assert.That(_form.SelectedItems, Has.All.Property("Name").EqualTo("foo1"));
             _form.PerformKeyDown(Keys.Down);
-            Assert.That(_form.SelectedItems, Has.Count(1));
+            Assert.That(_form.SelectedItems, Has.Count.EqualTo(1));
             Assert.That(_form.SelectedItems, Has.All.Property("Name").EqualTo("foo2"));
             _form.PerformKeyDown(Keys.Down);
-            Assert.That(_form.SelectedItems, Has.Count(1));
+            Assert.That(_form.SelectedItems, Has.Count.EqualTo(1));
             Assert.That(_form.SelectedItems, Has.All.Property("Name").EqualTo("foo3"));
             _form.PerformKeyDown(Keys.Up);
-            Assert.That(_form.SelectedItems, Has.Count(1));
+            Assert.That(_form.SelectedItems, Has.Count.EqualTo(1));
             Assert.That(_form.SelectedItems, Has.All.Property("Name").EqualTo("foo2"));
         }
 
@@ -106,14 +105,14 @@ namespace FastGTD.UnitTests
 
             _form.PerformKeyDown(Keys.Up);
             _form.PerformKeyDown(Keys.Up);
-            Assert.That(_form.SelectedItems, Has.Count(1));
+            Assert.That(_form.SelectedItems, Has.Count.EqualTo(1));
             Assert.That(_form.SelectedItems, Has.All.Property("Name").EqualTo("foo1"));
 
             _form.PerformKeyDown(Keys.Down);
             _form.PerformKeyDown(Keys.Down);
             _form.PerformKeyDown(Keys.Down);
             _form.PerformKeyDown(Keys.Down);
-            Assert.That(_form.SelectedItems, Has.Count(1));
+            Assert.That(_form.SelectedItems, Has.Count.EqualTo(1));
             Assert.That(_form.SelectedItems, Has.All.Property("Name").EqualTo("foo3"));
         }
     }

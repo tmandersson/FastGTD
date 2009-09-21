@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using FastGTD.DataTransfer;
 using NUnit.Framework;
-using NUnit.Framework.SyntaxHelpers;
 using StructureMap;
 
 namespace FastGTD.CustomerTests

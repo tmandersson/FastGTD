@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using FastGTD.Domain;
 using NUnit.Framework;
-using NUnit.Framework.SyntaxHelpers;
 using Rhino.Mocks;
 
 namespace FastGTD.UnitTests
@@ -49,7 +48,7 @@ namespace FastGTD.UnitTests
 
             _model.Remove(item);
 
-            Assert.That(_model.Items, Has.Count(1));
+            Assert.That(_model.Items, Has.Count.EqualTo(1));
             Assert.That(_model.Items[0].Name, Is.EqualTo("foo"));
         }
 
@@ -59,13 +58,13 @@ namespace FastGTD.UnitTests
             CreatePersistenceAsStub();
             CreateModel();
             _model.Add("foo");
-            Assert.That(_model.Items, Has.Count(1));
+            Assert.That(_model.Items, Has.Count.EqualTo(1));
             _model.Add("bar");
-            Assert.That(_model.Items, Has.Count(2));
+            Assert.That(_model.Items, Has.Count.EqualTo(2));
 
             _model.ClearItems();
 
-            Assert.That(_model.Items, Has.Count(0));
+            Assert.That(_model.Items, Has.Count.EqualTo(0));
         }
 
         [Test]

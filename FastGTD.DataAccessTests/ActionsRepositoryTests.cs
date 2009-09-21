@@ -1,13 +1,33 @@
 using System;
 using FastGTD.DataAccess;
 using FastGTD.DataTransfer;
+using FastGTD.Domain;
 using NUnit.Framework;
-using NUnit.Framework.SyntaxHelpers;
 
 namespace FastGTD.DataAccessTests
 {
     [TestFixture]
-    public class ActionsRepositoryTests
+    public abstract class ItemRepositoryTests<TItem> where TItem:GTDItem
+    {
+        protected abstract TItem CreateItem(string name);
+        protected abstract IItemPersistence<TItem> CreateRepo();
+
+        [Test]
+        public void Save()
+        {
+            string name = Guid.NewGuid().ToString();
+            var repo = CreateRepo();
+            var item = CreateItem(name);
+            repo.Save(item);
+
+            var repo2 = CreateRepo();
+            var actual_item = repo2.GetById(item.Id);
+            Assert.That(actual_item.Name, Is.EqualTo(name));
+        }
+    }
+
+    [TestFixture]
+    public class ActionsRepositoryTests : ItemRepositoryTests<ActionItem>
     {
         [Test]
         public void Save_WithAnAction_SavesIt()
@@ -47,7 +67,17 @@ namespace FastGTD.DataAccessTests
 
             var repo2 = new ActionsRepository();
             var actual_actions = repo2.GetAll();
-            Assert.That(actual_actions, Has.Count(0));
+            Assert.That(actual_actions, Has.Count.EqualTo(0));
+        }
+
+        protected override ActionItem CreateItem(string name)
+        {
+            return new ActionItem(name);
+        }
+
+        protected override IItemPersistence<ActionItem> CreateRepo()
+        {
+            return new ActionsRepository();
         }
     }
 }

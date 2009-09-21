@@ -1,7 +1,6 @@
 using FastGTD.DataTransfer;
 using FastGTD.Domain;
 using NUnit.Framework;
-using NUnit.Framework.SyntaxHelpers;
 using Rhino.Mocks;
 
 namespace FastGTD.UnitTests
@@ -21,7 +20,7 @@ namespace FastGTD.UnitTests
             _actions_list_model = new ItemModel<ActionItem>(actions_persistence);
             _model = new ItemModel<InBoxItem>(inbox_persistence);
             _converter = new ItemConverter(_model, _actions_list_model);
-            Assert.That(_model.Items, Has.Count(0));
+            Assert.That(_model.Items, Has.Count.EqualTo(0));
         }
 
         [Test]
@@ -29,7 +28,7 @@ namespace FastGTD.UnitTests
         {
             InBoxItem item = _model.Add("foo");
             _converter.ConvertToAction(item);
-            Assert.That(_model.Items, Has.Count(0));
+            Assert.That(_model.Items, Has.Count.EqualTo(0));
         }
 
         [Test]
@@ -37,7 +36,7 @@ namespace FastGTD.UnitTests
         {
             InBoxItem item = _model.Add("foo");
             _converter.ConvertToAction(item);
-            Assert.That(_actions_list_model.Items, Has.Count(1));
+            Assert.That(_actions_list_model.Items, Has.Count.EqualTo(1));
             Assert.That(_actions_list_model.Items, Has.Some.Property("Name").EqualTo("foo"));
         }
 

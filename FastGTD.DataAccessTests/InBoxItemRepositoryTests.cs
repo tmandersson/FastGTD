@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using FastGTD.DataAccess;
 using FastGTD.DataTransfer;
 using NUnit.Framework;
-using NUnit.Framework.SyntaxHelpers;
 
 namespace FastGTD.DataAccessTests
 {
@@ -36,7 +35,7 @@ namespace FastGTD.DataAccessTests
             var repo2 = new InBoxItemRepository();
             IList<InBoxItem> result = repo2.GetAll();
 
-            Assert.That(result, Has.Count(expected_count));
+            Assert.That(result, Has.Count.EqualTo(expected_count));
             Assert.That(result, Has.Some.Property("Name").EqualTo(name));
         }
 
@@ -53,7 +52,7 @@ namespace FastGTD.DataAccessTests
 
             var repo2 = new InBoxItemRepository();
             IList<InBoxItem> result = repo2.GetAll();
-            Assert.That(result, Has.Count(EXPECTED_COUNT));
+            Assert.That(result, Has.Count.EqualTo(EXPECTED_COUNT));
         }
 
         [Test]
@@ -74,7 +73,7 @@ namespace FastGTD.DataAccessTests
 
             var repo2 = new InBoxItemRepository();
             IList<InBoxItem> result = repo2.GetAll();
-            Assert.That(result, Has.Count(EXPECTED_COUNT));
+            Assert.That(result, Has.Count.EqualTo(EXPECTED_COUNT));
         }
     }
 }

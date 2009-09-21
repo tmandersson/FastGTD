@@ -3,7 +3,6 @@ using System.Windows.Forms;
 using FastGTD.DataTransfer;
 using FastGTD.Domain;
 using NUnit.Framework;
-using NUnit.Framework.SyntaxHelpers;
 using Rhino.Mocks;
 
 namespace FastGTD.UnitTests
@@ -30,7 +29,7 @@ namespace FastGTD.UnitTests
             _form.TextBoxText = "foo";
             _form.PerformKeyDown(Keys.Enter);
 
-            Assert.That(_model.Items, Has.Count(1));
+            Assert.That(_model.Items, Has.Count.EqualTo(1));
             Assert.That(_model.Items[0].Name, Is.EqualTo("foo"));
         }
         

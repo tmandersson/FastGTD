@@ -7,6 +7,11 @@ namespace FastGTD.DataTransfer
         public ActionItem() { }
         public ActionItem(string name) : base(name) {}
 
+        public static string Table
+        {
+            get { return "ActionItem"; }
+        }
+
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;

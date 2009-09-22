@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace FastGTD.DataAccessTests
 {
-    public abstract class ItemRepositoryTests<TItem> where TItem:GTDItem
+    public abstract class ItemRepositoryFixtureBase<TItem> where TItem:GTDItem
     {
         protected abstract TItem CreateItem(string name);
         protected abstract IItemPersistence<TItem> CreateRepo();

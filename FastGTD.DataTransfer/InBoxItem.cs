@@ -7,6 +7,11 @@ namespace FastGTD.DataTransfer
         public InBoxItem() { }
         public InBoxItem(string name) : base(name) {}
 
+        public static string Table
+        {
+            get { return "InBoxItem"; }
+        }
+
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;

@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace FastGTD.DataAccessTests
 {
     [TestFixture]
-    public class InBoxItemRepositoryTests : ItemRepositoryTests<InBoxItem>
+    public class ItemRepositoryWithInBoxItemsTests : ItemRepositoryFixtureBase<InBoxItem>
     {
         protected override InBoxItem CreateItem(string name)
         {
@@ -15,7 +15,7 @@ namespace FastGTD.DataAccessTests
 
         protected override IItemPersistence<InBoxItem> CreateRepo()
         {
-            return new InBoxItemRepository();
+            return new ItemRepository<InBoxItem>(InBoxItem.Table);
         }
     }
 }

@@ -11,6 +11,7 @@ namespace FastGTD
         private readonly ItemModel<InBoxItem> _inbox_model;
         private readonly InBoxController _inbox_controller;
         private readonly IItemModel<ActionItem> _actions_list_model;
+        private readonly ActionsListController _actions_controller;
 
         public static int Main()
         {
@@ -52,7 +53,7 @@ namespace FastGTD
             _inbox_model = (ItemModel<InBoxItem>)ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
             _inbox_controller = ObjectFactory.GetInstance<InBoxController>();
             _actions_list_model = ObjectFactory.GetInstance<IItemModel<ActionItem>>();
-            ObjectFactory.GetInstance<ActionsListController>();
+            _actions_controller = ObjectFactory.GetInstance<ActionsListController>();
             ObjectFactory.GetInstance<IItemConverter>();
         }
 
@@ -66,24 +67,19 @@ namespace FastGTD
             get { return _actions_list_model; }
         }
 
-        private InBoxController InboxController
-        {
-            get { return _inbox_controller; }
-        }
-
         public void ShowStartForm()
         {
-            InboxController.Show();
+            _inbox_controller.Show();
         }
 
         private void StartMessageLoop()
         {
-            InboxController.StartMessageLoop();
+            _inbox_controller.StartMessageLoop();
         }
 
         public void Close()
         {
-            InboxController.Close();
+            _inbox_controller.Close();
         }
     }
 }

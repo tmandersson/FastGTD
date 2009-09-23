@@ -25,7 +25,7 @@ namespace FastGTD
             WireEvents();
         }
 
-        public void AddInBoxItem(InBoxItem item)
+        public void AddItem(InBoxItem item)
         {
             var list_item = new ListViewItem(item.Name) {Tag = item};
             _list_view.Items.Add(list_item);
@@ -36,7 +36,7 @@ namespace FastGTD
             get { return _selection_changer; }
         }
 
-        public void ClearInBoxItems()
+        public void ClearItems()
         {
             _list_view.Items.Clear();
         }

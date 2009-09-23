@@ -4,17 +4,15 @@ using FastGTD.Domain;
 
 namespace FastGTD
 {
-    public class InBoxController
+    public abstract class ItemListController<T> where T : GTDItem
     {
-        private readonly IInBoxView _view;
+        private readonly IItemView<InBoxItem> _view;
         private readonly IItemModel<InBoxItem> _model;
-        private readonly IItemConverter _converter;
 
-        public InBoxController(IInBoxView view, IItemModel<InBoxItem> model, IItemConverter converter)
+        protected ItemListController(IItemView<InBoxItem> view, IItemModel<InBoxItem> model)
         {
             _view = view;
             _model = model;
-            _converter = converter;
             HandleEvents();
             _model.Load();
         }
@@ -38,17 +36,10 @@ namespace FastGTD
         private void HandleEvents()
         {
             _model.Changed += UpdateFromModel;
-            HandleViewEvents();
-        }
-
-        private void HandleViewEvents()
-        {
             _view.EnterKeyWasPressed += AddInboxItemInTextBox;
             _view.AddButtonWasClicked += AddInboxItemInTextBox;
             _view.DeleteKeyWasPressed += DeleteSelectedItems;
             _view.DeleteButtonWasClicked += DeleteSelectedItems;
-            _view.ToActionButtonWasClicked += ConvertSelectedItemToAction;
-            _view.AltAKeysWasPressed += ConvertSelectedItemToAction;
             _view.DownKeyWasPressed += _view.List.MoveDown;
             _view.UpKeyWasPressed += _view.List.MoveUp;
         }
@@ -65,12 +56,7 @@ namespace FastGTD
             ForEachSelectedItem(item => _model.Remove(item));
         }
 
-        private void ConvertSelectedItemToAction()
-        {
-            ForEachSelectedItem(item => _converter.ConvertToAction(item));
-        }
-
-        private void ForEachSelectedItem(Action<InBoxItem> action)
+        protected void ForEachSelectedItem(Action<InBoxItem> action)
         {
             foreach (InBoxItem item in _view.SelectedItems)
             {
@@ -78,13 +64,39 @@ namespace FastGTD
             }
         }
 
-        private void UpdateFromModel()
+        protected void UpdateFromModel()
         {
-            _view.ClearInBoxItems();
+            _view.ClearItems();
             foreach (InBoxItem item in _model.Items)
             {
-                _view.AddInBoxItem(item);
+                _view.AddItem(item);
             }
+        }
+    }
+
+    public class InBoxController : ItemListController<InBoxItem>
+    {
+        private readonly IInBoxView _inbox_view;
+        private readonly IItemConverter _converter;
+
+        public InBoxController(IInBoxView view, 
+            IItemModel<InBoxItem> model, 
+            IItemConverter converter) : base(view, model)
+        {
+            _inbox_view = view;
+            _converter = converter;
+            HandleEvents();
+        }
+
+        private void HandleEvents()
+        {
+            _inbox_view.ToActionButtonWasClicked += ConvertSelectedItemToAction;
+            _inbox_view.AltAKeysWasPressed += ConvertSelectedItemToAction;
+        }
+
+        private void ConvertSelectedItemToAction()
+        {
+            ForEachSelectedItem(item => _converter.ConvertToAction(item));
         }
     }
 }

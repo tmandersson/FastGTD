@@ -59,6 +59,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionsListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ActionsListController.cs" />
     <Compile Include="FastGTDApp.cs" />
     <Compile Include="IInBoxView.cs" />
@@ -66,6 +69,9 @@
     <Compile Include="IItemView.cs" />
     <Compile Include="IListSelectionChanger.cs" />
     <Compile Include="InBoxController.cs" />
+    <Compile Include="InBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ItemListForm.cs">
       <SubType>Form</SubType>
     </Compile>

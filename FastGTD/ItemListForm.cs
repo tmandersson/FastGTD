@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using FastGTD.DataTransfer;
 using FastGTD.Domain;
 
 namespace FastGTD
 {
-    public class NewInBoxForm : ItemListForm<InBoxItem>, IInBoxView, ITestableInBoxView { }
-
-    public class ActionListForm : ItemListForm<ActionItem>, IItemView<ActionItem> {}
-
     public partial class ItemListForm<T> : Form where T : GTDItem
     {
         private readonly ListViewSelectionChanger _selection_changer;

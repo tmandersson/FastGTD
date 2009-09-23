@@ -34,9 +34,9 @@ namespace FastGTD
                     .CacheBy(InstanceScope.Singleton)
                     .TheDefault.Is.OfConcreteType<ItemRepository<ActionItem>>()
                     .WithCtorArg("table").EqualTo(ActionItem.Table);
-                x.ForRequestedType<IInBoxView>().TheDefaultIsConcreteType<NewInBoxForm>()
+                x.ForRequestedType<IInBoxView>().TheDefaultIsConcreteType<InBoxForm>()
                     .CacheBy(InstanceScope.Singleton);
-                x.ForRequestedType<IItemView<ActionItem>>().TheDefaultIsConcreteType<ActionListForm>()
+                x.ForRequestedType<IItemView<ActionItem>>().TheDefaultIsConcreteType<ActionsListForm>()
                     .CacheBy(InstanceScope.Singleton);
                 x.ForRequestedType<IItemModel<InBoxItem>>().TheDefaultIsConcreteType<ItemModel<InBoxItem>>()
                     .CacheBy(InstanceScope.Singleton);

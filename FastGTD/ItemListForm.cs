@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using FastGTD.DataTransfer;
+using FastGTD.Domain;
 
 namespace FastGTD
 {
-    public partial class InBoxForm : Form, IInBoxView, ITestableInBoxView
+    public class NewInBoxForm : ItemListForm<InBoxItem>, IInBoxView, ITestableInBoxView { }
+
+    public class ActionListForm : ItemListForm<ActionItem>, IItemView<ActionItem> {}
+
+    public partial class ItemListForm<T> : Form where T : GTDItem
     {
         private readonly ListViewSelectionChanger _selection_changer;
 
@@ -18,14 +23,14 @@ namespace FastGTD
         public event Action DownKeyWasPressed;
         public event Action UpKeyWasPressed;
 
-        public InBoxForm()
+        public ItemListForm()
         {
             InitializeComponent();
             _selection_changer = new ListViewSelectionChanger(_list_view);
             WireEvents();
         }
 
-        public void AddItem(InBoxItem item)
+        public void AddItem(T item)
         {
             var list_item = new ListViewItem(item.Name) {Tag = item};
             _list_view.Items.Add(list_item);
@@ -41,14 +46,14 @@ namespace FastGTD
             _list_view.Items.Clear();
         }
 
-        public IEnumerable<InBoxItem> SelectedItems
+        public IEnumerable<T> SelectedItems
         {
             get
             {
-                IList<InBoxItem> result = new List<InBoxItem>();
+                IList<T> result = new List<T>();
                 foreach (ListViewItem item in _list_view.SelectedItems)
                 {
-                    result.Add((InBoxItem) item.Tag);
+                    result.Add((T)item.Tag);
                 }
                 return result;
             }
@@ -70,7 +75,7 @@ namespace FastGTD
             Application.Run(this);
         }
 
-        public void SelectItems(IEnumerable<InBoxItem> items)
+        public void SelectItems(IEnumerable<T> items)
         {
             _list_view.SelectedItems.Clear();
             foreach (var item in items)

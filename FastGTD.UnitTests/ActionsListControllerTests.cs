@@ -12,7 +12,9 @@ namespace FastGTD.UnitTests
         public void OnCreation_ModelGetsLoaded()
         {
             var model = MockRepository.GenerateMock<IItemModel<ActionItem>>();
-            new ActionsListController(model);
+            var view = MockRepository.GenerateStub<IItemView<ActionItem>>();
+            view.Stub(x => x.List).Return(MockRepository.GenerateStub<IListSelectionChanger>());
+            new ActionsListController(view, model);
             model.AssertWasCalled(x => x.Load());
         }
     }

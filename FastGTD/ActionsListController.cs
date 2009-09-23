@@ -3,11 +3,11 @@ using FastGTD.Domain;
 
 namespace FastGTD
 {
-    public class ActionsListController
+    public class ActionsListController : ItemListController<ActionItem>
     {
-        public ActionsListController(IItemModel<ActionItem> model)
-        {
-            model.Load();
-        }
+        public ActionsListController(
+            IItemView<ActionItem> view,
+            IItemModel<ActionItem> model) : base(view, model)
+        { }
     }
 }

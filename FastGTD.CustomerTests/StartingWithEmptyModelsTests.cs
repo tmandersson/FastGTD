@@ -135,7 +135,7 @@ namespace FastGTD.CustomerTests
 
         private void InjectView()
         {
-            var form = new InBoxForm();
+            var form = new NewInBoxForm();
             _view = form;
             ObjectFactory.Inject((IInBoxView) form);
         }

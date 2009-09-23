@@ -1,6 +1,6 @@
 ﻿namespace FastGTD
 {
-    partial class InBoxForm
+    partial class ItemListForm<T>
     {
         /// <summary>
         /// Required designer variable.

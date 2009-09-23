@@ -6,6 +6,9 @@
 * Gå igenom klasserna. Fundera på designen enlig DIP.
 * Jobba vidare på funktionalitet ansvarsfullt.
 (Customer-test för aktuellt kort. Sen fulltäckande TDD.)
+* Behöver något sätt att växla mellan de två listorna.
+* Gå igenom testerna nu när actionslistcontroller finns osv. en fixtur med abstrakta tester per konkret klass.
+* Organisera klasser, börjar bli rörigt. Skapa mappar vid behov.
 
 * TDD:a om Inboxview använd inte designern, utan TDD:a allt.
 * Lite smelly att jag måste stubba List på IViewn i Controller testerna.

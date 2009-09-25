@@ -26,6 +26,9 @@ Så att jag har källkoden ifall nåt projekt läggs ner.
 	* Bygga nant själv? Eller ha källkoden iallafall. Eller bootstrap.bat el. liknande?
 
 * Prova Uncle Bobs CRAP-metric.
+http://code.google.com/p/crap4j/
+http://code.google.com/p/crap4j/wiki/CSharpImplementation
+http://code.google.com/p/crap4n/
 * kör ndepend på min FastGTD-kodbas
 * NUnit 2.5 Final är släppt.
 ?* WPF-version av gränssnittet.

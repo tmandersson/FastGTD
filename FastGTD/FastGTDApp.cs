@@ -8,7 +8,6 @@ namespace FastGTD
 {
     public class FastGTDApp
     {
-        private readonly ItemModel<InBoxItem> _inbox_model;
         private readonly InBoxController _inbox_controller;
         private readonly IItemModel<ActionItem> _actions_list_model;
         private readonly ActionsListController _actions_controller;
@@ -50,16 +49,10 @@ namespace FastGTD
 
         public FastGTDApp()
         {
-            _inbox_model = (ItemModel<InBoxItem>)ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
             _inbox_controller = ObjectFactory.GetInstance<InBoxController>();
             _actions_list_model = ObjectFactory.GetInstance<IItemModel<ActionItem>>();
             _actions_controller = ObjectFactory.GetInstance<ActionsListController>();
             ObjectFactory.GetInstance<IItemConverter>();
-        }
-
-        public ItemModel<InBoxItem> InboxModel
-        {
-            get { return _inbox_model; }
         }
 
         public IItemModel<ActionItem> ActionsListModel

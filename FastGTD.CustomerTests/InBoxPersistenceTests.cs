@@ -1,5 +1,8 @@
 using System;
+using FastGTD.DataTransfer;
+using FastGTD.Domain;
 using NUnit.Framework;
+using StructureMap;
 
 namespace FastGTD.CustomerTests
 {
@@ -12,13 +15,15 @@ namespace FastGTD.CustomerTests
             string item_name = Guid.NewGuid().ToString();
 
             FastGTDApp app = CreateAndStartTestApp();
-            app.InboxModel.ClearItems();
-            var expected_item = app.InboxModel.Add(item_name);
+            var model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
+            model.ClearItems();
+            var expected_item = model.Add(item_name);
             app.Close();
-            
+
             FastGTDApp app2 = CreateAndStartTestApp();
-            Assert.That(app2.InboxModel.Items, Has.Count.EqualTo(1));
-            Assert.That(app2.InboxModel.Items, Has.Member(expected_item));
+            var actual_model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
+            Assert.That(actual_model.Items, Has.Count.EqualTo(1));
+            Assert.That(actual_model.Items, Has.Member(expected_item));
             app2.Close();
         }
 
@@ -29,16 +34,18 @@ namespace FastGTD.CustomerTests
             string item_name2 = Guid.NewGuid().ToString();
 
             FastGTDApp app = CreateAndStartTestApp();
-            app.InboxModel.ClearItems();
-            var item = app.InboxModel.Add(item_name);
-            var item2 = app.InboxModel.Add(item_name2);
-            app.InboxModel.Remove(item);
+            var model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
+            model.ClearItems();
+            var item = model.Add(item_name);
+            var item2 = model.Add(item_name2);
+            model.Remove(item);
             app.Close();
 
             FastGTDApp app2 = CreateAndStartTestApp();
-            Assert.That(app2.InboxModel.Items, Has.Count.EqualTo(1));
-            Assert.That(app2.InboxModel.Items, Has.Member(item2));
-            Assert.That(app2.InboxModel.Items, Has.No.Member(item));
+            var actual_model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();;
+            Assert.That(actual_model.Items, Has.Count.EqualTo(1));
+            Assert.That(actual_model.Items, Has.Member(item2));
+            Assert.That(actual_model.Items, Has.No.Member(item));
             app2.Close();
         }
 

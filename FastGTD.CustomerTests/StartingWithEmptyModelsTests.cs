@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using FastGTD.DataTransfer;
+using FastGTD.Domain;
 using NUnit.Framework;
 using StructureMap;
 
@@ -85,14 +86,16 @@ namespace FastGTD.CustomerTests
             _view.ClickAddButton();
         }
 
-        private InBoxItem GetLastAddedInBoxItem()
+        private static InBoxItem GetLastAddedInBoxItem()
         {
-            return _app.InboxModel.Items[_app.InboxModel.Items.Count - 1];
+            var inbox_model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
+            return inbox_model.Items[inbox_model.Items.Count - 1];
         }
 
-        private int InBoxItemCount()
+        private static int InBoxItemCount()
         {
-            return _app.InboxModel.Items.Count;
+            var inbox_model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
+            return inbox_model.Items.Count;
         }
 
         private int ActionItemCount()
@@ -100,9 +103,10 @@ namespace FastGTD.CustomerTests
             return _app.ActionsListModel.Items.Count;
         }
 
-        private bool InBoxContainsItemWithName(string name)
+        private static bool InBoxContainsItemWithName(string name)
         {
-            var items = new List<InBoxItem>(_app.InboxModel.Items);
+            var inbox_model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
+            var items = new List<InBoxItem>(inbox_model.Items);
             return items.Exists(x => x.Name == name);
         }
 
@@ -115,7 +119,8 @@ namespace FastGTD.CustomerTests
         private void GetApplicationWithEmptyModels()
         {
             _app = CreateAndStartTestApp();
-            _app.InboxModel.ClearItems();
+            var inbox_model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
+            inbox_model.ClearItems();
             _app.ActionsListModel.ClearItems();
         }
 

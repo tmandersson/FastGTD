@@ -10,7 +10,6 @@ namespace FastGTD
     {
         private readonly InBoxController _inbox_controller;
         private readonly IItemModel<ActionItem> _actions_list_model;
-        private readonly ActionsListController _actions_controller;
 
         public static int Main()
         {
@@ -51,7 +50,6 @@ namespace FastGTD
         {
             _inbox_controller = ObjectFactory.GetInstance<InBoxController>();
             _actions_list_model = ObjectFactory.GetInstance<IItemModel<ActionItem>>();
-            _actions_controller = ObjectFactory.GetInstance<ActionsListController>();
             ObjectFactory.GetInstance<IItemConverter>();
         }
 

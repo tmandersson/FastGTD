@@ -64,6 +64,7 @@
     </Compile>
     <Compile Include="ActionsListController.cs" />
     <Compile Include="FastGTDApp.cs" />
+    <Compile Include="IGTDWindow.cs" />
     <Compile Include="IInBoxView.cs" />
     <Compile Include="IItemConverter.cs" />
     <Compile Include="IItemView.cs" />

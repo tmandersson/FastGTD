@@ -135,7 +135,7 @@ namespace FastGTD.CustomerTests
         {
             FastGTDApp.WireClasses();
             InjectView();
-            var start_form = FastGTDApp.GetStartForm();
+            var start_form = FastGTDApp.GetStartWindow();
             start_form.Show();
         }
 

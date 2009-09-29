@@ -49,12 +49,12 @@ namespace FastGTD.CustomerTests
             app2.Close();
         }
 
-        private static InBoxController CreateAndShowInBox()
+        private static IGTDWindow CreateAndShowInBox()
         {
             FastGTDApp.WireClasses();
-            var start_form = FastGTDApp.GetStartForm();
-            start_form.Show();
-            return start_form;
+            IGTDWindow inbox = FastGTDApp.GetInBox();
+            inbox.Show();
+            return inbox;
         }
     }
 }

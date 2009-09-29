@@ -6,6 +6,9 @@
 * Gå igenom klasserna. Fundera på designen enlig DIP.
 * Jobba vidare på funktionalitet ansvarsfullt.
 (Customer-test för aktuellt kort. Sen fulltäckande TDD.)
+* De två fönstrena behöver vara olika.
+* Är vi bundna till att fönstrena måste vara separata formar. Kan de ist. vara t ex frames/panel
+i ett annat fönster?
 * Behöver något sätt att växla mellan de två listorna.
 * Gå igenom testerna nu när actionslistcontroller finns osv. en fixtur med abstrakta tester per konkret klass.
 * Organisera klasser, börjar bli rörigt. Skapa mappar vid behov.

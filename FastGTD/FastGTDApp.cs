@@ -6,17 +6,15 @@ using StructureMap.Attributes;
 
 namespace FastGTD
 {
-    public class FastGTDApp
+    public static class FastGTDApp
     {
-        private readonly InBoxController _inbox_controller;
-
         public static int Main()
         {
             WireClasses();
-            var app = new FastGTDApp();
-            app.ShowStartForm();
-            app.StartMessageLoop();
-            app.Close();
+            InBoxController start_form = GetStartForm();
+            start_form.Show();
+            start_form.StartMessageLoop();
+            start_form.Close();
             return 0;
         }
 
@@ -45,24 +43,9 @@ namespace FastGTD
             });
         }
 
-        public FastGTDApp()
+        public static InBoxController GetStartForm()
         {
-            _inbox_controller = ObjectFactory.GetInstance<InBoxController>();
-        }
-
-        public void ShowStartForm()
-        {
-            _inbox_controller.Show();
-        }
-
-        private void StartMessageLoop()
-        {
-            _inbox_controller.StartMessageLoop();
-        }
-
-        public void Close()
-        {
-            _inbox_controller.Close();
+            return ObjectFactory.GetInstance<InBoxController>();
         }
     }
 }

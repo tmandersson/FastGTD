@@ -14,13 +14,13 @@ namespace FastGTD.CustomerTests
         {
             string item_name = Guid.NewGuid().ToString();
 
-            FastGTDApp app = CreateAndStartTestApp();
+            var inbox = CreateAndShowInBox();
             var model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
             model.ClearItems();
             var expected_item = model.Add(item_name);
-            app.Close();
+            inbox.Close();
 
-            FastGTDApp app2 = CreateAndStartTestApp();
+            var app2 = CreateAndShowInBox();
             var actual_model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
             Assert.That(actual_model.Items, Has.Count.EqualTo(1));
             Assert.That(actual_model.Items, Has.Member(expected_item));
@@ -33,7 +33,7 @@ namespace FastGTD.CustomerTests
             string item_name = Guid.NewGuid().ToString();
             string item_name2 = Guid.NewGuid().ToString();
 
-            FastGTDApp app = CreateAndStartTestApp();
+            var app = CreateAndShowInBox();
             var model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
             model.ClearItems();
             var item = model.Add(item_name);
@@ -41,7 +41,7 @@ namespace FastGTD.CustomerTests
             model.Remove(item);
             app.Close();
 
-            FastGTDApp app2 = CreateAndStartTestApp();
+            var app2 = CreateAndShowInBox();
             var actual_model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();;
             Assert.That(actual_model.Items, Has.Count.EqualTo(1));
             Assert.That(actual_model.Items, Has.Member(item2));
@@ -49,12 +49,12 @@ namespace FastGTD.CustomerTests
             app2.Close();
         }
 
-        private static FastGTDApp CreateAndStartTestApp()
+        private static InBoxController CreateAndShowInBox()
         {
             FastGTDApp.WireClasses();
-            var app = new FastGTDApp();
-            app.ShowStartForm();
-            return app;
+            var start_form = FastGTDApp.GetStartForm();
+            start_form.Show();
+            return start_form;
         }
     }
 }

@@ -11,10 +11,16 @@ namespace FastGTD
         public static int Main()
         {
             WireClasses();
-            var start_form = GetStartWindow();
+            IGTDWindow start_form = GetStartWindow();
+            var actions_list = GetActionsList();
+
             start_form.Show();
+            actions_list.Show();
+
             start_form.StartMessageLoop();
+
             start_form.Close();
+            actions_list.Close();
             return 0;
         }
 
@@ -51,6 +57,11 @@ namespace FastGTD
         public static IGTDWindow GetInBox()
         {
             return ObjectFactory.GetInstance<InBoxController>();
+        }
+
+        public static IGTDWindow GetActionsList()
+        {
+            return ObjectFactory.GetInstance<ActionsListController>();
         }
     }
 }

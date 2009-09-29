@@ -3,7 +3,7 @@ using FastGTD.Domain;
 
 namespace FastGTD
 {
-    public abstract class ItemListController<T> where T : GTDItem
+    public abstract class ItemListController<T> : IGTDWindow where T : GTDItem
     {
         private readonly IItemView<T> _view;
         private readonly IItemModel<T> _model;

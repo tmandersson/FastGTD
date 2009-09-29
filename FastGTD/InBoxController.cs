@@ -3,7 +3,7 @@ using FastGTD.Domain;
 
 namespace FastGTD
 {
-    public class InBoxController : ItemListController<InBoxItem>, IGTDWindow
+    public class InBoxController : ItemListController<InBoxItem>
     {
         private readonly IInBoxView _inbox_view;
         private readonly IItemConverter _converter;

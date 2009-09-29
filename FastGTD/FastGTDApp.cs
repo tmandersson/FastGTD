@@ -9,7 +9,6 @@ namespace FastGTD
     public class FastGTDApp
     {
         private readonly InBoxController _inbox_controller;
-        private readonly IItemModel<ActionItem> _actions_list_model;
 
         public static int Main()
         {
@@ -49,13 +48,6 @@ namespace FastGTD
         public FastGTDApp()
         {
             _inbox_controller = ObjectFactory.GetInstance<InBoxController>();
-            _actions_list_model = ObjectFactory.GetInstance<IItemModel<ActionItem>>();
-            ObjectFactory.GetInstance<IItemConverter>();
-        }
-
-        public IItemModel<ActionItem> ActionsListModel
-        {
-            get { return _actions_list_model; }
         }
 
         public void ShowStartForm()

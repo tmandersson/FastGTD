@@ -10,10 +10,11 @@ namespace FastGTD.CustomerTests
     [TestFixture]
     public class StartingWithEmptyModelsTests
     {
-        private FastGTDApp _app;
         private readonly string _item_name1 = Guid.NewGuid().ToString();
         private readonly string _item_name2 = Guid.NewGuid().ToString();
         private ITestableInBoxView _view;
+        private IItemModel<InBoxItem> _inbox_model;
+        private IItemModel<ActionItem> _actions_list_model;
 
         [SetUp]
         public void SetupTests()
@@ -86,56 +87,56 @@ namespace FastGTD.CustomerTests
             _view.ClickAddButton();
         }
 
-        private static InBoxItem GetLastAddedInBoxItem()
+        private InBoxItem GetLastAddedInBoxItem()
         {
-            var inbox_model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
-            return inbox_model.Items[inbox_model.Items.Count - 1];
+            return _inbox_model.Items[_inbox_model.Items.Count - 1];
         }
 
-        private static int InBoxItemCount()
+        private int InBoxItemCount()
         {
-            var inbox_model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
-            return inbox_model.Items.Count;
+            return _inbox_model.Items.Count;
         }
 
         private int ActionItemCount()
         {
-            return _app.ActionsListModel.Items.Count;
+            return _actions_list_model.Items.Count;
         }
 
-        private static bool InBoxContainsItemWithName(string name)
+        private bool InBoxContainsItemWithName(string name)
         {
-            var inbox_model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
-            var items = new List<InBoxItem>(inbox_model.Items);
+            var items = new List<InBoxItem>(_inbox_model.Items);
             return items.Exists(x => x.Name == name);
         }
 
         private bool ActionsListContainsItemWithName(string name)
         {
-            var items = new List<ActionItem>(_app.ActionsListModel.Items);
+            var items = new List<ActionItem>(_actions_list_model.Items);
             return items.Exists(x => x.Name == name);
         }
 
         private void GetApplicationWithEmptyModels()
         {
-            _app = CreateAndStartTestApp();
-            var inbox_model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
-            inbox_model.ClearItems();
-            _app.ActionsListModel.ClearItems();
+            CreateAndStartTestApp();
+            _inbox_model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
+            _inbox_model.ClearItems();
+            _actions_list_model = ObjectFactory.GetInstance<IItemModel<ActionItem>>();
+            _actions_list_model.ClearItems();
         }
 
         private void GetApplicationWithPreviousData()
         {
-            _app = CreateAndStartTestApp();
+            CreateAndStartTestApp();
+            _inbox_model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
+            _actions_list_model = ObjectFactory.GetInstance<IItemModel<ActionItem>>();
+            _actions_list_model.Load();
         }
 
-        private FastGTDApp CreateAndStartTestApp()
+        private void CreateAndStartTestApp()
         {
             FastGTDApp.WireClasses();
             InjectView();
             var app = new FastGTDApp();
             app.ShowStartForm();
-            return app;
         }
 
         private void InjectView()

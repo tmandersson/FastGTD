@@ -94,7 +94,7 @@
             this._to_action_button.Text = "To &Action";
             this._to_action_button.UseVisualStyleBackColor = true;
             // 
-            // InBoxForm
+            // ItemListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -104,8 +104,7 @@
             this.Controls.Add(this._add_button);
             this.Controls.Add(this._text_box);
             this.Controls.Add(this._list_view);
-            this.Name = "InBoxForm";
-            this.Text = "InBoxForm";
+            this.Name = "ItemListForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 

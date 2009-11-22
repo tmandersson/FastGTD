@@ -89,6 +89,12 @@
     <Compile Include="ItemListController.cs" />
     <Compile Include="ITestableInBoxView.cs" />
     <Compile Include="ListViewSelectionChanger.cs" />
+    <Compile Include="MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FastGTD.DataAccess\FastGTD.DataAccess.csproj">

@@ -1,3 +1,4 @@
+using System.Windows.Forms;
 using FastGTD.DataAccess;
 using FastGTD.DataTransfer;
 using FastGTD.Domain;
@@ -11,16 +12,21 @@ namespace FastGTD
         public static int Main()
         {
             WireClasses();
-            IGTDWindow start_form = GetStartWindow();
-            var actions_list = GetActionsList();
+            //IGTDWindow start_form = GetStartWindow();
+            //var actions_list = GetActionsList();
 
-            start_form.Show();
-            actions_list.Show();
+            //start_form.Show();
+            //actions_list.Show();
 
-            start_form.StartMessageLoop();
+            //start_form.StartMessageLoop();
 
-            start_form.Close();
-            actions_list.Close();
+            //start_form.Close();
+            //actions_list.Close();
+
+            var main_form = new MainWindow();
+            main_form.Show();
+            Application.Run(main_form);
+
             return 0;
         }
 

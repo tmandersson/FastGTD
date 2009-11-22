@@ -21,14 +21,14 @@ namespace FastGTD
         public ItemListForm()
         {
             InitializeComponent();
-            _selection_changer = new ListViewSelectionChanger(_list_view);
+            _selection_changer = new ListViewSelectionChanger(_item_list.ListView);
             WireEvents();
         }
 
         public void AddItem(T item)
         {
             var list_item = new ListViewItem(item.Name) {Tag = item};
-            _list_view.Items.Add(list_item);
+            _item_list.ListView.Items.Add(list_item);
         }
 
         public IListSelectionChanger List
@@ -38,7 +38,7 @@ namespace FastGTD
 
         public void ClearItems()
         {
-            _list_view.Items.Clear();
+            _item_list.ListView.Items.Clear();
         }
 
         public IEnumerable<T> SelectedItems
@@ -46,7 +46,7 @@ namespace FastGTD
             get
             {
                 IList<T> result = new List<T>();
-                foreach (ListViewItem item in _list_view.SelectedItems)
+                foreach (ListViewItem item in _item_list.ListView.SelectedItems)
                 {
                     result.Add((T)item.Tag);
                 }
@@ -56,13 +56,13 @@ namespace FastGTD
 
         public string TextBoxText
         {
-            get { return _text_box.Text; }
-            set { _text_box.Text = value; }
+            get { return _item_list.TextBox.Text; }
+            set { _item_list.TextBox.Text = value; }
         }
 
         public void SetFocusOnTextBox()
         {
-            _text_box.Focus();
+            _item_list.TextBox.Focus();
         }
 
         public void StartMessageLoop()
@@ -72,10 +72,10 @@ namespace FastGTD
 
         public void SelectItems(IEnumerable<T> items)
         {
-            _list_view.SelectedItems.Clear();
+            _item_list.ListView.SelectedItems.Clear();
             foreach (var item in items)
             {
-                foreach (ListViewItem list_item in _list_view.Items)
+                foreach (ListViewItem list_item in _item_list.ListView.Items)
                 {
                     if (list_item.Tag.Equals(item))
                         list_item.Selected = true;
@@ -85,19 +85,19 @@ namespace FastGTD
 
         public void ClickAddButton()
         {
-            _add_button.PerformClick();
+            _item_list.AddButton.PerformClick();
         }
 
         public void ClickToActionButton()
         {
-            _to_action_button.PerformClick();
+            _item_list.ToActionButton.PerformClick();
         }
 
         private void WireEvents()
         {
-            _add_button.Click += delegate { RaiseEvent(AddButtonWasClicked); };
-            _delete_button.Click += delegate { RaiseEvent(DeleteButtonWasClicked); };
-            _to_action_button.Click += delegate { RaiseEvent(ToActionButtonWasClicked); };
+            _item_list.AddButton.Click += delegate { RaiseEvent(AddButtonWasClicked); };
+            _item_list.DeleteButton.Click += delegate { RaiseEvent(DeleteButtonWasClicked); };
+            _item_list.ToActionButton.Click += delegate { RaiseEvent(ToActionButtonWasClicked); };
             KeyPreview = true;
             KeyDown += RouteKeyDownEvents;
             Shown += delegate { SetFirstColumnFullWidth(); };
@@ -106,7 +106,7 @@ namespace FastGTD
 
         private void SetFirstColumnFullWidth()
         {
-            _list_view.Columns[0].Width = _list_view.Width - 5;
+            _item_list.ListView.Columns[0].Width = _item_list.ListView.Width - 5;
         }
 
         private void RouteKeyDownEvents(object sender, KeyEventArgs e)

@@ -8,7 +8,7 @@ namespace FastGTD
         protected override void OnLoad(System.EventArgs e)
         {
             Text = "Actions";
-            _to_action_button.Visible = false;
+            _item_list.HideToActionButton();
             base.OnLoad(e);
         }
     }

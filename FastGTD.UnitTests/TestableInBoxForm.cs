@@ -24,7 +24,7 @@ namespace FastGTD.UnitTests
 
         public string ListHeaderText
         {
-            get { return _list_view.Columns[0].Text; }
+            get { return _item_list.ListView.Columns[0].Text; }
         }
 
         public void SelectItem(string item)
@@ -35,8 +35,8 @@ namespace FastGTD.UnitTests
 
         public void SelectItems(IList<string> items)
         {
-            _list_view.SelectedItems.Clear();
-            foreach (ListViewItem item in _list_view.Items)
+            _item_list.ListView.SelectedItems.Clear();
+            foreach (ListViewItem item in _item_list.ListView.Items)
             {
                 if (items.Contains(item.Text))
                     item.Selected = true;
@@ -45,7 +45,7 @@ namespace FastGTD.UnitTests
 
         public void ClickDeleteButton()
         {
-            _delete_button.PerformClick();
+            _item_list.DeleteButton.PerformClick();
         }
 
         public void PerformKeyDown(Keys keys)

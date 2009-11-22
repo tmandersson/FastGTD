@@ -73,6 +73,12 @@
     <Compile Include="InBoxForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ItemListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemListControl.Designer.cs">
+      <DependentUpon>ItemListControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="ItemListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,12 +89,6 @@
     <Compile Include="ItemListController.cs" />
     <Compile Include="ITestableInBoxView.cs" />
     <Compile Include="ListViewSelectionChanger.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="ItemListForm.resx">
-      <DependentUpon>ItemListForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FastGTD.DataAccess\FastGTD.DataAccess.csproj">

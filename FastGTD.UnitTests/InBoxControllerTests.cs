@@ -27,11 +27,8 @@ namespace FastGTD.UnitTests
 
         private InBoxController CreateInboxController(IItemModel<InBoxItem> model)
         {
-            FastGTDApp.WireClasses();
-            ObjectFactory.Inject(_view);
-            ObjectFactory.Inject(model);
-            ObjectFactory.Inject(_converter);
-            return ObjectFactory.GetInstance<InBoxController>();
+            var window = MockRepository.GenerateStub<IGTDWindow>();
+            return new InBoxController(_view, window, model, _converter);
         }
 
         [Test]

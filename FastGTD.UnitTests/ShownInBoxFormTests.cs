@@ -4,7 +4,6 @@ using FastGTD.DataTransfer;
 using FastGTD.Domain;
 using NUnit.Framework;
 using Rhino.Mocks;
-using StructureMap;
 
 namespace FastGTD.UnitTests
 {
@@ -27,10 +26,7 @@ namespace FastGTD.UnitTests
 
         private InBoxController CreateInboxController()
         {
-            FastGTDApp.WireClasses();
-            ObjectFactory.Inject(_form);
-            ObjectFactory.Inject(_model);
-            return ObjectFactory.GetInstance<InBoxController>();
+            return new InBoxController(_form, _form, _model, null);
         }
 
         [Test]

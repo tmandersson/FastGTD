@@ -2,7 +2,6 @@
 using FastGTD.Domain;
 using NUnit.Framework;
 using Rhino.Mocks;
-using StructureMap;
 
 namespace FastGTD.UnitTests
 {
@@ -23,10 +22,7 @@ namespace FastGTD.UnitTests
 
         private static void CreateActionListController(IItemView<ActionItem> view, IItemModel<ActionItem> model)
         {
-            FastGTDApp.WireClasses();
-            ObjectFactory.Inject(view);
-            ObjectFactory.Inject(model);
-            ObjectFactory.GetInstance<ActionsListController>();
+            new ActionsListController(view, null, model);
         }
     }
 }

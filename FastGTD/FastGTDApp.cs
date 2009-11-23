@@ -49,6 +49,15 @@ namespace FastGTD
                     .CacheBy(InstanceScope.Singleton);
                 x.ForRequestedType<IItemConverter>().TheDefaultIsConcreteType<ItemConverter>()
                     .CacheBy(InstanceScope.Singleton);
+
+                x.ForRequestedType<InBoxForm>()
+                    .CacheBy(InstanceScope.Singleton);
+                x.ForRequestedType<ActionsListForm>()
+                    .CacheBy(InstanceScope.Singleton);
+                x.ForConcreteType<InBoxController>().Configure
+                    .CtorDependency<IGTDWindow>().Is(w => w.ConstructedBy(ObjectFactory.GetInstance<IInBoxView>));
+                x.ForConcreteType<ActionsListController>().Configure
+                    .CtorDependency<IGTDWindow>().Is(w => w.ConstructedBy(ObjectFactory.GetInstance<IItemView<ActionItem>>));
             });
         }
 

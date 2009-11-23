@@ -6,11 +6,13 @@ namespace FastGTD
     public abstract class ItemListController<T> : IGTDWindow where T : GTDItem
     {
         private readonly IItemView<T> _view;
+        private readonly IGTDWindow _window;
         private readonly IItemModel<T> _model;
 
-        protected ItemListController(IItemView<T> view, IItemModel<T> model)
+        protected ItemListController(IItemView<T> view, IGTDWindow window, IItemModel<T> model)
         {
             _view = view;
+            _window = window;
             _model = model;
             HandleEvents();
             _model.Load();
@@ -18,18 +20,18 @@ namespace FastGTD
 
         public void Show()
         {
-            _view.Show();
+            _window.Show();
             _view.SetFocusOnTextBox();
         }
 
         public void Close()
         {
-            _view.Close();
+            _window.Close();
         }
 
         public void StartMessageLoop()
         {
-            _view.StartMessageLoop();
+            _window.StartMessageLoop();
         }
 
         private void HandleEvents()

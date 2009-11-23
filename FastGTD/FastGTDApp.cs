@@ -1,4 +1,3 @@
-using System.Windows.Forms;
 using FastGTD.DataAccess;
 using FastGTD.DataTransfer;
 using FastGTD.Domain;
@@ -28,11 +27,6 @@ namespace FastGTD
             return 0;
         }
 
-        private static MainWindow GetMainWindow()
-        {
-            return new MainWindow();
-        }
-
         public static void WireClasses()
         {
             ObjectFactory.Initialize(x =>
@@ -56,6 +50,11 @@ namespace FastGTD
                 x.ForRequestedType<IItemConverter>().TheDefaultIsConcreteType<ItemConverter>()
                     .CacheBy(InstanceScope.Singleton);
             });
+        }
+
+        private static MainWindow GetMainWindow()
+        {
+            return ObjectFactory.GetInstance<MainWindow>();
         }
 
         public static IGTDWindow GetInBox()

@@ -6,11 +6,6 @@ namespace FastGTD
 {
     public interface IItemView<T> where T:GTDItem
     {
-        void Show();
-        void SetFocusOnTextBox();
-        void StartMessageLoop();
-        void Close();
-
         event Action AddButtonWasClicked;
         event Action DeleteButtonWasClicked;
         event Action EnterKeyWasPressed;
@@ -18,6 +13,7 @@ namespace FastGTD
         event Action DownKeyWasPressed;
         event Action UpKeyWasPressed;
         
+        void SetFocusOnTextBox();
         string TextBoxText { get; set; }
         IEnumerable<T> SelectedItems { get; }
         IListSelectionChanger List { get; }

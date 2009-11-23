@@ -3,6 +3,7 @@ using FastGTD.DataTransfer;
 using FastGTD.Domain;
 using NUnit.Framework;
 using Rhino.Mocks;
+using StructureMap;
 
 namespace FastGTD.UnitTests
 {
@@ -21,7 +22,16 @@ namespace FastGTD.UnitTests
             _view.Stub(x => x.List).Return(MockRepository.GenerateMock<IListSelectionChanger>());
             var model = MockRepository.GenerateStub<IItemModel<InBoxItem>>();
             _converter = MockRepository.GenerateMock<IItemConverter>();
-            _form = new InBoxController(_view, model, _converter);
+            _form = CreateInboxController(model);
+        }
+
+        private InBoxController CreateInboxController(IItemModel<InBoxItem> model)
+        {
+            FastGTDApp.WireClasses();
+            ObjectFactory.Inject(_view);
+            ObjectFactory.Inject(model);
+            ObjectFactory.Inject(_converter);
+            return ObjectFactory.GetInstance<InBoxController>();
         }
 
         [Test]

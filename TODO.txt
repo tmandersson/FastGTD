@@ -1,7 +1,7 @@
-x Uppdatera resharper på laptop.
-* Lär mig grunderna i hur jag kan använda git igen.
-* Installera tortoisegit.
-x dotcover
+Disclaimer, om nån råkar läsa detta och kan svenska: Detta är en TODO-lista över tankar över vad jag ska göra härnäst för att lära mig.
+Idéerna och tankarna kan verka vansinniga, men jag leker mest med detta projektet för att prova tekniker som TDD och olika verktyg, mm.
+
+* Läs igenom nån tutorial för grunderna i git.
 
 OLD:
 ---

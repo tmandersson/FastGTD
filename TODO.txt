@@ -1,3 +1,12 @@
+x Uppdatera resharper på laptop.
+* Lär mig grunderna i hur jag kan använda git igen.
+* Installera tortoisegit.
+x dotcover
+
+OLD:
+---
+* Bestämma licens och lägga upp licens-filer. Ingående licenser?
+
 * Nästa Kort: Kunna se actions-listan.
 * Gå igenom klasserna. Fundera på designen enligt SRP.
 * Gå igenom klasserna. Fundera på designen enlig OCP.

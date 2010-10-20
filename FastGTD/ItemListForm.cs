@@ -18,7 +18,7 @@ namespace FastGTD
         public event Action DownKeyWasPressed;
         public event Action UpKeyWasPressed;
 
-        public ItemListForm()
+        protected ItemListForm()
         {
             InitializeComponent();
             _selection_changer = new ListViewSelectionChanger(_item_list.ListView);

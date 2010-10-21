@@ -38,29 +38,31 @@ namespace FastGTD
                     .Singleton()
                     .Use<ItemRepository<ActionItem>>()
                     .Ctor<string>().Is(ActionItem.Table);
-                x.ForRequestedType<IItemPersistence<ActionItem>>()
-                    .CacheBy(InstanceScope.Singleton)
-                    .TheDefault.Is.OfConcreteType<ItemRepository<ActionItem>>()
-                    .WithCtorArg("table").EqualTo(ActionItem.Table);
-                x.ForRequestedType<IInBoxView>().TheDefaultIsConcreteType<InBoxForm>()
-                    .CacheBy(InstanceScope.Singleton);
-                x.ForRequestedType<IItemView<ActionItem>>().TheDefaultIsConcreteType<ActionsListForm>()
-                    .CacheBy(InstanceScope.Singleton);
-                x.ForRequestedType<IItemModel<InBoxItem>>().TheDefaultIsConcreteType<ItemModel<InBoxItem>>()
-                    .CacheBy(InstanceScope.Singleton);
-                x.ForRequestedType<IItemModel<ActionItem>>().TheDefaultIsConcreteType<ItemModel<ActionItem>>()
-                    .CacheBy(InstanceScope.Singleton);
-                x.ForRequestedType<IItemConverter>().TheDefaultIsConcreteType<ItemConverter>()
-                    .CacheBy(InstanceScope.Singleton);
-
-                x.ForRequestedType<InBoxForm>()
-                    .CacheBy(InstanceScope.Singleton);
-                x.ForRequestedType<ActionsListForm>()
-                    .CacheBy(InstanceScope.Singleton);
-                x.ForConcreteType<InBoxController>().Configure
-                    .CtorDependency<IGTDWindow>().Is(w => w.ConstructedBy(ObjectFactory.GetInstance<IInBoxView>));
-                x.ForConcreteType<ActionsListController>().Configure
-                    .CtorDependency<IGTDWindow>().Is(w => w.ConstructedBy(ObjectFactory.GetInstance<IItemView<ActionItem>>));
+                x.For<IInBoxView>()
+                    .Singleton()
+                    .Use<InBoxForm>();
+                x.For<IItemView<ActionItem>>()
+                    .Singleton()
+                    .Use<ActionsListForm>();
+                x.For<IItemModel<InBoxItem>>()
+                    .Singleton()
+                    .Use<ItemModel<InBoxItem>>();
+                x.For<IItemModel<ActionItem>>()
+                    .Singleton()
+                    .Use<ItemModel<ActionItem>>();
+                x.For<IItemConverter>()
+                    .Singleton()
+                    .Use<ItemConverter>();
+                x.For<InBoxForm>()
+                    .Singleton();
+                x.For<ActionsListForm>()
+                    .Singleton();
+                x.For<InBoxController>()
+                    .Use<InBoxController>()
+                    .Ctor<IGTDWindow>().Is(c => c.ConstructedBy(ObjectFactory.GetInstance<IInBoxView>));
+                x.For<ActionsListController>()
+                    .Use<ActionsListController>()
+                    .Ctor<IGTDWindow>().Is(c => c.ConstructedBy(ObjectFactory.GetInstance<IItemView<ActionItem>>));
             });
         }
 

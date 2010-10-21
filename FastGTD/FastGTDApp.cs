@@ -2,7 +2,6 @@ using FastGTD.DataAccess;
 using FastGTD.DataTransfer;
 using FastGTD.Domain;
 using StructureMap;
-using StructureMap.Attributes;
 
 namespace FastGTD
 {
@@ -31,10 +30,14 @@ namespace FastGTD
         {
             ObjectFactory.Initialize(x =>
             {
-                x.ForRequestedType<IItemPersistence<InBoxItem>>()
-                    .CacheBy(InstanceScope.Singleton)
-                    .TheDefault.Is.OfConcreteType<ItemRepository<InBoxItem>>()
-                    .WithCtorArg("table").EqualTo(InBoxItem.Table);
+                x.For<IItemPersistence<InBoxItem>>()
+                    .Singleton()
+                    .Use<ItemRepository<InBoxItem>>()
+                    .Ctor<string>().Is(InBoxItem.Table);
+                x.For<IItemPersistence<ActionItem>>()
+                    .Singleton()
+                    .Use<ItemRepository<ActionItem>>()
+                    .Ctor<string>().Is(ActionItem.Table);
                 x.ForRequestedType<IItemPersistence<ActionItem>>()
                     .CacheBy(InstanceScope.Singleton)
                     .TheDefault.Is.OfConcreteType<ItemRepository<ActionItem>>()

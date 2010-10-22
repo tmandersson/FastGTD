@@ -53,10 +53,6 @@ namespace FastGTD
                 x.For<IItemModel<ActionItem>>()
                     .Singleton()
                     .Use<ItemModel<ActionItem>>();
-                x.For<InBoxForm>()
-                    .Singleton();
-                x.For<ActionsListForm>()
-                    .Singleton();
                 x.For<InBoxController>()
                     .Use<InBoxController>()
                     .Ctor<IGTDWindow>().Is(c => c.ConstructedBy(ObjectFactory.GetInstance<IInBoxView>));

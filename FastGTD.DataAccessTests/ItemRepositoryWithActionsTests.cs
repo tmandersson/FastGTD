@@ -15,7 +15,7 @@ namespace FastGTD.DataAccessTests
 
         protected override IItemPersistence<ActionItem> CreateRepo()
         {
-            return new ItemRepository<ActionItem>(ActionItem.Table);
+            return new ItemRepository<ActionItem>();
         }
     }
 }

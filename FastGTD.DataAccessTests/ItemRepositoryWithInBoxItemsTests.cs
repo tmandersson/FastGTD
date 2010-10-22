@@ -15,7 +15,7 @@ namespace FastGTD.DataAccessTests
 
         protected override IItemPersistence<InBoxItem> CreateRepo()
         {
-            return new ItemRepository<InBoxItem>(InBoxItem.Table);
+            return new ItemRepository<InBoxItem>();
         }
     }
 }

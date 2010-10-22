@@ -1,18 +1,17 @@
 using System.Collections.Generic;
+using FastGTD.DataTransfer;
 using FastGTD.Domain;
 using NHibernate;
 using NHibernate.Cfg;
 
 namespace FastGTD.DataAccess
 {
-    public class ItemRepository<T> : IItemPersistence<T>
+    public class ItemRepository<T> : IItemPersistence<T> where T:GTDItem
     {
-        private readonly string _table;
         private readonly ISessionFactory _session_factory;
 
-        public ItemRepository(string table)
+        public ItemRepository()
         {
-            _table = table;
             _session_factory = CreateSessionFactory();
         }
 
@@ -27,7 +26,10 @@ namespace FastGTD.DataAccess
             ISession session = GetSession();
             using (ITransaction tx = session.BeginTransaction())
             {
-                session.Delete("from " + _table);
+                if (typeof(T) == typeof(InBoxItem))
+                    session.Delete("from InBoxItem");
+                if (typeof(T) == typeof(ActionItem))
+                    session.Delete("from ActionItem");
                 tx.Commit();
             }
         }

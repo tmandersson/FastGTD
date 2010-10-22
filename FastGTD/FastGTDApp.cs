@@ -35,12 +35,10 @@ namespace FastGTD
 
                 x.For<IItemPersistence<InBoxItem>>()
                     .Singleton()
-                    .Use<ItemRepository<InBoxItem>>()
-                    .Ctor<string>().Is(InBoxItem.Table);
+                    .Use<ItemRepository<InBoxItem>>();
                 x.For<IItemPersistence<ActionItem>>()
                     .Singleton()
-                    .Use<ItemRepository<ActionItem>>()
-                    .Ctor<string>().Is(ActionItem.Table);
+                    .Use<ItemRepository<ActionItem>>();
                 x.For<IInBoxView>()
                     .Singleton()
                     .Use<InBoxForm>();

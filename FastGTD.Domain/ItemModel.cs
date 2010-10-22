@@ -50,7 +50,6 @@ namespace FastGTD.Domain
             FireEvent(Changed);
         }
 
-
         private static void FireEvent(Action evnt)
         {
             if (evnt != null)

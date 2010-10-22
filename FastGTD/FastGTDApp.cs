@@ -2,6 +2,7 @@ using FastGTD.DataAccess;
 using FastGTD.DataTransfer;
 using FastGTD.Domain;
 using StructureMap;
+using StructureMap.Configuration.DSL;
 
 namespace FastGTD
 {
@@ -30,6 +31,8 @@ namespace FastGTD
         {
             ObjectFactory.Initialize(x =>
             {
+                x.AddRegistry(new AutoWireRegistry());
+
                 x.For<IItemPersistence<InBoxItem>>()
                     .Singleton()
                     .Use<ItemRepository<InBoxItem>>()
@@ -50,9 +53,6 @@ namespace FastGTD
                 x.For<IItemModel<ActionItem>>()
                     .Singleton()
                     .Use<ItemModel<ActionItem>>();
-                x.For<IItemConverter>()
-                    .Singleton()
-                    .Use<ItemConverter>();
                 x.For<InBoxForm>()
                     .Singleton();
                 x.For<ActionsListForm>()
@@ -79,6 +79,17 @@ namespace FastGTD
         public static IGTDWindow GetActionsList()
         {
             return ObjectFactory.GetInstance<ActionsListController>();
+        }
+    }
+
+    public class AutoWireRegistry : Registry
+    {
+        public AutoWireRegistry()
+        {
+            Scan(x => { 
+                x.TheCallingAssembly();
+                x.SingleImplementationsOfInterface();
+            });
         }
     }
 }

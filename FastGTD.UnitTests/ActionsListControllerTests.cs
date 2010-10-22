@@ -22,7 +22,7 @@ namespace FastGTD.UnitTests
 
         private static void CreateActionListController(IItemView<ActionItem> view, IItemModel<ActionItem> model)
         {
-            new ActionsListController(view, null, model);
+            new ActionsListController(view, model);
         }
     }
 }

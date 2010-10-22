@@ -8,10 +8,9 @@ namespace FastGTD
         private readonly IInBoxView _inbox_view;
         private readonly IItemConverter _converter;
 
-        public InBoxController(IInBoxView view, 
-            IGTDWindow window,
+        public InBoxController(IInBoxView view,
             IItemModel<InBoxItem> model,
-            IItemConverter converter) : base(view, window, model)
+            IItemConverter converter) : base(view, view, model)
         {
             _inbox_view = view;
             _converter = converter;

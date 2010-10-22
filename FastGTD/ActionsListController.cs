@@ -7,8 +7,7 @@ namespace FastGTD
     {
         public ActionsListController(
             IItemView<ActionItem> view,
-            IGTDWindow window,
-            IItemModel<ActionItem> model) : base(view, window, model)
+            IItemModel<ActionItem> model) : base(view, view, model)
         { }
     }
 }

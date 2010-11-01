@@ -2,6 +2,8 @@ Disclaimer, om nån råkar läsa detta och kan svenska: Detta är en TODO-lista över
 Idéerna och tankarna kan verka vansinniga, men jag leker mest med detta projektet för att prova tekniker som TDD och olika verktyg, mm.
 
 * Läs igenom nån tutorial för grunderna i git.
+* Måste visst trotts allt decoupla interfacen. Målet är att kunna skapa upp en controller som använder en av UI-kontrollen på mainwindow istället
+för ett fönster.
 
 OLD:
 ---

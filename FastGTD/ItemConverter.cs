@@ -1,3 +1,4 @@
+using System;
 using FastGTD.DataTransfer;
 using FastGTD.Domain;
 
@@ -19,6 +20,11 @@ namespace FastGTD
             _inbox_model.Remove(item);
             ActionItem action = _actions_list_model.Add(item.Name);
             return action;
+        }
+
+        public IItemModel<ActionItem> ActionModel
+        {
+            get { return _actions_list_model; }
         }
     }
 }

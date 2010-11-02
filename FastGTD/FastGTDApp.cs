@@ -61,12 +61,18 @@ namespace FastGTD
 
         public static IGTDWindow GetInBox()
         {
-            return ObjectFactory.GetInstance<InBoxController>();
+            var view = new InBoxForm();
+            var model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
+            var action_model = ObjectFactory.GetInstance<IItemModel<ActionItem>>();
+            var converter = new ItemConverter(model, action_model);
+            return new InBoxController(view, model, converter);
         }
 
         public static IGTDWindow GetActionsList()
         {
-            return ObjectFactory.GetInstance<ActionsListController>();
+            var view = new ActionsListForm();
+            var model = ObjectFactory.GetInstance<IItemModel<ActionItem>>();
+            return new ActionsListController(view, model);
         }
     }
 

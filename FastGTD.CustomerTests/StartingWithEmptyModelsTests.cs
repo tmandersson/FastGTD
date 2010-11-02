@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using FastGTD.DataTransfer;
 using FastGTD.Domain;
 using NUnit.Framework;
-using StructureMap;
 
 namespace FastGTD.CustomerTests
 {
@@ -15,6 +14,7 @@ namespace FastGTD.CustomerTests
         private ITestableInBoxView _view;
         private IItemModel<InBoxItem> _inbox_model;
         private IItemModel<ActionItem> _actions_list_model;
+        private InBoxController _start_form;
 
         [SetUp]
         public void SetupTests()
@@ -117,33 +117,26 @@ namespace FastGTD.CustomerTests
         private void GetApplicationWithEmptyModels()
         {
             CreateAndStartTestApp();
-            _inbox_model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
+            _inbox_model = _start_form.InBoxModel;
             _inbox_model.ClearItems();
-            _actions_list_model = ObjectFactory.GetInstance<IItemModel<ActionItem>>();
+            _actions_list_model = _start_form.ActionModel;
             _actions_list_model.ClearItems();
         }
 
         private void GetApplicationWithPreviousData()
         {
             CreateAndStartTestApp();
-            _inbox_model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
-            _actions_list_model = ObjectFactory.GetInstance<IItemModel<ActionItem>>();
+            _inbox_model = _start_form.InBoxModel;
+            _actions_list_model = _start_form.ActionModel;
             _actions_list_model.Load();
         }
 
         private void CreateAndStartTestApp()
         {
             FastGTDApp.WireClasses();
-            InjectView();
-            var start_form = FastGTDApp.GetInBox();
-            start_form.Show();
-        }
-
-        private void InjectView()
-        {
-            var form = new InBoxForm();
-            _view = form;
-            ObjectFactory.Inject((IInBoxView) form);
+            _start_form = (InBoxController) FastGTDApp.GetInBox();
+            _start_form.Show();
+            _view = (InBoxForm) _start_form.InBoxView;
         }
     }
 }

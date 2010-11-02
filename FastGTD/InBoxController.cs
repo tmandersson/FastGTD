@@ -1,5 +1,4 @@
-﻿using System;
-using FastGTD.DataTransfer;
+﻿using FastGTD.DataTransfer;
 using FastGTD.Domain;
 
 namespace FastGTD
@@ -10,8 +9,10 @@ namespace FastGTD
         private readonly IItemConverter _converter;
 
         public InBoxController(IInBoxView view,
+            IGTDWindow window,
             IItemModel<InBoxItem> model,
-            IItemConverter converter) : base(view, view, model)
+            IItemConverter converter)
+            : base(view, window, model)
         {
             _inbox_view = view;
             _converter = converter;

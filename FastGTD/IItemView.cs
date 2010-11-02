@@ -4,7 +4,7 @@ using FastGTD.Domain;
 
 namespace FastGTD
 {
-    public interface IItemView<T> : IGTDWindow where T : GTDItem
+    public interface IItemView<T> where T : GTDItem
     {
         event Action AddButtonWasClicked;
         event Action DeleteButtonWasClicked;

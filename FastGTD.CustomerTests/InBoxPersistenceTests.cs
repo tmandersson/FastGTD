@@ -1,4 +1,5 @@
 using System;
+using FastGTD.DataAccess;
 using FastGTD.DataTransfer;
 using FastGTD.Domain;
 using NUnit.Framework;
@@ -55,6 +56,24 @@ namespace FastGTD.CustomerTests
             IGTDWindow inbox = FastGTDApp.GetInBox();
             inbox.Show();
             return inbox;
+        }
+    }
+
+    [TestFixture]
+    public class TryWiringControllersToStuffInMainWindowTests
+    {
+        [Test]
+        public void TryWiring()
+        {
+            //var main_window = new MainWindow();
+            //main_window.Show();
+
+            //var inbox_view = new InBoxForm();
+            //var inbox_model = new ItemModel<InBoxItem>(new ItemRepository<InBoxItem>());
+            //var action_model = new ItemModel<ActionItem>(new ItemRepository<ActionItem>());
+            //var converter = new ItemConverter(inbox_model, action_model);
+            //var inbox_controller = new InBoxController(main_window.InBoxControls, main_window, inbox_model, converter);
+            //inbox_controller.Show();
         }
     }
 }

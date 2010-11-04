@@ -1,8 +1,9 @@
 ﻿using System.Windows.Forms;
+using FastGTD.Domain;
 
 namespace FastGTD
 {
-    public partial class ItemListControl : UserControl
+    public partial class ItemListControl<T> : UserControl where T: GTDItem
     {
         public ItemListControl()
         {

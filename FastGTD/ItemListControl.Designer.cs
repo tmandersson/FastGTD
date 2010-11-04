@@ -1,6 +1,8 @@
-﻿namespace FastGTD
+﻿using FastGTD.Domain;
+
+namespace FastGTD
 {
-    partial class ItemListControl
+    partial class ItemListControl<T> where T: GTDItem
     {
         /// <summary> 
         /// Required designer variable.

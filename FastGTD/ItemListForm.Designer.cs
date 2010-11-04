@@ -1,6 +1,8 @@
-﻿namespace FastGTD
+﻿using FastGTD.Domain;
+
+namespace FastGTD
 {
-    partial class ItemListForm<T>
+    partial class ItemListForm<T> where T:GTDItem 
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this._item_list = new FastGTD.ItemListControl();
+            this._item_list = new FastGTD.ItemListControl<T>();
             this.SuspendLayout();
             // 
             // _item_list
@@ -52,7 +54,7 @@
 
         #endregion
 
-        protected ItemListControl _item_list;
+        protected ItemListControl<T> _item_list;
 
     }
 }

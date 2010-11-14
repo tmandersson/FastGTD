@@ -1,0 +1,97 @@
+[FILES]
+Filter1a.gif
+filter1b.gif
+filter1c.gif
+Requirements1a.gif
+requirements1b.gif
+requirements1c.gif
+seealso1a.gif
+seealso1b.gif
+seealso1c.gif
+White.WebBrowser.html
+White.WebBrowserHierarchy.html
+White.WebBrowser.BrowserWindow.html
+White.WebBrowser.BrowserWindowMembers.html
+White.WebBrowser.BrowserWindowConstructor.html
+White.WebBrowser.BrowserWindowConstructor1.html
+White.WebBrowser.BrowserWindowConstructor2.html
+White.WebBrowser.BrowserWindowProperties.html
+White.WebBrowser.BrowserWindow.SilverlightDocument.html
+White.WebBrowser.Firefox.html
+White.WebBrowser.FirefoxMembers.html
+White.WebBrowser.FirefoxConstructor.html
+White.WebBrowser.FirefoxMethods.html
+White.WebBrowser.Firefox.Launch.html
+White.WebBrowser.FirefoxFactory.html
+White.WebBrowser.FirefoxFactoryMembers.html
+White.WebBrowser.FirefoxFactoryConstructor.html
+White.WebBrowser.FirefoxFactoryMethods.html
+White.WebBrowser.FirefoxFactory.Create.html
+White.WebBrowser.FirefoxFactory.DoesSpecializedThis.html
+White.WebBrowser.FirefoxFactory.Plugin.html
+White.WebBrowser.FirefoxWindow.html
+White.WebBrowser.FirefoxWindowMembers.html
+White.WebBrowser.FirefoxWindowConstructor.html
+White.WebBrowser.FirefoxWindowConstructor1.html
+White.WebBrowser.FirefoxWindowConstructor2.html
+White.WebBrowser.InternetExplorer.html
+White.WebBrowser.InternetExplorerMembers.html
+White.WebBrowser.InternetExplorerMethods.html
+White.WebBrowser.InternetExplorer.Launch.html
+White.WebBrowser.InternetExplorerFactory.html
+White.WebBrowser.InternetExplorerFactoryMembers.html
+White.WebBrowser.InternetExplorerFactoryConstructor.html
+White.WebBrowser.InternetExplorerFactoryMethods.html
+White.WebBrowser.InternetExplorerFactory.Create.html
+White.WebBrowser.InternetExplorerFactory.DoesSpecializedThis.html
+White.WebBrowser.InternetExplorerFactory.Plugin.html
+White.WebBrowser.InternetExplorerWindow.html
+White.WebBrowser.InternetExplorerWindowMembers.html
+White.WebBrowser.InternetExplorerWindowConstructor.html
+White.WebBrowser.InternetExplorerWindowConstructor1.html
+White.WebBrowser.InternetExplorerWindowConstructor2.html
+White.WebBrowser.Config.html
+White.WebBrowser.ConfigHierarchy.html
+White.WebBrowser.Config.WebBrowserAppXmlConfiguration.html
+White.WebBrowser.Config.WebBrowserAppXmlConfigurationMembers.html
+White.WebBrowser.Config.WebBrowserAppXmlConfigurationProperties.html
+White.WebBrowser.Config.WebBrowserAppXmlConfiguration.FirefoxSingleWindowCheckWait.html
+White.WebBrowser.Config.WebBrowserAppXmlConfiguration.Instance.html
+White.WebBrowser.Config.WebBrowserConfiguration.html
+White.WebBrowser.Config.WebBrowserConfigurationMembers.html
+White.WebBrowser.Config.WebBrowserConfigurationProperties.html
+White.WebBrowser.Config.WebBrowserConfiguration.FirefoxSingleWindowCheckWait.html
+White.WebBrowser.Silverlight.html
+White.WebBrowser.SilverlightHierarchy.html
+White.WebBrowser.Silverlight.SilverlightDocument.html
+White.WebBrowser.Silverlight.SilverlightDocumentMembers.html
+White.WebBrowser.Silverlight.SilverlightDocumentConstructor.html
+White.WebBrowser.Silverlight.SilverlightDocumentConstructor1.html
+White.WebBrowser.Silverlight.SilverlightDocumentConstructor2.html
+White.WebBrowser.Silverlight.SilverlightDocumentConstructor3.html
+White.WebBrowser.Silverlight.SilverlightDocumentProperties.html
+White.WebBrowser.Silverlight.SilverlightDocument.ChildrenActionListener.html
+White.WebBrowser.Silverlight.SilverlightDocument.Framework.html
+White.WebBrowser.Silverlight.SilverlightDocumentMethods.html
+White.WebBrowser.Silverlight.SilverlightDocument.ActionPerformed_overloads.html
+White.WebBrowser.Silverlight.SilverlightDocument.ActionPerformed_overload_1.html
+
+[OPTIONS]
+Title=C:\white\build\NDoc\index.html
+Auto Index=Yes
+Binary TOC=Yes
+Compatibility=1.1 or later
+Compiled file=C:\white\build\NDoc\index.html.chm
+Default Window=MsdnHelp
+Default topic=White.WebBrowser.html
+Display compile progress=No
+Error log file=C:\white\build\NDoc\index.html.log
+Full-text search=Yes
+Index file=C:\white\build\NDoc\index.html.hhk
+Language=0x409 English (United States)
+Contents file=C:\white\build\NDoc\index.html.hhc
+
+[WINDOWS]
+MsdnHelp="C:\white\build\NDoc\index.html Help","C:\white\build\NDoc\index.html.hhc","C:\white\build\NDoc\index.html.hhk","White.WebBrowser.html","White.WebBrowser.html",,,,,0x62520,220,0x387e,[86,51,872,558],,,,,,,0
+
+[INFOTYPES]

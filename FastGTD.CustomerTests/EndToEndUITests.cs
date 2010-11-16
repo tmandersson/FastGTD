@@ -1,6 +1,6 @@
-﻿using System.Threading;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using White.Core;
+using White.Core.UIItems.WindowItems;
 
 namespace FastGTD.CustomerTests
 {
@@ -11,7 +11,8 @@ namespace FastGTD.CustomerTests
         public void TryWhite()
         {
             var app = Application.Launch("FastGTD.exe");
-            //var inbox_window = app.GetWindow("");
+            var inbox_window = app.GetWindow("InBox");
+            inbox_window.Focus(DisplayState.Maximized);
             
             app.Kill();
         }

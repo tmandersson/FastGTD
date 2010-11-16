@@ -1,0 +1,1 @@
+call tools\nant\NAnt.exe -nologo -buildfile:white.build %* -logfile:b.log

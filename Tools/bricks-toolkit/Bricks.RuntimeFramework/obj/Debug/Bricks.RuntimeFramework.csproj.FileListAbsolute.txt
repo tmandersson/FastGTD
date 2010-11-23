@@ -1,0 +1,5 @@
+D:\Development\FastGTD\local_git\Tools\bricks-toolkit\Bricks.RuntimeFramework\bin\Debug\Bricks.RuntimeFramework.dll
+D:\Development\FastGTD\local_git\Tools\bricks-toolkit\Bricks.RuntimeFramework\bin\Debug\Bricks.RuntimeFramework.pdb
+D:\Development\FastGTD\local_git\Tools\bricks-toolkit\Bricks.RuntimeFramework\obj\Debug\ResolveAssemblyReference.cache
+D:\Development\FastGTD\local_git\Tools\bricks-toolkit\Bricks.RuntimeFramework\obj\Debug\Bricks.RuntimeFramework.dll
+D:\Development\FastGTD\local_git\Tools\bricks-toolkit\Bricks.RuntimeFramework\obj\Debug\Bricks.RuntimeFramework.pdb

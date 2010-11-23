@@ -54,14 +54,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bricks, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Bricks.dll</HintPath>
-    </Reference>
-    <Reference Include="Bricks.RuntimeFramework, Version=1.0.2942.23145, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Bricks.RuntimeFramework.dll</HintPath>
-    </Reference>
     <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\NHibernate\bin\net-2.0\Castle.Core.dll</HintPath>
@@ -404,6 +396,16 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\bricks-toolkit\Bricks.RuntimeFramework\Bricks.RuntimeFramework.csproj">
+      <Project>{AC1B1986-D656-43E6-922E-657DADFA1601}</Project>
+      <Name>Bricks.RuntimeFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\bricks-toolkit\Bricks\Bricks.csproj">
+      <Project>{F00F874C-226A-4924-BF34-D421444F423A}</Project>
+      <Name>Bricks</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

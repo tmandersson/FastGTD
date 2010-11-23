@@ -1,0 +1,99 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{94A7D07A-DC10-4F82-B1DC-D4B9D4450752}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bricks.NAnt</RootNamespace>
+    <AssemblyName>Bricks.NAnt</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NAnt.Contrib.Tasks, Version=0.85.1932.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\nant\NAnt.Contrib.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="NAnt.Core, Version=0.85.2344.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\nant\NAnt.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Build\BricksBuildException.cs" />
+    <Compile Include="Build\BuildCommand.cs" />
+    <Compile Include="Build\BuildStepArguments.cs" />
+    <Compile Include="Build\BuildStepStatus.cs" />
+    <Compile Include="Build\ExecutionStatus.cs" />
+    <Compile Include="SqlServer.cs" />
+    <Compile Include="DefaultCommandAttribute.cs" />
+    <Compile Include="IIS.cs" />
+    <Compile Include="KillTask.cs" />
+    <Compile Include="NantProject.cs" />
+    <Compile Include="NUnit.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CodeDocumentationTask.cs" />
+    <Compile Include="Build\BuildStep.cs" />
+    <Compile Include="VisualStudio\SolutionBuilder.cs" />
+    <Compile Include="VisualStudio\VisualStudioProjectFactory.cs" />
+    <Compile Include="VisualStudio\VisualStudioSolution.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bricks.RuntimeFramework\TestLessBricks.RuntimeFramework.csproj">
+      <Project>{AC1B1986-D656-43E6-922E-657DADFA1601}</Project>
+      <Name>Bricks.RuntimeFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bricks.Testing\TestLessBricks.Testing.csproj">
+      <Project>{B6703D97-BE93-4FC7-9B04-8ADC4B729BC2}</Project>
+      <Name>Bricks.Testing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bricks\TestLessBricks.csproj">
+      <Project>{F00F874C-226A-4924-BF34-D421444F423A}</Project>
+      <Name>Bricks</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="VisualStudio\Bricks.Nant\Bricks.NAnt.csproj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="VisualStudio\Bricks\Bricks.csproj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="VisualStudio\SampleSolution.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

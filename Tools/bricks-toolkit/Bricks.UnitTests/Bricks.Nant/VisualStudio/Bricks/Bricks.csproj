@@ -1,0 +1,146 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F00F874C-226A-4924-BF34-D421444F423A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bricks</RootNamespace>
+    <AssemblyName>Bricks</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>
+    </NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.DynamicProxy2, Version=2.0.0.1, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Castle.DynamicProxy2.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.2.7.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Mocks, Version=3.1.0.707, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Rhino.Mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BricksException.cs" />
+    <Compile Include="BricksTest.cs" />
+    <Compile Include="Core\AbstractCollection.cs" />
+    <Compile Include="Core\BricksAttribute.cs" />
+    <Compile Include="Core\ClockException.cs" />
+    <Compile Include="Core\ValidationAttribute.cs" />
+    <Compile Include="Core\Clock.cs" />
+    <Compile Include="Core\CustomEnum.cs" />
+    <Compile Include="Core\CustomEnumTest.cs" />
+    <Compile Include="Core\D.cs" />
+    <Compile Include="Core\Date.cs" />
+    <Compile Include="Core\DateMonth.cs" />
+    <Compile Include="Core\DateTest.cs" />
+    <Compile Include="Core\DistinctFinder.cs" />
+    <Compile Include="Core\DTest.cs" />
+    <Compile Include="Core\DuplicateComparer.cs" />
+    <Compile Include="Core\Error.cs" />
+    <Compile Include="Core\Filter.cs" />
+    <Compile Include="Core\IValidation.cs" />
+    <Compile Include="Core\BricksCollection.cs" />
+    <Compile Include="Core\BricksCollectionTest.cs" />
+    <Compile Include="Core\MandatoryAttribute.cs" />
+    <Compile Include="Core\Money.cs" />
+    <Compile Include="Core\MoneyTest.cs" />
+    <Compile Include="Core\Month.cs" />
+    <Compile Include="Core\RoundingMethod.cs" />
+    <Compile Include="Core\S.cs" />
+    <Compile Include="Core\SerializationCloner.cs" />
+    <Compile Include="Core\SerializationClonerTest.cs" />
+    <Compile Include="Core\STest.cs" />
+    <Compile Include="DynamicProxy\CachedDynamicProxyGenerator.cs" />
+    <Compile Include="CodePathInterceptor.cs" />
+    <Compile Include="DynamicProxy\DynamicProxyGenerator.cs" />
+    <Compile Include="Objects\Markable.cs" />
+    <Compile Include="Objects\Null\ClassForNullTest.cs" />
+    <Compile Include="Objects\Null\NullableObject.cs" />
+    <Compile Include="Objects\Null\NullInterceptor.cs" />
+    <Compile Include="Objects\Null\NullObjects.cs" />
+    <Compile Include="Objects\Null\NullObjectsTest.cs" />
+    <Compile Include="Core\TComparer.cs" />
+    <Compile Include="Core\TComparerTest.cs" />
+    <Compile Include="Core\UniqueEntity.cs" />
+    <Compile Include="Core\Validation.cs" />
+    <Compile Include="Core\ValidationTest.cs" />
+    <Compile Include="Objects\ObjectComparisonTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RuntimeFramework\Class.cs" />
+    <Compile Include="CodePath.cs" />
+    <Compile Include="CodePathTest.cs" />
+    <Compile Include="RuntimeFramework\Classes.cs" />
+    <Compile Include="RuntimeFramework\ClassTest.cs" />
+    <Compile Include="RuntimeFramework\CodeMember.cs" />
+    <Compile Include="RuntimeFramework\ComparisonStatus.cs" />
+    <Compile Include="RuntimeFramework\CustomAttributeTest.cs" />
+    <Compile Include="RuntimeFramework\Instance.cs" />
+    <Compile Include="RuntimeFramework\Method.cs" />
+    <Compile Include="RuntimeFramework\MethodInfos.cs" />
+    <Compile Include="RuntimeFramework\MethodInvocation.cs" />
+    <Compile Include="RuntimeFramework\MethodTest.cs" />
+    <Compile Include="RuntimeFramework\ObjectVisitor.cs" />
+    <Compile Include="RuntimeFramework\ReflectedObject.cs" />
+    <Compile Include="RuntimeFramework\ReflectedObjectTest.cs" />
+    <Compile Include="RuntimeFramework\Types.cs" />
+    <Compile Include="RuntimeFramework\TypesTest.cs" />
+    <Compile Include="UserInterface\BricksButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserInterface\BricksListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserInterface\CursorManager.cs" />
+    <Compile Include="VisualStudio2005\CSharpProject.cs" />
+    <Compile Include="VisualStudio2005\CSharpProjectTest.cs" />
+    <Compile Include="VisualStudio2005\CurrentAssembly.cs" />
+    <Compile Include="VisualStudio2005\CurrentAssemblyTest.cs" />
+    <Compile Include="VisualStudio2005\VisualStudioException.cs" />
+    <Compile Include="XML.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="VisualStudio2005\Cement.csproj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

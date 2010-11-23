@@ -1,0 +1,1 @@
+"C:\Program Files\TortoiseSVN\bin\TortoiseProc.exe" /command:update /path:"D:\Bricks" /notempfile /closeonend

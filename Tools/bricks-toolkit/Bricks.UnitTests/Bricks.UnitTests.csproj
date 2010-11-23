@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C10A37A9-4F5D-42B6-8D33-8F4FCB162D09}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bricks.UnitTests</RootNamespace>
+    <AssemblyName>Bricks.UnitTests</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NAnt.Contrib.Tasks, Version=0.85.1932.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\nant\NAnt.Contrib.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="NAnt.Core, Version=0.85.2344.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\nant\NAnt.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.4.6.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bricks.Nant\Build\BuildCommandTest.cs" />
+    <Compile Include="Bricks.Nant\Build\BuildStepTest.cs" />
+    <Compile Include="Bricks.Nant\VisualStudio\VisualStudioProjectFactoryTest.cs" />
+    <Compile Include="Bricks.Nant\VisualStudio\VisualStudioSolutionTest.cs" />
+    <Compile Include="Bricks.RuntimeFramework\BricksCollectionTest.cs" />
+    <Compile Include="Bricks.RuntimeFramework\ClassTest.cs" />
+    <Compile Include="Bricks.RuntimeFramework\ComparisonStatusesTest.cs" />
+    <Compile Include="Bricks.RuntimeFramework\ComparisonStatusTest.cs" />
+    <Compile Include="Bricks.RuntimeFramework\CustomAttributeTest.cs" />
+    <Compile Include="Bricks.RuntimeFramework\DotNetAssemblyTest.cs" />
+    <Compile Include="Bricks.RuntimeFramework\InternalClassTest.cs" />
+    <Compile Include="Bricks.RuntimeFramework\MethodTest.cs" />
+    <Compile Include="Bricks.RuntimeFramework\ObjectComparisonScenarioTest.cs" />
+    <Compile Include="Bricks.RuntimeFramework\ObjectComparisonTest.cs" />
+    <Compile Include="Bricks.RuntimeFramework\PropertyTest.cs" />
+    <Compile Include="Bricks.RuntimeFramework\ReflectedObjectTest.cs" />
+    <Compile Include="Bricks.RuntimeFramework\TComparerTest.cs" />
+    <Compile Include="Bricks.RuntimeFramework\TypesTest.cs" />
+    <Compile Include="Bricks\BricksTest.cs" />
+    <Compile Include="Bricks\CodePathTest.cs" />
+    <Compile Include="Bricks\CoreAppXmlConfigurationTest.cs" />
+    <Compile Include="Bricks\Core\CustomEnumTest.cs" />
+    <Compile Include="Bricks\Core\DateTest.cs" />
+    <Compile Include="Bricks\Core\DTest.cs" />
+    <Compile Include="Bricks\Core\MoneyTest.cs" />
+    <Compile Include="Bricks\Core\STest.cs" />
+    <Compile Include="Bricks\Core\ValidationTest.cs" />
+    <Compile Include="Bricks\FileSystem\TextFileContentTest.cs" />
+    <Compile Include="Bricks\Objects\BricksDataContractSerializerTest.cs" />
+    <Compile Include="Bricks\Objects\Null\ClassForNullTest.cs" />
+    <Compile Include="Bricks\Objects\Null\NullObjectsTest.cs" />
+    <Compile Include="Bricks\SerializationClonerTest.cs" />
+    <Compile Include="Bricks\VisualStudio2005\CSharpProjectTest.cs" />
+    <Compile Include="Bricks\VisualStudio2005\ProjectNameTest.cs" />
+    <Compile Include="Bricks\VisualStudio2005\StandardTestIdentifierTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Bricks.Nant\VisualStudio\Bricks.Nant\Bricks.NAnt.csproj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Bricks.Nant\VisualStudio\Bricks\Bricks.csproj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Bricks.Nant\VisualStudio\SampleSolution.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bricks.NAnt\Bricks.NAnt.csproj">
+      <Project>{94A7D07A-DC10-4F82-B1DC-D4B9D4450752}</Project>
+      <Name>Bricks.NAnt</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bricks.Power\Bricks.Power.csproj">
+      <Project>{097E4835-CF49-42E2-BC48-0EF165663D4E}</Project>
+      <Name>Bricks.Power</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bricks.RuntimeFramework\Bricks.RuntimeFramework.csproj">
+      <Project>{AC1B1986-D656-43E6-922E-657DADFA1601}</Project>
+      <Name>Bricks.RuntimeFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bricks.Testing\Bricks.Testing.csproj">
+      <Project>{B6703D97-BE93-4FC7-9B04-8ADC4B729BC2}</Project>
+      <Name>Bricks.Testing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bricks\Bricks.csproj">
+      <Project>{F00F874C-226A-4924-BF34-D421444F423A}</Project>
+      <Name>Bricks</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

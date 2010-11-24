@@ -70,6 +70,7 @@ namespace FastGTD.DataAccess
             cfg.Properties.Add("connection.connection_string", "Data Source=FastGTD.db");
             cfg.Properties.Add("dialect", "NHibernate.Dialect.SQLiteDialect");
             cfg.Properties.Add("query.substitutions", "true=1;false=0");
+            cfg.Properties.Add("proxyfactory.factory_class", "NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle");
 
             cfg.AddAssembly("FastGTD.DataTransfer");
             return cfg.BuildSessionFactory();

@@ -1,6 +1,8 @@
 Disclaimer, om nån råkar läsa detta och kan svenska: Detta är en TODO-lista över tankar över vad jag ska göra härnäst för att lära mig.
 Idéerna och tankarna kan verka vansinniga, men jag leker mest med detta projektet för att prova tekniker som TDD och olika verktyg, mm.
 
+* Upgrade nhibernate to 2.1.2GA together with castle framework.
+
 * Try to do everything with real end-to-end tests through UI with help of white.net.
 * Måste visst trots allt decoupla interfacen. Målet är att kunna skapa upp en controller som använder en av UI-kontrollen på mainwindow istället
 för ett fönster.

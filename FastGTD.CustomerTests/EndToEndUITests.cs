@@ -16,12 +16,14 @@ namespace FastGTD.CustomerTests
         {
             _new_item = Guid.NewGuid().ToString();
             _app = Application.Launch("FastGTD.exe");
+            _app.WaitWhileBusy();
             _window = new InBoxWindowTestHelper(_app.GetWindow("InBox"));
         }
 
         [TearDown]
         public void CleanUp()
         {
+            _window.DeleteAllItems();
             _app.Kill();
         }
 
@@ -39,6 +41,30 @@ namespace FastGTD.CustomerTests
             _window.InputNewItemInTextBox(_new_item);
             _window.ClickAddButton();
             _window.AssertListHasItem(_new_item);
+        }
+
+        [Test]
+        public void DeleteItemByPressingDeleteKey()
+        {
+            AddItem(_new_item);
+            _window.PressDownArrowKey();
+            _window.PressDeleteKey();
+            _window.AssertListDoesNotHaveItem(_new_item);
+        }
+
+        [Test]
+        public void DeleteItemByClickingDeleteButton()
+        {
+            AddItem(_new_item);
+            _window.PressDownArrowKey();
+            _window.ClickDeleteButton();
+
+        }
+
+        private void AddItem(string new_item)
+        {
+            _window.InputNewItemInTextBox(new_item);
+            _window.PressReturnKey();
         }
     }
 }

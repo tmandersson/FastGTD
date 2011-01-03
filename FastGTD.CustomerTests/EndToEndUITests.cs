@@ -9,64 +9,78 @@ namespace FastGTD.CustomerTests
     public class EndToEndUITests
     {
         private Application _app;
-        private InBoxWindowTestHelper _window;
+        private WindowWithListBoxHelper _inbox;
+        private WindowWithListBoxHelper _actions;
         private string _new_item;
 
         [SetUp]
         public void Setup()
         {
+            ConfigureWhiteTimeouts();
             _new_item = Guid.NewGuid().ToString();
+            _app = Application.Launch("FastGTD.exe");
+            _inbox = new WindowWithListBoxHelper(_app.GetWindow("InBox"));
+            _actions = new WindowWithListBoxHelper(_app.GetWindow("Actions"));
+        }
+
+        private static void ConfigureWhiteTimeouts()
+        {
             CoreAppXmlConfiguration.Instance.BusyTimeout = 10000;
             CoreAppXmlConfiguration.Instance.UIAutomationZeroWindowBugTimeout = 10000;
-            _app = Application.Launch("FastGTD.exe");
-            _window = new InBoxWindowTestHelper(_app.GetWindow("InBox"));
         }
 
         [TearDown]
         public void CleanUp()
         {
-            _window.DeleteAllItems();
+            _inbox.DeleteAllItems();
             _app.Kill();
         }
 
         [Test]
-        public void AddingItemToInboxByPressingReturnKey()
+        public void AddingInboxItemToInboxByPressingReturnKey()
         {
-            _window.InputNewItemInTextBox(_new_item);
-            _window.PressReturnKey();
-            _window.AssertListHasItem(_new_item);
+            _inbox.InputNewItemInTextBox(_new_item);
+            _inbox.PressReturnKey();
+            _inbox.AssertListHasItem(_new_item);
         }
 
         [Test]
-        public void AddingItemToInboxByClickingButton()
+        public void AddingInboxItemToInboxByClickingButton()
         {
-            _window.InputNewItemInTextBox(_new_item);
-            _window.ClickAddButton();
-            _window.AssertListHasItem(_new_item);
+            _inbox.InputNewItemInTextBox(_new_item);
+            _inbox.ClickAddButton();
+            _inbox.AssertListHasItem(_new_item);
         }
 
         [Test]
-        public void DeleteItemByPressingDeleteKey()
+        public void DeleteInBoxItemByPressingDeleteKey()
         {
-            AddItem(_new_item);
-            _window.PressDownArrowKey();
-            _window.PressDeleteKey();
-            _window.AssertListDoesNotHaveItem(_new_item);
+            AddInboxItem(_new_item);
+            _inbox.PressDownArrowKey();
+            _inbox.PressDeleteKey();
+            _inbox.AssertListDoesNotHaveItem(_new_item);
         }
 
         [Test]
-        public void DeleteItemByClickingDeleteButton()
+        public void DeleteInBoxItemByClickingDeleteButton()
         {
-            AddItem(_new_item);
-            _window.PressDownArrowKey();
-            _window.ClickDeleteButton();
-
+            AddInboxItem(_new_item);
+            _inbox.PressDownArrowKey();
+            _inbox.ClickDeleteButton();
         }
 
-        private void AddItem(string new_item)
+        [Test]
+        public void AddingActionByPressingReturnKey()
         {
-            _window.InputNewItemInTextBox(new_item);
-            _window.PressReturnKey();
+            _actions.InputNewItemInTextBox(_new_item);
+            _actions.PressReturnKey();
+            _actions.AssertListHasItem(_new_item);            
+        }
+
+        private void AddInboxItem(string new_item)
+        {
+            _inbox.InputNewItemInTextBox(new_item);
+            _inbox.PressReturnKey();
         }
     }
 }

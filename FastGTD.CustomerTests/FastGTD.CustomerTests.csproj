@@ -67,7 +67,7 @@
   <ItemGroup>
     <Compile Include="EndToEndUITests.cs" />
     <Compile Include="InBoxPersistenceTests.cs" />
-    <Compile Include="InBoxWindowTestHelper.cs" />
+    <Compile Include="WindowWithListBoxHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StartingWithEmptyModelsTests.cs" />
   </ItemGroup>

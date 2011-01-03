@@ -88,6 +88,10 @@
       <Project>{2367A529-4B9B-4E0D-A666-B4EF14FD0DD9}</Project>
       <Name>FastGTD</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Tools\bricks-toolkit\Bricks\Bricks.csproj">
+      <Project>{F00F874C-226A-4924-BF34-D421444F423A}</Project>
+      <Name>Bricks</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tools\white-project\Core\Core.csproj">
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
       <Name>Core</Name>

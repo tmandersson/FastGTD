@@ -20,7 +20,7 @@ namespace FastGTD.CustomerTests
         {
             _inbox_window.Get<Button>(SearchCriteria.ByText("Add")).Click();
         }
-
+        
         public void ClickDeleteButton()
         {
             _inbox_window.Get<Button>(SearchCriteria.ByText("Delete")).Click();

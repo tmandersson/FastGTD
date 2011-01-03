@@ -1,5 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
+using White.Core.Configuration;
 using Application = White.Core.Application;
 
 namespace FastGTD.CustomerTests
@@ -15,8 +16,9 @@ namespace FastGTD.CustomerTests
         public void Setup()
         {
             _new_item = Guid.NewGuid().ToString();
+            CoreAppXmlConfiguration.Instance.BusyTimeout = 10000;
+            CoreAppXmlConfiguration.Instance.UIAutomationZeroWindowBugTimeout = 10000;
             _app = Application.Launch("FastGTD.exe");
-            _app.WaitWhileBusy();
             _window = new InBoxWindowTestHelper(_app.GetWindow("InBox"));
         }
 

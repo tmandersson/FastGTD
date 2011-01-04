@@ -95,6 +95,15 @@ namespace FastGTD.CustomerTests
             _actions.AssertListDoesNotHaveItem(_new_item);
         }
 
+        [Test]
+        public void DeleteActionByClickingButton()
+        {
+            AddActionItem(_new_item);
+            _actions.PressDownArrowKey();
+            _actions.ClickDeleteButton();
+            _actions.AssertListDoesNotHaveItem(_new_item);
+        }
+
         private void AddActionItem(string item)
         {
             _actions.InputNewItemInTextBox(item);

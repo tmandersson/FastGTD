@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using White.Core.UIItems;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.WindowItems;
@@ -19,10 +20,15 @@ namespace FastGTD.CustomerTests
         {
             _window.Get<Button>(SearchCriteria.ByText("Add")).Click();
         }
-        
+
         public void ClickDeleteButton()
         {
             _window.Get<Button>(SearchCriteria.ByText("Delete")).Click();
+        }
+
+        public void ClickToActionButton()
+        {
+            _window.Get<Button>(SearchCriteria.ByText("To Action")).Click();
         }
 
         public void PressReturnKey()
@@ -38,6 +44,13 @@ namespace FastGTD.CustomerTests
         public void PressDownArrowKey()
         {
             _window.KeyIn(KeyboardInput.SpecialKeys.DOWN);
+        }
+
+        public void PressAltAKeys()
+        {
+            _window.Keyboard.HoldKey(KeyboardInput.SpecialKeys.LEFT_ALT);
+            _window.Keyboard.Enter("a");
+            _window.Keyboard.LeaveKey(KeyboardInput.SpecialKeys.LEFT_ALT);
         }
 
         public void InputNewItemInTextBox(string item)

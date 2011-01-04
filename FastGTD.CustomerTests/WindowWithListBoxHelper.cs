@@ -60,6 +60,7 @@ namespace FastGTD.CustomerTests
 
         public void DeleteAllItems()
         {
+            _window.Focus();
             ListView list_view = GetListView();
             while(list_view.Rows.Count > 0)
             {

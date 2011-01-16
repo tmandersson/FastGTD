@@ -1,9 +1,8 @@
 using System;
-using FastGTD.DataTransfer;
 
 namespace FastGTD
 {
-    public interface IInBoxView : IItemView<InBoxItem>
+    public interface IInBoxView : IItemView
     {
         event Action ToActionButtonWasClicked;
         event Action AltAKeysWasPressed;

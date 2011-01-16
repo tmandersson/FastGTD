@@ -5,11 +5,11 @@ namespace FastGTD
 {
     public abstract class ItemListController<T> : IGTDWindow where T : GTDItem
     {
-        private readonly IItemView<T> _view;
+        private readonly IItemView _view;
         private readonly IGTDWindow _window;
         private readonly IItemModel<T> _model;
 
-        protected ItemListController(IItemView<T> view, IGTDWindow window, IItemModel<T> model)
+        protected ItemListController(IItemView view, IGTDWindow window, IItemModel<T> model)
         {
             _view = view;
             _window = window;

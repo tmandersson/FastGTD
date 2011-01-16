@@ -12,7 +12,7 @@ namespace FastGTD.UnitTests
         public void OnCreation_ModelGetsLoaded()
         {
             var model = MockRepository.GenerateMock<IItemModel<ActionItem>>();
-            var view = MockRepository.GenerateStub<IItemView<ActionItem>>();
+            var view = MockRepository.GenerateStub<IItemView>();
             var window = MockRepository.GenerateStub<IGTDWindow>();
             view.Stub(x => x.List).Return(MockRepository.GenerateStub<IListSelectionChanger>());
 
@@ -21,7 +21,7 @@ namespace FastGTD.UnitTests
             model.AssertWasCalled(x => x.Load());
         }
 
-        private static void CreateActionListController(IItemView<ActionItem> view, IGTDWindow window, IItemModel<ActionItem> model)
+        private static void CreateActionListController(IItemView view, IGTDWindow window, IItemModel<ActionItem> model)
         {
             new ActionsListController(view, window, model);
         }

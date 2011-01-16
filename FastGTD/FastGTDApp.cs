@@ -42,7 +42,7 @@ namespace FastGTD
                 x.For<IInBoxView>()
                     .Singleton()
                     .Use<InBoxForm>();
-                x.For<IItemView<ActionItem>>()
+                x.For<IItemView>()
                     .Singleton()
                     .Use<ActionsListForm>();
                 x.For<IItemModel<InBoxItem>>()

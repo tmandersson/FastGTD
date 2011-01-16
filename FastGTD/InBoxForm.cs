@@ -1,5 +1,3 @@
-using FastGTD.DataTransfer;
-
 namespace FastGTD
 {
     public class InBoxForm : ItemListForm, IInBoxView, ITestableInBoxView, IGTDWindow

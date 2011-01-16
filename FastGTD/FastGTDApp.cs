@@ -56,7 +56,14 @@ namespace FastGTD
 
         private static MainWindow GetMainWindow()
         {
-            return ObjectFactory.GetInstance<MainWindow>();
+            var window = ObjectFactory.GetInstance<MainWindow>();
+            
+            var model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
+            var action_model = ObjectFactory.GetInstance<IItemModel<ActionItem>>();
+            var converter = new ItemConverter(model, action_model);
+            new InBoxController(window.InBoxControls, window, model, converter);
+
+            return window;
         }
 
         public static IGTDWindow GetInBox()

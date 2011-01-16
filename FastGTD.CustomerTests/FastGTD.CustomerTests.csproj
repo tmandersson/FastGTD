@@ -60,13 +60,18 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="UIAutomationTypes">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EndToEndUITests.cs" />
+    <Compile Include="EndToEndUIUsingSingleWindowAndTabsTests.cs" />
     <Compile Include="InBoxPersistenceTests.cs" />
+    <Compile Include="TabPageWithListBoxHelper.cs" />
     <Compile Include="WindowWithListBoxHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StartingWithEmptyModelsTests.cs" />

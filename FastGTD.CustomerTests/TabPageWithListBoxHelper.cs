@@ -1,22 +1,26 @@
 ﻿using NUnit.Framework;
 using White.Core.UIItems;
 using White.Core.UIItems.Finders;
+using White.Core.UIItems.TabItems;
 using White.Core.UIItems.WindowItems;
 using White.Core.WindowsAPI;
 
 namespace FastGTD.CustomerTests
 {
-    public class WindowWithListBoxHelper
+    public class TabPageWithListBoxHelper
     {
+        private readonly ITabPage _tab;
         private readonly Window _window;
 
-        public WindowWithListBoxHelper(Window window)
+        public TabPageWithListBoxHelper(ITabPage tab, Window window)
         {
+            _tab = tab;
             _window = window;
         }
 
         private void GiveFocus()
         {
+            _tab.Select();
             _window.Focus();
         }
 
@@ -79,7 +83,7 @@ namespace FastGTD.CustomerTests
         {
             GiveFocus();
             ListView list_view = GetListView();
-            while(list_view.Rows.Count > 0)
+            while (list_view.Rows.Count > 0)
             {
                 PressDownArrowKey();
                 PressDeleteKey();

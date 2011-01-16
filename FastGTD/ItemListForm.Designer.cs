@@ -30,7 +30,7 @@ namespace FastGTD
         /// </summary>
         private void InitializeComponent()
         {
-            this._item_list = new FastGTD.ItemListControl<T>();
+            this._item_list = new FastGTD.ItemListControl();
             this.SuspendLayout();
             // 
             // _item_list
@@ -54,7 +54,7 @@ namespace FastGTD
 
         #endregion
 
-        protected ItemListControl<T> _item_list;
+        protected ItemListControl _item_list;
 
     }
 }

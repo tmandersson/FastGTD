@@ -3,7 +3,7 @@ using FastGTD.Domain;
 
 namespace FastGTD
 {
-    public partial class ItemListControl<T> : UserControl where T: GTDItem
+    public partial class ItemListControl: UserControl
     {
         public ItemListControl()
         {

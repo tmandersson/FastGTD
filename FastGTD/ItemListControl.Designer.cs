@@ -2,7 +2,7 @@
 
 namespace FastGTD
 {
-    partial class ItemListControl<T> where T: GTDItem
+    partial class ItemListControl
     {
         /// <summary> 
         /// Required designer variable.

@@ -32,9 +32,9 @@ namespace FastGTD
         {
             this._tab_control = new System.Windows.Forms.TabControl();
             this._inbox_tab = new System.Windows.Forms.TabPage();
-            this._inbox_controls = new FastGTD.ItemListControl<InBoxItem>();
+            this._inbox_controls = new FastGTD.ItemListControl();
             this._actions_tab = new System.Windows.Forms.TabPage();
-            this._actions_controls = new FastGTD.ItemListControl<ActionItem>();
+            this._actions_controls = new FastGTD.ItemListControl();
             this._tab_control.SuspendLayout();
             this._inbox_tab.SuspendLayout();
             this._actions_tab.SuspendLayout();
@@ -109,7 +109,7 @@ namespace FastGTD
         private System.Windows.Forms.TabControl _tab_control;
         private System.Windows.Forms.TabPage _inbox_tab;
         private System.Windows.Forms.TabPage _actions_tab;
-        private ItemListControl<InBoxItem> _inbox_controls;
-        private ItemListControl<ActionItem> _actions_controls;
+        private ItemListControl _inbox_controls;
+        private ItemListControl _actions_controls;
     }
 }

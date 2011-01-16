@@ -15,12 +15,12 @@ namespace FastGTD
             Application.Run(this);
         }
 
-        public ItemListControl<InBoxItem> InBoxControls
+        public ItemListControl InBoxControls
         {
             get { return _inbox_controls; }
         }
 
-        public ItemListControl<ActionItem> ActionControls
+        public ItemListControl ActionControls
         {
             get { return _actions_controls; }
         }

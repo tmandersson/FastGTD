@@ -2,7 +2,7 @@
 
 namespace FastGTD
 {
-    partial class ItemListForm<T> where T:GTDItem 
+    partial class ItemListForm
     {
         /// <summary>
         /// Required designer variable.

@@ -2,7 +2,7 @@ using FastGTD.DataTransfer;
 
 namespace FastGTD
 {
-    public class ActionsListForm : ItemListForm<ActionItem>, IItemView<ActionItem>, IGTDWindow
+    public class ActionsListForm : ItemListForm, IItemView<ActionItem>, IGTDWindow
     {
 
         protected override void OnLoad(System.EventArgs e)

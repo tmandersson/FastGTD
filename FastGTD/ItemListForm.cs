@@ -5,7 +5,7 @@ using FastGTD.Domain;
 
 namespace FastGTD
 {
-    public partial class ItemListForm<T> : Form where T : GTDItem
+    public partial class ItemListForm : Form
     {
         private readonly ListViewSelectionChanger _selection_changer;
 
@@ -25,7 +25,7 @@ namespace FastGTD
             WireEvents();
         }
 
-        public void AddItem(T item)
+        public void AddItem(GTDItem item)
         {
             var list_item = new ListViewItem(item.Name) {Tag = item};
             _item_list.ListView.Items.Add(list_item);
@@ -41,14 +41,14 @@ namespace FastGTD
             _item_list.ListView.Items.Clear();
         }
 
-        public IEnumerable<T> SelectedItems
+        public IEnumerable<GTDItem> SelectedItems
         {
             get
             {
-                IList<T> result = new List<T>();
+                IList<GTDItem> result = new List<GTDItem>();
                 foreach (ListViewItem item in _item_list.ListView.SelectedItems)
                 {
-                    result.Add((T)item.Tag);
+                    result.Add((GTDItem)item.Tag);
                 }
                 return result;
             }
@@ -70,7 +70,7 @@ namespace FastGTD
             Application.Run(this);
         }
 
-        public void SelectItems(IEnumerable<T> items)
+        public void SelectItems(IEnumerable<GTDItem> items)
         {
             _item_list.ListView.SelectedItems.Clear();
             foreach (var item in items)

@@ -3,7 +3,6 @@ using FastGTD.DataTransfer;
 using FastGTD.Domain;
 using NUnit.Framework;
 using Rhino.Mocks;
-using StructureMap;
 
 namespace FastGTD.UnitTests
 {
@@ -43,7 +42,7 @@ namespace FastGTD.UnitTests
         {
             var expected_item = new InBoxItem("foo");
             var expected_item2 = new InBoxItem("foo2");
-            _view.Stub(x => x.SelectedItems).Return(new List<InBoxItem> { expected_item, expected_item2 });
+            _view.Stub(x => x.SelectedItems).Return(new List<GTDItem> { expected_item, expected_item2 });
 
             _view.Raise(x => x.ToActionButtonWasClicked += null);
 
@@ -56,7 +55,7 @@ namespace FastGTD.UnitTests
         {
             var expected_item = new InBoxItem("foo");
             var expected_item2 = new InBoxItem("foo2");
-            _view.Stub(x => x.SelectedItems).Return(new List<InBoxItem> { expected_item, expected_item2 });
+            _view.Stub(x => x.SelectedItems).Return(new List<GTDItem> { expected_item, expected_item2 });
 
             _view.Raise(x => x.AltAKeysWasPressed += null);
 

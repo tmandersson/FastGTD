@@ -77,7 +77,7 @@ namespace FastGTD.CustomerTests
 
         private void ConvertToActionItem(InBoxItem item)
         {
-            _view.SelectItems(new List<InBoxItem> {item});
+            _view.SelectItems(new List<GTDItem> {item});
             _view.ClickToActionButton();
         }
 

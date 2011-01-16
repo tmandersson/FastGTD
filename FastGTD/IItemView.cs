@@ -4,7 +4,7 @@ using FastGTD.Domain;
 
 namespace FastGTD
 {
-    public interface IItemView<T> where T : GTDItem
+    public interface IItemView<T> where T:GTDItem
     {
         event Action AddButtonWasClicked;
         event Action DeleteButtonWasClicked;
@@ -15,9 +15,9 @@ namespace FastGTD
         
         void SetFocusOnTextBox();
         string TextBoxText { get; set; }
-        IEnumerable<T> SelectedItems { get; }
+        IEnumerable<GTDItem> SelectedItems { get; }
         IListSelectionChanger List { get; }
         void ClearItems();
-        void AddItem(T item);
+        void AddItem(GTDItem item);
     }
 }

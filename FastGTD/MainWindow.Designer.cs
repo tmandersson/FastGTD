@@ -49,7 +49,7 @@ namespace FastGTD
             this._tab_control.Name = "_tab_control";
             this._tab_control.SelectedIndex = 0;
             this._tab_control.Size = new System.Drawing.Size(521, 549);
-            this._tab_control.TabIndex = 0;
+            this._tab_control.TabIndex = 1;
             // 
             // _inbox_tab
             // 
@@ -69,6 +69,7 @@ namespace FastGTD
             this._inbox_controls.Name = "_inbox_controls";
             this._inbox_controls.Size = new System.Drawing.Size(507, 517);
             this._inbox_controls.TabIndex = 0;
+            this._inbox_controls.TextBoxText = "";
             // 
             // _actions_tab
             // 
@@ -88,6 +89,7 @@ namespace FastGTD
             this._actions_controls.Name = "_actions_controls";
             this._actions_controls.Size = new System.Drawing.Size(507, 517);
             this._actions_controls.TabIndex = 0;
+            this._actions_controls.TextBoxText = "";
             // 
             // MainWindow
             // 

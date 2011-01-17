@@ -43,7 +43,7 @@ namespace FastGTD
             // 
             this._to_action_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this._to_action_button.Location = new System.Drawing.Point(15, 391);
-            this._to_action_button.Name = "ToActionButton";
+            this._to_action_button.Name = "_to_action_button";
             this._to_action_button.Size = new System.Drawing.Size(75, 23);
             this._to_action_button.TabIndex = 9;
             this._to_action_button.Text = "To &Action";
@@ -53,9 +53,9 @@ namespace FastGTD
             // 
             this._delete_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this._delete_button.Location = new System.Drawing.Point(351, 38);
-            this._delete_button.Name = "DeleteButton";
+            this._delete_button.Name = "_delete_button";
             this._delete_button.Size = new System.Drawing.Size(75, 23);
-            this._delete_button.TabIndex = 8;
+            this._delete_button.TabIndex = 3;
             this._delete_button.Text = "Delete";
             this._delete_button.UseVisualStyleBackColor = true;
             // 
@@ -63,9 +63,9 @@ namespace FastGTD
             // 
             this._add_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this._add_button.Location = new System.Drawing.Point(351, 9);
-            this._add_button.Name = "AddButton";
+            this._add_button.Name = "_add_button";
             this._add_button.Size = new System.Drawing.Size(75, 23);
-            this._add_button.TabIndex = 6;
+            this._add_button.TabIndex = 2;
             this._add_button.Text = "Add";
             this._add_button.UseVisualStyleBackColor = true;
             // 
@@ -74,9 +74,9 @@ namespace FastGTD
             this._text_box.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this._text_box.Location = new System.Drawing.Point(15, 12);
-            this._text_box.Name = "TextBox";
+            this._text_box.Name = "_text_box";
             this._text_box.Size = new System.Drawing.Size(330, 20);
-            this._text_box.TabIndex = 5;
+            this._text_box.TabIndex = 1;
             // 
             // _list_view
             // 
@@ -87,7 +87,7 @@ namespace FastGTD
             this._new_items_header});
             this._list_view.FullRowSelect = true;
             this._list_view.Location = new System.Drawing.Point(3, 67);
-            this._list_view.Name = "ListView";
+            this._list_view.Name = "_list_view";
             this._list_view.Size = new System.Drawing.Size(432, 318);
             this._list_view.TabIndex = 7;
             this._list_view.UseCompatibleStateImageBehavior = false;

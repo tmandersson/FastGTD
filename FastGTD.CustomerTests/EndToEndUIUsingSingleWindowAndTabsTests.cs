@@ -47,5 +47,13 @@ namespace FastGTD.CustomerTests
             _inbox.PressReturnKey();
             _inbox.AssertListHasItem(_new_item);
         }
+
+        [Test]
+        public void AddingInboxItemToInboxByClickingButton()
+        {
+            _inbox.InputNewItemInTextBox(_new_item);
+            _inbox.ClickAddButton();
+            _inbox.AssertListHasItem(_new_item);
+        }
     }
 }

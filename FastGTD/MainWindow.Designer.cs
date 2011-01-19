@@ -2,7 +2,7 @@
 
 namespace FastGTD
 {
-    partial class MainWindow : IMainWindowView
+    partial class MainWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -32,9 +32,7 @@ namespace FastGTD
         {
             this._tab_control = new System.Windows.Forms.TabControl();
             this._inbox_tab = new System.Windows.Forms.TabPage();
-            this._inbox_controls = new FastGTD.ItemListControl();
             this._actions_tab = new System.Windows.Forms.TabPage();
-            this._actions_controls = new FastGTD.ItemListControl();
             this._tab_control.SuspendLayout();
             this._inbox_tab.SuspendLayout();
             this._actions_tab.SuspendLayout();
@@ -53,7 +51,6 @@ namespace FastGTD
             // 
             // _inbox_tab
             // 
-            this._inbox_tab.Controls.Add(this._inbox_controls);
             this._inbox_tab.Location = new System.Drawing.Point(4, 22);
             this._inbox_tab.Name = "_inbox_tab";
             this._inbox_tab.Padding = new System.Windows.Forms.Padding(3);
@@ -62,18 +59,8 @@ namespace FastGTD
             this._inbox_tab.Text = "InBox";
             this._inbox_tab.UseVisualStyleBackColor = true;
             // 
-            // _inbox_controls
-            // 
-            this._inbox_controls.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._inbox_controls.Location = new System.Drawing.Point(3, 3);
-            this._inbox_controls.Name = "_inbox_controls";
-            this._inbox_controls.Size = new System.Drawing.Size(507, 517);
-            this._inbox_controls.TabIndex = 0;
-            this._inbox_controls.TextBoxText = "";
-            // 
             // _actions_tab
             // 
-            this._actions_tab.Controls.Add(this._actions_controls);
             this._actions_tab.Location = new System.Drawing.Point(4, 22);
             this._actions_tab.Name = "_actions_tab";
             this._actions_tab.Padding = new System.Windows.Forms.Padding(3);
@@ -81,15 +68,6 @@ namespace FastGTD
             this._actions_tab.TabIndex = 1;
             this._actions_tab.Text = "Actions";
             this._actions_tab.UseVisualStyleBackColor = true;
-            // 
-            // _actions_controls
-            // 
-            this._actions_controls.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._actions_controls.Location = new System.Drawing.Point(3, 3);
-            this._actions_controls.Name = "_actions_controls";
-            this._actions_controls.Size = new System.Drawing.Size(507, 517);
-            this._actions_controls.TabIndex = 0;
-            this._actions_controls.TextBoxText = "";
             // 
             // MainWindow
             // 

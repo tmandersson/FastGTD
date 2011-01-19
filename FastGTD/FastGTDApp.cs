@@ -56,14 +56,16 @@ namespace FastGTD
 
         private static MainWindow GetMainWindow()
         {
-            var window = ObjectFactory.GetInstance<MainWindow>();
+            var inbox_view = new ItemListControl();
+            var actions_view = new ItemListControl();
+            var window = new MainWindow(inbox_view, actions_view);
             
             var model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
             var action_model = ObjectFactory.GetInstance<IItemModel<ActionItem>>();
             var converter = new ItemConverter(model, action_model);
             new InBoxController(window.InBoxControls, window, model, converter);
 
-            new MainWindowController(window, window.InBoxControls, window.ActionControls);
+            new MainWindowController(window, inbox_view, actions_view);
 
             return window;
         }

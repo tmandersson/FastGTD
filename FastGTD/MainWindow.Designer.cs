@@ -2,7 +2,7 @@
 
 namespace FastGTD
 {
-    partial class MainWindow
+    partial class MainWindow : IMainWindowView
     {
         /// <summary>
         /// Required designer variable.

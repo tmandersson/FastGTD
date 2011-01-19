@@ -92,6 +92,7 @@
     <Compile Include="InBoxFormWithModelTests.cs">
     </Compile>
     <Compile Include="ItemConversiontests.cs" />
+    <Compile Include="MainWindowControllerTests.cs" />
     <Compile Include="ShownInBoxFormTests.cs">
     </Compile>
     <Compile Include="TestableInBoxForm.cs">

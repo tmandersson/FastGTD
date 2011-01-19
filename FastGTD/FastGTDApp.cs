@@ -63,6 +63,8 @@ namespace FastGTD
             var converter = new ItemConverter(model, action_model);
             new InBoxController(window.InBoxControls, window, model, converter);
 
+            new MainWindowController(window, window.InBoxControls, window.ActionControls);
+
             return window;
         }
 

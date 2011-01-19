@@ -99,6 +99,7 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainWindowController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FastGTD.DataAccess\FastGTD.DataAccess.csproj">

@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		check_coverage_all_tests.bat = check_coverage_all_tests.bat
 		check_coverage_unit_tests.bat = check_coverage_unit_tests.bat
 		CreateDatabase.sql = CreateDatabase.sql
-		TODO.txt = TODO.txt
+		scratchpad.txt = scratchpad.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastGTD.UnitTests", "FastGTD.UnitTests\FastGTD.UnitTests.csproj", "{99F46949-623F-4535-B3D5-D3CB7398A752}"

@@ -20,7 +20,8 @@ namespace FastGTD.CustomerTests
 
         private void GiveFocus()
         {
-            _tab.Select();
+            if (!_tab.IsSelected)
+                _tab.Select();
             _window.Focus();
         }
 

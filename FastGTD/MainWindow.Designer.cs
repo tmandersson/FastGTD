@@ -34,8 +34,6 @@ namespace FastGTD
             this._inbox_tab = new System.Windows.Forms.TabPage();
             this._actions_tab = new System.Windows.Forms.TabPage();
             this._tab_control.SuspendLayout();
-            this._inbox_tab.SuspendLayout();
-            this._actions_tab.SuspendLayout();
             this.SuspendLayout();
             // 
             // _tab_control
@@ -75,11 +73,10 @@ namespace FastGTD
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(521, 549);
             this.Controls.Add(this._tab_control);
+            this.KeyPreview = true;
             this.Name = "MainWindow";
             this.Text = "FastGTD";
             this._tab_control.ResumeLayout(false);
-            this._inbox_tab.ResumeLayout(false);
-            this._actions_tab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -46,7 +46,7 @@ namespace FastGTD.UnitTests
         public void SelectingTabSetsFocusOnCorrectTextBox()
         {
             _main_view.Stub(x => x.SelectedTabIndex).Return(1);
-            _main_view.Raise(x => x.SelectedTabChanged += null, this, EventArgs.Empty);
+            _main_view.Raise(x => x.SelectedTabChanged += null);
             _action_view.AssertWasCalled(x => x.SetFocusOnTextBox());
         }
     }

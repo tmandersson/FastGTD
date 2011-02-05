@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionsListControllerTests.cs" />
+    <Compile Include="EventTestingFixture.cs" />
     <Compile Include="ItemModelTests.cs" />
     <Compile Include="InBoxControllerTests.cs" />
     <Compile Include="InboxFormEventTests.cs" />
@@ -93,6 +94,7 @@
     </Compile>
     <Compile Include="ItemConversiontests.cs" />
     <Compile Include="MainWindowControllerTests.cs" />
+    <Compile Include="MainWindowEventTests.cs" />
     <Compile Include="ShownInBoxFormTests.cs">
     </Compile>
     <Compile Include="TestableInBoxForm.cs">

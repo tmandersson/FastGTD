@@ -15,7 +15,7 @@ namespace FastGTD
             _action_view = action_view;
             _main_view.Shown += delegate { SetFocusOnTextBoxInSelectedTab(); };
             _main_view.GotFocus += delegate { SetFocusOnTextBoxInSelectedTab(); };
-            _main_view.SelectedTabChanged += delegate { SetFocusOnTextBoxInSelectedTab(); };
+            _main_view.SelectedTabChanged += SetFocusOnTextBoxInSelectedTab;
         }
 
         private void SetFocusOnTextBoxInSelectedTab()
@@ -30,7 +30,7 @@ namespace FastGTD
     {
         event EventHandler Shown;
         event EventHandler GotFocus;
-        event EventHandler SelectedTabChanged;
+        event Action SelectedTabChanged;
 
         int SelectedTabIndex { get; set; }
     }

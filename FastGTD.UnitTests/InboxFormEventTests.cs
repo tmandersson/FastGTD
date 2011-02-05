@@ -4,15 +4,13 @@ using NUnit.Framework;
 namespace FastGTD.UnitTests
 {
     [TestFixture]
-    public class InboxFormEventTests
+    public class InboxFormEventTests : EventTestingFixture
     {
-        private bool _event_was_raised;
         private TestableInBoxForm _view;
 
         [SetUp]
         public void SetupTests()
         {
-            _event_was_raised = false;
             _view = new TestableInBoxForm();
             _view.Show();
         }
@@ -23,7 +21,7 @@ namespace FastGTD.UnitTests
             _view.ToActionButtonWasClicked += CatchEvent;
             _view.ClickToActionButton();
 
-            Assert.That(_event_was_raised);
+            Assert.That(EventWasRaised());
         }
 
         [Test]
@@ -32,12 +30,7 @@ namespace FastGTD.UnitTests
             _view.AltAKeysWasPressed += CatchEvent;
             _view.PerformKeyDown(Keys.Alt | Keys.A);
 
-            Assert.That(_event_was_raised);
-        }
-
-        private void CatchEvent()
-        {
-            _event_was_raised = true;
+            Assert.That(EventWasRaised());
         }
     }
 }

@@ -26,7 +26,7 @@ namespace FastGTD.UnitTests
 
         private InBoxController CreateInboxController()
         {
-            return new InBoxController(_form, _form, _model, null);
+            return new InBoxController(_form, _form, _model, null, _form);
         }
 
         [Test]

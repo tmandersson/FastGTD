@@ -1,18 +1,10 @@
-using System;
 using System.Collections.Generic;
 using FastGTD.Domain;
 
 namespace FastGTD
 {
     public interface IItemView
-    {
-        event Action AddButtonWasClicked;
-        event Action DeleteButtonWasClicked;
-        event Action EnterKeyWasPressed;
-        event Action DeleteKeyWasPressed;
-        event Action DownKeyWasPressed;
-        event Action UpKeyWasPressed;
-        
+    {       
         void SetFocusOnTextBox();
         string TextBoxText { get; set; }
         IEnumerable<GTDItem> SelectedItems { get; }

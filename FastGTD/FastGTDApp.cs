@@ -63,7 +63,7 @@ namespace FastGTD
             var model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
             var action_model = ObjectFactory.GetInstance<IItemModel<ActionItem>>();
             var converter = new ItemConverter(model, action_model);
-            new InBoxController(window.InBoxControls, window, model, converter);
+            new InBoxController(window.InBoxControls, window, model, converter, window);
 
             new MainWindowController(window, inbox_view, actions_view);
 
@@ -76,14 +76,14 @@ namespace FastGTD
             var model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
             var action_model = ObjectFactory.GetInstance<IItemModel<ActionItem>>();
             var converter = new ItemConverter(model, action_model);
-            return new InBoxController(view, view, model, converter);
+            return new InBoxController(view, view, model, converter, view);
         }
 
         public static IGTDWindow GetActionsList()
         {
             var view = new ActionsListForm();
             var model = ObjectFactory.GetInstance<IItemModel<ActionItem>>();
-            return new ActionsListController(view, view, model);
+            return new ActionsListController(view, view, model, view);
         }
     }
 

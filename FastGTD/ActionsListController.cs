@@ -8,8 +8,9 @@ namespace FastGTD
         public ActionsListController(
             IItemView view,
             IGTDWindow window,
-            IItemModel<ActionItem> model)
-            : base(view, window, model)
+            IItemModel<ActionItem> model,
+            IPublishKeyEvents key_events)
+            : base(view, window, model, key_events)
         { }
     }
 }

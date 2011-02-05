@@ -1,6 +1,6 @@
 namespace FastGTD
 {
-    public class ActionsListForm : ItemListForm, IItemView, IGTDWindow
+    public class ActionsListForm : ItemListForm, IItemView, IGTDWindow, IPublishKeyEvents
     {
 
         protected override void OnLoad(System.EventArgs e)

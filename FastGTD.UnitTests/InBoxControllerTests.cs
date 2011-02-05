@@ -27,7 +27,7 @@ namespace FastGTD.UnitTests
         private InBoxController CreateInboxController(IItemModel<InBoxItem> model)
         {
             var window = MockRepository.GenerateStub<IGTDWindow>();
-            return new InBoxController(_view, window, model, _converter);
+            return new InBoxController(_view, window, model, _converter, MockRepository.GenerateStub<IPublishKeyEvents>());
         }
 
         [Test]

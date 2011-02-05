@@ -8,12 +8,14 @@ namespace FastGTD
         private readonly IItemView _view;
         private readonly IGTDWindow _window;
         private readonly IItemModel<T> _model;
+        private readonly IPublishKeyEvents _key_events;
 
-        protected ItemListController(IItemView view, IGTDWindow window, IItemModel<T> model)
+        protected ItemListController(IItemView view, IGTDWindow window, IItemModel<T> model, IPublishKeyEvents key_events)
         {
             _view = view;
             _window = window;
             _model = model;
+            _key_events = key_events;
             HandleEvents();
             _model.Load();
         }
@@ -37,12 +39,12 @@ namespace FastGTD
         private void HandleEvents()
         {
             _model.Changed += UpdateFromModel;
-            _view.EnterKeyWasPressed += AddInboxItemInTextBox;
-            _view.AddButtonWasClicked += AddInboxItemInTextBox;
-            _view.DeleteKeyWasPressed += DeleteSelectedItems;
-            _view.DeleteButtonWasClicked += DeleteSelectedItems;
-            _view.DownKeyWasPressed += _view.List.MoveDown;
-            _view.UpKeyWasPressed += _view.List.MoveUp;
+            _key_events.EnterKeyWasPressed += AddInboxItemInTextBox;
+            _key_events.AddButtonWasClicked += AddInboxItemInTextBox;
+            _key_events.DeleteKeyWasPressed += DeleteSelectedItems;
+            _key_events.DeleteButtonWasClicked += DeleteSelectedItems;
+            _key_events.DownKeyWasPressed += _view.List.MoveDown;
+            _key_events.UpKeyWasPressed += _view.List.MoveUp;
         }
 
         private void AddInboxItemInTextBox()

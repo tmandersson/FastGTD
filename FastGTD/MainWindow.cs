@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace FastGTD
 {
-    public partial class MainWindow : Form, IGTDWindow, IMainWindowView
+    public partial class MainWindow : Form, IGTDWindow, IMainWindowView, IPublishKeyEvents
     {
         public MainWindow(ItemListControl inbox_view, ItemListControl actions_view)
         {
@@ -47,5 +47,12 @@ namespace FastGTD
             get { return _tab_control.SelectedIndex; }
             set { }
         }
+
+        public event Action AddButtonWasClicked;
+        public event Action DeleteButtonWasClicked;
+        public event Action EnterKeyWasPressed;
+        public event Action DeleteKeyWasPressed;
+        public event Action DownKeyWasPressed;
+        public event Action UpKeyWasPressed;
     }
 }

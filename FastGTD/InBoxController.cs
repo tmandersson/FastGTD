@@ -11,8 +11,9 @@ namespace FastGTD
         public InBoxController(IInBoxView view,
             IGTDWindow window,
             IItemModel<InBoxItem> model,
-            IItemConverter converter)
-            : base(view, window, model)
+            IItemConverter converter,
+            IPublishKeyEvents key_events)
+            : base(view, window, model, key_events)
         {
             _inbox_view = view;
             _converter = converter;

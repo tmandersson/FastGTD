@@ -23,7 +23,7 @@ namespace FastGTD.UnitTests
 
         private static void CreateActionListController(IItemView view, IGTDWindow window, IItemModel<ActionItem> model)
         {
-            new ActionsListController(view, window, model);
+            new ActionsListController(view, window, model, MockRepository.GenerateStub<IPublishKeyEvents>());
         }
     }
 }

@@ -54,5 +54,29 @@ namespace FastGTD.CustomerTests
             _inbox.ClickAddButton();
             _inbox.AssertListHasItem(_new_item);
         }
+
+        [Test]
+        public void DeleteInBoxItemByPressingDeleteKey()
+        {
+            AddInboxItem(_new_item);
+            _inbox.PressDownArrowKey();
+            _inbox.PressDeleteKey();
+            _inbox.AssertListDoesNotHaveItem(_new_item);
+        }
+
+        [Test]
+        public void DeleteInBoxItemByClickingDeleteButton()
+        {
+            AddInboxItem(_new_item);
+            _inbox.PressDownArrowKey();
+            _inbox.ClickDeleteButton();
+            _inbox.AssertListDoesNotHaveItem(_new_item);
+        }
+
+        private void AddInboxItem(string item)
+        {
+            _inbox.InputNewItemInTextBox(item);
+            _inbox.PressReturnKey();
+        }
     }
 }

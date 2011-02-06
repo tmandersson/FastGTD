@@ -68,6 +68,7 @@ namespace FastGTD.CustomerTests
             AddInboxItem(_new_item);
             _inbox.PressDownArrowKey();
             _inbox.ClickDeleteButton();
+            _inbox.AssertListDoesNotHaveItem(_new_item);
         }
 
         [Test]

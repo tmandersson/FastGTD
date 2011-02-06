@@ -26,6 +26,14 @@ namespace FastGTD.UnitTests
         }
 
         [Test]
+        public void InboxDeleteButton()
+        {
+            _window.DeleteButtonWasClicked += CatchEvent;
+            _inbox.DeleteButton.PerformClick();
+            Assert.That(EventWasRaised());
+        }
+
+        [Test]
         public void EnterKey()
         {
             _window.EnterKeyWasPressed += CatchEvent;
@@ -46,6 +54,14 @@ namespace FastGTD.UnitTests
         {
             _window.DownKeyWasPressed += CatchEvent;
             _window.PerformKeyDown(Keys.Down);
+            Assert.That(EventWasRaised());
+        }
+
+        [Test]
+        public void UpKey()
+        {
+            _window.UpKeyWasPressed += CatchEvent;
+            _window.PerformKeyDown(Keys.Up);
             Assert.That(EventWasRaised());
         }
     }

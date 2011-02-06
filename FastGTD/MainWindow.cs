@@ -26,6 +26,7 @@ namespace FastGTD
 
             _tab_control.SelectedIndexChanged += delegate { RaiseEvent(SelectedTabChanged); };
             _inbox_controls.AddButtonWasClicked += () => RaiseEvent(AddButtonWasClicked);
+            _inbox_controls.DeleteButtonWasClicked += () => RaiseEvent(DeleteButtonWasClicked);
 
             KeyPreview = true;
             KeyDown += RouteKeyDownEvents;
@@ -53,9 +54,9 @@ namespace FastGTD
                 case Keys.Down:
                     RaiseEvent(DownKeyWasPressed);
                     break;
-                //case Keys.Up:
-                //    RaiseEvent(UpKeyWasPressed);
-                //    break;
+                case Keys.Up:
+                    RaiseEvent(UpKeyWasPressed);
+                    break;
                 //case Keys.Alt | Keys.A:
                 //    RaiseEvent(AltAKeysWasPressed);
                 //    break;

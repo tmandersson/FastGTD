@@ -42,17 +42,17 @@ namespace FastGTD.CustomerTests
 
         public void PressReturnKey()
         {
-            _window.KeyIn(KeyboardInput.SpecialKeys.RETURN);
+            PressKey(KeyboardInput.SpecialKeys.RETURN);
         }
 
         public void PressDeleteKey()
         {
-            _window.KeyIn(KeyboardInput.SpecialKeys.DELETE);
+            PressKey(KeyboardInput.SpecialKeys.DELETE);
         }
 
         public void PressDownArrowKey()
         {
-            _window.KeyIn(KeyboardInput.SpecialKeys.DOWN);
+            PressKey(KeyboardInput.SpecialKeys.DOWN);
         }
 
         public void PressAltAKeys()
@@ -87,9 +87,14 @@ namespace FastGTD.CustomerTests
             while (list_view.Rows.Count > 0)
             {
                 PressDownArrowKey();
-                _window.WaitWhileBusy();
                 PressDeleteKey();
             }
+        }
+
+        private void PressKey(KeyboardInput.SpecialKeys key)
+        {
+            _window.KeyIn(key);
+            _window.WaitWhileBusy();
         }
 
         private ListView GetListView()

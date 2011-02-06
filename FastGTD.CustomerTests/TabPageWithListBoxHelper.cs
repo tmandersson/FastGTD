@@ -87,6 +87,7 @@ namespace FastGTD.CustomerTests
             while (list_view.Rows.Count > 0)
             {
                 PressDownArrowKey();
+                _window.WaitWhileBusy();
                 PressDeleteKey();
             }
         }

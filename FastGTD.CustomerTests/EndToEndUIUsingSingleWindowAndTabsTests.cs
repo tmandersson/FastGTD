@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using White.Core;
 using White.Core.Configuration;
-using White.Core.UIItems.Finders;
 using White.Core.UIItems.TabItems;
 using White.Core.UIItems.WindowItems;
 

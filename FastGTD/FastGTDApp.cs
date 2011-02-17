@@ -60,10 +60,11 @@ namespace FastGTD
             var actions_view = new ItemListControl();
             var window = new MainWindow(inbox_view, actions_view);
             
-            var model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
+            var inbox_model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
             var action_model = ObjectFactory.GetInstance<IItemModel<ActionItem>>();
-            var converter = new ItemConverter(model, action_model);
-            new InBoxController(window.InBoxControls, window, model, converter, window);
+            var converter = new ItemConverter(inbox_model, action_model);
+            new InBoxController(window.InBoxControls, window, inbox_model, converter, window);
+            new ActionsListController(window.ActionControls, window, action_model, window);
 
             new MainWindowController(window, inbox_view, actions_view);
 

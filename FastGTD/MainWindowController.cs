@@ -22,7 +22,8 @@ namespace FastGTD
         {
             if (_main_view.SelectedTabIndex == 1)
                 _action_view.SetFocusOnTextBox();
-            _inbox_view.SetFocusOnTextBox();
+            else
+                _inbox_view.SetFocusOnTextBox();
         }
     }
 

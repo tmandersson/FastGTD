@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Threading;
+using NUnit.Framework;
 using White.Core.UIItems;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.TabItems;
@@ -21,7 +22,7 @@ namespace FastGTD.CustomerTests
         private void GiveFocus()
         {
             if (!_tab.IsSelected)
-                _tab.Select();
+                _tab.Click();
             _window.Focus();
         }
 
@@ -99,7 +100,7 @@ namespace FastGTD.CustomerTests
 
         private ListView GetListView()
         {
-            return (ListView)_window.GetMultiple(SearchCriteria.ByControlType(typeof(ListView)))[0];
+            return _window.GetMultiple(SearchCriteria.ByControlType(typeof(ListView)))[0] as ListView;
         }
     }
 }

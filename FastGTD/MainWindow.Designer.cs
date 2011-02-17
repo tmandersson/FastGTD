@@ -43,7 +43,6 @@ namespace FastGTD
             this._tab_control.Dock = System.Windows.Forms.DockStyle.Fill;
             this._tab_control.Location = new System.Drawing.Point(0, 0);
             this._tab_control.Name = "_tab_control";
-            this._tab_control.SelectedIndex = 0;
             this._tab_control.Size = new System.Drawing.Size(521, 549);
             this._tab_control.TabIndex = 1;
             // 

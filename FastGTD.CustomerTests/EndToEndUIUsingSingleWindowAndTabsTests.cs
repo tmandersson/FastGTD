@@ -12,6 +12,7 @@ namespace FastGTD.CustomerTests
     {
         private Application _app;
         private TabPageWithListBoxHelper _inbox;
+        private TabPageWithListBoxHelper _actions;
         private string _new_item;
 
         [SetUp]
@@ -22,8 +23,10 @@ namespace FastGTD.CustomerTests
             _app = Application.Launch("FastGTD.exe");
             Window window = _app.GetWindow("FastGTD");
             Tab tab = window.Tabs[0];
-            ITabPage page = tab.Pages.Find(x => x.Name == "InBox");
-            _inbox = new TabPageWithListBoxHelper(page, window);
+            ITabPage inbox_page = tab.Pages.Find(x => x.Name == "InBox");
+            _inbox = new TabPageWithListBoxHelper(inbox_page, window);
+            ITabPage actions_page = tab.Pages.Find(x => x.Name == "Actions");
+            _actions = new TabPageWithListBoxHelper(actions_page, window);
         }
 
         private static void ConfigureWhiteTimeouts()
@@ -71,6 +74,14 @@ namespace FastGTD.CustomerTests
             _inbox.PressDownArrowKey();
             _inbox.ClickDeleteButton();
             _inbox.AssertListDoesNotHaveItem(_new_item);
+        }
+
+        [Test]
+        public void AddingActionByPressingReturnKey()
+        {
+            _actions.InputNewItemInTextBox(_new_item);
+            _actions.PressReturnKey();
+            _actions.AssertListHasItem(_new_item);
         }
 
         private void AddInboxItem(string item)

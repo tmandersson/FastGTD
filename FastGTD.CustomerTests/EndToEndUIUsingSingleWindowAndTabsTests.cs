@@ -111,6 +111,28 @@ namespace FastGTD.CustomerTests
             _actions.AssertListDoesNotHaveItem(_new_item);
         }
 
+        [Test]
+        public void ConvertInBoxItemToActionByPressingAltA()
+        {
+            AddInboxItem(_new_item);
+            _actions.AssertListDoesNotHaveItem(_new_item);
+            _inbox.GiveFocus();
+            _inbox.PressDownArrowKey();
+            _inbox.PressAltAKeys();
+            _actions.AssertListHasItem(_new_item);
+        }
+        
+        [Test]
+        public void ConvertInBoxItemToActionByClickingButton()
+        {
+            AddInboxItem(_new_item);
+            _actions.AssertListDoesNotHaveItem(_new_item);
+            _inbox.GiveFocus();
+            _inbox.PressDownArrowKey();
+            _inbox.ClickToActionButton();
+            _actions.AssertListHasItem(_new_item);
+        }
+
         private void AddInboxItem(string item)
         {
             _inbox.InputNewItemInTextBox(item);

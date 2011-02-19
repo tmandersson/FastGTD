@@ -1,8 +1,6 @@
 * Reimplement functionality through mainwindow with tabs.
-	* Adding in inbox through mainwindow.
-		* Why does tab change when running tests, even though that's not intended in test code?
-		* Controls inside tab does not get keypresses.
-	* Rest of tests.
+	* Manually make sure mainwindow behaves the same as separate windows, for rest of details.
+	* Design flaw makes adding something in inbox add empty item in action list and vice versa.
 	* Get rid of old windows and code not needed.
 
 

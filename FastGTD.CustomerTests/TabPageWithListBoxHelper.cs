@@ -19,7 +19,7 @@ namespace FastGTD.CustomerTests
             _window = window;
         }
 
-        private void GiveFocus()
+        public void GiveFocus()
         {
             if (!_tab.IsSelected)
                 _tab.Click();
@@ -71,12 +71,14 @@ namespace FastGTD.CustomerTests
 
         public void AssertListHasItem(string item)
         {
+            GiveFocus();
             ListView list_view = GetListView();
             Assert.That(list_view.Rows, Has.Some.Matches<ListViewRow>(i => i.Cells[0].Text == item));
         }
 
         public void AssertListDoesNotHaveItem(string item)
         {
+            GiveFocus();
             ListView list_view = GetListView();
             Assert.That(list_view.Rows, Has.No.Some.Matches<ListViewRow>(i => i.Cells[0].Text == item));
         }

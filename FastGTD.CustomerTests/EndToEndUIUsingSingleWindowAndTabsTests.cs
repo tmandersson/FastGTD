@@ -39,6 +39,7 @@ namespace FastGTD.CustomerTests
         public void CleanUp()
         {
             _inbox.DeleteAllItems();
+            _actions.DeleteAllItems();
             _app.Kill();
         }
 
@@ -92,10 +93,34 @@ namespace FastGTD.CustomerTests
             _actions.AssertListHasItem(_new_item);    
         }
 
+        [Test]
+        public void DeleteActionByPressingDeleteKey()
+        {
+            AddActionItem(_new_item);
+            _actions.PressDownArrowKey();
+            _actions.PressDeleteKey();
+            _actions.AssertListDoesNotHaveItem(_new_item);            
+        }
+
+        [Test]
+        public void DeleteActionByClickingDeleteButton()
+        {
+            AddActionItem(_new_item);
+            _actions.PressDownArrowKey();
+            _actions.ClickDeleteButton();
+            _actions.AssertListDoesNotHaveItem(_new_item);
+        }
+
         private void AddInboxItem(string item)
         {
             _inbox.InputNewItemInTextBox(item);
             _inbox.PressReturnKey();
+        }
+
+        private void AddActionItem(string item)
+        {
+            _actions.InputNewItemInTextBox(item);
+            _actions.PressReturnKey();
         }
     }
 }

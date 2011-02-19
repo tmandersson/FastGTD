@@ -28,6 +28,7 @@ namespace FastGTD
             _inbox_controls.AddButtonWasClicked += () => RaiseEvent(AddButtonWasClicked);
             _inbox_controls.DeleteButtonWasClicked += () => RaiseEvent(DeleteButtonWasClicked);
             _actions_controls.AddButtonWasClicked += () => RaiseEvent(AddButtonWasClicked);
+            _actions_controls.DeleteButtonWasClicked += () => RaiseEvent(DeleteButtonWasClicked);
 
             KeyPreview = true;
             KeyDown += RouteKeyDownEvents;

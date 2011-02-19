@@ -7,7 +7,7 @@ using White.Core.UIItems.WindowItems;
 
 namespace FastGTD.CustomerTests
 {
-    [TestFixture]
+    [TestFixture, Explicit]
     public class EndToEndUIUsingSingleWindowAndTabsTests
     {
         private Application _app;
@@ -51,7 +51,7 @@ namespace FastGTD.CustomerTests
         }
 
         [Test]
-        public void AddingInboxItemToInboxByClickingButton()
+        public void AddingInboxItemToInboxByClickingAddButton()
         {
             _inbox.InputNewItemInTextBox(_new_item);
             _inbox.ClickAddButton();
@@ -82,6 +82,14 @@ namespace FastGTD.CustomerTests
             _actions.InputNewItemInTextBox(_new_item);
             _actions.PressReturnKey();
             _actions.AssertListHasItem(_new_item);
+        }
+
+        [Test]
+        public void AddingActionByClickingAddButton()
+        {
+            _actions.InputNewItemInTextBox(_new_item);
+            _actions.ClickAddButton();
+            _actions.AssertListHasItem(_new_item);    
         }
 
         private void AddInboxItem(string item)

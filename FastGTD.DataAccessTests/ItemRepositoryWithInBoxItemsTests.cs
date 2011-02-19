@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace FastGTD.DataAccessTests
 {
-    [TestFixture]
+    [TestFixture, Explicit]
     public class ItemRepositoryWithInBoxItemsTests : ItemRepositoryFixtureBase<InBoxItem>
     {
         protected override InBoxItem CreateItem(string name)

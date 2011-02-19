@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace FastGTD.CustomerTests
 {
-    [TestFixture]
+    [TestFixture, Explicit]
     public class StartingWithEmptyModelsTests
     {
         private readonly string _item_name1 = Guid.NewGuid().ToString();

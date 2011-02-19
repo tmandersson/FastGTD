@@ -5,7 +5,7 @@ using Application = White.Core.Application;
 
 namespace FastGTD.CustomerTests
 {
-    [TestFixture]
+    [TestFixture, Explicit]
     public class EndToEndUITests
     {
         private Application _app;

@@ -7,7 +7,7 @@ using StructureMap;
 
 namespace FastGTD.CustomerTests
 {
-    [TestFixture]
+    [TestFixture, Explicit]
     public class InBoxPersistenceTests
     {
         [Test]

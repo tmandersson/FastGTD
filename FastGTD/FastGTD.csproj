@@ -78,12 +78,6 @@
     <Compile Include="ItemListControl.Designer.cs">
       <DependentUpon>ItemListControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="ItemListForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ItemListForm.Designer.cs">
-      <DependentUpon>ItemListForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="ItemConverter.cs" />
     <Compile Include="ItemListController.cs" />
     <Compile Include="ITestableInBoxView.cs" />

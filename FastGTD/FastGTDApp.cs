@@ -11,18 +11,10 @@ namespace FastGTD
         public static int Main()
         {
             WireClasses();
-            IGTDWindow start_form = GetInBox();
-            var actions_list = GetActionsList();
-
-            start_form.Show();
-            actions_list.Show();
 
             IGTDWindow main_form = GetMainWindow();
             main_form.Show();
             main_form.StartMessageLoop();
-
-            start_form.Close();
-            actions_list.Close();
 
             return 0;
         }
@@ -78,13 +70,6 @@ namespace FastGTD
             var action_model = ObjectFactory.GetInstance<IItemModel<ActionItem>>();
             var converter = new ItemConverter(model, action_model);
             return new InBoxController(view, view, model, converter, view);
-        }
-
-        public static IGTDWindow GetActionsList()
-        {
-            var view = new ActionsListForm();
-            var model = ObjectFactory.GetInstance<IItemModel<ActionItem>>();
-            return new ActionsListController(view, view, model, view);
         }
     }
 

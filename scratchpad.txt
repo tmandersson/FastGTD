@@ -1,7 +1,7 @@
 * Reimplement functionality through mainwindow with tabs.
 	* Manually make sure mainwindow behaves the same as separate windows, for rest of details.
-	* Design flaw makes adding something in inbox add empty item in action list and vice versa.
 	* Get rid of old windows and code not needed.
+	* Design flaw makes adding something in inbox add empty item in action list and vice versa.
 
 
 

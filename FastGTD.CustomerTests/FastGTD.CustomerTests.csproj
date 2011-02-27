@@ -68,7 +68,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EndToEndUITests.cs" />
     <Compile Include="EndToEndUIUsingSingleWindowAndTabsTests.cs" />
     <Compile Include="InBoxPersistenceTests.cs" />
     <Compile Include="TabPageWithListBoxHelper.cs" />

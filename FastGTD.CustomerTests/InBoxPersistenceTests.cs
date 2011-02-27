@@ -53,7 +53,7 @@ namespace FastGTD.CustomerTests
         private static IGTDWindow CreateAndShowInBox()
         {
             FastGTDApp.WireClasses();
-            IGTDWindow inbox = FastGTDApp.GetInBox();
+            IGTDWindow inbox = FastGTDApp.GetMainWindow();
             inbox.Show();
             return inbox;
         }

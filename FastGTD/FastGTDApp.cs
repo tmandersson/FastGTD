@@ -31,12 +31,6 @@ namespace FastGTD
                 x.For<IItemPersistence<ActionItem>>()
                     .Singleton()
                     .Use<ItemRepository<ActionItem>>();
-                x.For<IInBoxView>()
-                    .Singleton()
-                    .Use<InBoxForm>();
-                x.For<IItemView>()
-                    .Singleton()
-                    .Use<ActionsListForm>();
                 x.For<IItemModel<InBoxItem>>()
                     .Singleton()
                     .Use<ItemModel<InBoxItem>>();
@@ -46,7 +40,7 @@ namespace FastGTD
             });
         }
 
-        private static MainWindow GetMainWindow()
+        public static MainWindow GetMainWindow()
         {
             var inbox_view = new ItemListControl();
             var actions_view = new ItemListControl();
@@ -61,15 +55,6 @@ namespace FastGTD
             new MainWindowController(window, inbox_view, actions_view);
 
             return window;
-        }
-
-        public static IGTDWindow GetInBox()
-        {
-            var view = new InBoxForm();
-            var model = ObjectFactory.GetInstance<IItemModel<InBoxItem>>();
-            var action_model = ObjectFactory.GetInstance<IItemModel<ActionItem>>();
-            var converter = new ItemConverter(model, action_model);
-            return new InBoxController(view, view, model, converter, view);
         }
     }
 

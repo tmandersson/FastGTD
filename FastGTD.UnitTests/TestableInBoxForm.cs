@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace FastGTD.UnitTests
 {
-    public class TestableInBoxForm : InBoxForm
+    public class TestableInBoxForm : ItemListForm, IInBoxView, ITestableInBoxView, IGTDWindow, IPublishKeyEvents
     {
         public Control FocusedControl
         {

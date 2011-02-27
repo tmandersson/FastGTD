@@ -1,6 +1,6 @@
 * Reimplement functionality through mainwindow with tabs.
-	* Manually make sure mainwindow behaves the same as separate windows, for rest of details.
 	* Get rid of old windows and code not needed.
+		* Can we clean up/refactor more stuff after removing objects/classes.
 	* Design flaw makes adding something in inbox add empty item in action list and vice versa.
 
 
